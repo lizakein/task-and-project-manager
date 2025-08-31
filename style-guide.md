@@ -9,8 +9,8 @@ The designs were created to the following widths:
 
 ## Colors
 
-- Brend color: #5020E5
-- Brend color Light: #5020E520
+- Brand color: #5020E5
+- Brand color Light: #5020E520
 - Focus background: #5030E508
 
 - Background color: #FFFFFF

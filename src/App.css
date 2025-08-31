@@ -1,10 +1,30 @@
+:root {
+  --brand-color: #5020E5;
+
+  --main-background: #FFFFFF;
+  --card-background: #F5F5F5;
+  --count-background: #E0E0E0;
+  --active-background: #5030E508;
+
+  --text-color: #787486;
+  --count-color: #625F6D;
+
+  --high-color: #D8727D;
+  --high-color-background: #D8727D20;
+  --medium-color: #D58D49;
+  --medium-color-background: #DFA87420;
+  --low-color: #68B266;
+  --low-color-background: #83C29D20;
+
+  --border: 1px solid #E0E0E0;
+}
+
 .inter-font {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
-
 
 *,
 *:before,

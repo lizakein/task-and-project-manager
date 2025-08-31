@@ -1,9 +1,3 @@
-:root {
-  --border: 1px solid #E0E0E0;
-  --text-color: #787486;
-  --active-background: #5030E508;
-}
-
 .sidepanel {
   display: flex;
   flex-direction: column;
