@@ -47,28 +47,6 @@ export function ProjectsSection() {
             
           })
         }
-
-        
-
-        {/* <li className="projects-list__item" data-color="blue"> 
-          <span className='projects-list__name'>Project 2</span>
-          <button 
-            className="icon-button" 
-            aria-label="More options for Project 2"
-          >
-            <img src={MoreIcon} alt="" role="presentation" />
-          </button>   
-        </li>
-
-        <li className="projects-list__item" data-color="green">
-          <span className='projects-list__name'>Project 3</span>
-          <button 
-            className="icon-button" 
-            aria-label="More options for Project 3"
-          >
-            <img src={MoreIcon} alt="" role="presentation" />
-          </button>   
-        </li>*/}
       </ul>
     </section>
   );
