@@ -1,18 +1,19 @@
 import axios from 'axios';
 import AddSquareIcon from '../assets/icons/add-square-icon.svg';
 import MoreIcon from '../assets/icons/more-icon.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export function ProjectsSection() {
+export function ProjectsSection({ setProjectId }) {
   const [ projects, setProjects] = useState([]);
 
-  const fetchProjectsData = async () => {
-    const response = await axios.get('/src/data/projects.json');
+  useEffect(() => {
+    const fetchProjectsData = async () => {
+      const response = await axios.get('/src/data/projects.json');
+      setProjects(response.data);
+    };
 
-    setProjects(response.data);
-  };
-
-  fetchProjectsData();
+    fetchProjectsData();
+  }, [projects]);
 
   return (
     <section className='projects-section'>
@@ -34,6 +35,7 @@ export function ProjectsSection() {
                 key={project.id} 
                 className="projects-list__item" 
                 style={{ "--marker-color": project.color }}
+                onClick={() => {setProjectId(project.id)}}
               >
                 <span className='projects-list__name'>{project.title}</span>
                 <button 

@@ -1,8 +1,10 @@
-
-
 .project-page {
+  display: flex;
   margin-block-start: 86px;
-  margin-inline-start: 270px;
+}
+
+.project-content {
+  width: 100%;
   padding: 2rem 2.5rem;
 }
 
@@ -71,9 +73,10 @@
 .task-column {
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 1rem;
 
-  width: 300px;
+  /* width: 300px; */
   min-height: 300px;
   padding: 1rem;
 
@@ -110,7 +113,7 @@
   font-size: 1.3rem;
 }
 
-.task-column__header[data-status="to-do"] .task-column__title::before {
+.task-column__header[data-status="todo"] .task-column__title::before {
   color: var(--brand-color, #000);
 }
 
@@ -122,7 +125,7 @@
   color: var(--low-color, #000);
 }
 
-.task-column__header[data-status="to-do"] {
+.task-column__header[data-status="todo"] {
   border-block-end: 3px solid var(--brand-color);
 }
 
@@ -165,14 +168,14 @@
 }
 
 .task-card__priority,
-.task-card__type {
+.task-card__tag {
   padding: 0.2rem 0.3rem;
   font-size: 12px;
   font-weight: 500;
   border-radius: 4px;
 }
 
-.task-card__type {
+.task-card__tag {
   color: #4970D5;
   background-color: #4970D520;
 }
@@ -208,6 +211,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.task-card__tags {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .task-card__due {

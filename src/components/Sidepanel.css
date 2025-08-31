@@ -1,15 +1,12 @@
 .sidepanel {
-  display: flex;
-  flex-direction: column;
+  position: sticky;
+  top: 86px;
+  flex-shrink: 0;
   width: 270px;
+  height: calc(100vh - 86px);
 
   border-inline-end: var(--border);
-
-  position: fixed;
-  top: 86px;
-  align-self: start;
-  height: 100vh;
-}
+} 
 
 
 /* ========== SIDEPANEL MENU ========== */
