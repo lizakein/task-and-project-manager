@@ -1,5 +1,5 @@
 :root {
-  --border-color: #E0E0E0;
+  --border: 1px solid #E0E0E0;
   --card-background: #F5F5F5;
   --text-color: #787486;
 }
@@ -11,7 +11,7 @@
   width: 100vw;
   max-height: auto;
 
-  border-block-end: 1px solid var(--border-color);
+  border-block-end: var(--border);
 }
 
 
@@ -24,7 +24,7 @@
   padding: 1.5rem;
   padding-inline-end: 2.5rem;
 
-  border-inline-end: 1px solid var(--border-color);
+  border-inline-end: var(--border);
 }
 
 .header__logo {
@@ -99,12 +99,4 @@
 .user-menu__avatar {
   width: 38px;
   aspect-ratio: 1 / 1;
-}
-
-.icon-button {
-  width: 24px;
-  aspect-ratio: 1 / 1;
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
 }

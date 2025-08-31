@@ -18,3 +18,12 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
 }
+
+.icon-button,
+.menu-item {
+  width: 24px;
+  aspect-ratio: 1 / 1;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}

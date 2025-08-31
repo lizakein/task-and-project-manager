@@ -1,0 +1,125 @@
+:root {
+  --border: 1px solid #E0E0E0;
+  --text-color: #787486;
+  --active-background: #5030E508;
+}
+
+.sidepanel {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+
+  border-inline-end: var(--border);
+
+  position: fixed;
+  top: 86px;
+  align-self: start;
+  height: 100vh;
+}
+
+
+/* ========== SIDEPANEL MENU ========== */
+
+.sidepanel__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.5rem;
+
+  border-block-end: var(--border);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.menu-item__label {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-color);
+  letter-spacing: 0.6px;
+}
+
+.menu-item:hover .menu-item__label,
+.menu-item--active .menu-item__label {
+  font-weight: 600;
+  color: #000;
+}
+
+/* ========== PROJECTS SECTION ========== */
+
+.projects-section {
+  padding: 1.5rem;
+}
+
+.projects-section__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: 1.2rem;
+}
+
+.projects-section__title {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-color);
+  letter-spacing: 0.4px;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+}
+
+.projects-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding: 0.5rem;
+  padding-inline-start: 2rem;
+}
+
+.projects-list__item::before {
+  content: "•";
+  position: absolute;
+  left: 0.8rem;
+  font-size: 1.2rem;
+  color: var(--marker-color, #000);
+}
+
+.projects-list__item[data-color="red"]::before { color: #D8727D; }
+.projects-list__item[data-color="blue"]::before { color: #4970D5; }
+.projects-list__item[data-color="green"]::before { color: #68B266; }
+
+.projects-list__name {
+  color: var(--text-color);
+}
+
+.projects-list__item--active {
+  background-color: var(--active-background);
+  border-radius: 6px;
+}
+
+.projects-list__item:hover .projects-list__name,
+.projects-list__item--active .projects-list__name {
+  font-weight: 600;
+  color: black;
+}
+
+.projects-list__item .icon-button {
+  opacity: 0;
+}
+
+.projects-list__item:hover .icon-button,
+.projects-list__item--active .icon-button {
+  opacity: 1;
+}
