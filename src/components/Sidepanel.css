@@ -90,10 +90,6 @@
   color: var(--marker-color, #000);
 }
 
-.projects-list__item[data-color="red"]::before { color: #D8727D; }
-.projects-list__item[data-color="blue"]::before { color: #4970D5; }
-.projects-list__item[data-color="green"]::before { color: #68B266; }
-
 .projects-list__name {
   color: var(--text-color);
 }

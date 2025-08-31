@@ -1,0 +1,23 @@
+[
+  {
+    "id": "proj_1",
+    "title": "Website Redesign",
+    "color": "#6C5CE7",
+    "description": "Redesign marketing site and improve UX",
+    "createdAt": "2025-08-01T09:00:00Z"
+  },
+  {
+    "id": "proj_2",
+    "title": "Mobile App Launch",
+    "color": "#00CEC9",
+    "description": "Develop and launch new mobile application",
+    "createdAt": "2025-08-05T10:30:00Z"
+  },
+  {
+    "id": "proj_3",
+    "title": "Content Strategy",
+    "color": "#FAB1A0",
+    "description": "Plan and create content calendar for Q4",
+    "createdAt": "2025-08-10T14:15:00Z"
+  }
+]
