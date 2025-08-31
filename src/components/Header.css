@@ -12,6 +12,11 @@
   max-height: auto;
 
   border-block-end: var(--border);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 
@@ -55,7 +60,8 @@
   align-items: center;
   justify-content: start;
   padding: 0.5rem;
-  width: 420px;
+  max-width: 420px;
+  width: clamp(200px, 30vw, 420px);
 
   background-color: var(--card-background);
   color: var(--text-color);
