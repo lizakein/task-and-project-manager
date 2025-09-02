@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { ProjectHeader } from './ProjectHeader';
 import { TaskColumn } from './TaskColumn';
 import { Header } from "../components/Header";
@@ -7,14 +8,24 @@ import './ProjectPage.css';
 
 export function ProjectPage() {
   const [ projectId, setProjectId] = useState('proj_1');
+  const [ projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const fetchProjectsData = async () => {
+      const response = await axios.get('/src/data/projects.json');
+      setProjects(response.data);
+    };
+
+    fetchProjectsData();
+  }, [projects]);
 
   return (
     <main className='project-page'>
       <Header />
-      <Sidepanel setProjectId={setProjectId} />
+      <Sidepanel setProjectId={setProjectId} projects={projects} />
 
       <div className='project-content'>
-        <ProjectHeader />
+        <ProjectHeader projects={projects} projectId={projectId} />
 
         <section className='task-board'>
           <TaskColumn title='To Do' status='todo' projectId={projectId} />

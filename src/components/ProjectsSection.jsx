@@ -1,19 +1,8 @@
-import axios from 'axios';
 import AddSquareIcon from '../assets/icons/add-square-icon.svg';
 import MoreIcon from '../assets/icons/more-icon.svg';
-import { useEffect, useState } from 'react';
 
-export function ProjectsSection({ setProjectId }) {
-  const [ projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    const fetchProjectsData = async () => {
-      const response = await axios.get('/src/data/projects.json');
-      setProjects(response.data);
-    };
-
-    fetchProjectsData();
-  }, [projects]);
+export function ProjectsSection({ setProjectId, projects }) {
+  
 
   return (
     <section className='projects-section'>

@@ -4,11 +4,13 @@ import FilterIcon from '../assets/icons/filter-icon.svg';
 import ArrowDownIcon from '../assets/icons/arrow-down-icon.svg';
 import SortIcon from '../assets/icons/sort-icon.svg';
 
-export function ProjectHeader() {
+export function ProjectHeader({ projects, projectId }) {
+  const currentProject = projects.find((project) => project.id === projectId);
+
   return (
     <header className='project-header'>
       <div className='project-header__left'>
-        <h1 className="project-header__title">Project 1</h1>
+        <h1 className="project-header__title">{currentProject.title}</h1>
 
         <div className='project-header__actions'>
           <button className='icon-button' aria-label='Edit project title'>
