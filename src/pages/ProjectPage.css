@@ -29,6 +29,14 @@
   font-weight: 600;
 }
 
+.project-header__title-input {
+  padding-inline: 1rem;
+  font-size: 42px;
+  font-weight: 600;
+  border: var(--border);
+  border-radius: 16px;
+}
+
 .project-header__actions {
   display: flex;
   gap: 1rem;
