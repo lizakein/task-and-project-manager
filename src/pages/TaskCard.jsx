@@ -21,7 +21,7 @@ export function TaskCard({ title, description, priority, tags, dueDate }) {
       <div className='task-card__footer'>
         <div className='task-card__tags'>
           {tags.map((tag) => {
-            return <span className='task-card__tag'>{tag}</span>
+            return <span key={crypto.randomUUID()} className='task-card__tag'>{tag}</span>
           })}
         </div>
         
