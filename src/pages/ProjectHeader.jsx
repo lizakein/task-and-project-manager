@@ -6,6 +6,15 @@ import SortIcon from '../assets/icons/sort-icon.svg';
 
 export function ProjectHeader({ projects, projectId }) {
   const currentProject = projects.find((project) => project.id === projectId);
+  console.log(currentProject);
+
+  if (!currentProject) {
+    return (
+      <header className="project-header">
+        <h1 className="project-header__title">Загрузка...</h1>
+      </header>
+    );
+  }
 
   return (
     <header className='project-header'>

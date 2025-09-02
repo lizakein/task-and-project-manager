@@ -17,7 +17,7 @@ export function ProjectPage() {
     };
 
     fetchProjectsData();
-  }, [projects]);
+  }, []);
 
   return (
     <main className='project-page'>
