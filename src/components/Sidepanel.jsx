@@ -2,12 +2,12 @@ import { ProjectsSection } from './ProjectsSection';
 import { SidepanelMenu } from './SidepanelMenu';
 import './Sidepanel.css';
 
-export function Sidepanel({ setProjectId, projects }) {
+export function Sidepanel({ setProjectId, projects, projectId }) {
   return (
     <aside className='sidepanel'>
       <SidepanelMenu />
 
-      <ProjectsSection setProjectId={setProjectId} projects={projects} />
+      <ProjectsSection setProjectId={setProjectId} projects={projects} projectId={projectId} />
     </aside>
   );
 }

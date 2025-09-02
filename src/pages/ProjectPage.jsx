@@ -22,7 +22,7 @@ export function ProjectPage() {
   return (
     <main className='project-page'>
       <Header />
-      <Sidepanel setProjectId={setProjectId} projects={projects} />
+      <Sidepanel setProjectId={setProjectId} projects={projects} projectId={projectId} />
 
       <div className='project-content'>
         <ProjectHeader projects={projects} projectId={projectId} />

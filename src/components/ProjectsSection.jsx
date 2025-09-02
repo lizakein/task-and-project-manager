@@ -1,9 +1,7 @@
 import AddSquareIcon from '../assets/icons/add-square-icon.svg';
 import MoreIcon from '../assets/icons/more-icon.svg';
 
-export function ProjectsSection({ setProjectId, projects }) {
-  
-
+export function ProjectsSection({ setProjectId, projects, projectId }) {
   return (
     <section className='projects-section'>
       <header className='projects-section__header'>
@@ -22,7 +20,7 @@ export function ProjectsSection({ setProjectId, projects }) {
             return (
               <li 
                 key={project.id} 
-                className="projects-list__item" 
+                className={`projects-list__item ${project.id === projectId && `projects-list__item--active`}`}
                 style={{ "--marker-color": project.color }}
                 onClick={() => {setProjectId(project.id)}}
               >
