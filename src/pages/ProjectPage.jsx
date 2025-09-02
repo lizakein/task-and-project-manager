@@ -25,7 +25,7 @@ export function ProjectPage() {
       <Sidepanel setProjectId={setProjectId} projects={projects} projectId={projectId} />
 
       <div className='project-content'>
-        <ProjectHeader projects={projects} projectId={projectId} />
+        <ProjectHeader projects={projects} projectId={projectId} setProjects={setProjects} />
 
         <section className='task-board'>
           <TaskColumn title='To Do' status='todo' projectId={projectId} />
