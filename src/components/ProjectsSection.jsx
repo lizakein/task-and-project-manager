@@ -1,7 +1,19 @@
 import AddSquareIcon from '../assets/icons/add-square-icon.svg';
 import MoreIcon from '../assets/icons/more-icon.svg';
 
-export function ProjectsSection({ setProjectId, projects, projectId }) {
+export function ProjectsSection({ setProjectId, setProjects, projects, projectId }) {
+  const createProject = () => {
+    const project = {
+      id: crypto.randomUUID(),
+      title: 'New Project',
+      color: '#'+(0x1000000+Math.random()*0xffffff).toString(16).substr(1,6),
+      description: "",
+      createdAt: new Date().toISOString()
+    };
+
+    setProjects([...projects, project]);
+  }
+
   return (
     <section className='projects-section'>
       <header className='projects-section__header'>
@@ -9,6 +21,7 @@ export function ProjectsSection({ setProjectId, projects, projectId }) {
         <button 
           className='icon-button' 
           aria-label="Add new project" 
+          onClick={createProject}
         >
           <img src={AddSquareIcon} alt="" role="presentation" />
         </button>
@@ -32,8 +45,7 @@ export function ProjectsSection({ setProjectId, projects, projectId }) {
                   <img src={MoreIcon} alt="" role="presentation" />
                 </button>     
               </li>
-            );
-            
+            );        
           })
         }
       </ul>

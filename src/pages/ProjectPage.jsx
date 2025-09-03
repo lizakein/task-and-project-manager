@@ -4,25 +4,29 @@ import { ProjectHeader } from './ProjectHeader';
 import { TaskColumn } from './TaskColumn';
 import { Header } from "../components/Header";
 import { Sidepanel } from "../components/Sidepanel";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 import './ProjectPage.css';
 
 export function ProjectPage() {
   const [ projectId, setProjectId] = useState('proj_1');
-  const [ projects, setProjects] = useState([]);
+  const [ projects, setProjects] = useLocalStorage("tasks", []);
 
   useEffect(() => {
-    const fetchProjectsData = async () => {
-      const response = await axios.get('/src/data/projects.json');
-      setProjects(response.data);
-    };
+    if (!projects.length) {
+      const fetchProjectsData = async () => {
+        const response = await axios.get('/src/data/projects.json');
+        setProjects(response.data);
+      };
 
-    fetchProjectsData();
+      fetchProjectsData();
+    }   
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <main className='project-page'>
       <Header />
-      <Sidepanel setProjectId={setProjectId} projects={projects} projectId={projectId} />
+      <Sidepanel setProjectId={setProjectId} setProjects={setProjects} projects={projects} projectId={projectId} />
 
       <div className='project-content'>
         <ProjectHeader projects={projects} projectId={projectId} setProjects={setProjects} />
