@@ -39,6 +39,16 @@ body {
   font-weight: 500;
 }
 
+.page {
+  display: flex;
+  margin-block-start: 86px;
+}
+
+.content {
+  width: 100%;
+  padding: 2rem 2.5rem;
+}
+
 .icon-button,
 .menu-item {
   width: 24px;

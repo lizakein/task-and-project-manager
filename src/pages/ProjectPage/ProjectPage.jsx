@@ -9,11 +9,11 @@ export function ProjectPage({ projects, setProjects }) {
   const { projectId } = useParams();
   
   return (
-    <main className='project-page'>
+    <main className='page'>
       <Header />
       <Sidepanel setProjects={setProjects} projects={projects} projectId={projectId} />
 
-      <div className='project-content'>
+      <div className='content'>
         <ProjectHeader projects={projects} projectId={projectId} setProjects={setProjects} />
 
         <section className='task-board'>

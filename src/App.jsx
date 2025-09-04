@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { ProjectPage } from "./pages/ProjectPage/ProjectPage";
 import { Homepage } from "./pages/Homepage";
+import { EditTaskPage } from "./pages/EditTaskPage";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import './App.css';
-
 
 function App() {
   const [ projects, setProjects] = useLocalStorage("projects", []);
@@ -25,7 +25,8 @@ function App() {
   return (
     <Routes>
       <Route index element={<Homepage projects={projects} setProjects={setProjects} />} />
-      <Route path="/project/:projectId" element={<ProjectPage projects={projects} setProjects={setProjects} />} />   
+      <Route path="/project/:projectId" element={<ProjectPage projects={projects} setProjects={setProjects} />} />  
+      <Route path="/project/edit" element={<EditTaskPage projects={projects} setProjects={setProjects} />} /> 
     </Routes>   
   )
 }
