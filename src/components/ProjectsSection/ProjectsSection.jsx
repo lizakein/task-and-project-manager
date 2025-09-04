@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { ProjectItem } from './ProjectItem';
 import { createProject } from '../../utils/projectUtils';
-import AddSquareIcon from '../../assets/icons/add-square-icon.svg';
+import AddSquareIcon from '../../assets/icons/actions/add-square-icon.svg';
 
 export function ProjectsSection({ setProjects, projects, projectId }) {
   const [ openId, setOpenId ] = useState(null);

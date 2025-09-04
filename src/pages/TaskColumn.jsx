@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import AddPurpleIcon from '../assets/icons/add-square-purple-icon.svg';
+import AddPurpleIcon from '../assets/icons/actions/add-square-purple-icon.svg';
 import { TaskCard } from './TaskCard';
 
 export function TaskColumn({ title, status, projectId }) {

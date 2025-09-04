@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import MoreIcon from '../../assets/icons/more-icon.svg';
+import MoreIcon from '../../assets/icons/actions/more-icon.svg';
 import { ProjectOptions } from './ProjectOptions';
 
 export function ProjectItem({ 

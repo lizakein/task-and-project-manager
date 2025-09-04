@@ -1,6 +1,6 @@
 import { OptionsWindow } from '../OptionsWindow';
-import ArchiveIcon from '../../assets/icons/archive-icon.svg';
-import TrashIcon from '../../assets/icons/trash-icon.svg';
+import ArchiveIcon from '../../assets/icons/actions/archive-icon.svg';
+import TrashIcon from '../../assets/icons/actions/trash-icon.svg';
 
 export function ProjectOptions({ menuPosition }) {
   return (

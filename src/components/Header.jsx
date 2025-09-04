@@ -1,9 +1,9 @@
 import TaskManagerLogo from '/task-manager.svg';
-import SearchIcon from '../assets/icons/search-icon.svg';
-import FaqIcon from '../assets/icons/message-question.svg';
-import NotificationIcon from '../assets/icons/notification.svg';
-import UserIcon from '../assets/icons/user-icon.svg';
-import ArrowDownIcon from '../assets/icons/arrow-down-icon.svg';
+import SearchIcon from '../assets/icons/ui/search-icon.svg';
+import FaqIcon from '../assets/icons/actions/message-question.svg';
+import NotificationIcon from '../assets/icons/actions/notification.svg';
+import UserIcon from '../assets/icons/users/user-icon.svg';
+import ArrowDownIcon from '../assets/icons/actions/arrow-down-icon.svg';
 import './Header.css';
 
 export function Header() {
