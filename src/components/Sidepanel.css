@@ -91,7 +91,8 @@
   color: var(--text-color);
 }
 
-.projects-list__item--active {
+.projects-list__item--active,
+.menu-item--active {
   background-color: var(--active-background);
   border-radius: 6px;
 }
