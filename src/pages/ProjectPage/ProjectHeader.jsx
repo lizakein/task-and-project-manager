@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import EditIcon from '../assets/icons/actions/edit-icon.svg';
-import ShareIcon from '../assets/icons/actions/share-icon.svg';
-import FilterIcon from '../assets/icons/actions/filter-icon.svg';
-import ArrowDownIcon from '../assets/icons/actions/arrow-down-icon.svg';
-import SortIcon from '../assets/icons/actions/sort-icon.svg';
+import EditIcon from '../../assets/icons/actions/edit-icon.svg';
+import ShareIcon from '../../assets/icons/actions/share-icon.svg';
+import FilterIcon from '../../assets/icons/actions/filter-icon.svg';
+import ArrowDownIcon from '../../assets/icons/actions/arrow-down-icon.svg';
+import SortIcon from '../../assets/icons/actions/sort-icon.svg';
 
 export function ProjectHeader({ projects, projectId, setProjects }) {
   const currentProject = projects.find(project => project.id === projectId);

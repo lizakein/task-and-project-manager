@@ -1,5 +1,5 @@
-import MoreIcon from '../assets/icons/actions/more-icon.svg';
-import ClockIcon from '../assets/icons/ui/clock-icon.svg';
+import MoreIcon from '../../assets/icons/actions/more-icon.svg';
+import ClockIcon from '../../assets/icons/ui/clock-icon.svg';
 
 export function TaskCard({ title, description, priority, tags, dueDate }) {
   return (

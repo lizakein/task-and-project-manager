@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from 'react';
 import axios from 'axios';
-import { ProjectPage } from "./pages/ProjectPage";
+import { ProjectPage } from "./pages/ProjectPage/ProjectPage";
 import { Homepage } from "./pages/Homepage";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import './App.css';
