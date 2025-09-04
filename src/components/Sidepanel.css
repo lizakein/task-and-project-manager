@@ -111,3 +111,28 @@
 .projects-list__item--active .icon-button {
   opacity: 1;
 }
+
+.options-window {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+
+  border: var(--border);
+  border-radius: 16px;
+  background-color: var(--main-background);
+}
+
+.options-window__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.options-window__item-label {
+  color: var(--text-color);
+}
+
+.red {
+  color: var(--high-color);
+}

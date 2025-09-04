@@ -1,8 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import AddSquareIcon from '../assets/icons/add-square-icon.svg';
 import MoreIcon from '../assets/icons/more-icon.svg';
+import ArchiveIcon from '../assets/icons/archive-icon.svg';
+import TrashIcon from '../assets/icons/trash-icon.svg';
+import { useState } from 'react';
+import { OptionsWindow } from './OptionsWindow';
 
 export function ProjectsSection({ setProjects, projects, projectId }) {
+  const [ openId, setOpenId ] = useState(null);
+  const [ menuPosition, setMenuPosition ] = useState(null);
+
   const navigate = useNavigate();
 
   const createProject = () => {
@@ -21,6 +28,19 @@ export function ProjectsSection({ setProjects, projects, projectId }) {
   const handleCreateProject = () => {
     const newProject = createProject();
     navigate(`/project/${newProject.id}`);
+  };
+
+  const handleMoreClick = (event,  projectId) => {
+    event.stopPropagation();
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    
+    setMenuPosition({
+      top: rect.bottom + window.scrollY,
+      left: rect.left + window.scrollX
+    });
+
+    setOpenId(openId === projectId ? null : projectId);
   };
 
   return (
@@ -50,9 +70,23 @@ export function ProjectsSection({ setProjects, projects, projectId }) {
                 <button 
                   className="icon-button" 
                   aria-label={`More options for Project ${project.title}`}
+                  onClick={(e) => handleMoreClick(e, project.id)}
                 >
                   <img src={MoreIcon} alt="" role="presentation" />
-                </button>     
+                </button>
+
+                {openId === project.id && menuPosition && (
+                  <OptionsWindow position={menuPosition}>
+                    <div className='options-window__item'>
+                      <img src={ArchiveIcon} alt="" role="presentation" />
+                      <span className='options-window__item-label'>Archive</span>
+                    </div>
+                    <div className='options-window__item'>
+                      <img src={TrashIcon} alt="" role="presentation" />
+                      <span className='options-window__item-label red'>Trash</span>
+                    </div>
+                  </OptionsWindow>  
+                )}             
               </li>
             );        
           })
