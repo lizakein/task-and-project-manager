@@ -26,7 +26,7 @@ function App() {
     <Routes>
       <Route index element={<Homepage projects={projects} setProjects={setProjects} />} />
       <Route path="/project/:projectId" element={<ProjectPage projects={projects} setProjects={setProjects} />} />  
-      <Route path="/project/edit" element={<EditTaskPage projects={projects} setProjects={setProjects} />} /> 
+      <Route path="/project/:projectId/:taskId" element={<EditTaskPage projects={projects} setProjects={setProjects} />} /> 
     </Routes>   
   )
 }
