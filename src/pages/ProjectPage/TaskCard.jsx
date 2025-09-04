@@ -5,7 +5,7 @@ export function TaskCard({ title, description, priority, tags, dueDate }) {
   return (
     <article className='task-card'>
       <div className='task-card__header'>
-        <p className='task-card__priority' aria-label={`Priority: ${priority}`} data-priority={priority}>{priority}</p>
+        <p className='priority' aria-label={`Priority: ${priority}`} data-priority={priority}>{priority}</p>
         <button 
           className="icon-button" 
           aria-label={`More options for task ${title}`}
@@ -21,7 +21,7 @@ export function TaskCard({ title, description, priority, tags, dueDate }) {
       <div className='task-card__footer'>
         <div className='task-card__tags'>
           {tags.map((tag) => {
-            return <span key={crypto.randomUUID()} className='task-card__tag'>{tag}</span>
+            return <span key={crypto.randomUUID()} className='tag tag--blue'>{tag}</span>
           })}
         </div>
         

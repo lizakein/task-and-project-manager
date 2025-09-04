@@ -1,5 +1,6 @@
 :root {
   --brand-color: #5020E5;
+  --brand-color-background: #5020E520;
 
   --main-background: #FFFFFF;
   --card-background: #F5F5F5;
@@ -56,4 +57,44 @@ body {
   border: none;
   background-color: inherit;
   cursor: pointer;
+}
+
+.priority,
+.tag {
+  padding: 0.2rem 0.3rem;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  border: none;
+}
+
+.priority[data-priority="high"] {
+  color: var(--high-color);
+  background-color: var(--high-color-background);
+}
+
+.priority[data-priority="medium"] {
+  color: var(--medium-color);
+  background-color: var(--medium-color-background);
+}
+
+.priority[data-priority="low"] {
+  color: var(--low-color);
+  background-color: var(--low-color-background);
+}
+
+.tag--blue {
+  color: #4970D5;
+  background-color: #4970D520;
+}
+
+.tag--selected,
+.priority.priority--selected {
+  font-weight: 600;
+  color: var(--brand-color);
+  background-color: var(--brand-color-background);
+}
+
+.red {
+  color: var(--high-color);
 }

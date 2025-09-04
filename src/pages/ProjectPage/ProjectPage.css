@@ -171,34 +171,6 @@
   justify-content: space-between;
 }
 
-.task-card__priority,
-.task-card__tag {
-  padding: 0.2rem 0.3rem;
-  font-size: 12px;
-  font-weight: 500;
-  border-radius: 4px;
-}
-
-.task-card__tag {
-  color: #4970D5;
-  background-color: #4970D520;
-}
-
-.task-card__priority[data-priority="high"] {
-  color: var(--high-color);
-  background-color: var(--high-color-background);
-}
-
-.task-card__priority[data-priority="medium"] {
-  color: var(--medium-color);
-  background-color: var(--medium-color-background);
-}
-
-.task-card__priority[data-priority="low"] {
-  color: var(--low-color);
-  background-color: var(--low-color-background);
-}
-
 .task-card__title {
   font-size: 18px;
   font-weight: 600;

@@ -3,14 +3,15 @@ import { Sidepanel } from "../components/Sidepanel";
 import UploadImgaeIcon from "../assets/icons/ui/upload-image-icon.svg";
 import TrashIcon from "../assets/icons/actions/trash-icon.svg";
 import AddIcon from "../assets/icons/actions/add-square-icon.svg";
+import './EditTaskPage.css';
 
 export function EditTaskPage({ projects, setProjects }) {
   return (
-    <main className=' edit-task--page page'>
+    <main className='edit-task--page page'>
       <Header />
       <Sidepanel setProjects={setProjects} projects={projects} projectId={null} />
 
-      <div className='content'>
+      <div className='content edit-task-page__content'>
         <input 
           type='text'
           value='New Task'
@@ -33,7 +34,7 @@ export function EditTaskPage({ projects, setProjects }) {
               </button>
               <button 
                 type="button" 
-                className="priority priority--medium"
+                className="priority priority--medium priority--selected"
                 data-priority="medium"
                 aria-pressed="true"
               >
@@ -62,7 +63,7 @@ export function EditTaskPage({ projects, setProjects }) {
               </button>
               <button 
                 type="button"
-                className="tag tag--blue  tag--selected" 
+                className="tag tag--blue tag--selected" 
                 aria-pressed="true"
               >
                 Work
@@ -82,9 +83,8 @@ export function EditTaskPage({ projects, setProjects }) {
 
           <section className="edit-task-page__section edit-task-page__description-section">
             <h2 className="edit-task-page__section-title">Description</h2>
-            <input 
-              type="text" 
-              value="Task description"
+            <textarea 
+              type="text"               
               placeholder="Task description" 
               className="input-field"
               aria-label="Task description"
@@ -100,15 +100,15 @@ export function EditTaskPage({ projects, setProjects }) {
             />
           </section>
 
-          <button type="button" className="button"> 
-            <img src={UploadImgaeIcon} alt="" role="presentation" className="" />
+          <button type="button" className="button upload-button"> 
+            <img src={UploadImgaeIcon} alt="" role="presentation" className="button__icon" />
             <span className="button__text">Upload Image</span>
           </button>
 
           <div className="edit-task-page__actions">
-            <button className="button">
-              <img src={TrashIcon} alt="" role="presentation" className="" />
-              <span className="button__text">Cancel</span>
+            <button className="button button--warning">
+              <img src={TrashIcon} alt="" role="presentation" className="button__icon" />
+              <span className="button__text red">Cancel</span>
             </button>
 
             <button className="button button--primary" type="submit">Save</button>

@@ -139,7 +139,3 @@
 .options-window__item-label {
   color: var(--text-color);
 }
-
-.red {
-  color: var(--high-color);
-}
