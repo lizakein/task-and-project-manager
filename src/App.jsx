@@ -9,6 +9,7 @@ import './App.css';
 
 function App() {
   const [ projects, setProjects] = useLocalStorage("projects", []);
+  const [ tasks, setTasks ] = useLocalStorage("tasks", []);
 
   useEffect(() => {
       if (!projects.length) {
@@ -22,11 +23,23 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    useEffect(() => {
+      if (!tasks.length) {
+        const fetchTasksData = async () => {
+          const response = await axios.get('/src/data/tasks.json');
+          setTasks(response.data);
+        };
+  
+        fetchTasksData();
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
   return (
     <Routes>
       <Route index element={<Homepage projects={projects} setProjects={setProjects} />} />
-      <Route path="/project/:projectId" element={<ProjectPage projects={projects} setProjects={setProjects} />} />  
-      <Route path="/project/:projectId/:taskId" element={<EditTaskPage projects={projects} setProjects={setProjects} />} /> 
+      <Route path="/project/:projectId" element={<ProjectPage projects={projects} setProjects={setProjects} tasks={tasks} setTasks={setTasks} />} />  
+      <Route path="/project/:projectId/:taskId" element={<EditTaskPage projects={projects} setProjects={setProjects} tasks={tasks} setTasks={setTasks} />} /> 
     </Routes>   
   )
 }

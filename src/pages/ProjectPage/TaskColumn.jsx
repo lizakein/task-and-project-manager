@@ -1,28 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import axios from 'axios';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 import AddPurpleIcon from '../../assets/icons/actions/add-square-purple-icon.svg';
 import { TaskCard } from './TaskCard';
 import { createTask } from '../../utils/taskUtils';
 
 
-export function TaskColumn({ title, status, projectId }) {
-  const [ tasks, setTasks ] = useLocalStorage("tasks", []);
-
+export function TaskColumn({ title, status, projectId, tasks, setTasks }) {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!tasks.length) {
-      const fetchTasksData = async () => {
-        const response = await axios.get('/src/data/tasks.json');
-        setTasks(response.data);
-      };
-
-      fetchTasksData();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const filteredTasks = tasks.filter((task) => task.projectId === projectId && task.status === status);
 

@@ -5,7 +5,7 @@ import { Header } from "../../components/Header";
 import { Sidepanel } from "../../components/Sidepanel";
 import './ProjectPage.css';
 
-export function ProjectPage({ projects, setProjects }) {
+export function ProjectPage({ projects, setProjects, tasks, setTasks }) {
   const { projectId } = useParams();
   
   return (
@@ -17,9 +17,27 @@ export function ProjectPage({ projects, setProjects }) {
         <ProjectHeader projects={projects} projectId={projectId} setProjects={setProjects} />
 
         <section className='task-board'>
-          <TaskColumn title='To Do' status='todo' projectId={projectId} />
-          <TaskColumn title='In progress' status='in-progress' projectId={projectId} />
-          <TaskColumn title='Done' status='done' projectId={projectId} />
+          <TaskColumn 
+            title='To Do' 
+            status='todo' 
+            projectId={projectId} 
+            tasks={tasks} 
+            setTasks={setTasks} 
+          />
+          <TaskColumn 
+            title='In progress' 
+            status='in-progress' 
+            projectId={projectId} 
+            tasks={tasks} 
+            setTasks={setTasks} 
+            />
+          <TaskColumn 
+            title='Done' 
+            status='done' 
+            projectId={projectId} 
+            tasks={tasks} 
+            setTasks={setTasks} 
+          />
         </section> 
       </div>         
     </main>

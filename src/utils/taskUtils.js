@@ -14,4 +14,18 @@ export const createTask = (tasks, setTasks, projectId) => {
 
   setTasks([...tasks, task]);
   return task;
+};
+
+export const updateTask = (tasks, setTasks, taskId, patch) => {
+  const updatedTasks = tasks.map(task => 
+    task.id === taskId ?
+      {
+        ...task,
+        ...patch,
+        updatedAt: new Date().toISOString()
+      } :
+      task
+  );
+
+  setTasks(updatedTasks);
 }
