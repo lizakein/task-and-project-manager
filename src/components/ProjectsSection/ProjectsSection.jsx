@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { ProjectItem } from './ProjectItem';
+import { createProject } from '../../utils/projectUtils';
 import AddSquareIcon from '../../assets/icons/add-square-icon.svg';
 
 export function ProjectsSection({ setProjects, projects, projectId }) {
@@ -9,21 +10,8 @@ export function ProjectsSection({ setProjects, projects, projectId }) {
 
   const navigate = useNavigate();
 
-  const createProject = () => {
-    const project = {
-      id: crypto.randomUUID(),
-      title: 'New Project',
-      color: '#'+(0x1000000+Math.random()*0xffffff).toString(16).substr(1,6),
-      description: "",
-      createdAt: new Date().toISOString()
-    };
-
-    setProjects([...projects, project]);
-    return project;
-  };
-
   const handleCreateProject = () => {
-    const newProject = createProject();
+    const newProject = createProject(projects, setProjects);
     navigate(`/project/${newProject.id}`);
   };
 
