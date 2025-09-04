@@ -1,18 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import AddPurpleIcon from '../../assets/icons/actions/add-square-purple-icon.svg';
 import { TaskCard } from './TaskCard';
 
-export function TaskColumn({ title, status, projectId }) {
-  const [ tasks, setTasks ] = useState([]);
-  useEffect(() => {
-    const fetchTasksData = async () => {
-      const response = await axios.get('/src/data/tasks.json');
-      setTasks(response.data);
-    };
 
-    fetchTasksData();
-  }, [projectId]);
+export function TaskColumn({ title, status, projectId }) {
+  const [ tasks, setTasks ] = useLocalStorage("tasks", []);
+
+  useEffect(() => {
+    if (!tasks.length) {
+      const fetchTasksData = async () => {
+        const response = await axios.get('/src/data/tasks.json');
+        setTasks(response.data);
+      };
+
+      fetchTasksData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const filteredTasks = tasks.filter((task) => task.projectId === projectId && task.status === status);
 
