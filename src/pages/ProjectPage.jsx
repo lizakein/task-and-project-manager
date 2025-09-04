@@ -1,32 +1,17 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import { ProjectHeader } from './ProjectHeader';
 import { TaskColumn } from './TaskColumn';
 import { Header } from "../components/Header";
 import { Sidepanel } from "../components/Sidepanel";
-import { useLocalStorage } from "../hooks/useLocalStorage";
 import './ProjectPage.css';
 
-export function ProjectPage() {
-  const [ projectId, setProjectId] = useState('proj_1');
-  const [ projects, setProjects] = useLocalStorage("tasks", []);
-
-  useEffect(() => {
-    if (!projects.length) {
-      const fetchProjectsData = async () => {
-        const response = await axios.get('/src/data/projects.json');
-        setProjects(response.data);
-      };
-
-      fetchProjectsData();
-    }   
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+export function ProjectPage({ projects, setProjects }) {
+  const { projectId } = useParams();
+  
   return (
     <main className='project-page'>
       <Header />
-      <Sidepanel setProjectId={setProjectId} setProjects={setProjects} projects={projects} projectId={projectId} />
+      <Sidepanel setProjects={setProjects} projects={projects} projectId={projectId} />
 
       <div className='project-content'>
         <ProjectHeader projects={projects} projectId={projectId} setProjects={setProjects} />
@@ -36,9 +21,7 @@ export function ProjectPage() {
           <TaskColumn title='In progress' status='in-progress' projectId={projectId} />
           <TaskColumn title='Done' status='done' projectId={projectId} />
         </section> 
-      </div>
-
-         
+      </div>         
     </main>
   );
 }

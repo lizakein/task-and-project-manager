@@ -1,7 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import AddSquareIcon from '../assets/icons/add-square-icon.svg';
 import MoreIcon from '../assets/icons/more-icon.svg';
 
-export function ProjectsSection({ setProjectId, setProjects, projects, projectId }) {
+export function ProjectsSection({ setProjects, projects, projectId }) {
+  const navigate = useNavigate();
+
   const createProject = () => {
     const project = {
       id: crypto.randomUUID(),
@@ -12,7 +15,13 @@ export function ProjectsSection({ setProjectId, setProjects, projects, projectId
     };
 
     setProjects([...projects, project]);
-  }
+    return project;
+  };
+
+  const handleCreateProject = () => {
+    const newProject = createProject();
+    navigate(`/project/${newProject.id}`);
+  };
 
   return (
     <section className='projects-section'>
@@ -21,7 +30,7 @@ export function ProjectsSection({ setProjectId, setProjects, projects, projectId
         <button 
           className='icon-button' 
           aria-label="Add new project" 
-          onClick={createProject}
+          onClick={handleCreateProject}
         >
           <img src={AddSquareIcon} alt="" role="presentation" />
         </button>
@@ -29,13 +38,13 @@ export function ProjectsSection({ setProjectId, setProjects, projects, projectId
 
       <ul className="projects-list">
         {
-          projects.map((project) => {
+          projects?.map((project) => {
             return (
               <li 
                 key={project.id} 
                 className={`projects-list__item ${project.id === projectId && `projects-list__item--active`}`}
                 style={{ "--marker-color": project.color }}
-                onClick={() => {setProjectId(project.id)}}
+                onClick={() => {navigate(`/project/${project.id}`)}}
               >
                 <span className='projects-list__name'>{project.title}</span>
                 <button 
