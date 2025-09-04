@@ -13,3 +13,10 @@ export const createProject = (projects, setProjects) => {
   setProjects([...projects, project]);
   return project;
 };
+
+export const deleteProject = (projects, setProjects, id) => {
+  const updatedProjects = projects.filter(p => p.id !== id);
+  setProjects(updatedProjects);
+
+  return updatedProjects;
+};

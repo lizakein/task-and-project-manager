@@ -39,7 +39,9 @@ export function ProjectsSection({ setProjects, projects, projectId }) {
                 openId={openId}
                 setOpenId={setOpenId}
                 menuPosition={menuPosition}
-                setMenuPosition={setMenuPosition}           
+                setMenuPosition={setMenuPosition}  
+                projects={projects}
+                setProjects={setProjects}         
               />
             );        
           })

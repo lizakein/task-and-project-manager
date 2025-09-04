@@ -8,7 +8,9 @@ export function ProjectItem({
   openId, 
   setOpenId, 
   menuPosition, 
-  setMenuPosition
+  setMenuPosition,
+  projects,
+  setProjects
 }) {
   const navigate = useNavigate();
 
@@ -42,7 +44,12 @@ export function ProjectItem({
       </button>
 
       {openId === project.id && menuPosition && (
-        <ProjectOptions menuPosition={menuPosition} />
+        <ProjectOptions 
+          menuPosition={menuPosition} 
+          openId={openId} 
+          projects={projects}
+          setProjects={setProjects}
+        />
       )}             
     </li>
   );
