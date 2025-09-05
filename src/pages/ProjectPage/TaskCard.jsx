@@ -54,6 +54,7 @@ export function TaskCard({
             menuPosition={menuPosition} 
             projectId={projectId} 
             openId={openId}
+            title={title}
           />
         )}
       </div>
