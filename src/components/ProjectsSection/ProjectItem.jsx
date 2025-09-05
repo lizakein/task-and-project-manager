@@ -1,31 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import MoreIcon from '../../assets/icons/actions/more-icon.svg';
 import { ProjectOptions } from './ProjectOptions';
+import { useContextMenu } from '../../hooks/useContextMenu';
 
 export function ProjectItem({ 
   project, 
-  isActive, 
-  openId, 
-  setOpenId, 
-  menuPosition, 
-  setMenuPosition,
+  isActive,
   projects,
   setProjects
 }) {
   const navigate = useNavigate();
-
-  const handleMoreClick = (event,  projectId) => {
-    event.stopPropagation();
-
-    const rect = event.currentTarget.getBoundingClientRect();
-    
-    setMenuPosition({
-      top: rect.bottom + window.scrollY,
-      left: rect.left + window.scrollX
-    });
-
-    setOpenId(openId === projectId ? null : projectId);
-  };
+  const { openId, menuPosition, handleMoreClick } = useContextMenu();
 
   return (
     <li 

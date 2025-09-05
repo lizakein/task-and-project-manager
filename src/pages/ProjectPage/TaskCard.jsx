@@ -1,7 +1,11 @@
+import { useContextMenu } from '../../hooks/useContextMenu';
 import MoreIcon from '../../assets/icons/actions/more-icon.svg';
 import ClockIcon from '../../assets/icons/ui/clock-icon.svg';
+import { TaskOptions } from './TaskOptions';
 
-export function TaskCard({ title, description, priority, tags, dueDate }) {
+export function TaskCard({ id, title, description, priority, tags, dueDate }) {
+  const { openId, menuPosition, handleMoreClick } = useContextMenu();
+
   let formatedDate;
   
   if (dueDate.length > 10) {
@@ -20,9 +24,14 @@ export function TaskCard({ title, description, priority, tags, dueDate }) {
         <button 
           className="icon-button" 
           aria-label={`More options for task ${title}`}
+          onClick={(e) => handleMoreClick(e, id)}
         >
           <img src={MoreIcon} alt="" role="presentation" />
         </button>
+
+        {openId === id && menuPosition && (
+          <TaskOptions menuPosition={menuPosition} />
+        )}
       </div>
 
       <h3 className='task-card__title'>{title}</h3>
