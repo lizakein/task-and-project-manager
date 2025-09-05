@@ -5,7 +5,17 @@
   padding-inline-end: 600px;
 }
 
+/* ========== GRID ========== */
+
+.edit-task-page__form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: 1.5rem;
+}
+
 .edit-task-page__title-input {
+  grid-column: span 2 / span 2;
   padding-inline: 1rem;
   font-size: 42px;
   font-weight: 600;
@@ -13,36 +23,31 @@
   border-radius: 16px;
 }
 
-/* ========== GRID ========== */
-
-.edit-task-page__form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  gap: 1.5rem;
+.edit-task-page__priority-section {
+  grid-row-start: 2;
 }
 
 .edit-task-page__tags-section {
-  grid-column-start: 2;
+  grid-row-start: 2;
 }
 
 .edit-task-page__description-section {
   grid-column: span 2 / span 2;
   grid-row: span 2 / span 2;
-  grid-row-start: 2;
+  grid-row-start: 3;
 }
 
 .edit-task-page__due-date-section {
-  grid-row-start: 4;
+  grid-row-start: 5;
 }
 
 .upload-button {
-  grid-row-start: 5;
+  grid-row-start: 6;
   max-height: 40px;
 }
 
 .edit-task-page__actions {
-  grid-row-start: 6;
+  grid-row-start: 7;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.7rem;

@@ -1,0 +1,23 @@
+import TrashIcon from "../assets/icons/actions/trash-icon.svg";
+
+export function FormActions({ handleCancel }) {
+  return (
+    <div className="edit-task-page__actions">
+      <button 
+        type="button" 
+        className="button button--warning" 
+        onClick={handleCancel}
+      >
+        <img src={TrashIcon} alt="" role="presentation" className="button__icon" />
+        <span className="button__text red">Cancel</span>
+      </button>
+
+      <button 
+        className="button button--primary" 
+        type="submit"
+      >
+        Save
+      </button>
+    </div>
+  );
+}

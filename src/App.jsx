@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { ProjectPage } from "./pages/ProjectPage/ProjectPage";
 import { Homepage } from "./pages/Homepage";
-import { EditTaskPage } from "./pages/EditTaskPage";
+import { EditTaskPage } from "./pages/EditTaskPage/EditTaskPage";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import './App.css';
 
