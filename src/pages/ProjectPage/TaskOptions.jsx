@@ -1,11 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import { OptionsWindow } from "../../components/OptionsWindow";
 import EditIcon from '../../assets/icons/actions/edit-icon.svg';
 import TrashIcon from '../../assets/icons/actions/trash-icon.svg';
 
-export function TaskOptions({ menuPosition }) {
+
+export function TaskOptions({ menuPosition, projectId, openId }) {
+  const navigate = useNavigate();
+
+  const handleEditTask = () => {
+    navigate(`/project/${projectId}/${openId}`);
+  };
+
   return(
     <OptionsWindow position={menuPosition}>
-      <button className='options-window__item'>
+      <button className='options-window__item' onClick={handleEditTask}>
         <img src={EditIcon} alt="" role="presentation" />
         <span className='options-window__item-label'>Edit</span>
       </button>

@@ -1,9 +1,10 @@
 import { useContextMenu } from '../../hooks/useContextMenu';
+import { TaskOptions } from '../ProjectPage/TaskOptions';
 import MoreIcon from '../../assets/icons/actions/more-icon.svg';
 import ClockIcon from '../../assets/icons/ui/clock-icon.svg';
-import { TaskOptions } from './TaskOptions';
 
-export function TaskCard({ id, title, description, priority, tags, dueDate }) {
+
+export function TaskCard({ id, title, description, priority, tags, dueDate, projectId }) {
   const { openId, menuPosition, handleMoreClick } = useContextMenu();
 
   let formatedDate;
@@ -30,7 +31,7 @@ export function TaskCard({ id, title, description, priority, tags, dueDate }) {
         </button>
 
         {openId === id && menuPosition && (
-          <TaskOptions menuPosition={menuPosition} />
+          <TaskOptions menuPosition={menuPosition} projectId={projectId} openId={openId} />
         )}
       </div>
 
