@@ -1,17 +1,17 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { updateTask } from "../../utils/taskUtils";
 import { Header } from "../../components/Header";
 import { Sidepanel } from "../../components/Sidepanel";
-
-import './EditTaskPage.css';
 import { TaskForm } from "./components/TaskForm";
+import './EditTaskPage.css';
+import { useStore } from "../../store/useStore";
 
-export function EditTaskPage({ projects, setProjects, tasks, setTasks }) {
+export function EditTaskPage() {
   const { projectId, taskId } = useParams();
   const navigate = useNavigate();
 
-  const task = tasks.find(t => t.id === taskId);
+  const updateTask = useStore(state => state.updateTask);
+  const task = useStore(state => state.tasks.find(t => t.id === taskId));
 
   const [ title, setTitle ] = useState(task.title);
   const [ description, setDescription ] = useState(task.description);
@@ -22,7 +22,7 @@ export function EditTaskPage({ projects, setProjects, tasks, setTasks }) {
   const handleSave = (event) => {
     event.preventDefault();
     const patch = { title, description, priority, tags, dueDate };
-    updateTask(tasks, setTasks, taskId, patch);
+    updateTask(taskId, patch);
     navigate(`/project/${projectId}`);
   }
 
@@ -34,8 +34,6 @@ export function EditTaskPage({ projects, setProjects, tasks, setTasks }) {
     <main className='edit-task--page page'>
       <Header />
       <Sidepanel 
-        setProjects={setProjects} 
-        projects={projects} 
         projectId={projectId} 
       />
 

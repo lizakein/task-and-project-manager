@@ -5,38 +5,32 @@ import { Header } from "../../components/Header";
 import { Sidepanel } from "../../components/Sidepanel";
 import './ProjectPage.css';
 
-export function ProjectPage({ projects, setProjects, tasks, setTasks }) {
+export function ProjectPage() {
   const { projectId } = useParams();
   
   return (
     <main className='page'>
       <Header />
-      <Sidepanel setProjects={setProjects} projects={projects} projectId={projectId} />
+      <Sidepanel projectId={projectId} />
 
       <div className='content'>
-        <ProjectHeader projects={projects} projectId={projectId} setProjects={setProjects} />
+        <ProjectHeader projectId={projectId} />
 
         <section className='task-board'>
           <TaskColumn 
             title='To Do' 
             status='todo' 
             projectId={projectId} 
-            tasks={tasks} 
-            setTasks={setTasks} 
           />
           <TaskColumn 
             title='In progress' 
             status='in-progress' 
             projectId={projectId} 
-            tasks={tasks} 
-            setTasks={setTasks} 
             />
           <TaskColumn 
             title='Done' 
             status='done' 
-            projectId={projectId} 
-            tasks={tasks} 
-            setTasks={setTasks} 
+            projectId={projectId}
           />
         </section> 
       </div>         

@@ -4,9 +4,10 @@ import ShareIcon from '../../assets/icons/actions/share-icon.svg';
 import FilterIcon from '../../assets/icons/actions/filter-icon.svg';
 import ArrowDownIcon from '../../assets/icons/actions/arrow-down-icon.svg';
 import SortIcon from '../../assets/icons/actions/sort-icon.svg';
+import { useStore } from '../../store/useStore';
 
-export function ProjectHeader({ projects, projectId, setProjects }) {
-  const currentProject = projects.find(project => project.id === projectId);
+export function ProjectHeader({ projectId }) {
+  const currentProject = useStore(state => state.projects.find(p => p.id === projectId));
 
   const [ isEditingTitle, setIsEditingTitle ] = useState(false);
   const [ title, setTitle ] = useState('');
@@ -19,9 +20,9 @@ export function ProjectHeader({ projects, projectId, setProjects }) {
     if (!currentProject) return;
 
     if (isEditingTitle) {
-      setProjects(project => 
-        project.map(p => p.id === projectId ? {...p, title} : p)
-      );
+      // setProjects(project => 
+      //   project.map(p => p.id === projectId ? {...p, title} : p)
+      // );
       setIsEditingTitle(false);
     } else {
       setIsEditingTitle(true);

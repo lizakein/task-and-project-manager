@@ -2,18 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { OptionsWindow } from "../../components/OptionsWindow";
 import EditIcon from '../../assets/icons/actions/edit-icon.svg';
 import TrashIcon from '../../assets/icons/actions/trash-icon.svg';
-import { deleteTask } from "../../utils/taskUtils";
+import { useStore } from "../../store/useStore";
 
-
-export function TaskOptions({ menuPosition, projectId, openId, tasks, setTasks }) {
+export function TaskOptions({ menuPosition, projectId, openId }) {
   const navigate = useNavigate();
+  const deleteTask = useStore(state => state.deleteTask);
 
   const handleEditTask = () => {
     navigate(`/project/${projectId}/${openId}`);
   };
 
   const handleDeleteTask = () => {
-    deleteTask(tasks, setTasks, openId);
+    deleteTask(openId);
   };
 
   return(

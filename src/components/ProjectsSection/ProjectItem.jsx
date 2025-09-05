@@ -3,12 +3,7 @@ import MoreIcon from '../../assets/icons/actions/more-icon.svg';
 import { ProjectOptions } from './ProjectOptions';
 import { useContextMenu } from '../../hooks/useContextMenu';
 
-export function ProjectItem({ 
-  project, 
-  isActive,
-  projects,
-  setProjects
-}) {
+export function ProjectItem({ project, isActive }) {
   const navigate = useNavigate();
   const { openId, menuPosition, handleMoreClick } = useContextMenu();
 
@@ -31,9 +26,7 @@ export function ProjectItem({
       {openId === project.id && menuPosition && (
         <ProjectOptions 
           menuPosition={menuPosition} 
-          openId={openId} 
-          projects={projects}
-          setProjects={setProjects}
+          openId={openId}
         />
       )}             
     </li>

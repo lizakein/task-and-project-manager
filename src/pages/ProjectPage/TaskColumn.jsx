@@ -1,16 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import AddPurpleIcon from '../../assets/icons/actions/add-square-purple-icon.svg';
 import { TaskCard } from './TaskCard';
-import { createTask } from '../../utils/taskUtils';
+import { useStore } from '../../store/useStore';
 
-
-export function TaskColumn({ title, status, projectId, tasks, setTasks }) {
+export function TaskColumn({ title, status, projectId }) {
   const navigate = useNavigate();
+  const addTask = useStore(state => state.addTask);
+  const tasks = useStore(state => state.tasks);
 
   const filteredTasks = tasks.filter((task) => task.projectId === projectId && task.status === status);
 
   const handleAddTask = () => {
-    const newTask = createTask(tasks, setTasks, projectId);
+    const newTask = addTask(projectId);
     navigate(`/project/${projectId}/${newTask.id}`);
   };
 
@@ -39,9 +40,7 @@ export function TaskColumn({ title, status, projectId, tasks, setTasks }) {
             return <TaskCard 
                     key={task.id} 
                     {...task} 
-                    projectId={projectId} 
-                    tasks={tasks} 
-                    setTasks={setTasks} 
+                    projectId={projectId}
                   />
           })
         }

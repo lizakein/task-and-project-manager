@@ -1,13 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import { ProjectItem } from './ProjectItem';
-import { createProject } from '../../utils/projectUtils';
 import AddSquareIcon from '../../assets/icons/actions/add-square-icon.svg';
+import { useStore } from '../../store/useStore';
 
-export function ProjectsSection({ setProjects, projects, projectId }) {
+export function ProjectsSection({ projectId }) {
   const navigate = useNavigate();
 
+  const { projects } = useStore();
+  const addNewProject = useStore(state => state.addProject);
+
   const handleCreateProject = () => {
-    const newProject = createProject(projects, setProjects);
+    const newProject = addNewProject();
     navigate(`/project/${newProject.id}`);
   };
 
@@ -31,9 +34,7 @@ export function ProjectsSection({ setProjects, projects, projectId }) {
               <ProjectItem
                 key={project.id}
                 project={project} 
-                isActive={project.id === projectId}    
-                projects={projects}
-                setProjects={setProjects}         
+                isActive={project.id === projectId}
               />
             );        
           })

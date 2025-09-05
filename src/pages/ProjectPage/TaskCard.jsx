@@ -11,9 +11,7 @@ export function TaskCard({
   priority, 
   tags, 
   dueDate, 
-  projectId, 
-  tasks, 
-  setTasks
+  projectId
 }) {
   const { openId, menuPosition, handleMoreClick } = useContextMenu();
 
@@ -44,9 +42,7 @@ export function TaskCard({
           <TaskOptions 
             menuPosition={menuPosition} 
             projectId={projectId} 
-            openId={openId} 
-            tasks={tasks}
-            setTasks={setTasks}
+            openId={openId}
           />
         )}
       </div>
