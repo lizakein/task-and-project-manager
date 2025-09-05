@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Header } from "../../components/Header";
 import { Sidepanel } from "../../components/Sidepanel";
 import { TaskForm } from "./components/TaskForm";
-import './EditTaskPage.css';
+import { ConfirmModal } from "../../components/ConfirmModal";
 import { useStore } from "../../store/useStore";
+import './EditTaskPage.css';
 
 export function EditTaskPage() {
   const { projectId, taskId } = useParams();
@@ -18,6 +19,7 @@ export function EditTaskPage() {
   const [ priority, setPriority ] = useState(task.priority);
   const [ tags, setTags ] = useState(task.tags || []);
   const [ dueDate, setDueDate ] = useState(task.dueDate);
+  const [ isModalOpen, setIsModalOpen ] = useState(false);
   
   const handleSave = (event) => {
     event.preventDefault();
@@ -26,8 +28,12 @@ export function EditTaskPage() {
     navigate(`/project/${projectId}`);
   }
 
-  const handleCancel = () => {
+  const handleConfirmLeave = () => {
     navigate(`/project/${projectId}`);
+  }
+
+  const handleCancel = () => {
+    setIsModalOpen(true);
   }
 
   return (
@@ -47,6 +53,14 @@ export function EditTaskPage() {
           handleSave={handleSave} handleCancel={handleCancel}
         />
       </div>
+
+      <ConfirmModal 
+        isOpen={isModalOpen}
+        title="Stop editing"
+        message="Are you sure you want to stop editing? The changes will be lost."
+        onConfirm={handleConfirmLeave}
+        onCancel={() => setIsModalOpen(false)}
+      />
     </main>
   );
 }

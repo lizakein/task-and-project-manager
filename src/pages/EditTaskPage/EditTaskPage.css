@@ -95,10 +95,12 @@
 }
 
 .button {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  padding: 0.7rem;
 
   font-size: 16px;
   font-weight: 500;
@@ -112,6 +114,7 @@
 
 .button--warning {
   border-color: var(--high-color);
+  color: var(--high-color);
 }
 
 .button--primary {

@@ -9,7 +9,7 @@ export function FormActions({ handleCancel }) {
         onClick={handleCancel}
       >
         <img src={TrashIcon} alt="" role="presentation" className="button__icon" />
-        <span className="button__text red">Cancel</span>
+        <span className="button__text">Cancel</span>
       </button>
 
       <button 
