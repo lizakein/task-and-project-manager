@@ -8,6 +8,7 @@ import { useStore } from '../../store/useStore';
 
 export function ProjectHeader({ projectId }) {
   const currentProject = useStore(state => state.projects.find(p => p.id === projectId));
+  const updateProjectTitle = useStore(state => state.updateProjectTitle);
 
   const [ isEditingTitle, setIsEditingTitle ] = useState(false);
   const [ title, setTitle ] = useState('');
@@ -20,9 +21,7 @@ export function ProjectHeader({ projectId }) {
     if (!currentProject) return;
 
     if (isEditingTitle) {
-      // setProjects(project => 
-      //   project.map(p => p.id === projectId ? {...p, title} : p)
-      // );
+      updateProjectTitle(projectId, title);
       setIsEditingTitle(false);
     } else {
       setIsEditingTitle(true);

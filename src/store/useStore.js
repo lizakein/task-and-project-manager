@@ -37,6 +37,15 @@ export const useStore = create(
       return project;
     },
 
+    updateProjectTitle: (id, title) => {
+      ProjectUtils.updateProjectTitle(
+        get().projects,
+        projects => set({ projects }),
+        id,
+        title
+      );
+    },
+
     deleteProject: (id) => {
       ProjectUtils.deleteProject(
         get().projects, 
