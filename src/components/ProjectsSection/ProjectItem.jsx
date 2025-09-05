@@ -27,6 +27,7 @@ export function ProjectItem({ project, isActive }) {
         <ProjectOptions 
           menuPosition={menuPosition} 
           openId={openId}
+          title={project.title}
         />
       )}             
     </li>

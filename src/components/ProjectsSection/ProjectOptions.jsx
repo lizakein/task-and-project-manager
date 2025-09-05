@@ -1,17 +1,20 @@
 import { useNavigate, useParams } from 'react-router-dom';
+import { useState } from "react";
 import { OptionsWindow } from '../OptionsWindow';
 import { useStore } from '../../store/useStore';
+import { ConfirmModal } from '../ConfirmModal';
 import ArchiveIcon from '../../assets/icons/actions/archive-icon.svg';
 import TrashIcon from '../../assets/icons/actions/trash-icon.svg';
 
-export function ProjectOptions({ menuPosition, openId }) {
+export function ProjectOptions({ menuPosition, openId, title }) {
+  const [ isModalOpen, setIsModalOpen ] = useState(false);
   const navigate = useNavigate();
   const { projectId } = useParams();
 
   const projects = useStore(state => state.projects);
   const deleteProject = useStore(state => state.deleteProject);
 
-  const handleDeleteProject = () => {
+  const handleConfirmDelete = () => {
     deleteProject(openId);
 
     const isDeletedProjectActive = window.location.pathname.includes(openId);
@@ -25,7 +28,13 @@ export function ProjectOptions({ menuPosition, openId }) {
       setTimeout(() => {
         navigate(`/project/${projectId}`);
       }, 0);
-    }    
+    }
+
+    setIsModalOpen(false);
+  };
+
+  const handleDeleteProject = () => {
+    setIsModalOpen(true);
   };
 
   return (
@@ -38,6 +47,14 @@ export function ProjectOptions({ menuPosition, openId }) {
         <img src={TrashIcon} alt="" role="presentation" />
         <span className='options-window__item-label red'>Trash</span>
       </button>
+
+      <ConfirmModal 
+        isOpen={isModalOpen}
+        title="Delete project"
+        message={`Are you sure you want to delete the project: ${title}`}
+        onConfirm={handleConfirmDelete}
+        onCancel={() => setIsModalOpen(false)}
+      />
     </OptionsWindow>
   );
 }
