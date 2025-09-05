@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useDrop } from 'react-dnd';
 import AddPurpleIcon from '../../assets/icons/actions/add-square-purple-icon.svg';
 import { TaskCard } from './TaskCard';
 import { useStore } from '../../store/useStore';
@@ -6,7 +7,20 @@ import { useStore } from '../../store/useStore';
 export function TaskColumn({ title, status, projectId }) {
   const navigate = useNavigate();
   const addTask = useStore(state => state.addTask);
+  const updateTask = useStore(state => state.updateTask);
   const tasks = useStore(state => state.tasks);
+
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: "TASK",
+    drop: (item) => {
+      if (item.status !== status) {
+        updateTask(item.id, { status })
+      }
+    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver()
+    })
+  }));
 
   const filteredTasks = tasks.filter((task) => task.projectId === projectId && task.status === status);
 
@@ -16,7 +30,11 @@ export function TaskColumn({ title, status, projectId }) {
   };
 
   return (
-    <div className='task-column'>
+    <div
+      ref={drop}
+      className='task-column'
+      style={{ background: isOver ? "#5020E520" : "#f9f9f9" }}
+    >
       <header className='task-column__header' data-status={status}>
         <div className='task-column__header-left'>
           <h2 className='task-column__title'>{title}</h2>

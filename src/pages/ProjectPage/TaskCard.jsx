@@ -1,8 +1,8 @@
+import { useDrag } from 'react-dnd';
 import { useContextMenu } from '../../hooks/useContextMenu';
 import { TaskOptions } from '../ProjectPage/TaskOptions';
 import MoreIcon from '../../assets/icons/actions/more-icon.svg';
 import ClockIcon from '../../assets/icons/ui/clock-icon.svg';
-
 
 export function TaskCard({ 
   id, 
@@ -15,8 +15,15 @@ export function TaskCard({
 }) {
   const { openId, menuPosition, handleMoreClick } = useContextMenu();
 
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: "TASK",
+    item: { id, status, projectId},
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging()
+    })
+  }));
+
   let formatedDate;
-  
   if (dueDate.length > 10) {
     const options = {
       hour: "numeric",
@@ -27,7 +34,11 @@ export function TaskCard({
     formatedDate = new Date(dueDate).toLocaleDateString('ru-RU');
 
   return (
-    <article className='task-card'>
+    <article 
+      ref={drag}
+      className='task-card'
+      style={{ opacity: isDragging ? 0.5 : 1}}
+    >
       <div className='task-card__header'>
         <p className='priority' aria-label={`Priority: ${priority}`} data-priority={priority}>{priority}</p>
         <button 
