@@ -4,7 +4,17 @@ import MoreIcon from '../../assets/icons/actions/more-icon.svg';
 import ClockIcon from '../../assets/icons/ui/clock-icon.svg';
 
 
-export function TaskCard({ id, title, description, priority, tags, dueDate, projectId }) {
+export function TaskCard({ 
+  id, 
+  title, 
+  description, 
+  priority, 
+  tags, 
+  dueDate, 
+  projectId, 
+  tasks, 
+  setTasks
+}) {
   const { openId, menuPosition, handleMoreClick } = useContextMenu();
 
   let formatedDate;
@@ -31,7 +41,13 @@ export function TaskCard({ id, title, description, priority, tags, dueDate, proj
         </button>
 
         {openId === id && menuPosition && (
-          <TaskOptions menuPosition={menuPosition} projectId={projectId} openId={openId} />
+          <TaskOptions 
+            menuPosition={menuPosition} 
+            projectId={projectId} 
+            openId={openId} 
+            tasks={tasks}
+            setTasks={setTasks}
+          />
         )}
       </div>
 

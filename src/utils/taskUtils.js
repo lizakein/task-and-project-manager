@@ -28,4 +28,9 @@ export const updateTask = (tasks, setTasks, taskId, patch) => {
   );
 
   setTasks(updatedTasks);
-}
+};
+
+export const deleteTask = (tasks, setTasks, id) => {
+  const updatedTasks = tasks.filter(t => t.id !== id);
+  setTasks(updatedTasks);
+};

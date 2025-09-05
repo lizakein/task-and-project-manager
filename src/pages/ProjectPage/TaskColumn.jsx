@@ -36,7 +36,13 @@ export function TaskColumn({ title, status, projectId, tasks, setTasks }) {
       <div className='task-list'>
         {
           filteredTasks.map((task) => {
-            return <TaskCard key={task.id} {...task} projectId={projectId} />
+            return <TaskCard 
+                    key={task.id} 
+                    {...task} 
+                    projectId={projectId} 
+                    tasks={tasks} 
+                    setTasks={setTasks} 
+                  />
           })
         }
       </div>
