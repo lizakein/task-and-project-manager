@@ -2,6 +2,17 @@ import MoreIcon from '../../assets/icons/actions/more-icon.svg';
 import ClockIcon from '../../assets/icons/ui/clock-icon.svg';
 
 export function TaskCard({ title, description, priority, tags, dueDate }) {
+  let formatedDate;
+  
+  if (dueDate.length > 10) {
+    const options = {
+      hour: "numeric",
+      minute: "numeric"
+    };
+    formatedDate = new Date(dueDate).toLocaleDateString('ru-RU', options);
+  } else 
+    formatedDate = new Date(dueDate).toLocaleDateString('ru-RU');
+
   return (
     <article className='task-card'>
       <div className='task-card__header'>
@@ -26,10 +37,10 @@ export function TaskCard({ title, description, priority, tags, dueDate }) {
         </div>
         
         {dueDate && 
-          <time className='task-card__due' dateTime='2025-09-04'>
+          <time className='task-card__due' dateTime={formatedDate}>
             <img src={ClockIcon} alt="" role="presentation" />
             <span>
-              {new Date(dueDate).toLocaleDateString('ru-RU')}
+              {formatedDate}
             </span>
           </time>
         }
