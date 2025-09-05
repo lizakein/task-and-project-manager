@@ -46,7 +46,7 @@ export function EditTaskPage({ projects, setProjects, tasks, setTasks }) {
           priority={priority} setPriority={setPriority}
           tags={tags} setTags={setTags}
           dueDate={dueDate} setDueDate={setDueDate}
-          handleSave={handleSave} handleCandel={handleCancel}
+          handleSave={handleSave} handleCancel={handleCancel}
         />
       </div>
     </main>
