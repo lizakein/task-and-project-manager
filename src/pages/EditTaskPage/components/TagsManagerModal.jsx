@@ -53,7 +53,7 @@ export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen, allTags,
 						<img src={CloseIcon} alt="" role="presentation" />
 					</button>
 				</div>
-				{allTags.map((tag) => {
+				{allTags.map((tag, index) => {
           return (
 						<div key={tag} className="tags-manager-modal__item">
 							<button 
@@ -77,6 +77,7 @@ export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen, allTags,
 									type="button" 
 									className="icon-button" 
 									aria-label="Delete tag"
+									onClick={() => setAllTags(allTags.filter((_, i) => i !== index))}
 								>
 									<img src={DeleteIcon} alt="" role="presentation" />
 								</button>
