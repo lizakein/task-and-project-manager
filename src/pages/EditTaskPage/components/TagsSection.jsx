@@ -41,7 +41,8 @@ export function TagsSection({ tags, setTags }) {
         })}
 
         <TagsManagerModal 
-          isOpen={isTagsModalOpen} 
+          isTagsModalOpen={isTagsModalOpen}
+          setIsTagsModalOpen={setIsTagsModalOpen} 
           allTags={allTags} 
           setAllTags={setAllTags}
         />    
