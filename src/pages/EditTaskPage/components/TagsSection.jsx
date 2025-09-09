@@ -1,12 +1,44 @@
+import { useEffect, useState, useRef } from "react";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import AddIcon from "../../../assets/icons/actions/add-square-icon.svg";
 
 export function TagsSection({ tags, setTags }) {
-  const allTags = ["Life", "Work", "Sport"];
+  const [ isEditing, setIsEditing ] = useState(false);
+  const [ newTag, setNewTag ] = useState('');
+  const [ allTags, setAllTags ] = useLocalStorage("tags", ["Life", "Work", "Sport"]);
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (isEditing && inputRef.current)
+      inputRef.current.focus();
+  }, [isEditing]);
   
   const toggleTag = (tag) => {
     setTags(prev => 
       prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
     );
+  };
+
+  const addTag = () => {
+    if (isEditing) {
+      const newTagTrim = newTag.trim();
+      if (newTag && !allTags.includes(newTag))
+        setAllTags([...allTags, newTagTrim]);
+      setIsEditing(false);
+      setNewTag('');
+    } else {
+      setIsEditing(true);
+    }
+  };
+
+  const updateTagsInput = event => setNewTag(event.target.value);
+
+  const handleTagsKeyDown = (event) => {
+    if (event.key === 'Enter') addTag();
+    else if (event.key === 'Escape') {
+      setIsEditing(false);
+    }
   };
 
   return (
@@ -27,9 +59,23 @@ export function TagsSection({ tags, setTags }) {
             </button>
           );
         })}
-        <button type="button" className="icon-button" aria-label="Add tag">
-          <img src={AddIcon} alt="" role="presentation" />
-        </button>
+        { isEditing ?          
+          <input
+            ref={inputRef}
+            type='text'
+            className="input-field"
+            onChange={updateTagsInput}
+            onKeyDown={handleTagsKeyDown}
+          /> : (
+            <button 
+            type="button" 
+            className="icon-button" 
+            aria-label="Add tag"
+            onClick={addTag}
+            >
+              <img src={AddIcon} alt="" role="presentation" />
+            </button>
+        )}        
       </div>
     </section>
   );
