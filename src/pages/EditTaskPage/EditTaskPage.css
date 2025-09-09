@@ -82,6 +82,11 @@
   outline-color: var(--brand-color);
 }
 
+.edit-task-page__header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .edit-task-page__section-title {
   font-size: 16px;
   font-weight: 500px;

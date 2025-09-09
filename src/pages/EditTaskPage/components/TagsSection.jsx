@@ -15,15 +15,18 @@ export function TagsSection({ tags, setTags }) {
 
   return (
     <section className="edit-task-page__section edit-task-page__tags-section">
-      <h2 className="edit-task-page__section-title">Tag</h2>
-      <button
-        type="button" 
-        className="icon-button" 
-        aria-label="Manage tags"
-        onClick={() => setIsTagsModalOpen(true)}
-      >
-        <img src={ManageTagsIcon} alt="" role="presentation" />
-      </button>
+      <div className="edit-task-page__header">
+        <h2 className="edit-task-page__section-title">Tag</h2>
+        <button
+          type="button" 
+          className="icon-button" 
+          aria-label="Manage tags"
+          onClick={() => setIsTagsModalOpen(true)}
+        >
+          <img src={ManageTagsIcon} alt="" role="presentation" />
+        </button>
+      </div>
+      
       <div className="edit-task-page__buttons-group">
         {allTags.map((tag) => {
           const isActive = tags.includes(tag);
