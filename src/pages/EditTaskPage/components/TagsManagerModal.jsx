@@ -1,5 +1,6 @@
 import { createPortal } from "react-dom";
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
+import { TagsInput } from "../../../components/TagsInput";
 import EditIcon from "../../../assets/icons/actions/edit-icon.svg";
 import DeleteIcon from "../../../assets/icons/actions/trash-icon.svg";
 import AddIcon from "../../../assets/icons/actions/add-square-icon.svg";
@@ -9,36 +10,8 @@ import './TagsManagerModal.css';
 export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen, allTags, setAllTags }) {
 	if (!isTagsModalOpen) return null;
 
-	const [ isEditing, setIsEditing ] = useState(false);
-	const [ newTag, setNewTag ] = useState('');
-
-	const inputRef = useRef(null);
-
-  useEffect(() => {
-    if (isEditing && inputRef.current)
-      inputRef.current.focus();
-  }, [isEditing]);
-
-	const addTag = () => {
-		if (isEditing) {
-			const newTagTrim = newTag.trim();
-			if (newTag && !allTags.includes(newTag))
-				setAllTags([...allTags, newTagTrim]);
-			setIsEditing(false);
-			setNewTag('');
-		} else {
-			setIsEditing(true);
-		}
-	};
-
-	const updateTagsInput = event => setNewTag(event.target.value);
-
-	const handleTagsKeyDown = (event) => {
-		if (event.key === 'Enter') addTag();
-		else if (event.key === 'Escape') {
-			setIsEditing(false);
-		}
-	};
+	const [ isAdding, setIsAdding ] = useState(false);
+	const [ editingIndex, setEditingIndex ] = useState(null);
 
 	return createPortal(
 		<div className="tags-manager-modal__overlay">
@@ -56,54 +29,71 @@ export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen, allTags,
 				{allTags.map((tag, index) => {
           return (
 						<div key={tag} className="tags-manager-modal__item">
-							<button 
-								key={tag}
-								type="button" 
-								className={`tag tag--blue`}
-							>
-								{tag}
-							</button>
+							{ editingIndex === index ? (
+								<TagsInput 
+									initialValue={tag}
+									onSave={(newValue) => {
+										if (newValue) {
+											const updated = [...allTags];
+											updated[index] = newValue;
+											setAllTags(updated);
+										}
+										setEditingIndex(null);
+									}}
+								/>
+							) : (
+								<>
+									<button 
+										key={tag}
+										type="button" 
+										className={`tag tag--blue`}
+									>
+										{tag}
+									</button>
 
-							<div className="tags-manager-modal__actions">
-								<button
-									type="button" 
-									className="icon-button" 
-									aria-label="Edit tag label"
-								>
-									<img src={EditIcon} alt="" role="presentation" />
-								</button>
+									<div className="tags-manager-modal__actions">
+										<button
+											type="button" 
+											className="icon-button" 
+											aria-label="Edit tag label"
+											onClick={() => setEditingIndex(index)}
+										>
+											<img src={EditIcon} alt="" role="presentation" />
+										</button>
 
-								<button
-									type="button" 
-									className="icon-button" 
-									aria-label="Delete tag"
-									onClick={() => setAllTags(allTags.filter((_, i) => i !== index))}
-								>
-									<img src={DeleteIcon} alt="" role="presentation" />
-								</button>
-							</div>	
-						</div>            
+										<button
+											type="button" 
+											className="icon-button" 
+											aria-label="Delete tag"
+											onClick={() => setAllTags(allTags.filter((_, i) => i !== index))}
+										>
+											<img src={DeleteIcon} alt="" role="presentation" />
+										</button>
+									</div>	
+								</>					
+							)}
+						</div>         
           );
         })}		
-				{ isEditing ?          
-					<input
-						ref={inputRef}
-						type='text'
-						className="input-field"
-						placeholder="Enter new tag"
-						onChange={updateTagsInput}
-						onKeyDown={handleTagsKeyDown}
+
+				{ isAdding ?
+					<TagsInput
+						onSave={(newValue) => {
+							if (newValue && !allTags.includes(newValue))
+								setAllTags([...allTags, newValue]);
+							setIsAdding(false);
+						}}
 					/> : (
 						<button 
 							type="button" 
 							className="button" 
 							aria-label="Add tag"
-							onClick={addTag}
+							onClick={() => setIsAdding(true)}
 						>
 							<img src={AddIcon} alt="" role="presentation" />
 							Add new tag
 						</button>
-				)} 
+				)}
 			</div>	
 		</div>,
 		document.body
