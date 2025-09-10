@@ -8,6 +8,11 @@ export const useStore = create(
   persist((set, get) => ({
     projects: [],
     tasks: [],
+    tags: [
+      { id: "1", label: "Life", color: "blue" },
+      { id: "2", label: "Work", color: "red" },
+      { id: "3", label: "Sport", color: "green" }
+    ],
 
 
     // ========== LOAD ==========
@@ -83,6 +88,39 @@ export const useStore = create(
         tasks => set({ tasks }), 
         id
       );
+    },
+
+
+    // ========== TAGS ==========
+
+    addTag: (label, color) => {
+      const newTag = {
+        id: crypto.randomUUID,
+        label, 
+        color
+      };
+      set({ tags: [...get().tags, newTag]});
+
+      return newTag;
+    },
+
+    updateTag: (id, patch) => {
+      set({
+        tags: get().tags.map(tag => tag.id === id ? {...tag, ...patch} : tag)
+      });
+    },
+
+    deleteTag: (id) => {
+      set({
+        tags: get().tags.filter(tag => tag.id !== id)
+      });
+
+      set({
+        tasks: get().tasks.map(task => ({
+          ...task,
+          tags: task.tags.filter(tagId => tagId !== id)
+        }))
+      });
     }
   }),
   {name: "app-storage"}
