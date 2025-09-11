@@ -3,6 +3,7 @@ import { useContextMenu } from '../../hooks/useContextMenu';
 import { TaskOptions } from '../ProjectPage/TaskOptions';
 import MoreIcon from '../../assets/icons/actions/more-icon.svg';
 import ClockIcon from '../../assets/icons/ui/clock-icon.svg';
+import { useStore } from '../../store/useStore';
 
 export function TaskCard({ 
   id, 
@@ -14,6 +15,7 @@ export function TaskCard({
   projectId
 }) {
   const { openId, menuPosition, handleMoreClick } = useContextMenu();
+  const allTags = useStore(state => state.tags);
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "TASK",
@@ -65,8 +67,12 @@ export function TaskCard({
 
       <div className='task-card__footer'>
         <div className='task-card__tags'>
-          {tags.map((tag) => {
-            return <span key={crypto.randomUUID()} className='tag tag--blue'>{tag}</span>
+          {tags.map((tagId) => {
+            const tag = allTags.find(t => t.id === tagId);
+            if (!tag) return null;
+            return (
+              <span key={tag.id} className='tag tag--blue'>{tag.label}</span>
+            );
           })}
         </div>
         

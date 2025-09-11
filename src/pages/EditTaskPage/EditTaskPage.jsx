@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "../../components/Header";
 import { Sidepanel } from "../../components/Sidepanel";
 import { TaskForm } from "./components/TaskForm";
@@ -13,6 +13,7 @@ export function EditTaskPage() {
 
   const updateTask = useStore(state => state.updateTask);
   const task = useStore(state => state.tasks.find(t => t.id === taskId));
+  const allTags = useStore(state => state.tags);
 
   const [ title, setTitle ] = useState(task.title);
   const [ description, setDescription ] = useState(task.description);
@@ -20,10 +21,15 @@ export function EditTaskPage() {
   const [ tags, setTags ] = useState(task.tags || []);
   const [ dueDate, setDueDate ] = useState(task.dueDate);
   const [ isModalOpen, setIsModalOpen ] = useState(false);
+
+  useEffect(() => {
+    setTags(task.tags || []);
+  }, [task.tags]);
   
   const handleSave = (event) => {
     event.preventDefault();
-    const patch = { title, description, priority, tags, dueDate };
+    const validTags = tags.filter(id => allTags.some(tag => tag.id === id));
+    const patch = { title, description, priority, tags: validTags, dueDate };
     updateTask(taskId, patch);
     navigate(`/project/${projectId}`);
   }

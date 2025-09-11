@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import ManageTagsIcon from "../../../assets/icons/navigation/settings-icon.svg";
 import { TagsManagerModal } from "./TagsManagerModal";
+import { useStore } from "../../../store/useStore";
 
 export function TagsSection({ tags, setTags }) {
   const [ isTagsModalOpen, setIsTagsModalOpen ] = useState(false);
-  const [ allTags, setAllTags ] = useLocalStorage("tags", ["Life", "Work", "Sport"]);
+  const allTags = useStore(state => state.tags);
   
-  const toggleTag = (tag) => {
+  const toggleTag = (tagId) => {
     setTags(prev => 
-      prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
+      prev.includes(tagId) ? prev.filter(t => t !== tagId) : [...prev, tagId]
     );
   };
 
@@ -29,25 +29,23 @@ export function TagsSection({ tags, setTags }) {
       
       <div className="edit-task-page__buttons-group">
         {allTags.map((tag) => {
-          const isActive = tags.includes(tag);
+          const isActive = tags.includes(tag.id);
           return (
             <button 
-              key={tag}
+              key={tag.id}
               type="button" 
               className={`tag tag--blue ${isActive ? 'tag--selected' : ''}`}
               aria-pressed={isActive}
-              onClick={() => toggleTag(tag)}
+              onClick={() => toggleTag(tag.id)}
             >
-              {tag}
+              {tag.label}
             </button>
           );
         })}
 
         <TagsManagerModal 
           isTagsModalOpen={isTagsModalOpen}
-          setIsTagsModalOpen={setIsTagsModalOpen} 
-          allTags={allTags} 
-          setAllTags={setAllTags}
+          setIsTagsModalOpen={setIsTagsModalOpen}
         />    
       </div>
     </section>

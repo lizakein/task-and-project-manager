@@ -95,7 +95,7 @@ export const useStore = create(
 
     addTag: (label, color) => {
       const newTag = {
-        id: crypto.randomUUID,
+        id: crypto.randomUUID(),
         label, 
         color
       };
@@ -110,18 +110,20 @@ export const useStore = create(
       });
     },
 
-    deleteTag: (id) => {
-      set({
-        tags: get().tags.filter(tag => tag.id !== id)
-      });
+    deleteTag: (id) => set((state) => {
+      const newTags = state.tags.filter(tag => tag.id !== id);
 
-      set({
-        tasks: get().tasks.map(task => ({
-          ...task,
-          tags: task.tags.filter(tagId => tagId !== id)
-        }))
-      });
-    }
+      const newTasks = state.tasks.map(task => ({
+        ...task,
+        tags: (task.tags || []).filter(tagId => tagId !== id && tagId != null)
+      }));
+
+      return {
+        tags: newTags,
+        tasks: newTasks
+      };
+    }),
+
   }),
   {name: "app-storage"}
 ));

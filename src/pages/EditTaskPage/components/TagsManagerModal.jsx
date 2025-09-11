@@ -1,5 +1,6 @@
 import { createPortal } from "react-dom";
 import { useState } from "react";
+import { useStore } from "../../../store/useStore";
 import { TagsInput } from "../../../components/TagsInput";
 import EditIcon from "../../../assets/icons/actions/edit-icon.svg";
 import DeleteIcon from "../../../assets/icons/actions/trash-icon.svg";
@@ -7,8 +8,13 @@ import AddIcon from "../../../assets/icons/actions/add-square-icon.svg";
 import CloseIcon from "../../../assets/icons/actions/close-icon.svg";
 import './TagsManagerModal.css';
 
-export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen, allTags, setAllTags }) {
+export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen }) {
 	if (!isTagsModalOpen) return null;
+
+	const allTags = useStore(state => state.tags);
+	const addTag = useStore(state => state.addTag);
+	const updateTag = useStore(state => state.updateTag);
+	const deleteTag = useStore(state => state.deleteTag);
 
 	const [ isAdding, setIsAdding ] = useState(false);
 	const [ editingIndex, setEditingIndex ] = useState(null);
@@ -26,29 +32,25 @@ export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen, allTags,
 						<img src={CloseIcon} alt="" role="presentation" />
 					</button>
 				</div>
-				{allTags.map((tag, index) => {
+				{allTags.map(tag => {
           return (
-						<div key={tag} className="tags-manager-modal__item">
-							{ editingIndex === index ? (
+						<div key={tag.id} className="tags-manager-modal__item">
+							{ editingIndex === tag.id ? (
 								<TagsInput 
-									initialValue={tag}
+									initialValue={tag.label}
 									onSave={(newValue) => {
-										if (newValue) {
-											const updated = [...allTags];
-											updated[index] = newValue;
-											setAllTags(updated);
-										}
+										if (newValue)
+											updateTag(tag.id, {label: newValue});
 										setEditingIndex(null);
 									}}
 								/>
 							) : (
 								<>
 									<button 
-										key={tag}
 										type="button" 
 										className={`tag tag--blue`}
 									>
-										{tag}
+										{tag.label}
 									</button>
 
 									<div className="tags-manager-modal__actions">
@@ -56,7 +58,7 @@ export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen, allTags,
 											type="button" 
 											className="icon-button" 
 											aria-label="Edit tag label"
-											onClick={() => setEditingIndex(index)}
+											onClick={() => setEditingIndex(tag.id)}
 										>
 											<img src={EditIcon} alt="" role="presentation" />
 										</button>
@@ -65,7 +67,7 @@ export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen, allTags,
 											type="button" 
 											className="icon-button" 
 											aria-label="Delete tag"
-											onClick={() => setAllTags(allTags.filter((_, i) => i !== index))}
+											onClick={() => deleteTag(tag.id)}
 										>
 											<img src={DeleteIcon} alt="" role="presentation" />
 										</button>
@@ -79,8 +81,8 @@ export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen, allTags,
 				{ isAdding ?
 					<TagsInput
 						onSave={(newValue) => {
-							if (newValue && !allTags.includes(newValue))
-								setAllTags([...allTags, newValue]);
+							if (newValue && !allTags.some(t => t.label === newValue))
+								addTag(newValue, 'blue');
 							setIsAdding(false);
 						}}
 					/> : (
