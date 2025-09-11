@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import EditIcon from '../../assets/icons/actions/edit-purple-icon.svg';
-import ShareIcon from '../../assets/icons/actions/share-icon.svg';
-import FilterIcon from '../../assets/icons/actions/filter-icon.svg';
-import ArrowDownIcon from '../../assets/icons/actions/arrow-down-icon.svg';
-import SortIcon from '../../assets/icons/actions/sort-icon.svg';
-import { useStore } from '../../store/useStore';
+import EditIcon from '@assets/icons/actions/edit-purple-icon.svg';
+import ShareIcon from '@assets/icons/actions/share-icon.svg';
+import FilterIcon from '@assets/icons/actions/filter-icon.svg';
+import ArrowDownIcon from '@assets/icons/actions/arrow-down-icon.svg';
+import SortIcon from '@assets/icons/actions/sort-icon.svg';
+import { useStore } from '@store/useStore';
 
 export function ProjectHeader({ projectId }) {
   const currentProject = useStore(state => state.projects.find(p => p.id === projectId));
