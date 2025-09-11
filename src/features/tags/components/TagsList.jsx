@@ -69,7 +69,7 @@ export function TagsList() {
       <ConfirmModal 
         isOpen={deletingTagId !== null}
         title="Delete tag"
-        message={`Are you sure you want to delete this tag?`}
+        message="Are you sure you want to delete this tag? It will be deleted in all tasks."
         onConfirm={handleConfirmDelete}
         onCancel={() => setDeletingTagId(null)}
       />
