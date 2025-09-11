@@ -1,0 +1,56 @@
+import { useState } from "react";
+import { useStore } from "@store/useStore";
+import { TagsList } from "./TagsList";
+import { TagsInput } from "./TagsInput";
+import AddIcon from "@assets/icons/actions/add-square-icon.svg";
+import CloseIcon from "@assets/icons/actions/close-icon.svg";
+
+export function TagsManagerContent({ setIsTagsModalOpen }) {
+  const allTags = useStore(state => state.tags);
+	const addTag = useStore(state => state.addTag);
+
+	const [ isAdding, setIsAdding ] = useState(false);
+	const [ isWarning, setIsWarning ] = useState(false);
+
+  return (
+    <>
+      <div className="tags-manager-modal__header">
+        <button 
+          type="button" 
+          className="icon-button close-icon" 
+          aria-label="Close tags manager"
+          onClick={() => setIsTagsModalOpen(false)}
+        >
+          <img src={CloseIcon} alt="" role="presentation" />
+        </button>
+      </div>
+				
+      <TagsList />
+
+      { isAdding ?
+        <TagsInput
+          onSave={(newValue) => {
+            if (newValue && !allTags.some(t => t.label === newValue)) {
+              addTag(newValue, 'blue');
+              setIsAdding(false);
+              setIsWarning(false);
+            } else setIsWarning(true);
+          }}
+        /> : (
+          <button 
+            type="button" 
+            className="button" 
+            aria-label="Add tag"
+            onClick={() => setIsAdding(true)}
+          >
+            <img src={AddIcon} alt="" role="presentation" />
+            Add new tag
+          </button>
+      )}
+
+      { isWarning && 
+        <p className="tags-manager-modal__warning">Error: this tag is already exist</p>
+      }
+    </>
+  );
+}
