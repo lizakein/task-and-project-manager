@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useStore } from "@store/useStore";
 import { TagsInput } from "./TagsInput";
+import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal"
 import EditIcon from "@assets/icons/actions/edit-icon.svg";
 import DeleteIcon from "@assets/icons/actions/trash-icon.svg";
 
@@ -10,6 +11,14 @@ export function TagsList() {
   const deleteTag = useStore(state => state.deleteTag);
 
   const [ editingIndex, setEditingIndex ] = useState(null);
+  const [ deletingTagId, setDeletingTagId ] = useState(null);
+
+  const handleConfirmDelete = () => {
+    if (deletingTagId) {
+      deleteTag(deletingTagId);
+      setDeletingTagId(null);
+    } 
+  }
 
   return (
     <>
@@ -45,16 +54,25 @@ export function TagsList() {
                     type="button" 
                     className="icon-button" 
                     aria-label="Delete tag"
-                    onClick={() => deleteTag(tag.id)}
+                    onClick={() => setDeletingTagId(tag.id)}
                   >
                     <img src={DeleteIcon} alt="" role="presentation" />
                   </button>
+
                 </div>	
               </>					
             )}
           </div>         
         );
       })}
+
+      <ConfirmModal 
+        isOpen={deletingTagId !== null}
+        title="Delete tag"
+        message={`Are you sure you want to delete this tag?`}
+        onConfirm={handleConfirmDelete}
+        onCancel={() => setDeletingTagId(null)}
+      />
     </>
   );
 }
