@@ -6,8 +6,8 @@ export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen }) {
 	if (!isTagsModalOpen) return null;
 
 	return createPortal(
-		<div className="tags-manager-modal__overlay">
-			<div className="tags-manager-modal__window">
+		<div className="overlay tags-manager-modal__overlay">
+			<div className="window tags-manager-modal__window">
 				<TagsManagerContent setIsTagsModalOpen={setIsTagsModalOpen} />
 			</div>	
 		</div>,
