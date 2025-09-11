@@ -1,9 +1,9 @@
 import { useDrag } from 'react-dnd';
-import { useContextMenu } from '../../hooks/useContextMenu';
-import { TaskOptions } from '../ProjectPage/TaskOptions';
-import MoreIcon from '../../assets/icons/actions/more-icon.svg';
-import ClockIcon from '../../assets/icons/ui/clock-icon.svg';
-import { useStore } from '../../store/useStore';
+import { useStore } from '@store/useStore';
+import { useContextMenu } from '@hooks/useContextMenu';
+import { TaskOptions } from './TaskOptions';
+import MoreIcon from '@assets/icons/actions/more-icon.svg';
+import ClockIcon from '@assets/icons/ui/clock-icon.svg';
 
 export function TaskCard({ 
   id, 

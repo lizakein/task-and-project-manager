@@ -13,6 +13,7 @@ export default defineConfig({
       "@layout": path.resolve(__dirname, "./src/shared/layout"),
       "@features": path.resolve(__dirname, "./src/features"),
       "@store": path.resolve(__dirname, "./src/store"),
+      "@hooks": path.resolve(__dirname, "./src/hooks"),
     },
   },
 })

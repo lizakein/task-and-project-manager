@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { ProjectItem } from './ProjectItem';
-import AddSquareIcon from '../../assets/icons/actions/add-square-icon.svg';
-import { useStore } from '../../store/useStore';
+import AddSquareIcon from '@assets/icons/actions/add-square-icon.svg';
+import { useStore } from '@store/useStore';
 
-export function ProjectsSection({ projectId }) {
+export default function ProjectsSection({ projectId }) {
   const navigate = useNavigate();
 
   const { projects } = useStore();

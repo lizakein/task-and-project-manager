@@ -1,11 +1,11 @@
 import { createPortal } from "react-dom";
 import { useState } from "react";
-import { useStore } from "../../../store/useStore";
-import { TagsInput } from "../../../components/TagsInput";
-import EditIcon from "../../../assets/icons/actions/edit-icon.svg";
-import DeleteIcon from "../../../assets/icons/actions/trash-icon.svg";
-import AddIcon from "../../../assets/icons/actions/add-square-icon.svg";
-import CloseIcon from "../../../assets/icons/actions/close-icon.svg";
+import { useStore } from "@store/useStore";
+import { TagsInput } from "./TagsInput";
+import EditIcon from "@assets/icons/actions/edit-icon.svg";
+import DeleteIcon from "@assets/icons/actions/trash-icon.svg";
+import AddIcon from "@assets/icons/actions/add-square-icon.svg";
+import CloseIcon from "@assets/icons/actions/close-icon.svg";
 import './TagsManagerModal.css';
 
 export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen }) {

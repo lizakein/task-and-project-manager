@@ -3,7 +3,7 @@ import ManageTagsIcon from "../../../assets/icons/navigation/settings-icon.svg";
 import { TagsManagerModal } from "./TagsManagerModal";
 import { useStore } from "../../../store/useStore";
 
-export function TagsSection({ tags, setTags }) {
+export default function TagsSection({ tags, setTags }) {
   const [ isTagsModalOpen, setIsTagsModalOpen ] = useState(false);
   const allTags = useStore(state => state.tags);
   

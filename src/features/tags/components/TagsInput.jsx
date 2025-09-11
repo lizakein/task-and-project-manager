@@ -1,4 +1,4 @@
-import { useTagInput } from "../hooks/useTagInput";
+import { useTagInput } from "@hooks/useTagInput";
 
 export function TagsInput(initialValue = '', onSave) {
 	const { value, inputRef, handleChange, handleKeyDown } = useTagInput(initialValue, onSave);

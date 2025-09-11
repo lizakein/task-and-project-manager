@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { ProjectHeader } from './ProjectHeader';
-import { TaskColumn } from './TaskColumn';
+import { TaskColumn } from '@/features/tasks';
 import { Header } from "@layout/Header/Header";
 import { Sidepanel } from "@layout/Sidepanel/Sidepanel";
 import './ProjectPage.css';

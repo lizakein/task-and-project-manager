@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useStore } from "@store/useStore";
 import { OptionsWindow } from "@ui/OptionsWindow";
+import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
 import EditIcon from '@assets/icons/actions/edit-icon.svg';
 import TrashIcon from '@assets/icons/actions/trash-icon.svg';
-import { useStore } from "@store/useStore";
-import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
-import { useState } from "react";
 
 export function TaskOptions({ menuPosition, projectId, openId, title }) {
   const [ isModalOpen, setIsModalOpen ] = useState(false);

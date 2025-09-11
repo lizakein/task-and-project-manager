@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useDrop } from 'react-dnd';
-import AddPurpleIcon from '../../assets/icons/actions/add-square-purple-icon.svg';
+import { useStore } from '@store/useStore';
 import { TaskCard } from './TaskCard';
-import { useStore } from '../../store/useStore';
+import AddPurpleIcon from '@assets/icons/actions/add-square-purple-icon.svg';
 
-export function TaskColumn({ title, status, projectId }) {
+export default function TaskColumn({ title, status, projectId }) {
   const navigate = useNavigate();
   const addTask = useStore(state => state.addTask);
   const updateTask = useStore(state => state.updateTask);

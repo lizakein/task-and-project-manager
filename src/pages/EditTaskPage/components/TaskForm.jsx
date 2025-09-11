@@ -1,5 +1,5 @@
 import { PrioritySection } from "./PrioritySection";
-import { TagsSection } from "./TagsSection";
+import { TagsSection } from "@features/tags";
 import { DescriptionSection } from "./DescriptionSection";
 import { DueDateSection } from "./DueDateSection";
 import { UploadButton } from "@ui/UploadButton";
