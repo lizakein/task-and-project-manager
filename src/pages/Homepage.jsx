@@ -1,5 +1,5 @@
-import { Header } from "../components/Header";
-import { Sidepanel } from "../components/Sidepanel";
+import { Header } from "@layout/Header/Header";
+import { Sidepanel } from "@layout/Sidepanel/Sidepanel";
 
 export function Homepage() {
   return (

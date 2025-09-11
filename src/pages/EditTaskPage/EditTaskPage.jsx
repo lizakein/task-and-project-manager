@@ -1,10 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Header } from "../../components/Header";
-import { Sidepanel } from "../../components/Sidepanel";
+import { Header } from "@layout/Header/Header";
+import { Sidepanel } from "@layout/Sidepanel/Sidepanel";
 import { TaskForm } from "./components/TaskForm";
-import { ConfirmModal } from "../../components/ConfirmModal";
-import { useStore } from "../../store/useStore";
+import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
+import { useStore } from "@store/useStore";
 import './EditTaskPage.css';
 
 export function EditTaskPage() {

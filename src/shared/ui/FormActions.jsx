@@ -1,4 +1,4 @@
-import TrashIcon from "../assets/icons/actions/trash-icon.svg";
+import TrashIcon from "@assets/icons/actions/trash-icon.svg";
 
 export function FormActions({ handleCancel }) {
   return (

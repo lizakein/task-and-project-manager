@@ -2,8 +2,8 @@ import { PrioritySection } from "./PrioritySection";
 import { TagsSection } from "./TagsSection";
 import { DescriptionSection } from "./DescriptionSection";
 import { DueDateSection } from "./DueDateSection";
-import { UploadButton } from "../../../components/UploadButton";
-import { FormActions } from "../../../components/FormActions";
+import { UploadButton } from "@ui/UploadButton";
+import { FormActions } from "@ui/FormActions";
 
 export function TaskForm({
   title, setTitle,

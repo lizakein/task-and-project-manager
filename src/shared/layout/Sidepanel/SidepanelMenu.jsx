@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import HomeIcon from '../assets/icons/navigation/home-icon.svg';
-import CalendarIcon from '../assets/icons/navigation/calendar-icon.svg';
-import AnalyticsIcon from '../assets/icons/navigation/analytics-icon.svg';
-import SettingsIcon from '../assets/icons/navigation/settings-icon.svg';
+import HomeIcon from '@assets/icons/navigation/home-icon.svg';
+import CalendarIcon from '@assets/icons/navigation/calendar-icon.svg';
+import AnalyticsIcon from '@assets/icons/navigation/analytics-icon.svg';
+import SettingsIcon from '@assets/icons/navigation/settings-icon.svg';
 
 export function SidepanelMenu() {
   const location = useLocation();

@@ -1,10 +1,10 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from "react";
-import { OptionsWindow } from '../OptionsWindow';
-import { useStore } from '../../store/useStore';
-import { ConfirmModal } from '../ConfirmModal';
-import ArchiveIcon from '../../assets/icons/actions/archive-icon.svg';
-import TrashIcon from '../../assets/icons/actions/trash-icon.svg';
+import { OptionsWindow } from '@ui/OptionsWindow';
+import { useStore } from '@store/useStore';
+import { ConfirmModal } from '@ui/ConfirmModal/ConfirmModal';
+import ArchiveIcon from '@assets/icons/actions/archive-icon.svg';
+import TrashIcon from '@assets/icons/actions/trash-icon.svg';
 
 export function ProjectOptions({ menuPosition, openId, title }) {
   const [ isModalOpen, setIsModalOpen ] = useState(false);

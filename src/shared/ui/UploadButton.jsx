@@ -1,4 +1,4 @@
-import UploadImgaeIcon from "../assets/icons/ui/upload-image-icon.svg";
+import UploadImgaeIcon from "@assets/icons/ui/upload-image-icon.svg";
 
 export function UploadButton() {
   return (

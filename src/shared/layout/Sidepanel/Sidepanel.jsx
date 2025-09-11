@@ -1,4 +1,4 @@
-import { ProjectsSection } from './ProjectsSection/ProjectsSection'
+import { ProjectsSection } from '../../../components/ProjectsSection/ProjectsSection'
 import { SidepanelMenu } from './SidepanelMenu';
 import './Sidepanel.css';
 
