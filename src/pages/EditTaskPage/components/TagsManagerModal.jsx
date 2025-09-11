@@ -18,6 +18,7 @@ export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen }) {
 
 	const [ isAdding, setIsAdding ] = useState(false);
 	const [ editingIndex, setEditingIndex ] = useState(null);
+	const [ isWarning, setIsWarning ] = useState(false);
 
 	return createPortal(
 		<div className="tags-manager-modal__overlay">
@@ -81,9 +82,11 @@ export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen }) {
 				{ isAdding ?
 					<TagsInput
 						onSave={(newValue) => {
-							if (newValue && !allTags.some(t => t.label === newValue))
+							if (newValue && !allTags.some(t => t.label === newValue)) {
 								addTag(newValue, 'blue');
-							setIsAdding(false);
+								setIsAdding(false);
+								setIsWarning(false);
+							} else setIsWarning(true);
 						}}
 					/> : (
 						<button 
@@ -96,6 +99,7 @@ export function TagsManagerModal({ isTagsModalOpen, setIsTagsModalOpen }) {
 							Add new tag
 						</button>
 				)}
+				{isWarning && <p className="tags-manager-modal__warning">Error: this tag is already exist</p>}
 			</div>	
 		</div>,
 		document.body
