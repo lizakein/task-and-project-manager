@@ -31,12 +31,16 @@ export default function TagsSection({ tags, setTags }) {
       <div className="edit-task-page__buttons-group">
         {allTags.map((tag) => {
           const isActive = tags.includes(tag.id);
+          const { color, backgroundColor } = getTagStyle(tag.color);
           return (
             <button 
               key={tag.id}
               type="button" 
               className={`tag tag--${tag.color} ${isActive ? 'tag--selected' : ''}`}
-              style={getTagStyle(tag.color)}
+              style={{
+                "--tag-text": color,
+                "--tag-bg": backgroundColor
+              }}
               aria-pressed={isActive}
               onClick={() => toggleTag(tag.id)}
             >

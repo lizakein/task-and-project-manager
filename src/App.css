@@ -83,6 +83,11 @@ body {
   background-color: var(--low-color-background);
 }
 
+.tag {
+  color: var(--tag-text);
+  background-color: var(--tag-bg);
+}
+
 .tag--selected,
 .priority.priority--selected {
   font-weight: 600;
