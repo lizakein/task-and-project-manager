@@ -4,6 +4,8 @@ import { TagsInput } from "./TagsInput";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal"
 import EditIcon from "@assets/icons/actions/edit-icon.svg";
 import DeleteIcon from "@assets/icons/actions/trash-icon.svg";
+import { TAG_COLORS } from "@constants/tagColors";
+import { getTagStyle } from "@utils/tagUtils";
 
 export function TagsList() {
   const allTags = useStore(state => state.tags);
@@ -36,10 +38,17 @@ export function TagsList() {
               />
             ) : (
               <>
-                <span className="tags-manager-modal__marker">
+                <span 
+                  className="tags-manager-modal__marker"
+                  style={{ color: TAG_COLORS[tag.color].text }}
+                >
                   •
                 </span>
-                <button type="button" className={`tag tag--${tag.color}`}>
+                <button 
+                  type="button" 
+                  className={`tag tag--${tag.color}`} 
+                  style={getTagStyle(tag.color)}
+                >
                   {tag.label}
                 </button>
 

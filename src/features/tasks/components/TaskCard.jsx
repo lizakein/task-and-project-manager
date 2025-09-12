@@ -1,6 +1,7 @@
 import { useDrag } from 'react-dnd';
 import { useStore } from '@store/useStore';
 import { useContextMenu } from '@hooks/useContextMenu';
+import { getTagStyle } from "@utils/tagUtils";
 import { TaskOptions } from './TaskOptions';
 import MoreIcon from '@assets/icons/actions/more-icon.svg';
 import ClockIcon from '@assets/icons/ui/clock-icon.svg';
@@ -71,7 +72,13 @@ export function TaskCard({
             const tag = allTags.find(t => t.id === tagId);
             if (!tag) return null;
             return (
-              <span key={tag.id} className={`tag tag--${tag.color}`}>{tag.label}</span>
+              <span 
+                key={tag.id} 
+                className={`tag tag--${tag.color}`} 
+                style={getTagStyle(tag.color)}
+              >
+                {tag.label}
+              </span>
             );
           })}
         </div>

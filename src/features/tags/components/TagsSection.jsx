@@ -1,7 +1,8 @@
 import { useState } from "react";
-import ManageTagsIcon from "@assets/icons/navigation/settings-icon.svg";
-import { TagsManagerModal } from "./TagsManagerModal";
 import { useStore } from "@store/useStore";
+import { getTagStyle } from "@utils/tagUtils";
+import { TagsManagerModal } from "./TagsManagerModal";
+import ManageTagsIcon from "@assets/icons/navigation/settings-icon.svg";
 
 export default function TagsSection({ tags, setTags }) {
   const [ isTagsModalOpen, setIsTagsModalOpen ] = useState(false);
@@ -35,6 +36,7 @@ export default function TagsSection({ tags, setTags }) {
               key={tag.id}
               type="button" 
               className={`tag tag--${tag.color} ${isActive ? 'tag--selected' : ''}`}
+              style={getTagStyle(tag.color)}
               aria-pressed={isActive}
               onClick={() => toggleTag(tag.id)}
             >
