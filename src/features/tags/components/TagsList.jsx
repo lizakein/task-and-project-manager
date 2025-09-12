@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useStore } from "@store/useStore";
 import { TagsInput } from "./TagsInput";
-import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal"
+import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
 import EditIcon from "@assets/icons/actions/edit-icon.svg";
 import DeleteIcon from "@assets/icons/actions/trash-icon.svg";
 import { TAG_COLORS } from "@constants/tagColors";
@@ -14,17 +14,19 @@ export function TagsList() {
 
   const [ editingIndex, setEditingIndex ] = useState(null);
   const [ deletingTagId, setDeletingTagId ] = useState(null);
+  const [ openPaletteFor, setOpenPaletteFor] = useState(null);
 
   const handleConfirmDelete = () => {
     if (deletingTagId) {
       deleteTag(deletingTagId);
       setDeletingTagId(null);
     } 
-  }
+  };
 
   return (
     <>
       {allTags.map(tag => {
+        const isOpen = openPaletteFor === tag.id;
         return (
           <div key={tag.id} className="tags-manager-modal__item">
             { editingIndex === tag.id ? (
@@ -38,19 +40,41 @@ export function TagsList() {
               />
             ) : (
               <>
-                <span 
-                  className="tags-manager-modal__marker"
-                  style={{ color: TAG_COLORS[tag.color].text }}
-                >
-                  •
-                </span>
-                <button 
-                  type="button" 
-                  className={`tag tag--${tag.color}`} 
-                  style={getTagStyle(tag.color)}
-                >
-                  {tag.label}
-                </button>
+                <div className="tags-manager-modal__left">
+                  <div className="color-picker">
+                    <button 
+                      type="button"
+                      className="color-picker__current" 
+                      style={{ backgroundColor: TAG_COLORS[tag.color].text }}
+                      onClick={() => setOpenPaletteFor(isOpen ? null : tag.id)}
+                    />
+
+                    <div className={`color-picker__menu ${isOpen ? "open" : ""}`}>
+                      {Object.entries(TAG_COLORS).map(([colorKey, colorVal], i) => (
+                        <button 
+                          key={colorKey}
+                          className="color-option"
+                          style={{
+                            backgroundColor: colorVal.text,
+                            transitionDelay: `${i * 60}ms`
+                          }}
+                          onClick={() => {
+                            updateTag(tag.id, { color: colorKey });
+                            setOpenPaletteFor(null);
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <button 
+                    type="button" 
+                    className={`tag tag--${tag.color}`} 
+                    style={getTagStyle(tag.color)}
+                  >
+                    {tag.label}
+                  </button>
+                </div>
 
                 <div className="tags-manager-modal__actions">
                   <button
