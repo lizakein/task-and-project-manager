@@ -71,7 +71,7 @@ export function TaskCard({
             const tag = allTags.find(t => t.id === tagId);
             if (!tag) return null;
             return (
-              <span key={tag.id} className='tag tag--blue'>{tag.label}</span>
+              <span key={tag.id} className={`tag tag--${tag.color}`}>{tag.label}</span>
             );
           })}
         </div>

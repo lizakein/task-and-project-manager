@@ -34,7 +34,7 @@ export default function TagsSection({ tags, setTags }) {
             <button 
               key={tag.id}
               type="button" 
-              className={`tag tag--blue ${isActive ? 'tag--selected' : ''}`}
+              className={`tag tag--${tag.color} ${isActive ? 'tag--selected' : ''}`}
               aria-pressed={isActive}
               onClick={() => toggleTag(tag.id)}
             >

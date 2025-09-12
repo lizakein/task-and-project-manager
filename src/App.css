@@ -88,6 +88,16 @@ body {
   background-color: #4970D520;
 }
 
+.tag--red {
+  color: var(--high-color);
+  background-color: var(--high-color-background);
+}
+
+.tag--green {
+  color: var(--low-color);
+  background-color: var(--low-color-background);
+}
+
 .tag--selected,
 .priority.priority--selected {
   font-weight: 600;

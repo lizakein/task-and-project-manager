@@ -36,7 +36,10 @@ export function TagsList() {
               />
             ) : (
               <>
-                <button type="button" className={`tag tag--blue`}>
+                <span className="tags-manager-modal__marker">
+                  •
+                </span>
+                <button type="button" className={`tag tag--${tag.color}`}>
                   {tag.label}
                 </button>
 

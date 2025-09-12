@@ -5,6 +5,16 @@
 .tags-manager-modal__item {
 	display: flex;
 	justify-content: space-between;
+	padding-inline-start: 2rem;
+	position: relative;
+}
+
+.tags-manager-modal__marker {
+  position: absolute;
+  left: 0rem;
+	top: -0.7rem;
+  font-size: 2.2rem;
+	cursor: pointer;
 }
 
 .tags-manager-modal__actions {
