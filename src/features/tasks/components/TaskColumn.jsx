@@ -34,6 +34,8 @@ export default function TaskColumn({ title, status, projectId }) {
       ref={drop}
       className='task-column'
       style={{ background: isOver ? "#5020E520" : "#f9f9f9" }}
+      role='list'
+      aria-label={`Column ${title}`}
     >
       <header className='task-column__header' data-status={status}>
         <div className='task-column__header-left'>
@@ -59,6 +61,7 @@ export default function TaskColumn({ title, status, projectId }) {
                     key={task.id} 
                     {...task} 
                     projectId={projectId}
+                    status={status}
                   />
           })
         }

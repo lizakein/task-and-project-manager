@@ -13,7 +13,8 @@ export function TaskCard({
   priority, 
   tags, 
   dueDate, 
-  projectId
+  projectId,
+  status
 }) {
   const { openId, menuPosition, handleMoreClick } = useContextMenu();
   const allTags = useStore(state => state.tags);
@@ -36,11 +37,31 @@ export function TaskCard({
   } else 
     formatedDate = new Date(dueDate).toLocaleDateString('ru-RU');
 
+  const updateTask = useStore(state => state.updateTask);
+
+  const handleKeyDown = (event) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      if (status === "todo") updateTask(id, { status: "in-progress" });
+      else if (status === "in-progress") updateTask(id, { status: "done" });
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      if (status === "done") updateTask(id, { status: "in-progress" });
+      else if (status === "in-progress") updateTask(id, { status: "todo" });
+    }
+  };
+
   return (
     <article 
       ref={drag}
       className='task-card'
       style={{ opacity: isDragging ? 0.5 : 1}}
+      tabIndex={0}
+      role='listitem'
+      aria-label={`Task: ${title}, status: ${status}`}
+      onKeyDown={handleKeyDown}
     >
       <div className='task-card__header'>
         <p className='priority' aria-label={`Priority: ${priority}`} data-priority={priority}>{priority}</p>
