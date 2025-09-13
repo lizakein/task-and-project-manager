@@ -6,7 +6,7 @@ import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
 import EditIcon from '@assets/icons/actions/edit-icon.svg';
 import TrashIcon from '@assets/icons/actions/trash-icon.svg';
 
-export function TaskOptions({ menuPosition, projectId, openId, title }) {
+export function TaskOptions({ menuPosition, projectId, openId, title, onClose }) {
   const [ isModalOpen, setIsModalOpen ] = useState(false);
   const navigate = useNavigate();
   const deleteTask = useStore(state => state.deleteTask);
@@ -18,6 +18,7 @@ export function TaskOptions({ menuPosition, projectId, openId, title }) {
   const handleConfirmDelete = () => {
     deleteTask(openId);
     setIsModalOpen(false);
+    onClose?.();
   };
 
   const handleDeleteClick = () => {
@@ -25,7 +26,7 @@ export function TaskOptions({ menuPosition, projectId, openId, title }) {
   };
 
   return(
-    <OptionsWindow position={menuPosition}>
+    <OptionsWindow position={menuPosition} onClose={onClose}>
       <button className='options-window__item' onClick={handleEditTask}>
         <img src={EditIcon} alt="" role="presentation" />
         <span className='options-window__item-label'>Edit</span>

@@ -6,7 +6,7 @@ import { ConfirmModal } from '@ui/ConfirmModal/ConfirmModal';
 import ArchiveIcon from '@assets/icons/actions/archive-icon.svg';
 import TrashIcon from '@assets/icons/actions/trash-icon.svg';
 
-export function ProjectOptions({ menuPosition, openId, title }) {
+export function ProjectOptions({ menuPosition, openId, title, onClose }) {
   const [ isModalOpen, setIsModalOpen ] = useState(false);
   const navigate = useNavigate();
   const { projectId } = useParams();
@@ -31,6 +31,7 @@ export function ProjectOptions({ menuPosition, openId, title }) {
     }
 
     setIsModalOpen(false);
+    onClose?.();
   };
 
   const handleDeleteProject = () => {
@@ -38,7 +39,7 @@ export function ProjectOptions({ menuPosition, openId, title }) {
   };
 
   return (
-    <OptionsWindow position={menuPosition}>
+    <OptionsWindow position={menuPosition} onClose={onClose}>
       <button className='options-window__item'>
         <img src={ArchiveIcon} alt="" role="presentation" />
         <span className='options-window__item-label'>Archive</span>

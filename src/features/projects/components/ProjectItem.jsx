@@ -5,7 +5,7 @@ import { useContextMenu } from '@hooks/useContextMenu';
 
 export function ProjectItem({ project, isActive }) {
   const navigate = useNavigate();
-  const { openId, menuPosition, handleMoreClick } = useContextMenu();
+  const { openId, menuPosition, handleMoreClick, closeMenu } = useContextMenu();
 
   return (
     <li 
@@ -28,6 +28,7 @@ export function ProjectItem({ project, isActive }) {
           menuPosition={menuPosition} 
           openId={openId}
           title={project.title}
+          onClose={closeMenu}
         />
       )}             
     </li>

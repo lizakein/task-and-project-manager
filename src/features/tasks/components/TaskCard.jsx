@@ -16,7 +16,7 @@ export function TaskCard({
   projectId,
   status
 }) {
-  const { openId, menuPosition, handleMoreClick } = useContextMenu();
+  const { openId, menuPosition, handleMoreClick, closeMenu } = useContextMenu();
   const allTags = useStore(state => state.tags);
 
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -79,6 +79,7 @@ export function TaskCard({
             projectId={projectId} 
             openId={openId}
             title={title}
+            onClose={closeMenu}
           />
         )}
       </div>

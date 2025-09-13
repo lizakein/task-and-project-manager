@@ -17,5 +17,10 @@ export function useContextMenu() {
     setOpenId(openId === id ? null : id);
   };
 
-  return { openId, menuPosition, handleMoreClick, setOpenId };
+  const closeMenu = () => {
+    setOpenId(null);
+    setMenuPosition(null);
+  };
+
+  return { openId, menuPosition, handleMoreClick, closeMenu };
 }
