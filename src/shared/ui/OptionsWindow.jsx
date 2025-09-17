@@ -18,13 +18,13 @@ export function OptionsWindow({ children, position, onClose }) {
       if (event.key === 'Escape') onClose?.();
     };
 
-    document.addEventListener("pointerdown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     document.addEventListener("keydown", handleEsc);
     window.addEventListener("scroll", handleScrollOrResize, true);
     window.addEventListener("resize", handleScrollOrResize);
 
     return () => {
-      document.removeEventListener("pointerdown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
       document.removeEventListener("keydown", handleEsc);
       window.removeEventListener("scroll", handleScrollOrResize, true);
       window.removeEventListener("resize", handleScrollOrResize);
