@@ -1,10 +1,15 @@
 import { useState } from 'react';
 
-export function useContextMenu() {
-  const [ openId, setOpenId ] = useState(null);
-  const [ menuPosition, setMenuPosition ] = useState(null);
+type MenuPosition = {
+  top: number; 
+  left: number;
+};
 
-  const handleMoreClick = (event,  id) => {
+export function useContextMenu() {
+  const [ openId, setOpenId ] = useState<string | null>(null);
+  const [ menuPosition, setMenuPosition ] = useState<MenuPosition | null>(null);
+
+  const handleMoreClick = (event: React.FormEvent<HTMLFormElement>,  id: string) => {
     event.stopPropagation();
 
     const rect = event.currentTarget.getBoundingClientRect();
