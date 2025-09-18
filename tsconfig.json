@@ -9,7 +9,12 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
 
-    "noEmit": true
+    "noEmit": true,
+
+    "allowJs": true,
+    "checkJs": false,
+
+    "moduleResolution": "bundler",
   },
   "include": ["src"]
 }
