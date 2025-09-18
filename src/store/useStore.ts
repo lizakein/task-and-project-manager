@@ -5,9 +5,9 @@ import * as ProjectUtils from '../utils/projectUtils';
 import * as TaskUtils from '../utils/taskUtils';
 
 import { StateStore } from './types';
-import { Project } from '../features/projects/types';
-import { Task } from '../features/tasks/types';
-import { Tag } from '../features/tags/types';
+import { Project } from '../features/projects';
+import { Task } from '../features/tasks';
+import { Tag } from '../features/tags';
 
 const storeCreator: StateCreator<StateStore> = (set, get) => ({
   projects: [] as Project[],
