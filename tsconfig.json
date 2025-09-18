@@ -12,7 +12,6 @@
     "noEmit": true,
 
     "allowJs": true,
-    "checkJs": false,
 
     "moduleResolution": "bundler",
 

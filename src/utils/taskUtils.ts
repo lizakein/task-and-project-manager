@@ -1,4 +1,10 @@
-export const createTask = (tasks, setTasks, projectId) => {
+import { Task } from "features/tasks";
+
+export const createTask = (
+  tasks: Task[], 
+  setTasks: (tasks: Task[]) => void, 
+  projectId: string
+): Task => {
   const task = {
     id: crypto.randomUUID(),
     projectId: projectId,
@@ -16,7 +22,12 @@ export const createTask = (tasks, setTasks, projectId) => {
   return task;
 };
 
-export const updateTask = (tasks, setTasks, taskId, patch) => {
+export const updateTask = (
+  tasks: Task[], 
+  setTasks: (tasks: Task[]) => void, 
+  taskId: string, 
+  patch: Partial<Task>
+) => {
   const updatedTasks = tasks.map(task => 
     task.id === taskId ?
       {
@@ -30,7 +41,11 @@ export const updateTask = (tasks, setTasks, taskId, patch) => {
   setTasks(updatedTasks);
 };
 
-export const deleteTask = (tasks, setTasks, id) => {
+export const deleteTask = (
+  tasks: Task[], 
+  setTasks: (tasks: Task[]) => void, 
+  id: string
+) => {
   const updatedTasks = tasks.filter(t => t.id !== id);
   setTasks(updatedTasks);
 };
