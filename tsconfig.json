@@ -15,10 +15,13 @@
 
     "moduleResolution": "bundler",
 
-    "baseUrl": "./src",
+    "baseUrl": "src",
     "paths": {
+      "@layout/*": ["shared/layout/*"],
+      "@features/*": ["features/*"],
       "@constants/*": ["constants/*"],
-      "@features/*": ["features/*"]
+      "@assets/*": ["assets/*"],
+      "@store/*": ["store/*"]
     }
   },
   "include": ["src"]
