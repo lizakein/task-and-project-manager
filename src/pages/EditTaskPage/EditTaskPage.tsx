@@ -5,31 +5,39 @@ import { Sidepanel } from "@layout/Sidepanel/Sidepanel";
 import { TaskForm } from "./components/TaskForm";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
 import { useStore } from "@store/useStore";
+import type { Task } from "@features/tasks";
 import './EditTaskPage.css';
 
+interface EditTaskPageProps {
+  projectId: string;
+  taskId: string;
+}
+
 export function EditTaskPage() {
-  const { projectId, taskId } = useParams();
+  const { projectId, taskId } = useParams<{ projectId: string; taskId: string }>();
   const navigate = useNavigate();
 
   const updateTask = useStore(state => state.updateTask);
   const task = useStore(state => state.tasks.find(t => t.id === taskId));
   const allTags = useStore(state => state.tags);
 
-  const [ title, setTitle ] = useState(task.title);
-  const [ description, setDescription ] = useState(task.description);
-  const [ priority, setPriority ] = useState(task.priority);
-  const [ tags, setTags ] = useState(task.tags || []);
-  const [ dueDate, setDueDate ] = useState(task.dueDate);
+  const [ title, setTitle ] = useState(task?.title || '');
+  const [ description, setDescription ] = useState(task?.description || '');
+  const [ priority, setPriority ] = useState(task?.priority || '');
+  const [ tags, setTags ] = useState(task?.tags || []);
+  const [ dueDate, setDueDate ] = useState(task?.dueDate || '');
   const [ isModalOpen, setIsModalOpen ] = useState(false);
 
   useEffect(() => {
-    setTags(task.tags || []);
-  }, [task.tags]);
+    setTags(task?.tags || []);
+  }, [task?.tags]);
   
-  const handleSave = (event) => {
+  const handleSave = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!taskId || !projectId) return;
+    
     const validTags = tags.filter(id => allTags.some(tag => tag.id === id));
-    const patch = { title, description, priority, tags: validTags, dueDate };
+    const patch: Partial<Task> = { title, description, priority, tags: validTags, dueDate };
     updateTask(taskId, patch);
     navigate(`/project/${projectId}`);
   }
@@ -45,9 +53,7 @@ export function EditTaskPage() {
   return (
     <main className='edit-task--page page'>
       <Header />
-      <Sidepanel 
-        projectId={projectId} 
-      />
+      <Sidepanel projectId={projectId || ''} />
 
       <div className='content edit-task-page__content'>
         <TaskForm
