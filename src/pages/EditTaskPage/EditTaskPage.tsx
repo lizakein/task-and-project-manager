@@ -57,11 +57,11 @@ export function EditTaskPage() {
 
       <div className='content edit-task-page__content'>
         <TaskForm
-          title={title} setTitle={setTitle}
-          description={description} setDescription={setDescription}
-          priority={priority} setPriority={setPriority}
-          tags={tags} setTags={setTags}
-          dueDate={dueDate} setDueDate={setDueDate}
+          title={{ value: title, setValue: setTitle }}
+          description={{ value: description, setValue: setDescription }}
+          priority={{ value: priority, setValue: setPriority }}
+          tags={{ value: tags, setValue: setTags }}
+          dueDate={{ value: dueDate, setValue: setDueDate }}
           handleSave={handleSave} handleCancel={handleCancel}
         />
       </div>

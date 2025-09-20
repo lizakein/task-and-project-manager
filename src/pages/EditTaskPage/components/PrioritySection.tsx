@@ -1,4 +1,10 @@
-export function PrioritySection({ priority, setPriority }) {
+import { FieldState } from "../types";
+
+interface PrioritySectionProps {
+  priority: FieldState<string>;
+};
+
+export function PrioritySection({ priority }: PrioritySectionProps) {
   const levels = ["low", "medium", "high"];
 
   return (
@@ -10,11 +16,11 @@ export function PrioritySection({ priority, setPriority }) {
             key={level}
             type="button" 
             className={`priority priority--${level} ${
-              priority === level ? "priority--selected" : ""
+              priority.value === level ? "priority--selected" : ""
             }`}
             data-priority={`${level}`}
-            aria-pressed={priority === level}
-            onClick={() => setPriority(level)}
+            aria-pressed={priority.value === level}
+            onClick={() => priority.setValue(level)}
           >
             {level}
           </button>
