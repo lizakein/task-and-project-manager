@@ -4,6 +4,22 @@ import { DescriptionSection } from "./DescriptionSection";
 import { DueDateSection } from "./DueDateSection";
 import { UploadButton } from "@ui/UploadButton";
 import { FormActions } from "@ui/FormActions";
+import { Dispatch, SetStateAction } from "react";
+
+interface TaskFormProps {
+  title: string;
+  setTitle: Dispatch<SetStateAction<string>>;
+  description: string;
+  setDescription: Dispatch<SetStateAction<string>>;
+  priority: string;
+  setPriority: Dispatch<SetStateAction<string>>;
+  tags: string[];
+  setTags: Dispatch<SetStateAction<string[]>>;
+  dueDate: string;
+  setDueDate: Dispatch<SetStateAction<string>>;
+  handleSave: (event: React.FormEvent<HTMLFormElement>) => void;
+  handleCancel: () => void;
+};
 
 export function TaskForm({
   title, setTitle,
@@ -12,7 +28,7 @@ export function TaskForm({
   tags, setTags,
   dueDate, setDueDate,
   handleSave, handleCancel
-}) {
+}: TaskFormProps) {
   return (
     <form className="edit-task-page__form" onSubmit={handleSave}>
       <input 
