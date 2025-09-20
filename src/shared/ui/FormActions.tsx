@@ -1,6 +1,10 @@
 import TrashIcon from "@assets/icons/actions/trash-icon.svg";
 
-export function FormActions({ handleCancel }) {
+interface FormActionsProps {
+  handleCancel: () => void;
+};
+
+export function FormActions({ handleCancel }: FormActionsProps) {
   return (
     <div className="edit-task-page__actions">
       <button 
