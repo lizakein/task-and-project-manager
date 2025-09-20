@@ -17,7 +17,8 @@
 
     "baseUrl": "./src",
     "paths": {
-      "@constants/*": ["constants/*"]
+      "@constants/*": ["constants/*"],
+      "@features/*": ["features/*"]
     }
   },
   "include": ["src"]
