@@ -6,7 +6,11 @@ import ArrowDownIcon from '@assets/icons/actions/arrow-down-icon.svg';
 import SortIcon from '@assets/icons/actions/sort-icon.svg';
 import { useStore } from '@store/useStore';
 
-export function ProjectHeader({ projectId }) {
+interface ProjectHeaderProps {
+  projectId: string;
+}
+
+export function ProjectHeader({ projectId }: ProjectHeaderProps) {
   const currentProject = useStore(state => state.projects.find(p => p.id === projectId));
   const updateProjectTitle = useStore(state => state.updateProjectTitle);
 
@@ -28,12 +32,13 @@ export function ProjectHeader({ projectId }) {
     }
   };
 
-  const updateTitleInput = event => setTitle(event.target.value);
+  const updateTitleInput = (event: React.ChangeEvent<HTMLInputElement>) => 
+    setTitle(event.target.value);
 
-  const handleTitleKeyDown = (event) => {
+  const handleTitleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') editTitle();
     else if (event.key === 'Escape') {
-      setTitle(currentProject.title);
+      setTitle(currentProject?.title || '');
       setIsEditingTitle(false);
     }
   }

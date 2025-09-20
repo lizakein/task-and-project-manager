@@ -1,36 +1,36 @@
 import { useParams } from 'react-router-dom';
 import { ProjectHeader } from './ProjectHeader';
-import { TaskColumn } from '@/features/tasks';
+import { TaskColumn } from '@features/tasks';
 import { Header } from "@layout/Header/Header";
 import { Sidepanel } from "@layout/Sidepanel/Sidepanel";
 import './ProjectPage.css';
 
 export function ProjectPage() {
-  const { projectId } = useParams();
+  const { projectId } = useParams<{ projectId: string }>();
   
   return (
     <main className='page'>
       <Header />
-      <Sidepanel projectId={projectId} />
+      <Sidepanel projectId={projectId || ''} />
 
       <div className='content'>
-        <ProjectHeader projectId={projectId} />
+        <ProjectHeader projectId={projectId || ''} />
 
         <section className='task-board'>
           <TaskColumn 
             title='To Do' 
             status='todo' 
-            projectId={projectId} 
+            projectId={projectId || ''} 
           />
           <TaskColumn 
             title='In progress' 
             status='in-progress' 
-            projectId={projectId} 
+            projectId={projectId || ''} 
             />
           <TaskColumn 
             title='Done' 
             status='done' 
-            projectId={projectId}
+            projectId={projectId || ''}
           />
         </section> 
       </div>         
