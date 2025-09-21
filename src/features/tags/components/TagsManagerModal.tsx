@@ -8,7 +8,7 @@ interface TagsManagerModalProps {
 }
 
 export function TagsManagerModal({ isTagsModalOpen }: TagsManagerModalProps) {
-	if (!isTagsModalOpen) return null;
+	if (!isTagsModalOpen.value) return null;
 
 	return createPortal(
 		<div className="overlay tags-manager-modal__overlay">
