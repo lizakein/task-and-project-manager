@@ -1,7 +1,15 @@
 import { createPortal } from "react-dom";
 import './ConfirmModal.css';
 
-export function ConfirmModal({ isOpen, title, message, onConfirm, onCancel}) {
+interface ConfirmModalProps {
+  isOpen: boolean;
+  title: string;
+  message: string;
+  onConfirm: () => void;
+  onCancel: () => void;
+};
+
+export function ConfirmModal({ isOpen, title, message, onConfirm, onCancel}: ConfirmModalProps) {
   if (!isOpen) return null;
 
   return createPortal(
