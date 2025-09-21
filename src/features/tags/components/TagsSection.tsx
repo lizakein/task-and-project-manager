@@ -59,7 +59,7 @@ export default function TagsSection({ tags }: TagsSectionProps) {
         })}
 
         <TagsManagerModal 
-          isTagsModalOpen={{ value: isTagsModalOpen, setIsTagsModalOpen: setIsTagsModalOpen }}
+          isTagsModalOpen={{ value: isTagsModalOpen, setValue: setIsTagsModalOpen }}
         />    
       </div>
     </section>
