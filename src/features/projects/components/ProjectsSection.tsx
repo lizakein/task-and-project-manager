@@ -3,7 +3,11 @@ import { ProjectItem } from './ProjectItem';
 import AddSquareIcon from '@assets/icons/actions/add-square-icon.svg';
 import { useStore } from '@store/useStore';
 
-export default function ProjectsSection({ projectId }) {
+interface ProjectsSection {
+  projectId: string;
+}
+
+export default function ProjectsSection({ projectId }: ProjectsSection) {
   const navigate = useNavigate();
 
   const { projects } = useStore();
