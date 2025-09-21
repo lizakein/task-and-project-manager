@@ -2,15 +2,20 @@ import { useState } from "react";
 import { useStore } from "@store/useStore";
 import { TagsList } from "./TagsList";
 import { TagsInput } from "./TagsInput";
+import { Dispatch, SetStateAction } from "react";
 import AddIcon from "@assets/icons/actions/add-square-icon.svg";
 import CloseIcon from "@assets/icons/actions/close-icon.svg";
 
-export function TagsManagerContent({ setIsTagsModalOpen }) {
+interface TagsManagerContentProps {
+  setIsTagsModalOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+export function TagsManagerContent({ setIsTagsModalOpen }: TagsManagerContentProps) {
   const allTags = useStore(state => state.tags);
 	const addTag = useStore(state => state.addTag);
 
-	const [ isAdding, setIsAdding ] = useState(false);
-	const [ isWarning, setIsWarning ] = useState(false);
+	const [ isAdding, setIsAdding ] = useState<boolean>(false);
+	const [ isWarning, setIsWarning ] = useState<boolean>(false);
 
   return (
     <>
@@ -29,7 +34,7 @@ export function TagsManagerContent({ setIsTagsModalOpen }) {
 
       { isAdding ?
         <TagsInput
-          onSave={(newValue) => {
+          onSave={(newValue: string | null) => {
             if (newValue && !allTags.some(t => t.label === newValue)) {
               addTag(newValue, 'blue');
               setIsAdding(false);
