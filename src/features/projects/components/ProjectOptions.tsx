@@ -5,8 +5,16 @@ import { useStore } from '@store/useStore';
 import { ConfirmModal } from '@ui/ConfirmModal/ConfirmModal';
 import ArchiveIcon from '@assets/icons/actions/archive-icon.svg';
 import TrashIcon from '@assets/icons/actions/trash-icon.svg';
+import { MenuPosition } from '@hooks/useContextMenu';
 
-export function ProjectOptions({ menuPosition, openId, title, onClose }) {
+interface ProjectOptionsProps {
+  menuPosition: MenuPosition;
+  openId: string;
+  title: string;
+  onClose: () => void;
+};
+
+export function ProjectOptions({ menuPosition, openId, title, onClose }: ProjectOptionsProps) {
   const [ isModalOpen, setIsModalOpen ] = useState(false);
   const navigate = useNavigate();
   const { projectId } = useParams();
