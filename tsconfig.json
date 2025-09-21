@@ -22,7 +22,8 @@
       "@features/*": ["features/*"],
       "@constants/*": ["constants/*"],
       "@assets/*": ["assets/*"],
-      "@store/*": ["store/*"]
+      "@store/*": ["store/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "include": ["src"]
