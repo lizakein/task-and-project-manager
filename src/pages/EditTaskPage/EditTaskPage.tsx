@@ -11,7 +11,9 @@ import './EditTaskPage.css';
 interface EditTaskPageProps {
   projectId: string;
   taskId: string;
-}
+};
+
+type PriorityValue= Task["priority"] | '';
 
 export function EditTaskPage() {
   const { projectId, taskId } = useParams<{ projectId: string; taskId: string }>();
@@ -23,7 +25,7 @@ export function EditTaskPage() {
 
   const [ title, setTitle ] = useState(task?.title || '');
   const [ description, setDescription ] = useState(task?.description || '');
-  const [ priority, setPriority ] = useState(task?.priority || '');
+  const [ priority, setPriority ] = useState<PriorityValue>(task?.priority || '');
   const [ tags, setTags ] = useState(task?.tags || []);
   const [ dueDate, setDueDate ] = useState(task?.dueDate || '');
   const [ isModalOpen, setIsModalOpen ] = useState(false);
@@ -37,7 +39,13 @@ export function EditTaskPage() {
     if (!taskId || !projectId) return;
     
     const validTags = tags.filter(id => allTags.some(tag => tag.id === id));
-    const patch: Partial<Task> = { title, description, priority, tags: validTags, dueDate };
+    const patch: Partial<Task> = { 
+      title, 
+      description, 
+      tags: validTags, 
+      dueDate, 
+      ...(priority ? { priority } : {}) 
+    };
     updateTask(taskId, patch);
     navigate(`/project/${projectId}`);
   }

@@ -1,11 +1,12 @@
+import { Task } from "@features/tasks";
 import { FieldState } from "../../../types/fieldState";
 
 interface PrioritySectionProps {
-  priority: FieldState<string>;
+  priority: FieldState<Task["priority"] | "">;
 };
 
 export function PrioritySection({ priority }: PrioritySectionProps) {
-  const levels = ["low", "medium", "high"];
+  const levels: Array<Task["priority"]> = ["low", "medium", "high"];
 
   return (
     <section className="edit-task-page__section edit-task-page__priority-section">

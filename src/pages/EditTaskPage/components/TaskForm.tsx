@@ -5,11 +5,12 @@ import { DueDateSection } from "./DueDateSection";
 import { UploadButton } from "@ui/UploadButton";
 import { FormActions } from "@ui/FormActions";
 import type { FieldState } from "../../../types/fieldState";
+import { Task } from "@features/tasks";
 
 interface TaskFormProps {
   title: FieldState<string>;
   description: FieldState<string>;
-  priority: FieldState<string>;
+  priority: FieldState<Task["priority"] | "">;
   tags: FieldState<string[]>;
   dueDate: FieldState<string>;
   handleSave: (event: React.FormEvent<HTMLFormElement>) => void;
