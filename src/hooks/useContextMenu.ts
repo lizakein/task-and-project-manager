@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-type MenuPosition = {
+export type MenuPosition = {
   top: number; 
   left: number;
 };

@@ -5,8 +5,17 @@ import { OptionsWindow } from "@ui/OptionsWindow";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
 import EditIcon from '@assets/icons/actions/edit-icon.svg';
 import TrashIcon from '@assets/icons/actions/trash-icon.svg';
+import { MenuPosition } from "@hooks/useContextMenu";
 
-export function TaskOptions({ menuPosition, projectId, openId, title, onClose }) {
+interface TaskOptionsProps {
+  menuPosition: MenuPosition;
+  projectId: string;
+  openId: string;
+  title: string;
+  onClose: () => void;
+};
+
+export function TaskOptions({ menuPosition, projectId, openId, title, onClose }: TaskOptionsProps) {
   const [ isModalOpen, setIsModalOpen ] = useState(false);
   const navigate = useNavigate();
   const deleteTask = useStore(state => state.deleteTask);
