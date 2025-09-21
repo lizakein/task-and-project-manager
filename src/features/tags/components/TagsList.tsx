@@ -12,9 +12,9 @@ export function TagsList() {
   const updateTag = useStore(state => state.updateTag);
   const deleteTag = useStore(state => state.deleteTag);
 
-  const [ editingIndex, setEditingIndex ] = useState(null);
-  const [ deletingTagId, setDeletingTagId ] = useState(null);
-  const [ openPaletteFor, setOpenPaletteFor] = useState(null);
+  const [ editingIndex, setEditingIndex ] = useState<string | null>(null);
+  const [ deletingTagId, setDeletingTagId ] = useState<string | null>(null);
+  const [ openPaletteFor, setOpenPaletteFor] = useState<string | null>(null);
 
   const handleConfirmDelete = () => {
     if (deletingTagId) {
@@ -45,7 +45,7 @@ export function TagsList() {
                     <button 
                       type="button"
                       className="color-picker__current" 
-                      style={{ backgroundColor: TAG_COLORS[tag.color].text }}
+                      style={{ backgroundColor: TAG_COLORS[tag.color as keyof typeof TAG_COLORS].text }}
                       onClick={() => setOpenPaletteFor(isOpen ? null : tag.id)}
                     />
 
@@ -59,7 +59,7 @@ export function TagsList() {
                             transitionDelay: `${i * 60}ms`
                           }}
                           onClick={() => {
-                            updateTag(tag.id, { color: colorKey });
+                            updateTag(tag.id, { color: colorKey as keyof typeof TAG_COLORS });
                             setOpenPaletteFor(null);
                           }}
                         />
@@ -70,7 +70,7 @@ export function TagsList() {
                   <button 
                     type="button" 
                     className={`tag tag--${tag.color}`} 
-                    style={getTagStyle(tag.color)}
+                    style={getTagStyle(tag.color as keyof typeof TAG_COLORS)}
                   >
                     {tag.label}
                   </button>
