@@ -3,7 +3,7 @@ import { useStore } from "@store/useStore";
 import { getTagStyle } from "@utils/tagUtils";
 import { TagsManagerModal } from "./TagsManagerModal";
 import ManageTagsIcon from "@assets/icons/navigation/settings-icon.svg";
-import { FieldState } from "../../../pages/EditTaskPage/types";
+import { FieldState } from "../../../types/fieldState";
 import { TAG_COLORS } from "@constants/tagColors";
 
 interface TagsSectionProps {

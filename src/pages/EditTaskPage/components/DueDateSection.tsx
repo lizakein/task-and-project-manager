@@ -1,4 +1,4 @@
-import { FieldState } from "../types";
+import { FieldState } from "../../../types/fieldState";
 
 interface DueDateProps {
   dueDate: FieldState<string>;

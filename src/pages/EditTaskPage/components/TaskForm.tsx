@@ -4,7 +4,7 @@ import { DescriptionSection } from "./DescriptionSection";
 import { DueDateSection } from "./DueDateSection";
 import { UploadButton } from "@ui/UploadButton";
 import { FormActions } from "@ui/FormActions";
-import type { FieldState } from "../types";
+import type { FieldState } from "../../../types/fieldState";
 
 interface TaskFormProps {
   title: FieldState<string>;

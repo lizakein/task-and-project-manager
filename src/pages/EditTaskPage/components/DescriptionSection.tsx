@@ -1,4 +1,4 @@
-import { FieldState } from "../types";
+import { FieldState } from "../../../types/fieldState";
 
 interface DescriptionProps {
   description: FieldState<string>;
