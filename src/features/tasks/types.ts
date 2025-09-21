@@ -3,8 +3,8 @@ export interface Task {
   projectId: string;
   title: string;
   description: string;
-  status: string;
-  priority: string;
+  status: "todo" | "in-progress" | "done";
+  priority: "low" | "medium" | "high";
   dueDate: string;
   tags: string[];
   createdAt: string;

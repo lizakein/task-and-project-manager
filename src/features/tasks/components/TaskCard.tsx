@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useDrag } from 'react-dnd';
 import { useStore } from '@store/useStore';
 import { useContextMenu } from '@hooks/useContextMenu';
@@ -5,6 +6,18 @@ import { getTagStyle } from "@utils/tagUtils";
 import { TaskOptions } from './TaskOptions';
 import MoreIcon from '@assets/icons/actions/more-icon.svg';
 import ClockIcon from '@assets/icons/ui/clock-icon.svg';
+import { TAG_COLORS } from '@constants/tagColors';
+
+interface TaskCardProps {
+  id: string;
+  title: string;
+  description: string;
+  priority: "low" | "medium" | "high";
+  tags: string[];
+  dueDate: string;
+  projectId: string;
+  status: "todo" | "in-progress" | "done";
+};
 
 export function TaskCard({ 
   id, 
@@ -15,21 +28,24 @@ export function TaskCard({
   dueDate, 
   projectId,
   status
-}) {
+}: TaskCardProps) {
   const { openId, menuPosition, handleMoreClick, closeMenu } = useContextMenu();
   const allTags = useStore(state => state.tags);
 
-  const [{ isDragging }, drag] = useDrag(() => ({
+  const [{ isDragging }, drag] = useDrag({
     type: "TASK",
-    item: { id, status, projectId},
+    item: { id },
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
     })
-  }));
+  });
+
+  const divRef = useRef<HTMLElement | null>(null);
+  drag(divRef);
 
   let formatedDate;
   if (dueDate.length > 10) {
-    const options = {
+    const options: Intl.DateTimeFormatOptions = {
       hour: "numeric",
       minute: "numeric"
     };
@@ -39,7 +55,7 @@ export function TaskCard({
 
   const updateTask = useStore(state => state.updateTask);
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
       if (status === "todo") updateTask(id, { status: "in-progress" });
@@ -55,7 +71,7 @@ export function TaskCard({
 
   return (
     <article 
-      ref={drag}
+      ref={divRef}
       className='task-card'
       style={{ opacity: isDragging ? 0.5 : 1}}
       tabIndex={0}
@@ -68,7 +84,7 @@ export function TaskCard({
         <button 
           className="icon-button" 
           aria-label={`More options for task ${title}`}
-          onClick={(e) => handleMoreClick(e, id)}
+          onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleMoreClick(e, id)}
         >
           <img src={MoreIcon} alt="" role="presentation" />
         </button>
@@ -97,7 +113,7 @@ export function TaskCard({
               <span 
                 key={tag.id} 
                 className={`tag tag--${tag.color}`} 
-                style={getTagStyle(tag.color)}
+                style={getTagStyle(tag.color as keyof typeof TAG_COLORS)}
               >
                 {tag.label}
               </span>

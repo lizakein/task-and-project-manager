@@ -9,7 +9,7 @@ export function useContextMenu() {
   const [ openId, setOpenId ] = useState<string | null>(null);
   const [ menuPosition, setMenuPosition ] = useState<MenuPosition | null>(null);
 
-  const handleMoreClick = (event: React.FormEvent<HTMLFormElement>,  id: string) => {
+  const handleMoreClick = (event: React.MouseEvent<HTMLButtonElement>,  id: string) => {
     event.stopPropagation();
 
     const rect = event.currentTarget.getBoundingClientRect();
