@@ -2,8 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import MoreIcon from '@assets/icons/actions/more-icon.svg';
 import { ProjectOptions } from './ProjectOptions';
 import { useContextMenu } from '@hooks/useContextMenu';
+import { Project } from '../types';
 
-export function ProjectItem({ project, isActive }) {
+interface ProjectItemProps {
+  project: Project;
+  isActive: boolean;
+}
+
+export function ProjectItem({ project, isActive }: ProjectItemProps) {
   const navigate = useNavigate();
   const { openId, menuPosition, handleMoreClick, closeMenu } = useContextMenu();
 
@@ -11,7 +17,7 @@ export function ProjectItem({ project, isActive }) {
     <li 
       className={`projects-list__item ${isActive && 
         `projects-list__item--active`}`}
-      style={{ "--marker-color": project.color }}
+      style={{ "--marker-color": project.color } as React.CSSProperties }
       onClick={() => {navigate(`/project/${project.id}`)}}
     >
       <span className='projects-list__name'>{project.title}</span>
