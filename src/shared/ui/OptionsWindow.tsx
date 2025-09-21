@@ -1,12 +1,19 @@
+import { MenuPosition } from "@hooks/useContextMenu";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
-export function OptionsWindow({ children, position, onClose }) {
-  const ref = useRef(null);
+interface OptionsWindowProps {
+  children: React.ReactNode;
+  position: MenuPosition;
+  onClose: () => void;
+};
+
+export function OptionsWindow({ children, position, onClose }: OptionsWindowProps) {
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target))
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node))
         onClose?.();
     };
 
@@ -14,7 +21,7 @@ export function OptionsWindow({ children, position, onClose }) {
       onClose?.();
     };
 
-    const handleEsc = (event) => {
+    const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose?.();
     };
 
