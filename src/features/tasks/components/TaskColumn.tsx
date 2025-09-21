@@ -1,26 +1,37 @@
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDrop } from 'react-dnd';
 import { useStore } from '@store/useStore';
 import { TaskCard } from './TaskCard';
+import { DragItem } from 'types/dnd';
 import AddPurpleIcon from '@assets/icons/actions/add-square-purple-icon.svg';
 
-export default function TaskColumn({ title, status, projectId }) {
+interface TaskColumnProps {
+  title: string;
+  status: "todo" | "in-progress" | "done";
+  projectId: string;
+}
+
+export default function TaskColumn({ title, status, projectId }: TaskColumnProps) {
   const navigate = useNavigate();
   const addTask = useStore(state => state.addTask);
   const updateTask = useStore(state => state.updateTask);
   const tasks = useStore(state => state.tasks);
 
-  const [{ isOver }, drop] = useDrop(() => ({
+  const [{ isOver }, drop] = useDrop<DragItem, void, { isOver: boolean }>(() => ({
     accept: "TASK",
     drop: (item) => {
       if (item.status !== status) {
-        updateTask(item.id, { status })
+        updateTask(item.id, { status });
       }
     },
     collect: (monitor) => ({
-      isOver: monitor.isOver()
-    })
+      isOver: monitor.isOver(),
+    }),
   }));
+
+  const divRef = useRef<HTMLDivElement | null>(null);
+  drop(divRef);
 
   const filteredTasks = tasks.filter((task) => task.projectId === projectId && task.status === status);
 
@@ -31,7 +42,7 @@ export default function TaskColumn({ title, status, projectId }) {
 
   return (
     <div
-      ref={drop}
+      ref={divRef}
       className='task-column'
       style={{ background: isOver ? "#5020E520" : "#f9f9f9" }}
       role='list'
