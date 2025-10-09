@@ -11,7 +11,7 @@ interface TaskOptionsProps {
   menuPosition: MenuPosition;
   projectId: string;
   openId: string;
-  title: string;
+  title: string | null;
   onClose: () => void;
 };
 

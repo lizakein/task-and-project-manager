@@ -10,11 +10,11 @@ import { TAG_COLORS } from '@constants/tagColors';
 
 interface TaskCardProps {
   id: string;
-  title: string;
-  description: string;
+  title: string | null;
+  description: string | null;
   priority: "low" | "medium" | "high";
-  tags: string[];
-  dueDate: string;
+  tags: string[] | null;
+  dueDate: string | null;
   projectId: string;
   status: "todo" | "in-progress" | "done";
 };
@@ -40,19 +40,24 @@ export function TaskCard({
     })
   });
 
-  const divRef = useRef<HTMLElement | null>(null);
+  const divRef = useRef<HTMLDivElement | null>(null);
   drag(divRef);
 
+  let isoDate;
   let formatedDate;
-  if (dueDate.length > 10) {
-    const options: Intl.DateTimeFormatOptions = {
-      hour: "numeric",
-      minute: "numeric"
-    };
-    formatedDate = new Date(dueDate).toLocaleDateString('ru-RU', options);
-  } else 
-    formatedDate = new Date(dueDate).toLocaleDateString('ru-RU');
+  if (dueDate) {
+    isoDate = new Date(dueDate).toISOString();
 
+    if (dueDate.length > 10) {
+      const options: Intl.DateTimeFormatOptions = {
+        hour: "numeric",
+        minute: "numeric"
+      };
+      formatedDate = new Date(dueDate).toLocaleDateString('ru-RU', options);
+    } else 
+      formatedDate = new Date(dueDate).toLocaleDateString('ru-RU');
+  }
+  
   const updateTask = useStore(state => state.updateTask);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -80,10 +85,18 @@ export function TaskCard({
       onKeyDown={handleKeyDown}
     >
       <div className='task-card__header'>
-        <p className='priority' aria-label={`Priority: ${priority}`} data-priority={priority}>{priority}</p>
+        <p 
+          className='priority' 
+          aria-label="Priority" 
+          data-priority={priority}
+        >
+          {priority}
+        </p>
         <button 
           className="icon-button" 
           aria-label={`More options for task ${title}`}
+          aria-haspopup="menu"
+          aria-expanded={openId === id}
           onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleMoreClick(e, id)}
         >
           <img src={MoreIcon} alt="" role="presentation" />
@@ -101,12 +114,16 @@ export function TaskCard({
       </div>
 
       <h3 className='task-card__title'>{title}</h3>
-      { description && <p className='task-card__description'>{description}</p> }
+      { description && 
+        <p className='task-card__description' aria-label='Description'>
+          {description}
+        </p> 
+      }
       
 
       <div className='task-card__footer'>
-        <div className='task-card__tags'>
-          {tags.map((tagId) => {
+        <div className='task-card__tags' aria-label='Tags'>
+          {tags && tags.map((tagId) => {
             const tag = allTags.find(t => t.id === tagId);
             if (!tag) return null;
             return (
@@ -122,7 +139,11 @@ export function TaskCard({
         </div>
         
         {dueDate && 
-          <time className='task-card__due' dateTime={formatedDate}>
+          <time 
+            className='task-card__due' 
+            aria-label='Deadline' 
+            dateTime={isoDate}
+          >
             <img src={ClockIcon} alt="" role="presentation" />
             <span>
               {formatedDate}
