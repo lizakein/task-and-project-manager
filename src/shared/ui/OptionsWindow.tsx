@@ -7,15 +7,26 @@ interface OptionsWindowProps {
   position: MenuPosition;
   onClose: () => void;
   triggerRef: React.RefObject<HTMLButtonElement | null>;
+  shouldReturnFocus?: boolean;
+  disableAutoFocus?: boolean;
 };
 
-export function OptionsWindow({ children, position, onClose, triggerRef }: OptionsWindowProps) {
+export function OptionsWindow({ 
+  children, 
+  position, 
+  onClose, 
+  triggerRef,
+  shouldReturnFocus = true, 
+  disableAutoFocus = false
+}: OptionsWindowProps) {
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const firstButton = menuRef.current?.querySelector<HTMLButtonElement>("button");
-    firstButton?.focus();
-
+    if (!disableAutoFocus) {
+      const firstButton = menuRef.current?.querySelector<HTMLButtonElement>("button");
+      firstButton?.focus();
+    }
+    
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node))
         onClose?.();
@@ -40,9 +51,10 @@ export function OptionsWindow({ children, position, onClose, triggerRef }: Optio
       window.removeEventListener("scroll", handleScrollOrResize, true);
       window.removeEventListener("resize", handleScrollOrResize);
 
-      triggerRef.current?.focus();
+      if (shouldReturnFocus)
+        triggerRef.current?.focus();
     };
-  }, [onClose, triggerRef]);
+  }, [onClose, triggerRef, shouldReturnFocus, disableAutoFocus]);
 
   return createPortal(
     <div

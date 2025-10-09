@@ -48,7 +48,13 @@ export function ProjectOptions({ menuPosition, openId, title, onClose, triggerRe
   };
 
   return (
-    <OptionsWindow position={menuPosition} onClose={onClose} triggerRef={triggerRef}>
+    <OptionsWindow 
+      position={menuPosition} 
+      onClose={onClose} 
+      triggerRef={triggerRef}
+      shouldReturnFocus={!isModalOpen}
+      disableAutoFocus={isModalOpen}
+    >
       <button 
         className='options-window__item' 
         role="menuitem" 
