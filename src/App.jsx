@@ -11,6 +11,7 @@ import './App.css';
 import { CalendarPage } from "./pages/CalendarPage/CalendarPage";
 import { AnalyticsPage } from "./pages/AnalyticsPage/AnalyticsPage";
 import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
+import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
   const { loadProjects, loadTasks } = useStore();
@@ -30,6 +31,7 @@ function App() {
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/project/:projectId" element={<ProjectPage />} />  
         <Route path="/project/:projectId/:taskId" element={<EditTaskPage />} /> 
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </DndProvider>
   );
