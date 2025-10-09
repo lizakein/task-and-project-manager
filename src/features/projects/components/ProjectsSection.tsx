@@ -4,7 +4,7 @@ import AddSquareIcon from '@assets/icons/actions/add-square-icon.svg';
 import { useStore } from '@store/useStore';
 
 interface ProjectsSection {
-  projectId: string;
+  projectId: string | null;
 }
 
 export default function ProjectsSection({ projectId }: ProjectsSection) {

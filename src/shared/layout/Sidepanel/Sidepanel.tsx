@@ -3,7 +3,7 @@ import { SidepanelMenu } from './SidepanelMenu';
 import './Sidepanel.css';
 
 interface SidepanelProps {
-  projectId?: string | null;
+  projectId: string | null;
 }
 
 export function Sidepanel({ projectId }: SidepanelProps) {
