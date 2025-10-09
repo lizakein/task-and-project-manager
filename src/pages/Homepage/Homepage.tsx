@@ -1,11 +1,9 @@
-import { Header } from "@layout/Header/Header";
-import { Sidepanel } from "@layout/Sidepanel/Sidepanel";
+import { DevelopmentPageLayout } from "@layout/DevelopmentPageLayout";
 
 export function Homepage() {
   return (
     <>
-      <Header />
-      <Sidepanel projectId={null} />
+      <DevelopmentPageLayout />
     </>
   );
 }
