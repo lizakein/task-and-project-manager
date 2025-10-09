@@ -8,6 +8,9 @@ import { ProjectPage } from "./pages/ProjectPage/ProjectPage";
 import { Homepage } from "./pages/Homepage/Homepage";
 import { EditTaskPage } from "./pages/EditTaskPage/EditTaskPage";
 import './App.css';
+import { CalendarPage } from "./pages/CalendarPage/CalendarPage";
+import { AnalyticsPage } from "./pages/AnalyticsPage/AnalyticsPage";
+import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
 
 function App() {
   const { loadProjects, loadTasks } = useStore();
@@ -22,6 +25,9 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <Routes>
         <Route index element={<Homepage />} />
+        <Route path="/calendar" element={<CalendarPage />} />
+        <Route path="/analytics" element={<AnalyticsPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
         <Route path="/project/:projectId" element={<ProjectPage />} />  
         <Route path="/project/:projectId/:taskId" element={<EditTaskPage />} /> 
       </Routes>
