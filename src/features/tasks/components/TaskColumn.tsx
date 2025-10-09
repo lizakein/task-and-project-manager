@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDrop } from 'react-dnd';
 import { useStore } from '@store/useStore';
@@ -18,11 +18,14 @@ export default function TaskColumn({ title, status, projectId }: TaskColumnProps
   const updateTask = useStore(state => state.updateTask);
   const tasks = useStore(state => state.tasks);
 
+  const [ liveMessage, setLiveMessage ] = useState("");
+
   const [{ isOver }, drop] = useDrop<DragItem, void, { isOver: boolean }>(() => ({
     accept: "TASK",
     drop: (item) => {
       if (item.status !== status) {
         updateTask(item.id, { status });
+        setLiveMessage(`Task moved to ${title} column`);
       }
     },
     collect: (monitor) => ({
@@ -81,6 +84,14 @@ export default function TaskColumn({ title, status, projectId }: TaskColumnProps
                   />
           })
         }
+      </div>
+
+      <div
+        aria-live='polite'
+        aria-atomic="true"
+        className="sr-only"
+      >
+        {liveMessage}
       </div>
     </section>
   );
