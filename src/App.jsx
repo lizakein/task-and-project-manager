@@ -12,6 +12,7 @@ import { CalendarPage } from "./pages/CalendarPage/CalendarPage";
 import { AnalyticsPage } from "./pages/AnalyticsPage/AnalyticsPage";
 import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
+import { ProjectsPage } from "./pages/ProjectsPage/ProjectsPage";
 
 function App() {
   const { loadProjects, loadTasks } = useStore();
@@ -29,6 +30,7 @@ function App() {
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/analytics" element={<AnalyticsPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/project" element={<ProjectsPage />} />
         <Route path="/project/:projectId" element={<ProjectPage />} />  
         <Route path="/project/:projectId/:taskId" element={<EditTaskPage />} /> 
         <Route path="*" element={<NotFoundPage />} />

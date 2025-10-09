@@ -1,0 +1,14 @@
+.projects-page__content {
+  margin-block-start: 5rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.projects-page__text {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--text-color);
+}
