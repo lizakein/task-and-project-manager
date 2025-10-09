@@ -54,7 +54,12 @@ export function TagsManagerContent({ setIsTagsModalOpen }: TagsManagerContentPro
       )}
 
       { isWarning && 
-        <p className="tags-manager-modal__warning">Error: this tag is already exist</p>
+        <p 
+          className="tags-manager-modal__warning" 
+          role="alert"
+        >
+          Error: this tag is already exists
+        </p>
       }
     </>
   );
