@@ -10,7 +10,7 @@ export function Header() {
   const userName = 'Amina Agraval';
 
   return (
-    <header className='header'>
+    <header className='header' role='banner'>
       <div className='header__brand'>
         <img 
           src={TaskManagerLogo} 
@@ -35,28 +35,29 @@ export function Header() {
           <input 
             type='search'
             className='search-input'
-            placeholder='Seacrh for anything...'
+            placeholder='Search for anything...'
             aria-label='Search'
           />
         </form>
 
         <div className='user-panel'>
-          <button className='icon-button' aria-label='Help'>
+          <button className='icon-button' aria-label='Help' type='button'>
             <img src={FaqIcon} alt="" role="presentation" />
           </button>
 
-          <button className='icon-button' aria-label='Notifications'>
+          <button className='icon-button' aria-label='Notifications' type='button'>
             <img src={NotificationIcon} alt="" role="presentation"/>
           </button>
 
           <div className='user-menu'>
-            <h2 className='user-menu__name'>{userName}</h2>
+            <p className='user-menu__name'>{userName}</p>
             <img 
               src={UserIcon} 
               alt={`${userName}'s avatar`}
               className='user-menu__avatar' 
             />
             <button 
+              type='button'
               className='icon-button user-menu__toggle' 
               aria-label='Open profile menu'
             > 

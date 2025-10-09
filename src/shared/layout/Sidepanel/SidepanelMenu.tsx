@@ -20,6 +20,7 @@ export function SidepanelMenu() {
       {menuItems.map(item => (
         <button 
           key={item.path}
+          type='button'
           className={`menu-item ${location.pathname === item.path 
             ? 'menu-item--active' : ''}`}
           aria-label={`Go to ${item.label}`}
