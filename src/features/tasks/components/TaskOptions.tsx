@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useStore } from "@store/useStore";
 import { OptionsWindow } from "@ui/OptionsWindow";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
@@ -13,9 +13,10 @@ interface TaskOptionsProps {
   openId: string;
   title: string | null;
   onClose: () => void;
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
 };
 
-export function TaskOptions({ menuPosition, projectId, openId, title, onClose }: TaskOptionsProps) {
+export function TaskOptions({ menuPosition, projectId, openId, title, onClose, triggerRef }: TaskOptionsProps) {
   const [ isModalOpen, setIsModalOpen ] = useState(false);
   const navigate = useNavigate();
   const deleteTask = useStore(state => state.deleteTask);
@@ -35,12 +36,22 @@ export function TaskOptions({ menuPosition, projectId, openId, title, onClose }:
   };
 
   return(
-    <OptionsWindow position={menuPosition} onClose={onClose}>
-      <button className='options-window__item' onClick={handleEditTask}>
+    <OptionsWindow position={menuPosition} onClose={onClose} triggerRef={triggerRef}>
+      <button 
+        className='options-window__item'
+        role="menuitem" 
+        type="button"
+        onClick={handleEditTask}
+      >
         <img src={EditIcon} alt="" role="presentation" />
         <span className='options-window__item-label'>Edit</span>
       </button>
-      <button className='options-window__item' onClick={handleDeleteClick}>
+      <button 
+        className='options-window__item'
+        role="menuitem" 
+        type="button"
+        onClick={handleDeleteClick}
+      >
         <img src={TrashIcon} alt="" role="presentation" />
         <span className='options-window__item-label red'>Trash</span>
       </button>

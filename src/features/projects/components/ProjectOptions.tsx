@@ -12,9 +12,10 @@ interface ProjectOptionsProps {
   openId: string;
   title: string;
   onClose: () => void;
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
 };
 
-export function ProjectOptions({ menuPosition, openId, title, onClose }: ProjectOptionsProps) {
+export function ProjectOptions({ menuPosition, openId, title, onClose, triggerRef }: ProjectOptionsProps) {
   const [ isModalOpen, setIsModalOpen ] = useState(false);
   const navigate = useNavigate();
   const { projectId } = useParams();
@@ -47,12 +48,21 @@ export function ProjectOptions({ menuPosition, openId, title, onClose }: Project
   };
 
   return (
-    <OptionsWindow position={menuPosition} onClose={onClose}>
-      <button className='options-window__item'>
+    <OptionsWindow position={menuPosition} onClose={onClose} triggerRef={triggerRef}>
+      <button 
+        className='options-window__item' 
+        role="menuitem" 
+        type='button'
+      >
         <img src={ArchiveIcon} alt="" role="presentation" />
         <span className='options-window__item-label'>Archive</span>
       </button>
-      <button className='options-window__item' onClick={handleDeleteProject}>
+      <button 
+        className='options-window__item' 
+        role="menuitem"
+        type='button'
+        onClick={handleDeleteProject}
+      >
         <img src={TrashIcon} alt="" role="presentation" />
         <span className='options-window__item-label red'>Trash</span>
       </button>

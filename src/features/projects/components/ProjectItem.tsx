@@ -3,6 +3,7 @@ import MoreIcon from '@assets/icons/actions/more-icon.svg';
 import { ProjectOptions } from './ProjectOptions';
 import { useContextMenu } from '@hooks/useContextMenu';
 import { Project } from '../types';
+import { useRef } from 'react';
 
 interface ProjectItemProps {
   project: Project;
@@ -12,6 +13,7 @@ interface ProjectItemProps {
 export function ProjectItem({ project, isActive }: ProjectItemProps) {
   const navigate = useNavigate();
   const { openId, menuPosition, handleMoreClick, closeMenu } = useContextMenu();
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   return (
     <li 
@@ -22,6 +24,7 @@ export function ProjectItem({ project, isActive }: ProjectItemProps) {
     >
       <span className='projects-list__name'>{project.title}</span>
       <button 
+        ref={buttonRef}
         className="icon-button" 
         aria-label={`More options for Project ${project.title}`}
         onClick={(e) => handleMoreClick(e, project.id)}
@@ -35,8 +38,9 @@ export function ProjectItem({ project, isActive }: ProjectItemProps) {
           openId={openId}
           title={project.title}
           onClose={closeMenu}
+          triggerRef={buttonRef}
         />
-      )}             
+      )}
     </li>
   );
 }

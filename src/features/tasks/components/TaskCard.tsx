@@ -31,6 +31,7 @@ export function TaskCard({
 }: TaskCardProps) {
   const { openId, menuPosition, handleMoreClick, closeMenu } = useContextMenu();
   const allTags = useStore(state => state.tags);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   const [{ isDragging }, drag] = useDrag({
     type: "TASK",
@@ -97,6 +98,7 @@ export function TaskCard({
           {priority}
         </p>
         <button 
+          ref={buttonRef}
           className="icon-button" 
           aria-label={`More options for task ${title}`}
           aria-haspopup="menu"
@@ -113,6 +115,7 @@ export function TaskCard({
             openId={openId}
             title={title}
             onClose={closeMenu}
+            triggerRef={buttonRef}
           />
         )}
       </div>

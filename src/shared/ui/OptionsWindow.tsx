@@ -6,14 +6,18 @@ interface OptionsWindowProps {
   children: React.ReactNode;
   position: MenuPosition;
   onClose: () => void;
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
 };
 
-export function OptionsWindow({ children, position, onClose }: OptionsWindowProps) {
-  const ref = useRef<HTMLDivElement | null>(null);
+export function OptionsWindow({ children, position, onClose, triggerRef }: OptionsWindowProps) {
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const firstButton = menuRef.current?.querySelector<HTMLButtonElement>("button");
+    firstButton?.focus();
+
     const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node))
+      if (menuRef.current && !menuRef.current.contains(event.target as Node))
         onClose?.();
     };
 
@@ -35,13 +39,17 @@ export function OptionsWindow({ children, position, onClose }: OptionsWindowProp
       document.removeEventListener("keydown", handleEsc);
       window.removeEventListener("scroll", handleScrollOrResize, true);
       window.removeEventListener("resize", handleScrollOrResize);
+
+      triggerRef.current?.focus();
     };
-  }, [onClose]);
+  }, [onClose, triggerRef]);
 
   return createPortal(
     <div
-      ref={ref}
+      ref={menuRef}
       className="options-window"
+      role="menu"
+      aria-label="Options menu"
       style={{
         top: position.top,
         left: position.left,
