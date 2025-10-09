@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
 import { useDrag } from 'react-dnd';
 import { useStore } from '@store/useStore';
 import { useContextMenu } from '@hooks/useContextMenu';
@@ -43,21 +43,25 @@ export function TaskCard({
   const divRef = useRef<HTMLDivElement | null>(null);
   drag(divRef);
 
-  let isoDate;
-  let formatedDate;
-  if (dueDate) {
-    isoDate = new Date(dueDate).toISOString();
+  const formatedDate = useMemo(() => {
+    if (!dueDate) return { formatted: "", isoDate: "" };
+
+    const date = new Date(dueDate);
+    const isoDate = date.toISOString();
+    let formatted;
 
     if (dueDate.length > 10) {
       const options: Intl.DateTimeFormatOptions = {
         hour: "numeric",
         minute: "numeric"
       };
-      formatedDate = new Date(dueDate).toLocaleDateString('ru-RU', options);
+      formatted = new Date(dueDate).toLocaleDateString('ru-RU', options);
     } else 
-      formatedDate = new Date(dueDate).toLocaleDateString('ru-RU');
-  }
-  
+      formatted = new Date(dueDate).toLocaleDateString('ru-RU');
+
+      return { formatted, isoDate };
+  }, [dueDate]);
+
   const updateTask = useStore(state => state.updateTask);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -142,11 +146,11 @@ export function TaskCard({
           <time 
             className='task-card__due' 
             aria-label='Deadline' 
-            dateTime={isoDate}
+            dateTime={formatedDate.isoDate}
           >
             <img src={ClockIcon} alt="" role="presentation" />
             <span>
-              {formatedDate}
+              {formatedDate.formatted}
             </span>
           </time>
         }
