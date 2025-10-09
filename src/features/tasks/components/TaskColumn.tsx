@@ -41,16 +41,21 @@ export default function TaskColumn({ title, status, projectId }: TaskColumnProps
   };
 
   return (
-    <div
+    <section
       ref={divRef}
       className='task-column'
       style={{ background: isOver ? "#5020E520" : "#f9f9f9" }}
       role='list'
-      aria-label={`Column ${title}`}
+      aria-labelledby={`column-title-${status}`}
     >
       <header className='task-column__header' data-status={status}>
         <div className='task-column__header-left'>
-          <h2 className='task-column__title'>{title}</h2>
+          <h2 
+            id={`column-title-${status}`} 
+            className='task-column__title'
+          >
+            {title}
+          </h2>
           <span className='task-column__count' aria-label='Number of tasks'>{filteredTasks.length}</span>
         </div>
         {
@@ -77,6 +82,6 @@ export default function TaskColumn({ title, status, projectId }: TaskColumnProps
           })
         }
       </div>
-    </div>
+    </section>
   );
 }
