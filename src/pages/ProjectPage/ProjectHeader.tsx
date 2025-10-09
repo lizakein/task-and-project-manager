@@ -46,7 +46,13 @@ export function ProjectHeader({ projectId }: ProjectHeaderProps) {
   if (!currentProject) {
     return (
       <header className="project-header">
-        <h1 className="project-header__title">Загрузка...</h1>
+        <span 
+          className="project-header__title" 
+          role='status' 
+          aria-live='polite'
+        >
+          Загрузка...
+        </span>
       </header>
     );
   }
@@ -59,6 +65,7 @@ export function ProjectHeader({ projectId }: ProjectHeaderProps) {
             type='text' 
             className='project-header__title-input' 
             value={title}
+            aria-label='Project title'
             onChange={updateTitleInput}
             onKeyDown={handleTitleKeyDown}
             autoFocus
@@ -67,26 +74,41 @@ export function ProjectHeader({ projectId }: ProjectHeaderProps) {
         )}
         
         <div className='project-header__actions'>
-          <button className='icon-button' aria-label='Edit project title' onClick={editTitle}>
+          <button 
+            type='button'
+            className='icon-button' 
+            aria-label='Edit project title' 
+            onClick={editTitle}
+          >
             <img src={EditIcon} alt="" role="presentation" />
           </button>
 
-          <button className='icon-button' aria-label='Share project'>
+          <button 
+            type='button'
+            className='icon-button' 
+            aria-label='Share project'
+          >
             <img src={ShareIcon} alt="" role="presentation" />
           </button>
         </div>
       </div>
       
-      <section className='task-controls'>
-        <button className='task-controls__button' aria-label='Filter tasks'>
+      <section className='task-controls' aria-label='Task controls'>
+        <button 
+          type='button'
+          className='task-controls__button' 
+        >
           <img src={FilterIcon} alt="" role="presentation" />
-          <span className='task-cintrols__button-name'>Filter</span>
+          <span className='task-controls__button-name'>Filter</span>
           <img src={ArrowDownIcon} alt="" role="presentation" />
         </button>
 
-        <button className='task-controls__button' aria-label='Sort tasks'>
+        <button 
+          type='button'
+          className='task-controls__button'
+        >
           <img src={SortIcon} alt="" role="presentation" />
-          <span className='task-cintrols__button-name'>Sort</span>
+          <span className='task-controls__button-name'>Sort</span>
           <img src={ArrowDownIcon} alt="" role="presentation" />
         </button>
       </section>

@@ -33,6 +33,7 @@ export function ProjectsPage() {
               You don't have any projects yet.
             </p>
             <button 
+              type="button"
               className="button button--primary" 
               onClick={handleCreateProject}
             >
