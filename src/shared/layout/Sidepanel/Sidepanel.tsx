@@ -4,11 +4,12 @@ import './Sidepanel.css';
 
 interface SidepanelProps {
   projectId: string | null;
+  isOpen: boolean
 }
 
-export function Sidepanel({ projectId }: SidepanelProps) {
+export function Sidepanel({ projectId, isOpen }: SidepanelProps) {
   return (
-    <aside className='sidepanel'>
+    <aside className={`sidepanel ${isOpen ? 'sidepanel--open' : ''}`}>
       <SidepanelMenu />
 
       <ProjectsSection projectId={projectId} />

@@ -1,6 +1,6 @@
 .header {
   display: grid;
-  grid-template-columns: 270px 1fr;
+  grid-template-columns: 16.875rem 1fr;
   justify-content: space-between;
   width: 100vw;
   max-height: auto;
@@ -30,13 +30,13 @@
 }
 
 .header__logo {
-  width: 24px;
+  width: 1.5rem;
   aspect-ratio: 1 / 1;
   margin-inline-end: 0.2rem;
 }
 
 .header__title {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 
@@ -57,24 +57,26 @@
   align-items: center;
   justify-content: start;
   padding: 0.5rem;
-  max-width: 420px;
-  width: clamp(200px, 30vw, 420px);
+  max-width: 26.25rem;
+  width: clamp(12.5rem, 30vw, 26.25rem);
 
   background-color: var(--card-background);
-  color: var(--text-color);
   border-radius: 6px;
   cursor: pointer;
+
+  transition: all 0.3s ease;
 }
 
-.search__icon {
+.search__toggle {
   margin-inline-end: 1rem;
 }
 
 .search-input {
   width: 100%;
-
-  background-color: var(--card-background);
+  background-color: transparent;
   border: none;
+  outline: none;
+  color: var(--text-color);
 }
 
 
@@ -95,11 +97,102 @@
 
 .user-menu__name {
   margin-inline: 1rem 0.5rem;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
 }
 
 .user-menu__avatar {
-  width: 38px;
+  width: 2.375rem;
   aspect-ratio: 1 / 1;
+}
+
+/* ========== HAMBURGER ========== */
+
+.header__menu-button {
+  display: none;
+  margin-inline-end: 1rem;
+}
+
+/* ========== MEDIA QUERES ========== */
+
+@media (max-width: 64rem) {
+  .header {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .header__menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header__brand {
+    border: none;
+  }
+
+  .header__actions {
+    padding-inline: 2rem;
+  }
+
+  .user-panel {
+    gap: 1.5rem;
+  }
+
+  .user-menu__name {
+    display: none;
+  }
+
+  .user-menu__avatar {
+    width: 2rem;
+  }
+}
+
+@media (max-width: 45rem) {
+  .header__title {
+    display: none;
+  } 
+
+  .user-panel {
+    gap: 1rem;
+  }
+
+  .header__actions {
+    justify-content: end;
+  }
+
+  .search {
+    width: auto;
+    background-color: inherit;
+  }
+
+  .search-input {
+    display: none;
+  }
+
+  .search--open .search-input {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-bottom: var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    
+    animation: fadeIn 0.2s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

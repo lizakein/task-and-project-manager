@@ -1,11 +1,14 @@
 .sidepanel {
   position: sticky;
-  top: 86px;
+  top: 5.375rem;
   flex-shrink: 0;
-  width: 270px;
-  height: calc(100vh - 86px);
+  width: 16.875rem;
+  height: calc(100vh - 5.375rem);
 
   border-inline-end: var(--border);
+  background-color: var(--main-background);
+
+  transition: transform 0.3s ease;
 } 
 
 
@@ -29,7 +32,7 @@
 }
 
 .menu-item__label {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--text-color);
   letter-spacing: 0.6px;
@@ -56,7 +59,7 @@
 
 .projects-section__title {
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--text-color);
   letter-spacing: 0.4px;
@@ -119,7 +122,7 @@
   padding: 1rem;
 
   border: var(--border);
-  border-radius: 16px;
+  border-radius: 1rem;
   background-color: var(--main-background);
 }
 
@@ -128,7 +131,7 @@
   align-items: center;
   gap: 0.5rem;
 
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   border: none;
   background-color: inherit;
@@ -138,4 +141,19 @@
 
 .options-window__item-label {
   color: var(--text-color);
+}
+
+/* ========== MEDIA QUERES ========== */
+
+@media (max-width: 64rem) {
+  .sidepanel {
+    position: fixed;
+    left: 0;
+    z-index: 999;
+    transform: translateX(-100%);
+  }
+
+  .sidepanel.sidepanel--open {
+    transform: translateX(0);
+  }
 }

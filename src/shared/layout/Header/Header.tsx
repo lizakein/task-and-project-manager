@@ -4,14 +4,31 @@ import FaqIcon from '@assets/icons/actions/message-question.svg';
 import NotificationIcon from '@assets/icons/actions/notification.svg';
 import UserIcon from '@assets/icons/users/user-icon.svg';
 import ArrowDownIcon from '@assets/icons/actions/arrow-down-icon.svg';
+import MenuIcon from '@assets/icons/actions/menu-icon.svg';
 import './Header.css';
+import { useState } from 'react';
 
-export function Header() {
+interface HeaderProps {
+  onMenuToggle: () => void;
+  isMenuOpen: boolean;
+}
+
+export function Header({ onMenuToggle, isMenuOpen }: HeaderProps) {
+  const [ isSearchOpen, setIsSearchOpen ] = useState(false);
+
   const userName = 'Amina Agraval';
 
   return (
     <header className='header' role='banner'>
       <div className='header__brand'>
+        <button 
+          className='header__menu-button icon-button' 
+          aria-label={isMenuOpen ? 'Close menu' : "Open menu"}
+          onClick={onMenuToggle}
+        >
+          <img src={MenuIcon} alt='' role='presentation' />
+        </button>
+
         <img 
           src={TaskManagerLogo} 
           alt="Task manager logo" 
@@ -22,16 +39,25 @@ export function Header() {
 
       <div className='header__actions'>
         <form
-          className='search' 
+          className={`search ${isSearchOpen ? "search--open" : ""}`}
           role="search" 
           aria-label='Site search'
+          onSubmit={e => e.preventDefault()}       
         >
-          <img 
-            src={SearchIcon} 
-            alt="" 
-            role="presentation" 
-            className='search__icon'
-          />
+          <button
+            type='button'
+            className='search__toggle icon-button'
+            aria-label={isSearchOpen ? "Close search" : "Open search"}
+            onClick={() => setIsSearchOpen((prev) => !prev)}
+          >
+            <img 
+              src={SearchIcon} 
+              alt="" 
+              role="presentation" 
+              className='search__icon'
+            />
+          </button>
+          
           <input 
             type='search'
             className='search-input'
