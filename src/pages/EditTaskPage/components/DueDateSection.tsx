@@ -10,7 +10,7 @@ export function DueDateSection({ dueDate }: DueDateProps) {
       <h2 className="edit-task-page__section-title">Due date</h2>
       <input 
         type="datetime-local" 
-        className="input-field input-field--date" 
+        className="input-field input-field__date" 
         aria-label="Due date" 
         value={dueDate.value}
         onChange={(e) => dueDate.setValue(e.target.value)}

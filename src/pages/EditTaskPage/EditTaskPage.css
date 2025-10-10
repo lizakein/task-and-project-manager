@@ -1,12 +1,4 @@
-.content.edit-task-page__content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding-inline-end: 600px;
-}
-
 /* ========== GRID ========== */
-
 .edit-task-page__form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -17,10 +9,10 @@
 .edit-task-page__title-input {
   grid-column: span 2 / span 2;
   padding-inline: 1rem;
-  font-size: 42px;
+  font-size: clamp(1.25rem, 3vw, 2.625rem);
   font-weight: 600;
   border: var(--border);
-  border-radius: 16px;
+  border-radius: 1rem;
 }
 
 .edit-task-page__priority-section {
@@ -43,7 +35,7 @@
 
 .upload-button {
   grid-row-start: 6;
-  max-height: 40px;
+  max-height: 2.5rem;
 }
 
 .edit-task-page__actions {
@@ -51,7 +43,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.7rem;
-  max-height: 40px;
+  max-height: 2.5rem;
 }
 
 
@@ -72,7 +64,7 @@
 
 .input-field {
   height: 100%;
-  font-size: 14px;
+  font-size: 0.875rem;
   border: none;
   border-radius: 6px;
   resize: none;
@@ -88,8 +80,8 @@
 }
 
 .edit-task-page__section-title {
-  font-size: 16px;
-  font-weight: 500px;
+  font-size: 1rem;
+  font-weight: 500;
   color: var(--text-color);
 }
 
@@ -107,7 +99,7 @@
   gap: 0.5rem;
   padding: 0.7rem;
 
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--text-color);
   background-color: var(--main-background);
@@ -129,6 +121,35 @@
 }
 
 .button__icon {
-  width: 20px;
+  width: 1.25rem;
   aspect-ratio: 1 / 1;
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+@media (max-width: 45rem) {
+  .edit-task-page__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+  }
+
+  .edit-task-page__form > * {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .edit-task-page__title-input {
+    font-size: 1.25rem;
+    line-height: 2;
+  }
+
+  .edit-task-page__description-section {
+    grid-column: 1;
+  }
+
+  .edit-task-page__description-section textarea {
+    min-height: 7.5rem;
+  }
 }

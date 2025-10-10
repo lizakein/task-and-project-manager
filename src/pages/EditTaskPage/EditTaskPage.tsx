@@ -7,6 +7,7 @@ import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
 import { useStore } from "@store/useStore";
 import type { Task } from "@features/tasks";
 import './EditTaskPage.css';
+import { Layout } from "@layout/Layout";
 
 interface EditTaskPageProps {
   projectId: string;
@@ -59,11 +60,8 @@ export function EditTaskPage() {
   }
 
   return (
-    <main className='edit-task--page page'>
-      <Header />
-      <Sidepanel projectId={projectId || ''} />
-
-      <div className='content edit-task-page__content'>
+    <Layout>
+      <div className='edit-task-page__content'>
         <TaskForm
           title={{ value: title, setValue: setTitle }}
           description={{ value: description, setValue: setDescription }}
@@ -81,6 +79,6 @@ export function EditTaskPage() {
         onConfirm={handleConfirmLeave}
         onCancel={() => setIsModalOpen(false)}
       />
-    </main>
+    </Layout>
   );
 }
