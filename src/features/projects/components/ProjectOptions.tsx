@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from "react";
-import { OptionsWindow } from '@ui/OptionsWindow';
+import { OptionsWindow } from '@ui/OptionsWindow/OptionsWindow';
 import { useStore } from '@store/useStore';
 import { ConfirmModal } from '@ui/ConfirmModal/ConfirmModal';
 import ArchiveIcon from '@assets/icons/actions/archive-icon.svg';

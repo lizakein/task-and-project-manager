@@ -115,34 +115,6 @@
   opacity: 1;
 }
 
-.options-window {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  padding: 1rem;
-
-  border: var(--border);
-  border-radius: 1rem;
-  background-color: var(--main-background);
-}
-
-.options-window__item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  font-size: 1rem;
-  font-weight: 500;
-  border: none;
-  background-color: inherit;
-
-  cursor: pointer;
-}
-
-.options-window__item-label {
-  color: var(--text-color);
-}
-
 /* ========== MEDIA QUERES ========== */
 
 @media (max-width: 64rem) {

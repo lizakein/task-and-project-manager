@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useStore } from "@store/useStore";
-import { OptionsWindow } from "@ui/OptionsWindow";
+import { OptionsWindow } from "@ui/OptionsWindow/OptionsWindow";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
 import EditIcon from '@assets/icons/actions/edit-icon.svg';
 import TrashIcon from '@assets/icons/actions/trash-icon.svg';
