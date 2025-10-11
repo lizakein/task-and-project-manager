@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import EditIcon from '@assets/icons/actions/edit-purple-icon.svg';
 import ShareIcon from '@assets/icons/actions/share-icon.svg';
-import FilterIcon from '@assets/icons/actions/filter-icon.svg';
 import ArrowDownIcon from '@assets/icons/actions/arrow-down-icon.svg';
 import SortIcon from '@assets/icons/actions/sort-icon.svg';
 import { useStore } from '@store/useStore';
+import { TaskFilter } from '@features/tasks/components/TaskFilter/TaskFilter';
 
 interface ProjectHeaderProps {
   projectId: string;
@@ -94,14 +94,7 @@ export function ProjectHeader({ projectId }: ProjectHeaderProps) {
       </div>
       
       <section className='task-controls' aria-label='Task controls'>
-        <button 
-          type='button'
-          className='task-controls__button' 
-        >
-          <img src={FilterIcon} alt="" role="presentation" />
-          <span className='task-controls__button-name'>Filter</span>
-          <img src={ArrowDownIcon} alt="" role="presentation" />
-        </button>
+        <TaskFilter />
 
         <button 
           type='button'

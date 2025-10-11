@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useStore } from "@store/useStore";
-import { getTagStyle } from "@utils/tagUtils";
 import { TagsManagerModal } from "./TagsManagerModal";
 import ManageTagsIcon from "@assets/icons/navigation/settings-icon.svg";
 import { FieldState } from "../../../types/fieldState";
-import { TAG_COLORS } from "@constants/tagColors";
+import { TagButton } from "@features/tasks/components/TagButton/TagButton";
 
 interface TagsSectionProps {
   tags: FieldState<string[]>;
@@ -35,28 +34,14 @@ export default function TagsSection({ tags }: TagsSectionProps) {
       </div>
       
       <div className="edit-task-page__buttons-group">
-        {allTags.map((tag) => {
-          const isActive = tags.value.includes(tag.id);
-          const { color, backgroundColor } = getTagStyle(
-            tag.color as keyof typeof TAG_COLORS
-          );
-
-          return (
-            <button 
-              key={tag.id}
-              type="button" 
-              className={`tag tag--${tag.color} ${isActive ? 'tag--selected' : ''}`}
-              style={{
-                "--tag-text": color,
-                "--tag-bg": backgroundColor
-              } as React.CSSProperties}
-              aria-pressed={isActive}
-              onClick={() => toggleTag(tag.id)}
-            >
-              {tag.label}
-            </button>
-          );
-        })}
+        {allTags.map((tag) => (
+          <TagButton 
+            key={tag.id}
+            tag={tag} 
+            selected={tags.value.includes(tag.id)}
+            onClick={() => toggleTag(tag.id)}
+          />
+        ))}
 
         <TagsManagerModal 
           isTagsModalOpen={{ value: isTagsModalOpen, setValue: setIsTagsModalOpen }}

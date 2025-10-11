@@ -1,5 +1,6 @@
 import { Task } from "@features/tasks";
 import { FieldState } from "../../../types/fieldState";
+import { PriorityButton } from "@features/tasks/components/PriorityButton/PriorityButton";
 
 interface PrioritySectionProps {
   priority: FieldState<Task["priority"] | "">;
@@ -13,18 +14,12 @@ export function PrioritySection({ priority }: PrioritySectionProps) {
       <h2 className="edit-task-page__section-title">Priority</h2>
       <div className="edit-task-page__buttons-group">
         {levels.map(level => (
-          <button 
+          <PriorityButton 
             key={level}
-            type="button" 
-            className={`priority priority--${level} ${
-              priority.value === level ? "priority--selected" : ""
-            }`}
-            data-priority={`${level}`}
-            aria-pressed={priority.value === level}
-            onClick={() => priority.setValue(level)}
-          >
-            {level}
-          </button>
+            level={level} 
+            selected={priority.value === level} 
+            onClick={() => priority.setValue(level)} 
+          />
         ))}
       </div>
     </section>

@@ -17,6 +17,10 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
     { id: "2", label: "Work", color: "red" },
     { id: "3", label: "Sport", color: "green" }
   ] as Tag[],
+  filters: {
+    priorities: [] as string[],
+    tags: [] as string[]
+  },
 
 
   // ========== LOAD ==========
@@ -125,7 +129,29 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
     set({ tags: newTags, tasks: newTasks });
 
     return { tags: newTags, tasks: newTasks };
-  }
+  },
+
+
+  // ========== FILTERS ==========
+
+  setFilters: (newFilters) => {
+    set(state => ({
+      filters: {
+        ...state.filters,
+        ...newFilters
+      }
+    }));
+  },
+
+  clearFilters: () => {
+    set({
+      filters: {
+        priorities: [],
+        tags: []
+      }
+    });
+  },
+  
 });
 
 export const useStore = create<StateStore>()(

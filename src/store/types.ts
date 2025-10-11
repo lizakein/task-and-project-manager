@@ -6,6 +6,10 @@ export interface StateStore {
   projects: Project[];
   tasks: Task[];
   tags: Tag[];
+  filters: {
+    priorities: string[];
+    tags: string[];
+  };
 
   loadProjects: () => Promise<void>;
   loadTasks: () => Promise<void>;
@@ -24,4 +28,7 @@ export interface StateStore {
     tags: Tag[], 
     tasks: Task[]
   };
+
+  setFilters: (filters: Partial<StateStore["filters"]>) => void;
+  clearFilters: () => void;
 };

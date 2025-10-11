@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDrop } from 'react-dnd';
 import { useStore } from '@store/useStore';
@@ -17,6 +17,7 @@ export default function TaskColumn({ title, status, projectId }: TaskColumnProps
   const addTask = useStore(state => state.addTask);
   const updateTask = useStore(state => state.updateTask);
   const tasks = useStore(state => state.tasks);
+  const filters = useStore(state => state.filters);
 
   const [ liveMessage, setLiveMessage ] = useState("");
 
@@ -36,7 +37,22 @@ export default function TaskColumn({ title, status, projectId }: TaskColumnProps
   const divRef = useRef<HTMLDivElement | null>(null);
   drop(divRef);
 
-  const filteredTasks = tasks.filter((task) => task.projectId === projectId && task.status === status);
+  const filteredTasks = useMemo(() => {
+    return tasks.filter((task) => {
+      const matchesProject = task.projectId === projectId;
+      const matchesStatus = task.status === status;
+
+      const matchesPriority =
+        filters.priorities.length === 0 || filters.priorities.includes(task.priority);
+        
+      const matchesTags = 
+        filters.tags.length === 0 ||
+        task.tags?.some(tagId => filters.tags.includes(tagId));
+
+      return matchesProject && matchesStatus && matchesPriority && matchesTags;
+    });
+  }, [tasks, filters, projectId, status]); 
+  
 
   const handleAddTask = () => {
     const newTask = addTask(projectId);
