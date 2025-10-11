@@ -1,5 +1,10 @@
 import { DevelopmentPageLayout } from "@layout/DevelopmentPageLayout";
+import { Layout } from "@layout/Layout";
 
 export function AnalyticsPage() {
-  return <DevelopmentPageLayout />
+  return (
+    <Layout>
+      <DevelopmentPageLayout />
+    </Layout>
+  );
 }

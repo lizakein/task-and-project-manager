@@ -3,23 +3,19 @@ import { Sidepanel } from "@layout/Sidepanel/Sidepanel";
 
 export function DevelopmentPageLayout() {
   return(
-    <main className="page">
-      <Header />
-      <Sidepanel projectId={null} />
-
-      <div className="content">
-        <p 
-          style={{ 
-            height: "100%",
-            display: "flex", 
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: "4rem",
-            fontWeight: "700",
-            color: "var(--text-color)",
-          }}
-        >Page in development</p>
-      </div>
-    </main>
+    <p 
+      style={{ 
+        height: "100%",
+        display: "flex", 
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        fontSize: "3rem",
+        fontWeight: "700",
+        color: "var(--text-color)",
+      }}
+    >
+      Page in development
+    </p>
   );
 } 
