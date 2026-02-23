@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchIcon from "@assets/icons/ui/search-icon.svg";
+import "./Search.css";
 
 export function Search() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
