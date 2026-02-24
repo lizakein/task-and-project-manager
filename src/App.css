@@ -1,23 +1,23 @@
 :root {
-  --brand-color: #5020E5;
-  --brand-color-background: #5020E520;
+  --brand-color: #5020e5;
+  --brand-color-background: #5020e520;
 
-  --main-background: #FFFFFF;
-  --card-background: #F5F5F5;
-  --count-background: #E0E0E0;
-  --active-background: #5030E508;
+  --main-background: #ffffff;
+  --card-background: #f5f5f5;
+  --count-background: #e0e0e0;
+  --active-background: #5030e508;
 
   --text-color: #787486;
-  --count-color: #625F6D;
+  --count-color: #625f6d;
 
-  --high-color: #D8727D;
-  --high-color-background: #D8727D20;
-  --medium-color: #D58D49;
-  --medium-color-background: #DFA87420;
-  --low-color: #68B266;
-  --low-color-background: #83C29D20;
+  --high-color: #d8727d;
+  --high-color-background: #d8727d20;
+  --medium-color: #d58d49;
+  --medium-color-background: #dfa87420;
+  --low-color: #68b266;
+  --low-color-background: #83c29d20;
 
-  --border: 1px solid #E0E0E0;
+  --border: 1px solid #e0e0e0;
 }
 
 .inter-font {
@@ -36,13 +36,13 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 500;
 }
 
 .page {
   display: flex;
-  margin-block-start: 86px;
+  margin-block-start: clamp(57px, 8.5vw, 86px);
 }
 
 .content {
@@ -107,13 +107,13 @@ body {
   justify-content: center;
   z-index: 1000;
 
-	background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(3px);
 }
 
 .window {
   display: flex;
-	flex-direction: column;
+  flex-direction: column;
   gap: 1rem;
   padding: 2rem;
   background-color: var(--main-background);
