@@ -2,9 +2,7 @@
   display: grid;
   grid-template-columns: 16.875rem 1fr;
   justify-content: space-between;
-  width: 100%;
-  max-height: auto;
-
+  width: 100vw;
   border-block-end: var(--border);
 
   position: fixed;
@@ -22,9 +20,6 @@
   display: flex;
   align-items: center;
   height: 100%;
-  padding: 1.5rem;
-  padding-inline-end: 2.5rem;
-
   border-inline-end: var(--border);
 }
 
@@ -44,7 +39,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 3rem;
+  padding: clamp(0.5rem, 2vw, 1.5rem) clamp(0.5rem, 3vw, 1.5rem);
+}
+
+.header__actions,
+.header__brand {
+  padding: clamp(0.5rem, 2vw, 1.5rem) clamp(0.5rem, 3vw, 1.5rem);
 }
 
 /* ========== USER PANEL ========== */
@@ -52,7 +52,7 @@
 .user-panel {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: clamp(1rem, 3vw, 2rem);
   cursor: pointer;
 }
 
@@ -97,14 +97,6 @@
     border: none;
   }
 
-  .header__actions {
-    padding-inline: 2rem;
-  }
-
-  .user-panel {
-    gap: 1.5rem;
-  }
-
   .user-menu__name {
     display: none;
   }
@@ -117,10 +109,6 @@
 @media (max-width: 45rem) {
   .header__title {
     display: none;
-  }
-
-  .user-panel {
-    gap: 1rem;
   }
 
   .header__actions {
