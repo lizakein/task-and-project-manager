@@ -5,7 +5,7 @@ import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
 import { useStore } from "@store/useStore";
 import type { Task } from "@features/tasks";
 import "./EditTaskPage.css";
-import { Layout } from "@layout/Layout";
+import { Layout } from "@layout/Layout/Layout";
 
 type PriorityValue = Task["priority"] | "";
 

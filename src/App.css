@@ -40,16 +40,6 @@ body {
   font-weight: 500;
 }
 
-.page {
-  display: flex;
-  margin-block-start: clamp(57px, 8.5vw, 86px);
-}
-
-.content {
-  width: 100%;
-  padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 4vw, 2.5rem);
-}
-
 .icon-button,
 .menu-item {
   width: 1.5rem;

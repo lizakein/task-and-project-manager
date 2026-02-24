@@ -1,7 +1,7 @@
 import { useStore } from "@store/useStore";
 import { useNavigate } from "react-router-dom";
 import "./ProjectsPage.css";
-import { Layout } from "@layout/Layout";
+import { Layout } from "@layout/Layout/Layout";
 
 export function ProjectsPage() {
   const navigate = useNavigate();
