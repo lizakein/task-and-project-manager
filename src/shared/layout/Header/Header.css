@@ -80,9 +80,9 @@
   margin-inline-end: 1rem;
 }
 
-/* ========== MEDIA QUERES ========== */
+/* ========== MEDIA QUERIES ========== */
 
-@media (max-width: 64rem) {
+@media (max-width: 77rem) {
   .header {
     grid-template-columns: 1fr 2fr;
   }

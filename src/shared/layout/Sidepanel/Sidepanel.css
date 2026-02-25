@@ -116,7 +116,7 @@
 
 /* ========== MEDIA QUERES ========== */
 
-@media (max-width: 64rem) {
+@media (max-width: 77rem) {
   .sidepanel {
     position: fixed;
     left: 0;
