@@ -80,10 +80,10 @@ Live demo доступен здесь 👉 [Vercel](https://task-and-project-man
 
 ```bash
 # Клонировать репозиторий
-git clone https://github.com/username/task-project-manager.git
+git clone https://github.com/lizakein/task-and-project-manager.git
 
 # Перейти в папку проекта
-cd task-project-manager
+cd task-and-project-manager
 
 # Установить зависимости
 npm install
