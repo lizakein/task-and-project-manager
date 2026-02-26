@@ -1,7 +1,7 @@
 import { MenuPosition } from "@hooks/useContextMenu";
 import { useStore } from "@store/useStore";
 import { OptionsWindow } from "@ui/OptionsWindow/OptionsWindow";
-import { SortButton } from "../SortButton/SortButton";
+import { SortSection } from "./SortSection";
 
 interface TaskSortMenuProps {
   position: MenuPosition;
@@ -15,7 +15,6 @@ export function TaskSortMenu({
   triggerRef,
 }: TaskSortMenuProps) {
   const clearFilters = useStore((state) => state.clearFilters);
-  const directions: Array<"asc" | "desc"> = ["asc", "desc"];
 
   return (
     <OptionsWindow
@@ -24,47 +23,29 @@ export function TaskSortMenu({
       triggerRef={triggerRef}
     >
       <div className="sort-menu">
-        <div className="sort-section">
-          <h3 className="sort-section__label">Title</h3>
-          <div className="sort-section__options">
-            {directions.map((direction) => (
-              <SortButton
-                key={direction}
-                direction={direction}
-                selected={false}
-                onClick={() => {}}
-              />
-            ))}
-          </div>
-        </div>
+        <SortSection
+          label="Title"
+          field="title"
+          selectedField={null}
+          selectedDirection="asc"
+          onSelect={() => {}}
+        />
 
-        <div className="sort-section">
-          <h3 className="sort-section__label">Priority</h3>
-          <div className="sort-section__options">
-            {directions.map((direction) => (
-              <SortButton
-                key={direction}
-                direction={direction}
-                selected={false}
-                onClick={() => {}}
-              />
-            ))}
-          </div>
-        </div>
+        <SortSection
+          label="Priority"
+          field="priority"
+          selectedField={null}
+          selectedDirection="asc"
+          onSelect={() => {}}
+        />
 
-        <div className="sort-section">
-          <h3 className="sort-section__label">Date</h3>
-          <div className="sort-section__options">
-            {directions.map((direction) => (
-              <SortButton
-                key={direction}
-                direction={direction}
-                selected={false}
-                onClick={() => {}}
-              />
-            ))}
-          </div>
-        </div>
+        <SortSection
+          label="Date"
+          field="date"
+          selectedField={null}
+          selectedDirection="asc"
+          onSelect={() => {}}
+        />
 
         <button className="button filter-clear" onClick={clearFilters}>
           Clear filters
