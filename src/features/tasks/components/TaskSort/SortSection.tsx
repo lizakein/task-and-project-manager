@@ -5,7 +5,10 @@ interface SortSectionProps {
   field: "title" | "priority" | "date";
   selectedField: string | null;
   selectedDirection: "asc" | "desc";
-  onSelect: (field: string, direction: "asc" | "desc") => void;
+  onSelect: (
+    field: "title" | "priority" | "date",
+    direction: "asc" | "desc"
+  ) => void;
 }
 
 export function SortSection({

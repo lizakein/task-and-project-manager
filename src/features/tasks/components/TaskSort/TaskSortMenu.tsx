@@ -14,7 +14,16 @@ export function TaskSortMenu({
   onClose,
   triggerRef,
 }: TaskSortMenuProps) {
-  const clearFilters = useStore((state) => state.clearFilters);
+  const sort = useStore((state) => state.sort);
+  const setSort = useStore((state) => state.setSort);
+  const clearSort = useStore((state) => state.clearSort);
+
+  const handleSelect = (
+    field: "title" | "priority" | "date",
+    direction: "asc" | "desc"
+  ) => {
+    setSort({ field, direction });
+  };
 
   return (
     <OptionsWindow
@@ -26,29 +35,29 @@ export function TaskSortMenu({
         <SortSection
           label="Title"
           field="title"
-          selectedField={null}
-          selectedDirection="asc"
-          onSelect={() => {}}
+          selectedField={sort.field}
+          selectedDirection={sort.direction}
+          onSelect={handleSelect}
         />
 
         <SortSection
           label="Priority"
           field="priority"
-          selectedField={null}
-          selectedDirection="asc"
-          onSelect={() => {}}
+          selectedField={sort.field}
+          selectedDirection={sort.direction}
+          onSelect={handleSelect}
         />
 
         <SortSection
           label="Date"
           field="date"
-          selectedField={null}
-          selectedDirection="asc"
-          onSelect={() => {}}
+          selectedField={sort.field}
+          selectedDirection={sort.direction}
+          onSelect={handleSelect}
         />
 
-        <button className="button filter-clear" onClick={clearFilters}>
-          Clear filters
+        <button className="button sort-clear" onClick={clearSort}>
+          Clear sorting
         </button>
       </div>
     </OptionsWindow>
