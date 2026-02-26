@@ -1,0 +1,43 @@
+.sort-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 12.5rem;
+}
+
+.sort-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sort-section__label {
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.sort-section__options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sort-option {
+  height: 1.75rem;
+  padding: 0.2rem 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 4px;
+  border: none;
+  color: var(--text-color);
+  background-color: var(--card-background);
+}
+
+.sort-option:hover {
+  font-weight: inherit;
+}
+
+.sort-option--selected {
+  color: var(--brand-color);
+  background-color: var(--brand-color-background);
+}

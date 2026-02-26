@@ -4,6 +4,7 @@ import { TaskSortMenu } from "./TaskSortMenu";
 import ArrowDownIcon from "@assets/icons/actions/arrow-down-icon.svg";
 import ArrowUpIcon from "@assets/icons/actions/arrow-up-icon.svg";
 import SortIcon from "@assets/icons/actions/sort-icon.svg";
+import "./TaskSort.css";
 
 export function TaskSort() {
   const { menuPosition, handleMoreClick, closeMenu } = useContextMenu();
