@@ -34,7 +34,7 @@
 }
 
 .sort-option:hover {
-  font-weight: inherit;
+  cursor: pointer;
 }
 
 .sort-option--selected {

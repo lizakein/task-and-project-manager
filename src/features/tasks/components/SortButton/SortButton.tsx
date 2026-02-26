@@ -9,9 +9,7 @@ export function SortButton({ direction, selected, onClick }: SortButtonProps) {
     <button
       type="button"
       className={` 
-        button
-        sort-option 
-        sort-option--${direction} 
+        sort-option
         ${selected ? "sort-option--selected" : ""}
       `}
       aria-pressed={selected}
