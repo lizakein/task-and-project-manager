@@ -21,6 +21,10 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
     priorities: [] as string[],
     tags: [] as string[]
   },
+  sort: {
+    field: null,
+    direction: "asc"
+  },
 
 
   // ========== LOAD ==========
@@ -44,7 +48,7 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
 
   addProject: () => {
     const project = ProjectUtils.createProject(
-      get().projects, 
+      get().projects,
       (projects: Project[]) => set({ projects })
     );
     return project;
@@ -61,8 +65,8 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
 
   deleteProject: (id) => {
     ProjectUtils.deleteProject(
-      get().projects, 
-      (projects: Project[]) => set({ projects }), 
+      get().projects,
+      (projects: Project[]) => set({ projects }),
       id
     );
 
@@ -74,8 +78,8 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
 
   addTask: (projectId) => {
     const task = TaskUtils.createTask(
-      get().tasks, 
-      (tasks: Task[]) => set({ tasks }), 
+      get().tasks,
+      (tasks: Task[]) => set({ tasks }),
       projectId
     );
     return task;
@@ -83,17 +87,17 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
 
   updateTask: (taskId, patch) => {
     TaskUtils.updateTask(
-      get().tasks, 
-      (tasks: Task[]) => set({ tasks }), 
-      taskId, 
+      get().tasks,
+      (tasks: Task[]) => set({ tasks }),
+      taskId,
       patch
     );
   },
 
   deleteTask: (id) => {
     TaskUtils.deleteTask(
-      get().tasks, 
-      (tasks: Task[]) => set({ tasks }), 
+      get().tasks,
+      (tasks: Task[]) => set({ tasks }),
       id
     );
   },
@@ -104,17 +108,17 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
   addTag: (label, color) => {
     const newTag = {
       id: crypto.randomUUID(),
-      label, 
+      label,
       color
     };
-    set({ tags: [...get().tags, newTag]});
+    set({ tags: [...get().tags, newTag] });
 
     return newTag;
   },
 
   updateTag: (id, patch) => {
     set({
-      tags: get().tags.map(tag => tag.id === id ? {...tag, ...patch} : tag)
+      tags: get().tags.map(tag => tag.id === id ? { ...tag, ...patch } : tag)
     });
   },
 
@@ -151,7 +155,25 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
       }
     });
   },
-  
+
+  // ========== SORT ==========
+  setSort: (newSort) => {
+    set(state => ({
+      sort: {
+        ...state.sort,
+        ...newSort
+      }
+    }));
+  },
+
+  clearSort: () => {
+    set({
+      sort: {
+        field: null,
+        direction: "asc"
+      }
+    });
+  }
 });
 
 export const useStore = create<StateStore>()(
