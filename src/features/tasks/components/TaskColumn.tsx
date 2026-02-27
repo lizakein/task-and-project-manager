@@ -1,10 +1,10 @@
-import { useMemo, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDrop } from 'react-dnd';
-import { useStore } from '@store/useStore';
-import { TaskCard } from './TaskCard';
-import { DragItem } from 'types/dnd';
-import AddPurpleIcon from '@assets/icons/actions/add-square-purple-icon.svg';
+import { useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDrop } from "react-dnd";
+import { useStore } from "@store/useStore";
+import { TaskCard } from "./TaskCard";
+import { DragItem } from "types/dnd";
+import AddPurpleIcon from "@assets/icons/actions/add-square-purple-icon.svg";
 
 interface TaskColumnProps {
   title: string;
@@ -12,47 +12,89 @@ interface TaskColumnProps {
   projectId: string;
 }
 
-export default function TaskColumn({ title, status, projectId }: TaskColumnProps) {
+export default function TaskColumn({
+  title,
+  status,
+  projectId,
+}: TaskColumnProps) {
   const navigate = useNavigate();
-  const addTask = useStore(state => state.addTask);
-  const updateTask = useStore(state => state.updateTask);
-  const tasks = useStore(state => state.tasks);
-  const filters = useStore(state => state.filters);
+  const addTask = useStore((state) => state.addTask);
+  const updateTask = useStore((state) => state.updateTask);
+  const tasks = useStore((state) => state.tasks);
+  const filters = useStore((state) => state.filters);
+  const sort = useStore((state) => state.sort);
 
-  const [ liveMessage, setLiveMessage ] = useState("");
+  const [liveMessage, setLiveMessage] = useState("");
 
-  const [{ isOver }, drop] = useDrop<DragItem, void, { isOver: boolean }>(() => ({
-    accept: "TASK",
-    drop: (item) => {
-      if (item.status !== status) {
-        updateTask(item.id, { status });
-        setLiveMessage(`Task moved to ${title} column`);
-      }
-    },
-    collect: (monitor) => ({
-      isOver: monitor.isOver(),
-    }),
-  }));
+  const [{ isOver }, drop] = useDrop<DragItem, void, { isOver: boolean }>(
+    () => ({
+      accept: "TASK",
+      drop: (item) => {
+        if (item.status !== status) {
+          updateTask(item.id, { status });
+          setLiveMessage(`Task moved to ${title} column`);
+        }
+      },
+      collect: (monitor) => ({
+        isOver: monitor.isOver(),
+      }),
+    })
+  );
 
   const divRef = useRef<HTMLDivElement | null>(null);
   drop(divRef);
 
-  const filteredTasks = useMemo(() => {
-    return tasks.filter((task) => {
+  const visibleTasks = useMemo(() => {
+    const filtered = tasks.filter((task) => {
       const matchesProject = task.projectId === projectId;
       const matchesStatus = task.status === status;
 
       const matchesPriority =
-        filters.priorities.length === 0 || filters.priorities.includes(task.priority);
-        
-      const matchesTags = 
+        filters.priorities.length === 0 ||
+        filters.priorities.includes(task.priority);
+
+      const matchesTags =
         filters.tags.length === 0 ||
-        task.tags?.some(tagId => filters.tags.includes(tagId));
+        task.tags?.some((tagId) => filters.tags.includes(tagId));
 
       return matchesProject && matchesStatus && matchesPriority && matchesTags;
     });
-  }, [tasks, filters, projectId, status]); 
-  
+
+    if (!sort.field) return filtered;
+
+    const sorted = [...filtered].sort((a, b) => {
+      let valueA;
+      let valueB;
+
+      switch (sort.field) {
+        case "title":
+          valueA = a.title.toLowerCase();
+          valueB = b.title.toLowerCase();
+          break;
+
+        case "priority": {
+          const priorityOrder = { low: 1, medium: 2, high: 3 };
+          valueA = priorityOrder[a.priority];
+          valueB = priorityOrder[b.priority];
+          break;
+        }
+
+        case "date":
+          valueA = a.dueDate ? new Date(a.dueDate).getTime() : Infinity;
+          valueB = b.dueDate ? new Date(b.dueDate).getTime() : Infinity;
+          break;
+
+        default:
+          return 0;
+      }
+
+      if (valueA < valueB) return sort.direction === "asc" ? -1 : 1;
+      if (valueA > valueB) return sort.direction === "asc" ? 1 : -1;
+      return 0;
+    });
+
+    return sorted;
+  }, [tasks, filters, sort, projectId, status]);
 
   const handleAddTask = () => {
     const newTask = addTask(projectId);
@@ -62,51 +104,45 @@ export default function TaskColumn({ title, status, projectId }: TaskColumnProps
   return (
     <section
       ref={divRef}
-      className='task-column'
+      className="task-column"
       style={{ background: isOver ? "#5020E520" : "#f9f9f9" }}
-      role='list'
+      role="list"
       aria-labelledby={`column-title-${status}`}
     >
-      <header className='task-column__header' data-status={status}>
-        <div className='task-column__header-left'>
-          <h2 
-            id={`column-title-${status}`} 
-            className='task-column__title'
-          >
+      <header className="task-column__header" data-status={status}>
+        <div className="task-column__header-left">
+          <h2 id={`column-title-${status}`} className="task-column__title">
             {title}
           </h2>
-          <span className='task-column__count' aria-label='Number of tasks'>{filteredTasks.length}</span>
+          <span className="task-column__count" aria-label="Number of tasks">
+            {visibleTasks.length}
+          </span>
         </div>
-        {
-          status === 'todo' &&
-          <button 
-            className='icon-button' 
-            aria-label='Add new task'
+        {status === "todo" && (
+          <button
+            className="icon-button"
+            aria-label="Add new task"
             onClick={handleAddTask}
           >
             <img src={AddPurpleIcon} alt="" role="presentation" />
           </button>
-        }      
+        )}
       </header>
 
-      <div className='task-list'>
-        {
-          filteredTasks.map((task) => {
-            return <TaskCard 
-                    key={task.id} 
-                    {...task} 
-                    projectId={projectId}
-                    status={status}
-                  />
-          })
-        }
+      <div className="task-list">
+        {visibleTasks.map((task) => {
+          return (
+            <TaskCard
+              key={task.id}
+              {...task}
+              projectId={projectId}
+              status={status}
+            />
+          );
+        })}
       </div>
 
-      <div
-        aria-live='polite'
-        aria-atomic="true"
-        className="sr-only"
-      >
+      <div aria-live="polite" aria-atomic="true" className="sr-only">
         {liveMessage}
       </div>
     </section>
