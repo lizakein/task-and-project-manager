@@ -8,6 +8,7 @@ import { StateStore } from './types';
 import type { Project } from '../features/projects';
 import type { Task } from '../features/tasks';
 import type { Tag } from '../features/tags';
+import type { Priority } from '@features/tasks/types';
 
 const storeCreator: StateCreator<StateStore> = (set, get) => ({
   projects: [] as Project[],
@@ -18,7 +19,7 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
     { id: "3", label: "Sport", color: "green" }
   ] as Tag[],
   filters: {
-    priorities: [] as string[],
+    priorities: [] as Priority[],
     tags: [] as string[]
   },
   sort: {

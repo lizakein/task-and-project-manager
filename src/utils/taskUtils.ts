@@ -11,7 +11,7 @@ export const createTask = (
     title: "New task",
     description: '',
     status: "todo",
-    priority: "",
+    priority: "low",
     dueDate: "",
     tags: [],
     createdAt: new Date().toISOString(),

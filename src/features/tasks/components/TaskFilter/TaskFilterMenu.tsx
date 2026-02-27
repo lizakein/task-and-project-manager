@@ -1,9 +1,9 @@
 import { MenuPosition } from "@hooks/useContextMenu";
 import { OptionsWindow } from "@ui/OptionsWindow/OptionsWindow";
-import { Task } from "@features/tasks";
 import { useStore } from "@store/useStore";
 import { PriorityButton } from "../PriorityButton/PriorityButton";
 import { TagButton } from "../TagButton/TagButton";
+import { Priority } from "@features/tasks/types";
 
 interface TaskFilterMenuProps {
   position: MenuPosition;
@@ -21,9 +21,9 @@ export function TaskFilterMenu({
   const setFilters = useStore((state) => state.setFilters);
   const clearFilters = useStore((state) => state.clearFilters);
 
-  const levels: Array<Task["priority"]> = ["low", "medium", "high"];
+  const levels: Priority[] = ["low", "medium", "high"];
 
-  const togglePriority = (priority: string) => {
+  const togglePriority = (priority: Priority) => {
     const updated = filters.priorities.includes(priority)
       ? filters.priorities.filter((p) => p !== priority)
       : [...filters.priorities, priority];
