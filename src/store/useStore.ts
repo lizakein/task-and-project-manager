@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { create, StateCreator } from 'zustand';
+import { StateCreator } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { createWithEqualityFn } from 'zustand/traditional';
 import * as ProjectUtils from '../utils/projectUtils';
 import * as TaskUtils from '../utils/taskUtils';
 
@@ -177,6 +178,6 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
   }
 });
 
-export const useStore = create<StateStore>()(
+export const useStore = createWithEqualityFn<StateStore>()(
   persist(storeCreator, { name: "app-storage" })
 );
