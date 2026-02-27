@@ -4,7 +4,7 @@ export interface Task {
   title: string;
   description: string;
   status: "todo" | "in-progress" | "done";
-  priority: "low" | "medium" | "high";
+  priority: "low" | "medium" | "high" | "";
   dueDate: string;
   tags: string[];
   createdAt: string;
