@@ -11,7 +11,7 @@
 
     "noEmit": true,
 
-    "allowJs": true,
+    "allowJs": false,
 
     "moduleResolution": "bundler",
 
@@ -24,7 +24,7 @@
       "@assets/*": ["assets/*"],
       "@store/*": ["store/*"],
       "@utils/*": ["utils/*"],
-      "@hooks/*": ["hooks/*"],
+      "@hooks/*": ["hooks/*"]
     }
   },
   "include": ["src"]
