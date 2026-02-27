@@ -1,11 +1,11 @@
 import { Task } from "features/tasks";
 
 export const createTask = (
-  tasks: Task[], 
-  setTasks: (tasks: Task[]) => void, 
+  tasks: Task[],
+  setTasks: (tasks: Task[]) => void,
   projectId: string
 ): Task => {
-  const task = {
+  const task: Task = {
     id: crypto.randomUUID(),
     projectId: projectId,
     title: "New task",
@@ -23,12 +23,12 @@ export const createTask = (
 };
 
 export const updateTask = (
-  tasks: Task[], 
-  setTasks: (tasks: Task[]) => void, 
-  taskId: string, 
+  tasks: Task[],
+  setTasks: (tasks: Task[]) => void,
+  taskId: string,
   patch: Partial<Task>
 ) => {
-  const updatedTasks = tasks.map(task => 
+  const updatedTasks = tasks.map(task =>
     task.id === taskId ?
       {
         ...task,
@@ -42,8 +42,8 @@ export const updateTask = (
 };
 
 export const deleteTask = (
-  tasks: Task[], 
-  setTasks: (tasks: Task[]) => void, 
+  tasks: Task[],
+  setTasks: (tasks: Task[]) => void,
   id: string
 ) => {
   const updatedTasks = tasks.filter(t => t.id !== id);
