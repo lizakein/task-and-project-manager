@@ -1,5 +1,5 @@
 import { MenuPosition } from "@hooks/useContextMenu";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./OptionsWindow.css";
 
@@ -10,24 +10,41 @@ interface OptionsWindowProps {
   triggerRef: React.RefObject<HTMLButtonElement | null>;
   shouldReturnFocus?: boolean;
   disableAutoFocus?: boolean;
-};
+}
 
-export function OptionsWindow({ 
-  children, 
-  position, 
-  onClose, 
+export function OptionsWindow({
+  children,
+  position,
+  onClose,
   triggerRef,
-  shouldReturnFocus = true, 
-  disableAutoFocus = false
+  shouldReturnFocus = true,
+  disableAutoFocus = false,
 }: OptionsWindowProps) {
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const [computedLeft, setComputedLeft] = useState(position.left);
+
+  useLayoutEffect(() => {
+    if (!menuRef.current) return;
+
+    const menuWidth = menuRef.current.offsetWidth;
+    const viewportWidth = window.innerWidth;
+
+    let newLeft = position.left;
+
+    if (newLeft + menuWidth > viewportWidth - 8) {
+      newLeft = position.right - menuWidth + 4;
+    }
+
+    setComputedLeft(newLeft);
+  }, [position]);
 
   useEffect(() => {
     if (!disableAutoFocus) {
-      const firstButton = menuRef.current?.querySelector<HTMLButtonElement>("button");
+      const firstButton =
+        menuRef.current?.querySelector<HTMLButtonElement>("button");
       firstButton?.focus();
     }
-    
+
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node))
         onClose?.();
@@ -38,7 +55,7 @@ export function OptionsWindow({
     };
 
     const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose?.();
+      if (event.key === "Escape") onClose?.();
     };
 
     document.addEventListener("click", handleClickOutside);
@@ -52,8 +69,7 @@ export function OptionsWindow({
       window.removeEventListener("scroll", handleScrollOrResize, true);
       window.removeEventListener("resize", handleScrollOrResize);
 
-      if (shouldReturnFocus)
-        triggerRef.current?.focus();
+      if (shouldReturnFocus) triggerRef.current?.focus();
     };
   }, [onClose, triggerRef, shouldReturnFocus, disableAutoFocus]);
 
@@ -65,7 +81,7 @@ export function OptionsWindow({
       aria-label="Options menu"
       style={{
         top: position.top,
-        left: position.left,
+        left: computedLeft,
         position: "absolute",
         zIndex: 1000,
       }}

@@ -1,22 +1,24 @@
 import { useState } from 'react';
 
 export type MenuPosition = {
-  top: number; 
+  top: number;
   left: number;
+  right: number;
 };
 
 export function useContextMenu() {
-  const [ openId, setOpenId ] = useState<string | null>(null);
-  const [ menuPosition, setMenuPosition ] = useState<MenuPosition | null>(null);
+  const [openId, setOpenId] = useState<string | null>(null);
+  const [menuPosition, setMenuPosition] = useState<MenuPosition | null>(null);
 
-  const handleMoreClick = (event: React.MouseEvent<HTMLButtonElement>,  id: string) => {
+  const handleMoreClick = (event: React.MouseEvent<HTMLButtonElement>, id: string) => {
     event.stopPropagation();
 
     const rect = event.currentTarget.getBoundingClientRect();
-    
+
     setMenuPosition({
       top: rect.bottom + window.scrollY + 8,
-      left: rect.left + window.scrollX
+      left: rect.left + window.scrollX,
+      right: rect.right + window.scrollX
     });
 
     setOpenId(openId === id ? null : id);
