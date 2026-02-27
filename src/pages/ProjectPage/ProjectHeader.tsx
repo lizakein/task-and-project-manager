@@ -4,12 +4,15 @@ import ShareIcon from "@assets/icons/actions/share-icon.svg";
 import { useStore } from "@store/useStore";
 import { TaskFilter } from "@features/tasks/components/TaskFilter/TaskFilter";
 import { TaskSort } from "@features/tasks/components/TaskSort/TaskSort";
+import { useContextMenu } from "@hooks/useContextMenu";
 
 interface ProjectHeaderProps {
   projectId: string;
 }
 
 export function ProjectHeader({ projectId }: ProjectHeaderProps) {
+  const contextMenu = useContextMenu();
+
   const currentProject = useStore((state) =>
     state.projects.find((p) => p.id === projectId)
   );
@@ -96,8 +99,8 @@ export function ProjectHeader({ projectId }: ProjectHeaderProps) {
       </div>
 
       <section className="task-controls" aria-label="Task controls">
-        <TaskFilter />
-        <TaskSort />
+        <TaskFilter contextMenu={contextMenu} />
+        <TaskSort contextMenu={contextMenu} />
       </section>
     </header>
   );

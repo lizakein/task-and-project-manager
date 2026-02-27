@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useContextMenu } from "@hooks/useContextMenu";
 import { TaskSortMenu } from "./TaskSortMenu";
 import ArrowDownIcon from "@assets/icons/actions/arrow-down-icon.svg";
@@ -6,16 +6,16 @@ import ArrowUpIcon from "@assets/icons/actions/arrow-up-icon.svg";
 import SortIcon from "@assets/icons/actions/sort-icon.svg";
 import "./TaskSort.css";
 
-export function TaskSort() {
-  const { menuPosition, handleMoreClick, closeMenu } = useContextMenu();
+interface TaskSortProps {
+  contextMenu: ReturnType<typeof useContextMenu>;
+}
+
+export function TaskSort({ contextMenu }: TaskSortProps) {
+  const { openId, menuPosition, handleMoreClick, closeMenu } = contextMenu;
+
   const sortButtonRef = useRef<HTMLButtonElement | null>(null);
 
-  const [isSortOpen, setIsSortOpen] = useState(false);
-
-  const handleSortClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    handleMoreClick(e, "sort");
-    setIsSortOpen((prev) => !prev);
-  };
+  const isOpen = openId === "sort";
 
   return (
     <>
@@ -23,24 +23,21 @@ export function TaskSort() {
         ref={sortButtonRef}
         type="button"
         className="task-controls__button"
-        onClick={handleSortClick}
+        onClick={(e) => handleMoreClick(e, "sort")}
       >
         <img src={SortIcon} alt="" role="presentation" />
         <span className="task-controls__button-name">Sort</span>
         <img
-          src={isSortOpen ? ArrowUpIcon : ArrowDownIcon}
+          src={isOpen ? ArrowUpIcon : ArrowDownIcon}
           alt=""
           role="presentation"
         />
       </button>
 
-      {isSortOpen && menuPosition && (
+      {isOpen && menuPosition && (
         <TaskSortMenu
           position={menuPosition}
-          onClose={() => {
-            setIsSortOpen(false);
-            closeMenu();
-          }}
+          onClose={() => closeMenu()}
           triggerRef={sortButtonRef}
         />
       )}
