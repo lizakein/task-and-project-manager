@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import './ConfirmModal.css';
+import "./ConfirmModal.css";
 import { useEffect, useRef } from "react";
 
 interface ConfirmModalProps {
@@ -8,9 +8,15 @@ interface ConfirmModalProps {
   message: string;
   onConfirm: () => void;
   onCancel: () => void;
-};
+}
 
-export function ConfirmModal({ isOpen, title, message, onConfirm, onCancel}: ConfirmModalProps) {
+export function ConfirmModal({
+  isOpen,
+  title,
+  message,
+  onConfirm,
+  onCancel,
+}: ConfirmModalProps) {
   if (!isOpen) return null;
 
   const confirmButtonRef = useRef<HTMLButtonElement>(null);
@@ -21,7 +27,7 @@ export function ConfirmModal({ isOpen, title, message, onConfirm, onCancel}: Con
 
   return createPortal(
     <div className="overlay confirm-modal__overlay">
-      <div 
+      <div
         className="window confirm-modal__window"
         role="alertdialog"
         aria-modal="true"
@@ -31,23 +37,27 @@ export function ConfirmModal({ isOpen, title, message, onConfirm, onCancel}: Con
         <h2 id="confirm-title" className="confirm-modal__title">
           {title}
         </h2>
-        <p id="confirm-message"className="confirm-modal__message">
+        <p id="confirm-message" className="confirm-modal__message">
           {message}
         </p>
 
         <div className="confirm-modal__actions">
-          <button 
+          <button
             ref={confirmButtonRef}
-            type="button" 
-            className="button button--warning" 
+            type="button"
+            className="button button--warning"
             onClick={onConfirm}
           >
-            Yes, I'm sure
+            Yes, I&apos;m sure
           </button>
-          <button type="button" className="button button--primary" onClick={onCancel}>
+          <button
+            type="button"
+            className="button button--primary"
+            onClick={onCancel}
+          >
             No
           </button>
-        </div>     
+        </div>
       </div>
     </div>,
     document.body
