@@ -2,10 +2,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { TaskForm } from "./components/TaskForm";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
-import { useStore } from "@store/useStore";
 import type { Task } from "@features/tasks";
 import "./EditTaskPage.css";
 import { Layout } from "@layout/Layout/Layout";
+import { useTagStore, useTasksStore } from "@store/hooks";
 
 type PriorityValue = Task["priority"] | "";
 
@@ -16,9 +16,9 @@ export function EditTaskPage() {
   }>();
   const navigate = useNavigate();
 
-  const updateTask = useStore((state) => state.updateTask);
-  const task = useStore((state) => state.tasks.find((t) => t.id === taskId));
-  const allTags = useStore((state) => state.tags);
+  const { tasks, updateTask } = useTasksStore();
+  const task = tasks.find((t) => t.id === taskId);
+  const { tags: allTags } = useTagStore();
 
   const [title, setTitle] = useState(task?.title || "");
   const [description, setDescription] = useState(task?.description || "");
