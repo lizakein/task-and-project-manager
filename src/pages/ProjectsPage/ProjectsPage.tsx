@@ -1,13 +1,12 @@
-import { useStore } from "@store/useStore";
+import { Layout } from "@layout/Layout/Layout";
+import { useProjectsStore } from "@store/hooks";
 import { useNavigate } from "react-router-dom";
 import "./ProjectsPage.css";
-import { Layout } from "@layout/Layout/Layout";
 
 export function ProjectsPage() {
   const navigate = useNavigate();
 
-  const projects = useStore((state) => state.projects);
-  const addNewProject = useStore((state) => state.addProject);
+  const { projects, addProject: addNewProject } = useProjectsStore();
 
   const hasProjects = projects.length > 0;
 
