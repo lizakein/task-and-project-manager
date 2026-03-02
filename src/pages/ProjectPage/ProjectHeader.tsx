@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import EditIcon from "@assets/icons/actions/edit-purple-icon.svg";
 import ShareIcon from "@assets/icons/actions/share-icon.svg";
-import { useStore } from "@store/useStore";
 import { TaskFilter } from "@features/tasks/components/TaskFilter/TaskFilter";
 import { TaskSort } from "@features/tasks/components/TaskSort/TaskSort";
 import { useContextMenu } from "@hooks/useContextMenu";
+import { useProjectsStore } from "@store/hooks";
 
 interface ProjectHeaderProps {
   projectId: string;
@@ -13,10 +13,8 @@ interface ProjectHeaderProps {
 export function ProjectHeader({ projectId }: ProjectHeaderProps) {
   const contextMenu = useContextMenu();
 
-  const currentProject = useStore((state) =>
-    state.projects.find((p) => p.id === projectId)
-  );
-  const updateProjectTitle = useStore((state) => state.updateProjectTitle);
+  const { projects, updateProjectTitle } = useProjectsStore();
+  const currentProject = projects.find((p) => p.id === projectId);
 
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [title, setTitle] = useState("");
