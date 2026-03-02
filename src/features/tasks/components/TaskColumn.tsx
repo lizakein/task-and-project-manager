@@ -1,10 +1,10 @@
 import { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDrop } from "react-dnd";
-import { useStore } from "@store/useStore";
 import { TaskCard } from "./TaskCard";
 import { DragItem } from "types/dnd";
 import AddPurpleIcon from "@assets/icons/actions/add-square-purple-icon.svg";
+import { useFiltersStore, useSortStore, useTasksStore } from "@store/hooks";
 
 interface TaskColumnProps {
   title: string;
@@ -18,11 +18,9 @@ export default function TaskColumn({
   projectId,
 }: TaskColumnProps) {
   const navigate = useNavigate();
-  const addTask = useStore((state) => state.addTask);
-  const updateTask = useStore((state) => state.updateTask);
-  const tasks = useStore((state) => state.tasks);
-  const filters = useStore((state) => state.filters);
-  const sort = useStore((state) => state.sort);
+  const { tasks, addTask, updateTask } = useTasksStore();
+  const { filters } = useFiltersStore();
+  const { sort } = useSortStore();
 
   const [liveMessage, setLiveMessage] = useState("");
 
