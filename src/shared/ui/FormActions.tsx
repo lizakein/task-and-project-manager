@@ -1,27 +1,24 @@
 import TrashIcon from "@assets/icons/actions/trash-icon.svg";
+import { Icon, Button } from "@ui/index";
 
 interface FormActionsProps {
   handleCancel: () => void;
-};
+}
 
 export function FormActions({ handleCancel }: FormActionsProps) {
   return (
     <div className="edit-task-page__actions">
-      <button 
-        type="button" 
-        className="button button--warning" 
+      <Button
+        variant="warning"
         onClick={handleCancel}
+        leftIcon={<Icon src={TrashIcon} />}
       >
-        <img src={TrashIcon} alt="" role="presentation" className="button__icon" />
         <span className="button__text">Cancel</span>
-      </button>
+      </Button>
 
-      <button 
-        className="button button--primary" 
-        type="submit"
-      >
+      <Button variant="primary" type="submit">
         Save
-      </button>
+      </Button>
     </div>
   );
 }
