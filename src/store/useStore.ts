@@ -79,31 +79,27 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
 
   // ========== TASK ==========
 
-  addTask: (projectId) => {
-    const task = TaskUtils.createTask(
-      get().tasks,
-      (tasks: Task[]) => set({ tasks }),
-      projectId
-    );
-    return task;
-  },
+  addTask: (projectId) =>
+    set((state) => ({
+      tasks: TaskUtils.createTask(state.tasks, projectId)
+    })),
 
-  updateTask: (taskId, patch) => {
-    TaskUtils.updateTask(
-      get().tasks,
-      (tasks: Task[]) => set({ tasks }),
-      taskId,
-      patch
-    );
-  },
+  updateTask: (taskId, patch) =>
+    set((state) => ({
+      tasks: TaskUtils.updateTask(
+        state.tasks,
+        taskId,
+        patch
+      )
+    })),
 
-  deleteTask: (id) => {
-    TaskUtils.deleteTask(
-      get().tasks,
-      (tasks: Task[]) => set({ tasks }),
-      id
-    );
-  },
+  deleteTask: (id) =>
+    set((state) => ({
+      tasks: TaskUtils.deleteTask(
+        state.tasks,
+        id
+      )
+    })),
 
 
   // ========== TAGS ==========
