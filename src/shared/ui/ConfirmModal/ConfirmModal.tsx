@@ -1,6 +1,7 @@
 import { createPortal } from "react-dom";
-import "./ConfirmModal.css";
 import { useEffect, useRef } from "react";
+import { Button } from "@ui/index";
+import "./ConfirmModal.css";
 
 interface ConfirmModalProps {
   isOpen: boolean;
@@ -42,21 +43,12 @@ export function ConfirmModal({
         </p>
 
         <div className="confirm-modal__actions">
-          <button
-            ref={confirmButtonRef}
-            type="button"
-            className="button button--warning"
-            onClick={onConfirm}
-          >
+          <Button ref={confirmButtonRef} variant="warning" onClick={onConfirm}>
             Yes, I&apos;m sure
-          </button>
-          <button
-            type="button"
-            className="button button--primary"
-            onClick={onCancel}
-          >
+          </Button>
+          <Button variant="primary" onClick={onCancel}>
             No
-          </button>
+          </Button>
         </div>
       </div>
     </div>,
