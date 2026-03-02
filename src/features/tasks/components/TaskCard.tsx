@@ -1,6 +1,5 @@
 import { useRef, useMemo } from "react";
 import { useDrag } from "react-dnd";
-import { useStore } from "@store/useStore";
 import { useContextMenu } from "@hooks/useContextMenu";
 import { getTagStyle } from "@utils/tagUtils";
 import { TaskOptions } from "./TaskOptions";
@@ -8,6 +7,7 @@ import MoreIcon from "@assets/icons/actions/more-icon.svg";
 import ClockIcon from "@assets/icons/ui/clock-icon.svg";
 import { TAG_COLORS } from "@constants/tagColors";
 import { Priority } from "../types";
+import { useTagStore, useTasksStore } from "@store/hooks";
 
 interface TaskCardProps {
   id: string;
@@ -31,7 +31,9 @@ export function TaskCard({
   status,
 }: TaskCardProps) {
   const { openId, menuPosition, handleMoreClick, closeMenu } = useContextMenu();
-  const allTags = useStore((state) => state.tags);
+  const { tags: allTags } = useTagStore();
+  const { updateTask } = useTasksStore();
+
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   const [{ isDragging }, drag] = useDrag({
@@ -62,8 +64,6 @@ export function TaskCard({
 
     return { formatted, isoDate };
   }, [dueDate]);
-
-  const updateTask = useStore((state) => state.updateTask);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "ArrowRight") {
