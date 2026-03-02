@@ -19,7 +19,7 @@ export const updateProjectTitle = (
   projects: Project[],
   projectId: string,
   title: string
-) => {
+): Project[] => {
   return projects.map(p =>
     p.id === projectId ? { ...p, title } : p
   );
@@ -28,6 +28,6 @@ export const updateProjectTitle = (
 export const deleteProject = (
   projects: Project[],
   id: string
-) => {
+): Project[] => {
   return projects.filter(p => p.id !== id);
 };
