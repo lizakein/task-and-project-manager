@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useStore } from "@store/useStore";
 import { OptionsWindow } from "@ui/OptionsWindow/OptionsWindow";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
 import EditIcon from "@assets/icons/actions/edit-icon.svg";
 import TrashIcon from "@assets/icons/actions/trash-icon.svg";
 import { MenuPosition } from "@hooks/useContextMenu";
+import { useTasksStore } from "@store/hooks";
 
 interface TaskOptionsProps {
   menuPosition: MenuPosition;
@@ -26,7 +26,7 @@ export function TaskOptions({
 }: TaskOptionsProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-  const deleteTask = useStore((state) => state.deleteTask);
+  const { deleteTask } = useTasksStore();
 
   const handleEditTask = () => {
     navigate(`/project/${projectId}/${openId}`);
