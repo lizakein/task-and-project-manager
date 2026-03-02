@@ -53,33 +53,29 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
 
   // ========== PROJECT ==========
 
-  addProject: () => {
-    const project = ProjectUtils.createProject(
-      get().projects,
-      (projects: Project[]) => set({ projects })
-    );
-    return project;
-  },
+  addProject: () =>
+    set((state) => ({
+      projects: ProjectUtils.createProject(state.projects)
+    })),
 
-  updateProjectTitle: (id, title) => {
-    ProjectUtils.updateProjectTitle(
-      get().projects,
-      (projects: Project[]) => set({ projects }),
-      id,
-      title
-    );
-  },
+  updateProjectTitle: (id, title) =>
+    set((state) => ({
+      projects: ProjectUtils.updateProjectTitle(
+        state.projects,
+        id,
+        title
+      )
+    })),
 
-  deleteProject: (id) => {
-    ProjectUtils.deleteProject(
-      get().projects,
-      (projects: Project[]) => set({ projects }),
-      id
-    );
 
-    set({ tasks: get().tasks.filter(t => t.projectId !== id) });
-  },
-
+  deleteProject: (id) =>
+    set((state) => ({
+      projects: ProjectUtils.deleteProject(
+        state.projects,
+        id
+      ),
+      tasks: state.tasks.filter(t => t.projectId !== id)
+    })),
 
   // ========== TASK ==========
 
