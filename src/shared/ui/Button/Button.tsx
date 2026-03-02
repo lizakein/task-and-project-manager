@@ -1,4 +1,5 @@
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
+import "./Button.css";
 
 type ButtonVariant = "default" | "primary" | "warning";
 
