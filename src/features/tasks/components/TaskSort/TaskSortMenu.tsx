@@ -1,7 +1,7 @@
 import { MenuPosition } from "@hooks/useContextMenu";
-import { useStore } from "@store/useStore";
 import { OptionsWindow } from "@ui/OptionsWindow/OptionsWindow";
 import { SortSection } from "./SortSection";
+import { useSortStore } from "@store/hooks";
 
 interface TaskSortMenuProps {
   position: MenuPosition;
@@ -14,9 +14,7 @@ export function TaskSortMenu({
   onClose,
   triggerRef,
 }: TaskSortMenuProps) {
-  const sort = useStore((state) => state.sort);
-  const setSort = useStore((state) => state.setSort);
-  const clearSort = useStore((state) => state.clearSort);
+  const { sort, setSort, clearSort } = useSortStore();
 
   const handleSelect = (
     field: "title" | "priority" | "date",
