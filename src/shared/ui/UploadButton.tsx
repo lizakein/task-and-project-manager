@@ -1,10 +1,14 @@
 import UploadImgaeIcon from "@assets/icons/ui/upload-image-icon.svg";
+import { Button, Icon } from "@ui/index";
 
 export function UploadButton() {
   return (
-    <button type="button" className="button upload-button"> 
-      <img src={UploadImgaeIcon} alt="" role="presentation" className="button__icon" />
+    <Button
+      type="button"
+      className="upload-button"
+      leftIcon={<Icon src={UploadImgaeIcon} />}
+    >
       <span className="button__text">Upload Image</span>
-    </button>
+    </Button>
   );
 }
