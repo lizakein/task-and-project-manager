@@ -134,7 +134,7 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
   // ========== FILTERS ==========
 
   setFilters: (newFilters) => {
-    set(state => ({
+    set((state) => ({
       filters: {
         ...state.filters,
         ...newFilters
@@ -145,8 +145,9 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
   clearFilters: () => set({ filters: DEFAULT_FILTERS }),
 
   // ========== SORT ==========
+
   setSort: (newSort) => {
-    set(state => ({
+    set((state) => ({
       sort: {
         ...state.sort,
         ...newSort
@@ -155,7 +156,6 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
   },
 
   clearSort: () => set({ sort: DEFAULT_SORT }),
-
 });
 
 export const useStore = createWithEqualityFn<StateStore>()(
