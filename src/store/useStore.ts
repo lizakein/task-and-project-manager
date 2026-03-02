@@ -5,11 +5,22 @@ import { createWithEqualityFn } from 'zustand/traditional';
 import * as ProjectUtils from '../utils/projectUtils';
 import * as TaskUtils from '../utils/taskUtils';
 
-import { StateStore } from './types';
+import { SortDirection, StateStore } from './types';
 import type { Project } from '../features/projects';
 import type { Task } from '../features/tasks';
 import type { Tag } from '../features/tags';
 import type { Priority } from '@features/tasks/types';
+
+const DEFAULT_FILTERS = {
+  priorities: [] as Priority[],
+  tags: [] as string[]
+};
+
+const DEFAULT_SORT = {
+  field: null,
+  direction: "asc" as SortDirection
+};
+
 
 const storeCreator: StateCreator<StateStore> = (set, get) => ({
   projects: [] as Project[],
@@ -19,14 +30,8 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
     { id: "2", label: "Work", color: "red" },
     { id: "3", label: "Sport", color: "green" }
   ] as Tag[],
-  filters: {
-    priorities: [] as Priority[],
-    tags: [] as string[]
-  },
-  sort: {
-    field: null,
-    direction: "asc"
-  },
+  filters: DEFAULT_FILTERS,
+  sort: DEFAULT_SORT,
 
 
   // ========== LOAD ==========
@@ -149,14 +154,7 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
     }));
   },
 
-  clearFilters: () => {
-    set({
-      filters: {
-        priorities: [],
-        tags: []
-      }
-    });
-  },
+  clearFilters: () => set({ filters: DEFAULT_FILTERS }),
 
   // ========== SORT ==========
   setSort: (newSort) => {
@@ -168,14 +166,8 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
     }));
   },
 
-  clearSort: () => {
-    set({
-      sort: {
-        field: null,
-        direction: "asc"
-      }
-    });
-  }
+  clearSort: () => set({ sort: DEFAULT_SORT }),
+
 });
 
 export const useStore = createWithEqualityFn<StateStore>()(
