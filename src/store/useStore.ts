@@ -104,36 +104,32 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
 
   // ========== TAGS ==========
 
-  addTag: (label, color) => {
-    const newTag = {
-      id: crypto.randomUUID(),
-      label,
-      color
-    };
-    set({ tags: [...get().tags, newTag] });
+  addTag: (label, color) =>
+    set((state) => {
+      const newTag: Tag = {
+        id: crypto.randomUUID(),
+        label,
+        color
+      };
 
-    return newTag;
-  },
+      return {
+        tags: [...state.tags, newTag]
+      };
+    }),
 
-  updateTag: (id, patch) => {
-    set({
-      tags: get().tags.map(tag => tag.id === id ? { ...tag, ...patch } : tag)
-    });
-  },
+  updateTag: (id, patch) =>
+    set((state) => ({
+      tags: state.tags.map(tag => tag.id === id ? { ...tag, ...patch } : tag)
+    })),
 
-  deleteTag: (id) => {
-    const newTags = get().tags.filter(tag => tag.id !== id);
-
-    const newTasks = get().tasks.map(task => ({
-      ...task,
-      tags: (task.tags || []).filter(tagId => tagId !== id && tagId != null)
-    }));
-
-    set({ tags: newTags, tasks: newTasks });
-
-    return { tags: newTags, tasks: newTasks };
-  },
-
+  deleteTag: (id) =>
+    set((state) => ({
+      tags: state.tags.filter(tag => tag.id !== id),
+      tasks: state.tasks.map(task => ({
+        ...task,
+        tags: (task.tags || []).filter(tagId => tagId !== id && tagId != null)
+      }))
+    })),
 
   // ========== FILTERS ==========
 

@@ -33,12 +33,9 @@ export interface StateStore {
   updateTask: (taskId: string, patch: Partial<Task>) => void;
   deleteTask: (id: string) => void;
 
-  addTag: (label: string, color: string) => Tag;
+  addTag: (label: string, color: string) => void;
   updateTag: (id: string, patch: Partial<Tag>) => void;
-  deleteTag: (id: string) => {
-    tags: Tag[],
-    tasks: Task[]
-  };
+  deleteTag: (id: string) => void;
 
   setFilters: (filters: Partial<StateStore["filters"]>) => void;
   clearFilters: () => void;
