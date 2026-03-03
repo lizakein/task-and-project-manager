@@ -1,4 +1,5 @@
 import { Priority } from "@features/tasks/types";
+import { Button } from "@ui/index";
 
 interface PriorityButtonProps {
   level: Priority;
@@ -12,8 +13,7 @@ export function PriorityButton({
   onClick,
 }: PriorityButtonProps) {
   return (
-    <button
-      type="button"
+    <Button
       className={`
         priority 
         priority--${level} 
@@ -24,6 +24,6 @@ export function PriorityButton({
       onClick={onClick}
     >
       {level}
-    </button>
+    </Button>
   );
 }
