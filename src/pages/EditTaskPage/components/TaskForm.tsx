@@ -2,7 +2,7 @@ import { PrioritySection } from "./PrioritySection";
 import { TagsSection } from "@features/tags";
 import { DescriptionSection } from "./DescriptionSection";
 import { DueDateSection } from "./DueDateSection";
-import { UploadButton } from "@ui/UploadButton";
+import { UploadButton } from "@ui/index";
 import { FormActions } from "@ui/FormActions";
 import type { FieldState } from "../../../types/fieldState";
 import { Task } from "@features/tasks";
@@ -15,7 +15,7 @@ interface TaskFormProps {
   dueDate: FieldState<string>;
   handleSave: (event: React.FormEvent<HTMLFormElement>) => void;
   handleCancel: () => void;
-};
+}
 
 export function TaskForm({
   title,
@@ -23,15 +23,15 @@ export function TaskForm({
   priority,
   tags,
   dueDate,
-  handleSave, 
-  handleCancel
+  handleSave,
+  handleCancel,
 }: TaskFormProps) {
   return (
     <form className="edit-task-page__form" onSubmit={handleSave}>
-      <input 
-        type='text'
+      <input
+        type="text"
         value={title.value}
-        placeholder="Task title" 
+        placeholder="Task title"
         className="edit-task-page__title-input"
         aria-label="Task title"
         onChange={(e) => title.setValue(e.target.value)}
@@ -42,7 +42,7 @@ export function TaskForm({
       <DescriptionSection description={description} />
       <DueDateSection dueDate={dueDate} />
       <UploadButton />
-      <FormActions handleCancel={handleCancel} />   
+      <FormActions handleCancel={handleCancel} />
     </form>
   );
 }
