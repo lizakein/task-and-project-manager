@@ -9,19 +9,6 @@
   background-color: var(--main-background);
 }
 
-.options-window__item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  font-size: 1rem;
-  font-weight: 500;
-  border: none;
-  background-color: inherit;
-
-  cursor: pointer;
-}
-
 .options-window__item-label {
   color: var(--text-color);
 }
