@@ -8,6 +8,7 @@ import ClockIcon from "@assets/icons/ui/clock-icon.svg";
 import { TAG_COLORS } from "@constants/tagColors";
 import { Priority } from "../types";
 import { useTagStore, useTasksStore } from "@store/hooks";
+import { Icon, IconButton } from "@ui/index";
 
 interface TaskCardProps {
   id: string;
@@ -93,18 +94,16 @@ export function TaskCard({
         <p className="priority" aria-label="Priority" data-priority={priority}>
           {priority}
         </p>
-        <button
+        <IconButton
           ref={buttonRef}
-          className="icon-button"
-          aria-label={`More options for task ${title}`}
+          ariaLabel={`More options for task ${title}`}
           aria-haspopup="menu"
           aria-expanded={openId === id}
           onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
             handleMoreClick(e, id)
           }
-        >
-          <img src={MoreIcon} alt="" role="presentation" />
-        </button>
+          icon={<Icon src={MoreIcon} />}
+        />
 
         {openId === id && menuPosition && (
           <TaskOptions
@@ -149,7 +148,7 @@ export function TaskCard({
             aria-label="Deadline"
             dateTime={formatedDate.isoDate}
           >
-            <img src={ClockIcon} alt="" role="presentation" />
+            <Icon src={ClockIcon} />
             <span>{formatedDate.formatted}</span>
           </time>
         )}
