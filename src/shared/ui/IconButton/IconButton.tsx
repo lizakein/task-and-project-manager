@@ -19,7 +19,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       <button
         ref={ref}
         type={type}
-        className={`icon-button ${className}.trim()`}
+        className={`icon-button ${className}`.trim()}
         aria-label={ariaLabel}
         {...props}
       >
