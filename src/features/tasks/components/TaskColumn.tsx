@@ -5,6 +5,7 @@ import { TaskCard } from "./TaskCard";
 import { DragItem } from "types/dnd";
 import AddPurpleIcon from "@assets/icons/actions/add-square-purple-icon.svg";
 import { useFiltersStore, useSortStore, useTasksStore } from "@store/hooks";
+import { Icon, IconButton } from "@ui/index";
 
 interface TaskColumnProps {
   title: string;
@@ -117,13 +118,11 @@ export default function TaskColumn({
           </span>
         </div>
         {status === "todo" && (
-          <button
-            className="icon-button"
-            aria-label="Add new task"
+          <IconButton
+            ariaLabel="Add new task"
             onClick={handleAddTask}
-          >
-            <img src={AddPurpleIcon} alt="" role="presentation" />
-          </button>
+            icon={<Icon src={AddPurpleIcon} />}
+          />
         )}
       </header>
 
