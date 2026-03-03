@@ -45,14 +45,6 @@ body {
   font-weight: 500;
 }
 
-.menu-item {
-  width: 1.5rem;
-  height: 1.5rem;
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-}
-
 .priority,
 .tag {
   padding: 0.2rem 0.3rem;

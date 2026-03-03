@@ -23,11 +23,7 @@
 }
 
 .menu-item {
-  display: flex;
-  align-items: center;
   gap: 0.7rem;
-  width: 100%;
-  cursor: pointer;
 }
 
 .menu-item__label {
