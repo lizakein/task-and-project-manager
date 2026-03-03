@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { TagsManagerModal } from "./TagsManagerModal";
-import ManageTagsIcon from "@assets/icons/navigation/settings-icon.svg";
 import { FieldState } from "../../../types/fieldState";
+import ManageTagsIcon from "@assets/icons/navigation/settings-icon.svg";
 import { TagButton } from "@features/tasks/components/TagButton/TagButton";
 import { useTagStore } from "@store/hooks";
+import { Icon, IconButton } from "@ui/index";
 
 interface TagsSectionProps {
   tags: FieldState<string[]>;
@@ -23,14 +24,11 @@ export default function TagsSection({ tags }: TagsSectionProps) {
     <section className="edit-task-page__section edit-task-page__tags-section">
       <div className="edit-task-page__header">
         <h2 className="edit-task-page__section-title">Tag</h2>
-        <button
-          type="button"
-          className="icon-button"
-          aria-label="Manage tags"
+        <IconButton
+          ariaLabel="Manage tags"
           onClick={() => setIsTagsModalOpen(true)}
-        >
-          <img src={ManageTagsIcon} alt="" role="presentation" />
-        </button>
+          icon={<Icon src={ManageTagsIcon} />}
+        />
       </div>
 
       <div className="edit-task-page__buttons-group">
