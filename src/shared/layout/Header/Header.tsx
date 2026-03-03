@@ -5,6 +5,7 @@ import UserIcon from "@assets/icons/users/user-icon.svg";
 import ArrowDownIcon from "@assets/icons/actions/arrow-down-icon.svg";
 import MenuIcon from "@assets/icons/actions/menu-icon.svg";
 import { Search } from "./Search";
+import { IconButton, Icon } from "@ui/index";
 import "./Header.css";
 
 interface HeaderProps {
@@ -18,18 +19,18 @@ export function Header({ onMenuToggle, isMenuOpen }: HeaderProps) {
   return (
     <header className="header" role="banner">
       <div className="header__brand">
-        <button
-          className="header__menu-button icon-button"
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        <IconButton
+          className="header__menu-button"
+          ariaLabel={isMenuOpen ? "Close menu" : "Open menu"}
+          icon={<img src={MenuIcon} />}
           onClick={onMenuToggle}
-        >
-          <img src={MenuIcon} alt="" role="presentation" />
-        </button>
+        />
 
-        <img
+        <Icon
           src={TaskManagerLogo}
           alt="Task manager logo"
           className="header__logo"
+          decorative={false}
         />
         <h1 className="header__title">Project M.</h1>
       </div>
@@ -38,32 +39,32 @@ export function Header({ onMenuToggle, isMenuOpen }: HeaderProps) {
         <Search />
 
         <div className="user-panel">
-          <button className="icon-button" aria-label="Help" type="button">
-            <img src={FaqIcon} alt="" role="presentation" />
-          </button>
-
-          <button
+          <IconButton
             className="icon-button"
-            aria-label="Notifications"
-            type="button"
-          >
-            <img src={NotificationIcon} alt="" role="presentation" />
-          </button>
+            ariaLabel="Help"
+            icon={<Icon src={FaqIcon} />}
+          />
+
+          <IconButton
+            className="icon-button"
+            ariaLabel="Notifications"
+            icon={<Icon src={NotificationIcon} />}
+          />
 
           <div className="user-menu">
             <p className="user-menu__name">{userName}</p>
-            <img
+            <Icon
               src={UserIcon}
               alt={`${userName}'s avatar`}
               className="user-menu__avatar"
+              decorative={false}
+              size="2rem"
             />
-            <button
-              type="button"
-              className="icon-button user-menu__toggle"
-              aria-label="Open profile menu"
-            >
-              <img src={ArrowDownIcon} alt="" role="presentation" />
-            </button>
+            <IconButton
+              className="user-menu__toggle"
+              ariaLabel="Open profile menu"
+              icon={<Icon src={ArrowDownIcon} />}
+            />
           </div>
         </div>
       </div>
