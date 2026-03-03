@@ -39,14 +39,9 @@ export function Header({ onMenuToggle, isMenuOpen }: HeaderProps) {
         <Search />
 
         <div className="user-panel">
-          <IconButton
-            className="icon-button"
-            ariaLabel="Help"
-            icon={<Icon src={FaqIcon} />}
-          />
+          <IconButton ariaLabel="Help" icon={<Icon src={FaqIcon} />} />
 
           <IconButton
-            className="icon-button"
             ariaLabel="Notifications"
             icon={<Icon src={NotificationIcon} />}
           />
@@ -58,7 +53,6 @@ export function Header({ onMenuToggle, isMenuOpen }: HeaderProps) {
               alt={`${userName}'s avatar`}
               className="user-menu__avatar"
               decorative={false}
-              size="2rem"
             />
             <IconButton
               className="user-menu__toggle"
