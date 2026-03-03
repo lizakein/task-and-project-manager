@@ -5,6 +5,7 @@ import { Dispatch, SetStateAction } from "react";
 import AddIcon from "@assets/icons/actions/add-square-icon.svg";
 import CloseIcon from "@assets/icons/actions/close-icon.svg";
 import { useTagStore } from "@store/hooks";
+import { Button, Icon, IconButton } from "@ui/index";
 
 interface TagsManagerContentProps {
   setIsTagsModalOpen: Dispatch<SetStateAction<boolean>>;
@@ -20,14 +21,12 @@ export function TagsManagerContent({
   return (
     <>
       <div className="tags-manager-modal__header">
-        <button
-          type="button"
-          className="icon-button close-icon"
-          aria-label="Close tags manager"
+        <IconButton
+          className="close-icon"
+          ariaLabel="Close tags manager"
           onClick={() => setIsTagsModalOpen(false)}
-        >
-          <img src={CloseIcon} alt="" role="presentation" />
-        </button>
+          icon={<Icon src={CloseIcon} />}
+        />
       </div>
 
       <TagsList />
@@ -43,15 +42,13 @@ export function TagsManagerContent({
           }}
         />
       ) : (
-        <button
-          type="button"
-          className="button"
-          aria-label="Add tag"
+        <Button
+          ariaL-label="Add tag"
           onClick={() => setIsAdding(true)}
+          leftIcon={<Icon src={AddIcon} />}
         >
-          <img src={AddIcon} alt="" role="presentation" />
           Add new tag
-        </button>
+        </Button>
       )}
 
       {isWarning && (
