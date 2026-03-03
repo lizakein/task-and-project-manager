@@ -1,6 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import { Layout } from "@layout/Layout/Layout";
 import { useProjectsStore } from "@store/hooks";
-import { useNavigate } from "react-router-dom";
+import { Button } from "@ui/index";
 import "./ProjectsPage.css";
 
 export function ProjectsPage() {
@@ -27,13 +28,9 @@ export function ProjectsPage() {
             <p className="projects-page__text">
               You don&apos;t have any projects yet.
             </p>
-            <button
-              type="button"
-              className="button button--primary"
-              onClick={handleCreateProject}
-            >
+            <Button variant="primary" onClick={handleCreateProject}>
               Create new project
-            </button>
+            </Button>
           </>
         )}
       </div>
