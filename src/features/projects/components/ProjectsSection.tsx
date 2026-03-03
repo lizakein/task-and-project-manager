@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ProjectItem } from "./ProjectItem";
 import AddSquareIcon from "@assets/icons/actions/add-square-icon.svg";
 import { useProjectsStore } from "@store/hooks";
+import { Icon, IconButton } from "@ui/index";
 
 interface ProjectsSection {
   projectId: string | null;
@@ -21,13 +22,11 @@ export default function ProjectsSection({ projectId }: ProjectsSection) {
     <section className="projects-section">
       <header className="projects-section__header">
         <h2 className="projects-section__title">My projects</h2>
-        <button
-          className="icon-button"
-          aria-label="Add new project"
+        <IconButton
+          ariaLabel="Add new project"
           onClick={handleCreateProject}
-        >
-          <img src={AddSquareIcon} alt="" role="presentation" />
-        </button>
+          icon={<Icon src={AddSquareIcon} />}
+        />
       </header>
 
       <ul className="projects-list">
