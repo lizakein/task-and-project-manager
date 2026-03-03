@@ -1,5 +1,6 @@
 import { MenuPosition } from "@hooks/useContextMenu";
 import { OptionsWindow } from "@ui/OptionsWindow/OptionsWindow";
+import { Button } from "@ui/index";
 import { PriorityButton } from "../PriorityButton/PriorityButton";
 import { TagButton } from "../TagButton/TagButton";
 import { Priority } from "@features/tasks/types";
@@ -72,9 +73,9 @@ export function TaskFilterMenu({
           </div>
         </div>
 
-        <button className="button filter-clear" onClick={clearFilters}>
+        <Button className="filter-clear" onClick={clearFilters}>
           Clear filters
-        </button>
+        </Button>
       </div>
     </OptionsWindow>
   );
