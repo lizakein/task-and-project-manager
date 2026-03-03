@@ -5,6 +5,7 @@ import { TaskFilter } from "@features/tasks/components/TaskFilter/TaskFilter";
 import { TaskSort } from "@features/tasks/components/TaskSort/TaskSort";
 import { useContextMenu } from "@hooks/useContextMenu";
 import { useProjectsStore } from "@store/hooks";
+import { Icon, IconButton } from "@ui/index";
 
 interface ProjectHeaderProps {
   projectId: string;
@@ -77,22 +78,16 @@ export function ProjectHeader({ projectId }: ProjectHeaderProps) {
         )}
 
         <div className="project-header__actions">
-          <button
-            type="button"
-            className="icon-button"
-            aria-label="Edit project title"
+          <IconButton
+            ariaLabel="Edit project title"
             onClick={editTitle}
-          >
-            <img src={EditIcon} alt="" role="presentation" />
-          </button>
+            icon={<Icon src={EditIcon} />}
+          />
 
-          <button
-            type="button"
-            className="icon-button"
-            aria-label="Share project"
-          >
-            <img src={ShareIcon} alt="" role="presentation" />
-          </button>
+          <IconButton
+            ariaLabel="Share project"
+            icon={<Icon src={ShareIcon} />}
+          />
         </div>
       </div>
 
