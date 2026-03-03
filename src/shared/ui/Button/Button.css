@@ -27,6 +27,12 @@
   border: none;
 }
 
+.button--ghost {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
 .button:hover {
   font-weight: 600;
 }
