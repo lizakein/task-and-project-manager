@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Icon, IconButton } from "@ui/index";
 import SearchIcon from "@assets/icons/ui/search-icon.svg";
 import "./Search.css";
 
@@ -12,19 +13,12 @@ export function Search() {
       aria-label="Site search"
       onSubmit={(e) => e.preventDefault()}
     >
-      <button
-        type="button"
-        className="search__toggle icon-button"
-        aria-label={isSearchOpen ? "Close search" : "Open search"}
+      <IconButton
+        className="search__toggle"
+        ariaLabel={isSearchOpen ? "Close search" : "Open search"}
         onClick={() => setIsSearchOpen((prev) => !prev)}
-      >
-        <img
-          src={SearchIcon}
-          alt=""
-          role="presentation"
-          className="search__icon"
-        />
-      </button>
+        icon={<Icon src={SearchIcon} className="search__icon" />}
+      />
 
       <input
         type="search"
