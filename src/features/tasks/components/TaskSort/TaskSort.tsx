@@ -4,6 +4,7 @@ import { TaskSortMenu } from "./TaskSortMenu";
 import ArrowDownIcon from "@assets/icons/actions/arrow-down-icon.svg";
 import ArrowUpIcon from "@assets/icons/actions/arrow-up-icon.svg";
 import SortIcon from "@assets/icons/actions/sort-icon.svg";
+import { Button, Icon } from "@ui/index";
 import "./TaskSort.css";
 
 interface TaskSortProps {
@@ -19,20 +20,15 @@ export function TaskSort({ contextMenu }: TaskSortProps) {
 
   return (
     <>
-      <button
+      <Button
         ref={sortButtonRef}
-        type="button"
         className="task-controls__button"
         onClick={(e) => handleMoreClick(e, "sort")}
+        leftIcon={<Icon src={SortIcon} />}
+        rightIcon={<Icon src={isOpen ? ArrowUpIcon : ArrowDownIcon} />}
       >
-        <img src={SortIcon} alt="" role="presentation" />
         <span className="task-controls__button-name">Sort</span>
-        <img
-          src={isOpen ? ArrowUpIcon : ArrowDownIcon}
-          alt=""
-          role="presentation"
-        />
-      </button>
+      </Button>
 
       {isOpen && menuPosition && (
         <TaskSortMenu
