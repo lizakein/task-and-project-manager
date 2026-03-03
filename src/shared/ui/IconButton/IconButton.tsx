@@ -1,4 +1,5 @@
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
+import "./IconButton.css";
 
 interface IconButtonProps extends Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
