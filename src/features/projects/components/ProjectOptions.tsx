@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { OptionsWindow } from "@ui/OptionsWindow/OptionsWindow";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
+import { Button, Icon } from "@ui/index";
 import ArchiveIcon from "@assets/icons/actions/archive-icon.svg";
 import TrashIcon from "@assets/icons/actions/trash-icon.svg";
 import { MenuPosition } from "@hooks/useContextMenu";
@@ -60,19 +61,23 @@ export function ProjectOptions({
       shouldReturnFocus={!isModalOpen}
       disableAutoFocus={isModalOpen}
     >
-      <button className="options-window__item" role="menuitem" type="button">
-        <img src={ArchiveIcon} alt="" role="presentation" />
-        <span className="options-window__item-label">Archive</span>
-      </button>
-      <button
+      <Button
         className="options-window__item"
         role="menuitem"
-        type="button"
-        onClick={handleDeleteProject}
+        variant="ghost"
+        leftIcon={<Icon src={ArchiveIcon} />}
       >
-        <img src={TrashIcon} alt="" role="presentation" />
+        <span className="options-window__item-label">Archive</span>
+      </Button>
+      <Button
+        className="options-window__item"
+        role="menuitem"
+        variant="ghost"
+        onClick={handleDeleteProject}
+        leftIcon={<Icon src={TrashIcon} />}
+      >
         <span className="options-window__item-label red">Trash</span>
-      </button>
+      </Button>
 
       <ConfirmModal
         isOpen={isModalOpen}
