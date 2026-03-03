@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { OptionsWindow } from "@ui/OptionsWindow/OptionsWindow";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
+import { Button, Icon } from "@ui/index";
 import EditIcon from "@assets/icons/actions/edit-icon.svg";
 import TrashIcon from "@assets/icons/actions/trash-icon.svg";
 import { MenuPosition } from "@hooks/useContextMenu";
@@ -48,24 +49,24 @@ export function TaskOptions({
       onClose={onClose}
       triggerRef={triggerRef}
     >
-      <button
+      <Button
+        variant="ghost"
         className="options-window__item"
         role="menuitem"
-        type="button"
         onClick={handleEditTask}
+        leftIcon={<Icon src={EditIcon} />}
       >
-        <img src={EditIcon} alt="" role="presentation" />
         <span className="options-window__item-label">Edit</span>
-      </button>
-      <button
+      </Button>
+      <Button
+        variant="ghost"
         className="options-window__item"
         role="menuitem"
-        type="button"
         onClick={handleDeleteClick}
+        leftIcon={<Icon src={TrashIcon} />}
       >
-        <img src={TrashIcon} alt="" role="presentation" />
         <span className="options-window__item-label red">Trash</span>
-      </button>
+      </Button>
 
       <ConfirmModal
         isOpen={isModalOpen}
