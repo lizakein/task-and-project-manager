@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { TagsInput } from "./TagsInput";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
+import { Icon, IconButton } from "@ui/index";
 import EditIcon from "@assets/icons/actions/edit-icon.svg";
 import DeleteIcon from "@assets/icons/actions/trash-icon.svg";
 import { TAG_COLORS } from "@constants/tagColors";
@@ -83,23 +84,17 @@ export function TagsList() {
                 </div>
 
                 <div className="tags-manager-modal__actions">
-                  <button
-                    type="button"
-                    className="icon-button"
-                    aria-label="Edit tag label"
+                  <IconButton
+                    ariaLabel="Edit tag label"
                     onClick={() => setEditingIndex(tag.id)}
-                  >
-                    <img src={EditIcon} alt="" role="presentation" />
-                  </button>
+                    icon={<Icon src={EditIcon} />}
+                  />
 
-                  <button
-                    type="button"
-                    className="icon-button"
-                    aria-label="Delete tag"
+                  <IconButton
+                    ariaLabel="Delete tag"
                     onClick={() => setDeletingTagId(tag.id)}
-                  >
-                    <img src={DeleteIcon} alt="" role="presentation" />
-                  </button>
+                    icon={<Icon src={DeleteIcon} />}
+                  />
                 </div>
               </>
             )}
