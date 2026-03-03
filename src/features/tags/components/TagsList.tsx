@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TagsInput } from "./TagsInput";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
-import { Icon, IconButton } from "@ui/index";
+import { Button, Icon, IconButton } from "@ui/index";
 import EditIcon from "@assets/icons/actions/edit-icon.svg";
 import DeleteIcon from "@assets/icons/actions/trash-icon.svg";
 import { TAG_COLORS } from "@constants/tagColors";
@@ -40,8 +40,7 @@ export function TagsList() {
               <>
                 <div className="tags-manager-modal__left">
                   <div className="color-picker">
-                    <button
-                      type="button"
+                    <Button
                       className="color-picker__current"
                       style={{
                         backgroundColor:
@@ -55,7 +54,7 @@ export function TagsList() {
                     >
                       {Object.entries(TAG_COLORS).map(
                         ([colorKey, colorVal], i) => (
-                          <button
+                          <Button
                             key={colorKey}
                             className="color-option"
                             style={{
@@ -74,13 +73,12 @@ export function TagsList() {
                     </div>
                   </div>
 
-                  <button
-                    type="button"
+                  <Button
                     className={`tag tag--${tag.color}`}
                     style={getTagStyle(tag.color as keyof typeof TAG_COLORS)}
                   >
                     {tag.label}
-                  </button>
+                  </Button>
                 </div>
 
                 <div className="tags-manager-modal__actions">
