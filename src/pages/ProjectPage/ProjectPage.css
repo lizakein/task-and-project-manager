@@ -38,15 +38,13 @@
 }
 
 .task-controls__button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
   padding: 0.5rem 0.75rem;
-
-  border-radius: 6px;
   border: var(--border);
   background: inherit;
-  cursor: pointer;
+}
+
+.task-controls__button:hover {
+  font-weight: unset;
 }
 
 .task-controls__button img {
