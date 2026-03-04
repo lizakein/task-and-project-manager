@@ -3,7 +3,7 @@ import { TagsSection } from "@features/tags";
 import { DescriptionSection } from "./DescriptionSection";
 import { DueDateSection } from "./DueDateSection";
 import { UploadButton } from "./UploadButton";
-import { FormActions } from "@ui/FormActions";
+import { FormActions } from "./FormActions";
 import type { FieldState } from "../../../types/fieldState";
 import { Task } from "@features/tasks";
 
