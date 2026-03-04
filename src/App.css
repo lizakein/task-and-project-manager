@@ -53,17 +53,17 @@ body {
   border: none;
 }
 
-.priority[data-priority="high"] {
+.priority--high {
   color: var(--high-color);
   background-color: var(--high-color-background);
 }
 
-.priority[data-priority="medium"] {
+.priority--medium {
   color: var(--medium-color);
   background-color: var(--medium-color-background);
 }
 
-.priority[data-priority="low"] {
+.priority--low {
   color: var(--low-color);
   background-color: var(--low-color-background);
 }
