@@ -4,7 +4,7 @@ import NotificationIcon from "@assets/icons/actions/notification.svg";
 import UserIcon from "@assets/icons/users/user-icon.svg";
 import ArrowDownIcon from "@assets/icons/actions/arrow-down-icon.svg";
 import MenuIcon from "@assets/icons/actions/menu-icon.svg";
-import { Search } from "./Search";
+import { Search } from "../Search/Search";
 import { IconButton, Icon } from "@ui/index";
 import "./Header.css";
 
