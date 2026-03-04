@@ -1,4 +1,4 @@
-import { SortButton } from "../SortButton/SortButton";
+import { SortButton } from "./SortButton";
 
 interface SortSectionProps {
   label: string;
