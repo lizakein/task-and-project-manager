@@ -15,12 +15,12 @@ export function PriorityButton({
   return (
     <ToggleButton
       className={`
+        chip
         priority 
         priority--${level} 
-        ${selected ? "priority--selected" : ""}
       `}
       data-priority={level}
-      aria-pressed={selected}
+      selected={selected}
       onClick={onClick}
     >
       {level}
