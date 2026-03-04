@@ -74,7 +74,7 @@ export function TagsList() {
                   </div>
 
                   <Button
-                    className={`tag tag--${tag.color}`}
+                    className={`chip tag tag--${tag.color}`}
                     style={getTagStyle(tag.color as keyof typeof TAG_COLORS)}
                   >
                     {tag.label}
