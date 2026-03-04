@@ -46,11 +46,6 @@
   max-height: 2.5rem;
 }
 
-.tag,
-.priority {
-  cursor: pointer;
-}
-
 .edit-task-page__section {
   display: flex;
   flex-direction: column;

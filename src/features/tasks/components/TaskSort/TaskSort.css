@@ -26,7 +26,3 @@
   color: var(--text-color);
   background-color: var(--card-background);
 }
-
-.sort-option:hover {
-  cursor: pointer;
-}
