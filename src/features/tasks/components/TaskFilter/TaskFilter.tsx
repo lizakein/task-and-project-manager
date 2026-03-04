@@ -11,7 +11,7 @@ interface TaskFilterProps {
   contextMenu: ReturnType<typeof useContextMenu>;
 }
 
-export function TaskFilter({ contextMenu }: TaskFilterProps) {
+export default function TaskFilter({ contextMenu }: TaskFilterProps) {
   const { openId, menuPosition, handleMoreClick, closeMenu } = contextMenu;
 
   const filterButtonRef = useRef<HTMLButtonElement | null>(null);

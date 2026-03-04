@@ -11,7 +11,7 @@ interface TaskSortProps {
   contextMenu: ReturnType<typeof useContextMenu>;
 }
 
-export function TaskSort({ contextMenu }: TaskSortProps) {
+export default function TaskSort({ contextMenu }: TaskSortProps) {
   const { openId, menuPosition, handleMoreClick, closeMenu } = contextMenu;
 
   const sortButtonRef = useRef<HTMLButtonElement | null>(null);

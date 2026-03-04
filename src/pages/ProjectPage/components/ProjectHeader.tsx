@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import EditIcon from "@assets/icons/actions/edit-purple-icon.svg";
 import ShareIcon from "@assets/icons/actions/share-icon.svg";
-import { TaskFilter } from "@features/tasks/components/TaskFilter/TaskFilter";
-import { TaskSort } from "@features/tasks/components/TaskSort/TaskSort";
+import { TaskFilter, TaskSort } from "@features/tasks";
 import { useContextMenu } from "@hooks/useContextMenu";
 import { useProjectsStore } from "@store/hooks";
 import { Icon, IconButton } from "@ui/index";
