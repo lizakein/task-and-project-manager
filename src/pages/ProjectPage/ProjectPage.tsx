@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { ProjectHeader } from "./ProjectHeader";
+import { ProjectHeader } from "./components/ProjectHeader";
 import { Layout } from "@layout/Layout/Layout";
 import { TaskColumn } from "@features/tasks";
 import "./ProjectPage.css";
