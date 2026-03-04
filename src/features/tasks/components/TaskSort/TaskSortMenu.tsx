@@ -1,6 +1,5 @@
 import { MenuPosition } from "@hooks/useContextMenu";
-import { OptionsWindow } from "@ui/OptionsWindow/OptionsWindow";
-import { Button } from "@ui/index";
+import { OptionsWindow, Button } from "@ui/index";
 import { SortSection } from "./SortSection";
 import { useSortStore } from "@store/hooks";
 

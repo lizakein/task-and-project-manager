@@ -1,8 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import { OptionsWindow } from "@ui/OptionsWindow/OptionsWindow";
-import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
-import { Button, Icon } from "@ui/index";
+import { OptionsWindow, ConfirmModal, Button, Icon } from "@ui/index";
 import ArchiveIcon from "@assets/icons/actions/archive-icon.svg";
 import TrashIcon from "@assets/icons/actions/trash-icon.svg";
 import { MenuPosition } from "@hooks/useContextMenu";

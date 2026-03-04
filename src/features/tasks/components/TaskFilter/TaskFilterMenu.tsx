@@ -1,6 +1,5 @@
 import { MenuPosition } from "@hooks/useContextMenu";
-import { OptionsWindow } from "@ui/OptionsWindow/OptionsWindow";
-import { Button } from "@ui/index";
+import { OptionsWindow, Button } from "@ui/index";
 import { PriorityButton } from "../PriorityButton/PriorityButton";
 import { TagButton } from "../TagButton/TagButton";
 import { Priority } from "@features/tasks/types";
