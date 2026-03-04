@@ -5,7 +5,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { useStore } from "./store/useStore";
 import { ProjectPage } from "./pages/ProjectPage/ProjectPage";
-import { Homepage } from "./pages/Homepage/Homepage";
+import { HomePage } from "./pages/HomePage/Homepage";
 import { EditTaskPage } from "./pages/EditTaskPage/EditTaskPage";
 import { CalendarPage } from "./pages/CalendarPage/CalendarPage";
 import { AnalyticsPage } from "./pages/AnalyticsPage/AnalyticsPage";
@@ -25,7 +25,7 @@ function App() {
   return (
     <DndProvider backend={HTML5Backend}>
       <Routes>
-        <Route index element={<Homepage />} />
+        <Route index element={<HomePage />} />
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/analytics" element={<AnalyticsPage />} />
         <Route path="/settings" element={<SettingsPage />} />

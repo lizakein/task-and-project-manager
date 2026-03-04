@@ -1,7 +1,7 @@
 import { DevelopmentPageLayout } from "@layout/DevelopmentLayout/DevelopmentPageLayout";
 import { Layout } from "@layout/Layout/Layout";
 
-export function Homepage() {
+export function HomePage() {
   return (
     <Layout>
       <DevelopmentPageLayout />
