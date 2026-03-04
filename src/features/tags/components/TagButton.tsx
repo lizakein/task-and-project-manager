@@ -9,7 +9,7 @@ interface TagButtonProps {
   onClick: () => void;
 }
 
-export function TagButton({ tag, selected, onClick }: TagButtonProps) {
+export default function TagButton({ tag, selected, onClick }: TagButtonProps) {
   const { color, backgroundColor } = getTagStyle(
     tag.color as keyof typeof TAG_COLORS
   );
