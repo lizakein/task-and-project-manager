@@ -91,7 +91,11 @@ export function TaskCard({
       onKeyDown={handleKeyDown}
     >
       <div className="task-card__header">
-        <p className="priority" aria-label="Priority" data-priority={priority}>
+        <p
+          className={`chip priority priority--${priority}`}
+          aria-label="Priority"
+          data-priority={priority}
+        >
           {priority}
         </p>
         <IconButton
@@ -133,7 +137,7 @@ export function TaskCard({
               return (
                 <span
                   key={tag.id}
-                  className={`tag tag--${tag.color}`}
+                  className={`chip tag tag--${tag.color}`}
                   style={getTagStyle(tag.color as keyof typeof TAG_COLORS)}
                 >
                   {tag.label}
