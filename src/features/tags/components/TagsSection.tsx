@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TagsManagerModal } from "./TagsManagerModal";
+import { TagsManagerModal } from "./TagsManagerModal/TagsManagerModal";
 import { FieldState } from "../../../types/fieldState";
 import ManageTagsIcon from "@assets/icons/navigation/settings-icon.svg";
 import TagButton from "./TagButton";
