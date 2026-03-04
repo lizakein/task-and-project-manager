@@ -22,7 +22,7 @@ export function Header({ onMenuToggle, isMenuOpen }: HeaderProps) {
         <IconButton
           className="header__menu-button"
           ariaLabel={isMenuOpen ? "Close menu" : "Open menu"}
-          icon={<img src={MenuIcon} />}
+          icon={<Icon src={MenuIcon} />}
           onClick={onMenuToggle}
         />
 
