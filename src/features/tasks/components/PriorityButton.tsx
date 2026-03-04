@@ -7,7 +7,7 @@ interface PriorityButtonProps {
   onClick: () => void;
 }
 
-export function PriorityButton({
+export default function PriorityButton({
   level,
   selected,
   onClick,
