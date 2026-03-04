@@ -1,3 +1,5 @@
+import { ToggleButton } from "@ui/index";
+
 interface SortButtonProps {
   direction: "asc" | "desc";
   selected: boolean;
@@ -6,16 +8,12 @@ interface SortButtonProps {
 
 export function SortButton({ direction, selected, onClick }: SortButtonProps) {
   return (
-    <button
-      type="button"
-      className={` 
-        sort-option
-        ${selected ? "sort-option--selected" : ""}
-      `}
-      aria-pressed={selected}
+    <ToggleButton
+      className="chip sort-option"
+      selected={selected}
       onClick={onClick}
     >
       {direction === "asc" ? "Ascending" : "Descending"}
-    </button>
+    </ToggleButton>
   );
 }
