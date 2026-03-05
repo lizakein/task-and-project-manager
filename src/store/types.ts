@@ -5,6 +5,11 @@ import { Task } from "../features/tasks/types";
 export type SortField = "title" | "priority" | "date";
 export type SortDirection = "asc" | "desc";
 
+export interface FilterState {
+  priorities: string[];
+  tags: string[];
+}
+
 export interface SortState {
   field: SortField | null;
   direction: SortDirection;
@@ -15,11 +20,7 @@ export interface StateStore {
   tasks: Task[];
   tags: Tag[];
 
-  filters: {
-    priorities: string[];
-    tags: string[];
-  };
-
+  filters: FilterState;
   sort: SortState;
 
   loadProjects: () => Promise<void>;
