@@ -3,6 +3,7 @@ import { ProjectItem } from "./ProjectItem";
 import AddSquareIcon from "@assets/icons/actions/add-square-icon.svg";
 import { useProjectsStore } from "@store/hooks";
 import { Icon, IconButton } from "@ui/index";
+import { createProject } from "@utils/projectUtils";
 
 interface ProjectsSection {
   projectId: string | null;
@@ -14,7 +15,8 @@ export default function ProjectsSection({ projectId }: ProjectsSection) {
   const { projects, addProject } = useProjectsStore();
 
   const handleCreateProject = () => {
-    const newProject = addProject();
+    const newProject = createProject();
+    addProject(newProject);
     navigate(`/project/${newProject.id}`);
   };
 
