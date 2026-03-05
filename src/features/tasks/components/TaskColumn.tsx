@@ -1,17 +1,17 @@
 import { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDrop } from "react-dnd";
 import { TaskCard } from "./TaskCard";
-import { DragItem } from "types/dnd";
 import AddPurpleIcon from "@assets/icons/actions/add-square-purple-icon.svg";
 import { useFiltersStore, useSortStore, useTasksStore } from "@store/hooks";
 import { Icon, IconButton } from "@ui/index";
 import { createTask } from "@utils/taskUtils";
 import { getVisibleTasks } from "../model/getVisibleTasks";
+import { useTaskDrop } from "../hooks/usetaskDrop";
+import { Status } from "../types";
 
 interface TaskColumnProps {
   title: string;
-  status: "todo" | "in-progress" | "done";
+  status: Status;
   projectId: string;
 }
 
@@ -27,19 +27,11 @@ export default function TaskColumn({
 
   const [liveMessage, setLiveMessage] = useState("");
 
-  const [{ isOver }, drop] = useDrop<DragItem, void, { isOver: boolean }>(
-    () => ({
-      accept: "TASK",
-      drop: (item) => {
-        if (item.status !== status) {
-          updateTask(item.id, { status });
-          setLiveMessage(`Task moved to ${title} column`);
-        }
-      },
-      collect: (monitor) => ({
-        isOver: monitor.isOver(),
-      }),
-    })
+  const [{ isOver }, drop] = useTaskDrop(
+    status,
+    title,
+    updateTask,
+    setLiveMessage
   );
 
   const divRef = useRef<HTMLDivElement | null>(null);
