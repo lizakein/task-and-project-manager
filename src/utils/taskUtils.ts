@@ -1,9 +1,8 @@
 import { Task } from "features/tasks";
 
 export const createTask = (
-  tasks: Task[],
   projectId: string
-): Task[] => {
+): Task => {
   const now = new Date().toISOString();
 
   const task: Task = {
@@ -19,7 +18,7 @@ export const createTask = (
     updatedAt: now
   };
 
-  return [...tasks, task];
+  return task;
 };
 
 export const updateTask = (
