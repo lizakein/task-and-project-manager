@@ -29,7 +29,7 @@ export interface StateStore {
   updateProjectTitle: (id: string, title: string) => void;
   deleteProject: (id: string) => void;
 
-  addTask: (projectId: string) => void;
+  addTask: (task: Task) => void;
   updateTask: (taskId: string, patch: Partial<Task>) => void;
   deleteTask: (id: string) => void;
 

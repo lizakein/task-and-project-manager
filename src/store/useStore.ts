@@ -79,9 +79,9 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
 
   // ========== TASK ==========
 
-  addTask: (projectId) =>
+  addTask: (task: Task) =>
     set((state) => ({
-      tasks: TaskUtils.createTask(state.tasks, projectId)
+      tasks: [...state.tasks, task]
     })),
 
   updateTask: (taskId, patch) =>
