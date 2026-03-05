@@ -1,3 +1,4 @@
+import { getAvailableMoves } from "@utils/getAvailableMoves";
 import { Status, Task } from "../types";
 
 export function MoveTaskWithKeyboard(
@@ -6,17 +7,17 @@ export function MoveTaskWithKeyboard(
   id: string,
   updateTask: (taskId: string, patch: Partial<Task>) => void
 ) {
+  const moves = getAvailableMoves(status);
+
   if (event.key === "ArrowRight") {
     event.preventDefault();
 
-    if (status === "todo") updateTask(id, { status: "in-progress" });
-    else if (status === "in-progress") updateTask(id, { status: "done" });
+    updateTask(id, { status: moves[1].status });
   }
 
   if (event.key === "ArrowLeft") {
     event.preventDefault();
 
-    if (status === "done") updateTask(id, { status: "in-progress" });
-    else if (status === "in-progress") updateTask(id, { status: "todo" });
+    updateTask(id, { status: moves[0].status });
   }
 }
