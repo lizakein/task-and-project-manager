@@ -6,6 +6,7 @@ import { DragItem } from "types/dnd";
 import AddPurpleIcon from "@assets/icons/actions/add-square-purple-icon.svg";
 import { useFiltersStore, useSortStore, useTasksStore } from "@store/hooks";
 import { Icon, IconButton } from "@ui/index";
+import { createTask } from "@utils/taskUtils";
 
 interface TaskColumnProps {
   title: string;
@@ -96,7 +97,8 @@ export default function TaskColumn({
   }, [tasks, filters, sort, projectId, status]);
 
   const handleAddTask = () => {
-    const newTask = addTask(projectId);
+    const newTask = createTask(projectId);
+    addTask(newTask);
     navigate(`/project/${projectId}/${newTask.id}`);
   };
 
