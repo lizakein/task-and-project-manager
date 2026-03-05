@@ -6,9 +6,10 @@ import { TaskOptions } from "./TaskOptions";
 import MoreIcon from "@assets/icons/actions/more-icon.svg";
 import ClockIcon from "@assets/icons/ui/clock-icon.svg";
 import { TAG_COLORS } from "@constants/tagColors";
-import { Priority } from "../types";
+import { Priority, Status } from "../types";
 import { useTagStore, useTasksStore } from "@store/hooks";
 import { Icon, IconButton } from "@ui/index";
+import { formatDueDate } from "@utils/formatDueDate";
 
 interface TaskCardProps {
   id: string;
@@ -18,7 +19,7 @@ interface TaskCardProps {
   tags: string[] | null;
   dueDate: string | null;
   projectId: string;
-  status: "todo" | "in-progress" | "done";
+  status: Status;
 }
 
 export function TaskCard({
@@ -48,23 +49,7 @@ export function TaskCard({
   const divRef = useRef<HTMLDivElement | null>(null);
   drag(divRef);
 
-  const formatedDate = useMemo(() => {
-    if (!dueDate) return { formatted: "", isoDate: "" };
-
-    const date = new Date(dueDate);
-    const isoDate = date.toISOString();
-    let formatted;
-
-    if (dueDate.length > 10) {
-      const options: Intl.DateTimeFormatOptions = {
-        hour: "numeric",
-        minute: "numeric",
-      };
-      formatted = new Date(dueDate).toLocaleDateString("ru-RU", options);
-    } else formatted = new Date(dueDate).toLocaleDateString("ru-RU");
-
-    return { formatted, isoDate };
-  }, [dueDate]);
+  const formatedDate = useMemo(() => formatDueDate(dueDate), [dueDate]);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "ArrowRight") {
