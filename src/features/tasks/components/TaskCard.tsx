@@ -10,6 +10,7 @@ import { Priority, Status } from "../types";
 import { useTagStore, useTasksStore } from "@store/hooks";
 import { Icon, IconButton } from "@ui/index";
 import { formatDueDate } from "@utils/formatDueDate";
+import { MoveTaskWithKeyboard } from "../hooks/moveTaskWithKeyboard";
 
 interface TaskCardProps {
   id: string;
@@ -51,20 +52,6 @@ export function TaskCard({
 
   const formatedDate = useMemo(() => formatDueDate(dueDate), [dueDate]);
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      if (status === "todo") updateTask(id, { status: "in-progress" });
-      else if (status === "in-progress") updateTask(id, { status: "done" });
-    }
-
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      if (status === "done") updateTask(id, { status: "in-progress" });
-      else if (status === "in-progress") updateTask(id, { status: "todo" });
-    }
-  };
-
   return (
     <article
       ref={divRef}
@@ -73,7 +60,7 @@ export function TaskCard({
       tabIndex={0}
       role="listitem"
       aria-label={`Task: ${title}, status: ${status}`}
-      onKeyDown={handleKeyDown}
+      onKeyDown={(e) => MoveTaskWithKeyboard(e, status, id, updateTask)}
     >
       <div className="task-card__header">
         <p
