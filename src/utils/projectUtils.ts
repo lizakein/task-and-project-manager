@@ -1,18 +1,18 @@
 import { Project } from "../features/projects";
 
-export const createProject = (projects: Project[]): Project[] => {
+export const createProject = (): Project => {
   const project: Project = {
     id: crypto.randomUUID(),
     title: 'New Project',
     color: '#' +
       (0x1000000 + Math.random() * 0xffffff)
         .toString(16)
-        .substr(1, 6),
+        .slice(1, 7),
     description: "",
     createdAt: new Date().toISOString()
   };
 
-  return [...projects, project];
+  return project;
 };
 
 export const updateProjectTitle = (
