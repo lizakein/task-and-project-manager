@@ -89,6 +89,7 @@ export function TaskCard({
             title={title}
             onClose={closeMenu}
             triggerRef={buttonRef}
+            status={status}
           />
         )}
       </div>

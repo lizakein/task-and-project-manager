@@ -3,8 +3,11 @@ import { useState } from "react";
 import { OptionsWindow, ConfirmModal, Button, Icon } from "@ui/index";
 import EditIcon from "@assets/icons/actions/edit-icon.svg";
 import TrashIcon from "@assets/icons/actions/trash-icon.svg";
+import MoveIcon from "@assets/icons/actions/move-icon.svg";
 import { MenuPosition } from "@hooks/useContextMenu";
 import { useTasksStore } from "@store/hooks";
+import { Status } from "../types";
+import { getAvailableMoves } from "@utils/getAvailableMoves";
 
 interface TaskOptionsProps {
   menuPosition: MenuPosition;
@@ -13,6 +16,7 @@ interface TaskOptionsProps {
   title: string | null;
   onClose: () => void;
   triggerRef: React.RefObject<HTMLButtonElement | null>;
+  status: Status;
 }
 
 export function TaskOptions({
@@ -22,10 +26,11 @@ export function TaskOptions({
   title,
   onClose,
   triggerRef,
+  status,
 }: TaskOptionsProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-  const { deleteTask } = useTasksStore();
+  const { updateTask, deleteTask } = useTasksStore();
 
   const handleEditTask = () => {
     navigate(`/project/${projectId}/${openId}`);
@@ -47,6 +52,24 @@ export function TaskOptions({
       onClose={onClose}
       triggerRef={triggerRef}
     >
+      {getAvailableMoves(status).map((move) => (
+        <Button
+          key={move.status}
+          variant="ghost"
+          className="options-window__item"
+          role="menuitem"
+          onClick={() => {
+            updateTask(openId, { status: move.status });
+            onClose();
+          }}
+          leftIcon={<Icon src={MoveIcon} />}
+        >
+          <span className="options-window__item-label">
+            Move to {move.label}
+          </span>
+        </Button>
+      ))}
+
       <Button
         variant="ghost"
         className="options-window__item"
@@ -56,6 +79,7 @@ export function TaskOptions({
       >
         <span className="options-window__item-label">Edit</span>
       </Button>
+
       <Button
         variant="ghost"
         className="options-window__item"
