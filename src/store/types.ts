@@ -25,7 +25,7 @@ export interface StateStore {
   loadProjects: () => Promise<void>;
   loadTasks: () => Promise<void>;
 
-  addProject: () => void;
+  addProject: (project: Project) => void;
   updateProjectTitle: (id: string, title: string) => void;
   deleteProject: (id: string) => void;
 

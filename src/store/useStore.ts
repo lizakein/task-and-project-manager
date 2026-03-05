@@ -53,9 +53,9 @@ const storeCreator: StateCreator<StateStore> = (set, get) => ({
 
   // ========== PROJECT ==========
 
-  addProject: () =>
+  addProject: (project: Project) =>
     set((state) => ({
-      projects: ProjectUtils.createProject(state.projects)
+      projects: [...state.projects, project]
     })),
 
   updateProjectTitle: (id, title) =>
