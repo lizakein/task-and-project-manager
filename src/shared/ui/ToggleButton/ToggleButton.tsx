@@ -1,3 +1,5 @@
+import "./ToggleButton.css";
+
 interface ToggleButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   selected?: boolean;
 }
