@@ -7,7 +7,7 @@ interface OptionsWindowProps {
   children: React.ReactNode;
   position: MenuPosition;
   onClose: () => void;
-  triggerRef: React.RefObject<HTMLButtonElement | null>;
+  triggerRef: React.RefObject<HTMLElement | null>;
   shouldReturnFocus?: boolean;
   disableAutoFocus?: boolean;
 }
