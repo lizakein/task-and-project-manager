@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { ProjectHeader } from "./components/ProjectHeader";
 import { Layout } from "@layout/Layout/Layout";
 import { TaskColumn } from "@features/tasks";
+import { Status, TASK_STATUS } from "@features/tasks/types";
 import "./ProjectPage.css";
 
 export function ProjectPage() {
@@ -12,13 +13,16 @@ export function ProjectPage() {
       <ProjectHeader projectId={projectId || ""} />
 
       <section className="task-board">
-        <TaskColumn title="To Do" status="todo" projectId={projectId || ""} />
-        <TaskColumn
-          title="In progress"
-          status="in-progress"
-          projectId={projectId || ""}
-        />
-        <TaskColumn title="Done" status="done" projectId={projectId || ""} />
+        {Object.entries(TASK_STATUS).map((val) => {
+          return (
+            <TaskColumn
+              key={val[0]}
+              title={val[1].label}
+              status={val[0] as Status}
+              projectId={projectId || ""}
+            />
+          );
+        })}
       </section>
     </Layout>
   );
