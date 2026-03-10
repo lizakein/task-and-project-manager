@@ -17,11 +17,29 @@
   margin-inline-end: 1rem;
 }
 
-.search-input {
+.search__input {
   width: 100%;
   background-color: transparent;
   border: none;
   outline: none;
+  color: var(--text-color);
+}
+
+.search__group-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.search__item {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: black;
+}
+
+.search__empty {
+  font-size: 0.875rem;
+  font-weight: 400;
   color: var(--text-color);
 }
 
@@ -31,11 +49,11 @@
     background-color: inherit;
   }
 
-  .search-input {
+  .search__input {
     display: none;
   }
 
-  .search--open .search-input {
+  .search--open .search__input {
     position: absolute;
     top: 100%;
     left: 0;
