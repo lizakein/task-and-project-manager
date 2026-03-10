@@ -31,10 +31,17 @@
 }
 
 .search__item {
+  display: flex;
+  justify-content: space-between;
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   color: black;
+}
+
+.search__task-project {
+  font-size: 0.75rem;
+  color: var(--text-color);
 }
 
 .search__empty {

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Icon, IconButton, OptionsWindow } from "@ui/index";
 import SearchIcon from "@assets/icons/ui/search-icon.svg";
@@ -19,6 +19,11 @@ export function Search() {
   const { projects } = useProjectsStore();
   const { tasks } = useTasksStore();
   const { query, setQuery, clearQuery } = useSearchStore();
+
+  const projectsMap = useMemo(
+    () => Object.fromEntries(projects.map((project) => [project.id, project])),
+    [projects]
+  );
 
   const debouncedQuery = useDebounce(query, 300);
   const { projects: foundProjects, tasks: foundTasks } = searchItems(
@@ -104,7 +109,10 @@ export function Search() {
                   className="search__item"
                   onClick={() => handleTaskClick(task.projectId, task.id)}
                 >
-                  {task.title}
+                  <span className="search__task-title">{task.title}</span>
+                  <span className="search__task-project">
+                    /{projectsMap[task.projectId]?.title}
+                  </span>
                 </Button>
               ))}
             </>
