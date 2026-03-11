@@ -116,15 +116,15 @@
 }
 
 .task-column__header[data-status="todo"] .task-column__title::before {
-  color: var(--brand-color, #000);
+  color: var(--brand-color, var(--black-color));
 }
 
 .task-column__header[data-status="in-progress"] .task-column__title::before {
-  color: var(--medium-color, #000);
+  color: var(--medium-color, var(--black-color));
 }
 
 .task-column__header[data-status="done"] .task-column__title::before {
-  color: var(--low-color, #000);
+  color: var(--low-color, var(--black-color));
 }
 
 .task-column__header[data-status="todo"] {

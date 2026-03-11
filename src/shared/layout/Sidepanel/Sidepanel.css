@@ -37,7 +37,7 @@
 .menu-item:hover .menu-item__label,
 .menu-item--active .menu-item__label {
   font-weight: 600;
-  color: #000;
+  color: var(--black-color);
 }
 
 /* ========== PROJECTS SECTION ========== */
@@ -83,7 +83,7 @@
   position: absolute;
   left: 0.8rem;
   font-size: 1.2rem;
-  color: var(--marker-color, #000);
+  color: var(--marker-color, var(--black-color));
 }
 
 .projects-list__name {
@@ -99,7 +99,7 @@
 .projects-list__item:hover .projects-list__name,
 .projects-list__item--active .projects-list__name {
   font-weight: 600;
-  color: black;
+  color: var(--black-color);
 }
 
 .projects-list__item .icon-button {

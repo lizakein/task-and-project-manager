@@ -37,7 +37,7 @@
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
-  color: black;
+  color: var(--black-color);
 }
 
 .search__task-project {
