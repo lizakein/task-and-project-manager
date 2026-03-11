@@ -5,7 +5,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { useStore } from "./store/useStore";
 import { ProjectPage } from "./pages/ProjectPage/ProjectPage";
-import { HomePage } from "./pages/HomePage/HomePage";
+import { HomePage } from "./pages/HomePageTemp/HomePage";
 import { EditTaskPage } from "./pages/EditTaskPage/EditTaskPage";
 import { CalendarPage } from "./pages/CalendarPage/CalendarPage";
 import { AnalyticsPage } from "./pages/AnalyticsPage/AnalyticsPage";
