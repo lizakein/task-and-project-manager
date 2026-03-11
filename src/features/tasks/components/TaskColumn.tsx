@@ -6,7 +6,7 @@ import { useFiltersStore, useSortStore, useTasksStore } from "@store/hooks";
 import { Icon, IconButton } from "@ui/index";
 import { createTask } from "@utils/taskUtils";
 import { getVisibleTasks } from "../model/getVisibleTasks";
-import { useTaskDrop } from "../hooks/usetaskDrop";
+import { useTaskDrop } from "../hooks/useTaskDrop";
 import { Status } from "../types";
 
 interface TaskColumnProps {
