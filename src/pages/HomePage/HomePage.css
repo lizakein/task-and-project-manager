@@ -1,0 +1,6 @@
+.home-page__content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+}
