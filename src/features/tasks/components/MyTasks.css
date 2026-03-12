@@ -1,0 +1,59 @@
+.my-tasks {
+  padding: 1.5rem 1.25rem;
+  background-color: var(--card-background);
+  border-radius: 1rem;
+
+  min-height: 0;
+}
+
+.my-tasks__title {
+  margin-block-end: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.task-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+
+  position: relative;
+  list-style: none;
+  border-bottom: 1px solid var(--count-background);
+}
+
+.task-item::before {
+  content: "";
+  width: 0.9rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.3rem;
+  border: 3px solid var(--brand-color);
+  background-color: var(--card-background);
+  position: absolute;
+  left: 0px;
+  top: 1.2rem;
+}
+
+.task-item__title {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.task-item__project,
+.task-item__date {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.task-item__info {
+  display: flex;
+  gap: 1rem;
+}
+
+.task-item__deadline {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+}

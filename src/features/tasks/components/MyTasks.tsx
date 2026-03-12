@@ -1,4 +1,5 @@
 import { TaskItem } from "./TaskItem";
+import "./MyTasks.css";
 
 export default function MyTasks() {
   return (
