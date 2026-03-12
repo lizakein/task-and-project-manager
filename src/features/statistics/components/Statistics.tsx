@@ -1,4 +1,5 @@
 import StatisticsCard from "./StatisticsCard";
+import "./Statistics.css";
 
 export default function Statistics() {
   return (

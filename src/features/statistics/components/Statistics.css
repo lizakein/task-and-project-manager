@@ -1,0 +1,26 @@
+.statistics__list {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+
+  list-style: none;
+}
+
+.statistics__item {
+  flex: 1;
+  padding: 0.5rem 0.7rem;
+  background-color: var(--card-background);
+  border-radius: 0.275rem;
+}
+
+.statistics-card__title {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+.statistics-card__value {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 600;
+  text-align: end;
+}
