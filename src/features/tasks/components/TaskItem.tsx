@@ -28,7 +28,18 @@ export function TaskItem({ task }: TaskItemProps) {
 
   return (
     <li className="task-item">
-      <h3 className="task-item__title">{task.title}</h3>
+      <h3 className="task-item__title">
+        <Button
+          variant="ghost"
+          className="task-item__title-button"
+          onClick={() => {
+            navigate(`/project/${task.projectId}/${task.id}`);
+          }}
+          aria-label={`Go to edit ${task.title} page`}
+        >
+          {task.title}
+        </Button>
+      </h3>
 
       <div className="task-item__info">
         <Button
