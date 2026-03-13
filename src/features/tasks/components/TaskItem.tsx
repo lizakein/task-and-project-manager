@@ -1,7 +1,8 @@
 import { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { formatDueDate } from "@utils/formatDueDate";
 import { useProjectsStore } from "@store/hooks";
-import { Icon } from "@ui/index";
+import { Button, Icon } from "@ui/index";
 import ClockIcon from "@assets/icons/ui/clock-icon.svg";
 import { Task } from "../types";
 
@@ -10,6 +11,7 @@ interface TaskItemProps {
 }
 
 export function TaskItem({ task }: TaskItemProps) {
+  const navigate = useNavigate();
   const { projects } = useProjectsStore();
 
   let formatedDate, isOverdue;
@@ -28,9 +30,15 @@ export function TaskItem({ task }: TaskItemProps) {
       <h3 className="task-item__title">{task.title}</h3>
 
       <div className="task-item__info">
-        <p className="task-item__project">
+        <Button
+          variant="ghost"
+          className="task-item__project"
+          onClick={() => {
+            navigate(`/project/${task.projectId}`);
+          }}
+        >
           {projectsMap[task.projectId]?.title}
-        </p>
+        </Button>
 
         {formatedDate && (
           <time className="task-item__deadline" dateTime={formatedDate.isoDate}>
