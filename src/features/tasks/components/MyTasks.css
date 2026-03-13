@@ -68,3 +68,10 @@
 .task-item__date--overdue {
   color: var(--high-color);
 }
+
+@media (max-width: 27rem) {
+  .task-item__info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
