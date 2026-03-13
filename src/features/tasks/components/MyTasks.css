@@ -38,10 +38,16 @@
 .task-item__title {
   font-size: 1.125rem;
   font-weight: 500;
+  text-align: start;
+}
+
+.task-item__title-button {
+  color: var(--black-color);
 }
 
 .task-item__project {
   font-size: 0.75rem;
+  text-align: start;
 }
 
 .task-item__project:hover {
