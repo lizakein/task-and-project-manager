@@ -40,11 +40,10 @@
   font-weight: 500;
 }
 
-.task-item__project,
-.task-item__date {
+.task-item__project {
   font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-color);
+}
+
 }
 
 .task-item__info {
@@ -56,4 +55,14 @@
   display: flex;
   gap: 0.3rem;
   align-items: center;
+}
+
+.task-item__date {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.task-item__date--overdue {
+  color: var(--high-color);
 }
