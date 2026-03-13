@@ -44,6 +44,8 @@
   font-size: 0.75rem;
 }
 
+.task-item__project:hover {
+  text-decoration: underline var(--text-color);
 }
 
 .task-item__info {
