@@ -12,6 +12,12 @@ interface TaskItemProps {
 export function TaskItem({ task }: TaskItemProps) {
   const { projects } = useProjectsStore();
 
+  let formatedDate, isOverdue;
+  if (task.dueDate) {
+    formatedDate = useMemo(() => formatDueDate(task.dueDate), [task.dueDate]);
+    isOverdue = new Date(task.dueDate) < new Date();
+  }
+
   const projectsMap = useMemo(
     () => Object.fromEntries(projects.map((project) => [project.id, project])),
     [projects]
@@ -26,11 +32,17 @@ export function TaskItem({ task }: TaskItemProps) {
           {projectsMap[task.projectId]?.title}
         </p>
 
-        <time className="task-item__deadline">
-          <Icon src={ClockIcon} />
+        {formatedDate && (
+          <time className="task-item__deadline" dateTime={formatedDate.isoDate}>
+            <Icon src={ClockIcon} />
 
-              {task.dueDate}
-        </time>
+            <span
+              className={`task-item__date ${isOverdue ? "task-item__date--overdue" : ""}`}
+            >
+              {formatedDate.formatted}
+            </span>
+          </time>
+        )}
       </div>
     </li>
   );
