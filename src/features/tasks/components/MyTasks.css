@@ -7,7 +7,7 @@
 }
 
 .my-tasks__title {
-  margin-block-end: 1.5rem;
+  margin-block-end: clamp(1rem, 2vw, 1.5rem);
   font-size: 1.125rem;
   font-weight: 600;
 }
