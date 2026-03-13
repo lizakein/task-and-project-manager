@@ -24,6 +24,7 @@ export function TaskItem({ task }: TaskItemProps) {
     () => Object.fromEntries(projects.map((project) => [project.id, project])),
     [projects]
   );
+  const projectTitle = projectsMap[task.projectId]?.title;
 
   return (
     <li className="task-item">
@@ -36,8 +37,9 @@ export function TaskItem({ task }: TaskItemProps) {
           onClick={() => {
             navigate(`/project/${task.projectId}`);
           }}
+          aria-label={`Go to ${projectTitle} project page`}
         >
-          {projectsMap[task.projectId]?.title}
+          {projectTitle}
         </Button>
 
         {formatedDate && (
