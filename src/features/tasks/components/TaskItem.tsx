@@ -1,24 +1,35 @@
+import { useMemo } from "react";
+import { formatDueDate } from "@utils/formatDueDate";
+import { useProjectsStore } from "@store/hooks";
 import { Icon } from "@ui/index";
 import ClockIcon from "@assets/icons/ui/clock-icon.svg";
+import { Task } from "../types";
 
 interface TaskItemProps {
-  title: string;
-  project: string;
-  deadline: string;
+  task: Task;
 }
 
-export function TaskItem({ title, project, deadline }: TaskItemProps) {
+export function TaskItem({ task }: TaskItemProps) {
+  const { projects } = useProjectsStore();
+
+  const projectsMap = useMemo(
+    () => Object.fromEntries(projects.map((project) => [project.id, project])),
+    [projects]
+  );
+
   return (
     <li className="task-item">
-      <h3 className="task-item__title">{title}</h3>
+      <h3 className="task-item__title">{task.title}</h3>
 
       <div className="task-item__info">
-        <p className="task-item__project">{project}</p>
+        <p className="task-item__project">
+          {projectsMap[task.projectId]?.title}
+        </p>
 
         <time className="task-item__deadline">
           <Icon src={ClockIcon} />
 
-          <span className="task-item__date">{deadline}</span>
+              {task.dueDate}
         </time>
       </div>
     </li>
