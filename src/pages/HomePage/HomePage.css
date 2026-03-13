@@ -2,5 +2,12 @@
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   grid-template-rows: auto 1fr;
-  gap: 2rem;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+@media (max-width: 53rem) {
+  .home-page__content {
+    display: flex;
+    flex-direction: column;
+  }
 }
