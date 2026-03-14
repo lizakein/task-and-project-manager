@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { useTasksPerPage } from "@features/tasks/hooks/useTasksPerPage";
-import { getPaginationPages } from "@utils/getPaginationPages";
 import { useTasksStore, useProjectsStore } from "@store/hooks";
+import Pagination from "@ui/Pagination/Pagination";
 import { TaskItem } from "./TaskItem";
 import "./MyTasks.css";
 
@@ -39,11 +39,6 @@ export default function MyTasks() {
     return sortedTasks.slice(start, end);
   }, [sortedTasks, page, tasksPerPage]);
 
-  const pages = useMemo(
-    () => getPaginationPages(page, totalPages),
-    [page, totalPages]
-  );
-
   return (
     <section className="my-tasks" aria-labelledby="my-tasks-title">
       <h2 id="my-tasks-title" className="my-tasks__title">
@@ -56,32 +51,12 @@ export default function MyTasks() {
         ))}
       </ul>
 
-      {totalPages > 1 && (
-        <nav className="my-tasks__pagination" aria-label="Tasks pagination">
-          <ul className="pagination">
-            {pages.map((p, index) => {
-              if (p === "...") {
-                return (
-                  <li key={index} className="pagination__ellipsis">
-                    ...
-                  </li>
-                );
-              }
-
-              return (
-                <li key={p}>
-                  <button
-                    className={`pagination__button ${p === page ? "pagination__button--active" : ""}`}
-                    onClick={() => setPage(p)}
-                  >
-                    {p}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      )}
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        onPageChange={setPage}
+        className="my-tasks__pagination"
+      />
     </section>
   );
 }
