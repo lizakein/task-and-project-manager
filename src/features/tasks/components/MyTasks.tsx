@@ -1,9 +1,11 @@
-import { useTasksStore } from "@store/hooks";
+import { useMemo } from "react";
+import { useTasksStore, useProjectsStore } from "@store/hooks";
 import { TaskItem } from "./TaskItem";
 import "./MyTasks.css";
 
 export default function MyTasks() {
   const { tasks } = useTasksStore();
+  const { projects } = useProjectsStore();
 
   const filteredTasks = tasks.filter((task) => task.status !== "done");
 
@@ -14,6 +16,11 @@ export default function MyTasks() {
     return valueA < valueB ? -1 : 1;
   });
 
+  const projectsMap = useMemo(
+    () => Object.fromEntries(projects.map((project) => [project.id, project])),
+    [projects]
+  );
+
   return (
     <section className="my-tasks" aria-labelledby="my-tasks-title">
       <h2 id="my-tasks-title" className="my-tasks__title">
@@ -22,7 +29,7 @@ export default function MyTasks() {
 
       <ul className="my-tasks__list">
         {sortedTasks.map((task) => (
-          <TaskItem key={task.id} task={task} />
+          <TaskItem key={task.id} task={task} projectsMap={projectsMap} />
         ))}
       </ul>
     </section>

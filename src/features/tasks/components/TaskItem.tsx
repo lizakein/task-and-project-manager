@@ -1,18 +1,20 @@
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { formatDueDate } from "@utils/formatDueDate";
-import { useProjectsStore } from "@store/hooks";
+import { Project } from "@features/projects";
 import { Button, Icon } from "@ui/index";
 import ClockIcon from "@assets/icons/ui/clock-icon.svg";
 import { Task } from "../types";
 
 interface TaskItemProps {
   task: Task;
+  projectsMap: {
+    [k: string]: Project;
+  };
 }
 
-export function TaskItem({ task }: TaskItemProps) {
+export function TaskItem({ task, projectsMap }: TaskItemProps) {
   const navigate = useNavigate();
-  const { projects } = useProjectsStore();
 
   const formatedDate = useMemo(
     () => (task.dueDate ? formatDueDate(task.dueDate) : null),
@@ -21,10 +23,6 @@ export function TaskItem({ task }: TaskItemProps) {
 
   const isOverdue = task.dueDate ? new Date(task.dueDate) < new Date() : false;
 
-  const projectsMap = useMemo(
-    () => Object.fromEntries(projects.map((project) => [project.id, project])),
-    [projects]
-  );
   const projectTitle = projectsMap[task.projectId]?.title;
 
   return (
