@@ -1,0 +1,36 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-block-start: 1rem;
+
+  list-style: none;
+}
+
+.pagination__ellipsis {
+  color: var(--text-color);
+}
+
+.pagination__button {
+  width: 20px;
+  aspect-ratio: 1 / 1;
+
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-color);
+  background-color: inherit;
+
+  border: none;
+  cursor: pointer;
+}
+
+.pagination__button--active {
+  color: var(--brand-color);
+  background-color: var(--brand-color-background);
+  border-radius: 50%;
+}
+
+.pagination__button:hover {
+  font-weight: 600;
+  color: var(--brand-color);
+}
