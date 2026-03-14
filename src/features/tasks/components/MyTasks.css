@@ -1,4 +1,7 @@
 .my-tasks {
+  display: flex;
+  flex-direction: column;
+
   padding: 1.5rem 1.25rem;
   background-color: var(--card-background);
   border-radius: 1rem;
@@ -10,6 +13,11 @@
   margin-block-end: clamp(1rem, 2vw, 1.5rem);
   font-size: 1.125rem;
   font-weight: 600;
+}
+
+.my-tasks__list {
+  flex: 1;
+  min-height: 0;
 }
 
 .task-item {
@@ -38,11 +46,11 @@
 .task-item__title {
   font-size: 1.125rem;
   font-weight: 500;
-  text-align: start;
 }
 
 .task-item__title-button {
   color: var(--black-color);
+  text-align: start;
 }
 
 .task-item__project {
