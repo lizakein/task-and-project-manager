@@ -14,11 +14,12 @@ export function TaskItem({ task }: TaskItemProps) {
   const navigate = useNavigate();
   const { projects } = useProjectsStore();
 
-  let formatedDate, isOverdue;
-  if (task.dueDate) {
-    formatedDate = useMemo(() => formatDueDate(task.dueDate), [task.dueDate]);
-    isOverdue = new Date(task.dueDate) < new Date();
-  }
+  const formatedDate = useMemo(
+    () => (task.dueDate ? formatDueDate(task.dueDate) : null),
+    [task.dueDate]
+  );
+
+  const isOverdue = task.dueDate ? new Date(task.dueDate) < new Date() : false;
 
   const projectsMap = useMemo(
     () => Object.fromEntries(projects.map((project) => [project.id, project])),
