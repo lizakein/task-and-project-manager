@@ -9,12 +9,16 @@ export default function MyTasks() {
 
   const filteredTasks = tasks.filter((task) => task.status !== "done");
 
-  const sortedTasks = [...filteredTasks].sort((a, b) => {
+  const sortedTasks = useMemo(() => {
+    return tasks
+      .filter((task) => task.status !== "done")
+      .sort((a, b) => {
     const valueA = a.dueDate ? new Date(a.dueDate).getTime() : Infinity;
     const valueB = b.dueDate ? new Date(b.dueDate).getTime() : Infinity;
 
-    return valueA < valueB ? -1 : 1;
+        return valueA - valueB;
   });
+  }, [tasks]);
 
   const projectsMap = useMemo(
     () => Object.fromEntries(projects.map((project) => [project.id, project])),
