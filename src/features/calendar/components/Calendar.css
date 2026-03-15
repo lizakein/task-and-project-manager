@@ -88,15 +88,23 @@
 }
 
 .timeline__card {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.5rem, 2vw, 1rem);
   padding: clamp(0.75rem, 2vw, 1rem) clamp(1.25rem, 3vw, 2rem)
     clamp(1rem, 3vw, 1.5rem);
 
   background-color: var(--light-brand-color-background);
   border-left: 6px solid var(--brand-color);
   border-radius: 0.5rem;
+}
+
+.timeline__card-button {
+  all: unset;
+
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  width: 100%;
+
+  cursor: pointer;
 }
 
 .timeline__title {
