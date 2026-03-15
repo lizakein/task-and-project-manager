@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { formatDueDate } from "@utils/formatDueDate";
+import { formatDueDate } from "@utils/date/format";
 import { Project } from "@features/projects";
 import { Button, Icon } from "@ui/index";
 import ClockIcon from "@assets/icons/ui/clock-icon.svg";

@@ -9,7 +9,7 @@ import { TAG_COLORS } from "@constants/tagColors";
 import { Priority, Status } from "../types";
 import { useTagStore, useTasksStore } from "@store/hooks";
 import { Icon, IconButton } from "@ui/index";
-import { formatDueDate } from "@utils/formatDueDate";
+import { formatDueDate } from "@utils/date/format";
 import { MoveTaskWithKeyboard } from "../hooks/moveTaskWithKeyboard";
 
 interface TaskCardProps {
