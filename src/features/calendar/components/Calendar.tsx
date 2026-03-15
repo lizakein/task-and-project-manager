@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { formatFullDate } from "@utils/date/format";
 import { Button } from "@ui/index";
 import { WeekDays } from "./WeekDays";
 import { Timeline } from "./Timeline";
@@ -6,7 +7,9 @@ import "./Calendar.css";
 
 export default function Calendar() {
   const navigate = useNavigate();
-  const current_date = "Monday, September 1 2025";
+
+  const today = new Date();
+  const currentDate = formatFullDate(today);
 
   return (
     <section className="calendar" aria-labelledby="calendar-title">
@@ -24,7 +27,7 @@ export default function Calendar() {
         </Button>
       </div>
 
-      <p className="calendar__date">{current_date}</p>
+      <p className="calendar__date">{currentDate}</p>
 
       <WeekDays />
       <Timeline />
