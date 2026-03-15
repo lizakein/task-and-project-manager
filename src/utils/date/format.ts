@@ -23,3 +23,9 @@ export function formatFullDate(date: Date) {
 
   return `${weekday}, ${month} ${date.getDate()} ${date.getFullYear()}`;
 }
+
+export function formatTime(date: string) {
+  return new Date(date)
+    .toLocaleTimeString("en-US", { timeStyle: "short" })
+    .toLowerCase()
+}
