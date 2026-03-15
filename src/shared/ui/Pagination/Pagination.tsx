@@ -26,16 +26,18 @@ export default function Pagination({
     <nav className={className} aria-label="Pagination">
       <ul className="pagination">
         {pages.map((p, index) => {
+          const key = `${p}-${index}`;
+
           if (p === "...") {
             return (
-              <li key={index} className="pagination__ellipsis">
+              <li key={key} className="pagination__ellipsis">
                 ...
               </li>
             );
           }
 
           return (
-            <li key={p}>
+            <li key={key}>
               <button
                 className={`pagination__button ${p === page ? "pagination__button--active" : ""}`}
                 onClick={() => onPageChange(p)}
