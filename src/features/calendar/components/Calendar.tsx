@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { formatFullDate } from "@utils/date/format";
 import { Button } from "@ui/index";
@@ -9,6 +10,7 @@ export default function Calendar() {
   const navigate = useNavigate();
 
   const today = new Date();
+  const [selectedDate, setSelectedDate] = useState(today);
   const currentDate = formatFullDate(today);
 
   return (
@@ -29,7 +31,7 @@ export default function Calendar() {
 
       <p className="calendar__date">{currentDate}</p>
 
-      <WeekDays />
+      <WeekDays selectedDate={selectedDate} onSelect={setSelectedDate} />
       <Timeline />
     </section>
   );
