@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@ui/index";
 import { WeekDays } from "./WeekDays";
 import { Timeline } from "./Timeline";
 import "./Calendar.css";
 
 export default function Calendar() {
+  const navigate = useNavigate();
   const current_date = "Monday, September 1 2025";
 
   return (
@@ -13,7 +15,11 @@ export default function Calendar() {
           Calendar
         </h2>
 
-        <Button className="calendar__link" variant="ghost">
+        <Button
+          className="calendar__link"
+          variant="ghost"
+          onClick={() => navigate("/calendar")}
+        >
           See all
         </Button>
       </div>
