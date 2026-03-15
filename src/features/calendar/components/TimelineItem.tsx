@@ -1,7 +1,7 @@
 interface TimelineItemProps {
   time: string;
   title: string;
-  description: string;
+  description?: string;
 }
 
 export function TimelineItem({ time, title, description }: TimelineItemProps) {
@@ -11,7 +11,7 @@ export function TimelineItem({ time, title, description }: TimelineItemProps) {
 
       <article className="timeline__card">
         <h3 className="timeline__title">{title}</h3>
-        <p className="timeline__description">{description}</p>
+        {description && <p className="timeline__description">{description}</p>}
       </article>
     </li>
   );
