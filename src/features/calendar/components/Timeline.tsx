@@ -1,25 +1,25 @@
+import { Task } from "@features/tasks/types";
 import { TimelineItem } from "./TimelineItem";
+import { formatTime } from "@utils/date/format";
 
-export function Timeline() {
+interface TimelineProps {
+  tasks: Task[];
+}
+
+export function Timeline({ tasks }: TimelineProps) {
+  if (!tasks.length) {
+    return <p className="timeline__empty">No tasks for this day</p>;
+  }
   return (
     <ul className="timeline">
-      <TimelineItem
-        time="08:00 am"
-        title="Task 1"
-        description="Description 1"
-      />
-
-      <TimelineItem
-        time="09:10 am"
-        title="Task 2"
-        description="Description 2"
-      />
-
-      <TimelineItem
-        time="01:30 pm"
-        title="Task 3"
-        description="Description 3"
-      />
+      {tasks.map((task) => (
+        <TimelineItem
+          key={task.id}
+          time={formatTime(task.dueDate)}
+          title={task.title}
+          description={task.description}
+        />
+      ))}
     </ul>
   );
 }

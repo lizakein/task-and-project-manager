@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTasksStore } from "@store/hooks";
 import { formatFullDate } from "@utils/date/format";
 import { Button } from "@ui/index";
 import { WeekDays } from "./WeekDays";
@@ -12,6 +13,21 @@ export default function Calendar() {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(today);
   const currentDate = formatFullDate(today);
+
+  const { tasks } = useTasksStore();
+
+  const timelineTasks = useMemo(() => {
+    return tasks
+      .filter((task) => {
+        if (!task.dueDate) return false;
+
+        const date = new Date(task.dueDate);
+        return date.toDateString() === selectedDate.toDateString();
+      })
+      .sort(
+        (a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
+      );
+  }, [tasks, selectedDate]);
 
   return (
     <section className="calendar" aria-labelledby="calendar-title">
@@ -32,7 +48,7 @@ export default function Calendar() {
       <p className="calendar__date">{currentDate}</p>
 
       <WeekDays selectedDate={selectedDate} onSelect={setSelectedDate} />
-      <Timeline />
+      <Timeline tasks={timelineTasks} />
     </section>
   );
 }
