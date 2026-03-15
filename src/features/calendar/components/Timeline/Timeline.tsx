@@ -1,5 +1,6 @@
 import { Task } from "@features/tasks/types";
 import { TimelineItem } from "./TimelineItem";
+import "./Timeline.css";
 
 interface TimelineProps {
   tasks: Task[];

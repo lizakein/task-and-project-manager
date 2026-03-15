@@ -4,7 +4,7 @@ import { useTasksStore } from "@store/hooks";
 import { formatFullDate } from "@utils/date/format";
 import { Button } from "@ui/index";
 import { WeekDays } from "./WeekDays";
-import { Timeline } from "./Timeline";
+import { Timeline } from "./Timeline/Timeline";
 import "./Calendar.css";
 
 export default function Calendar() {
