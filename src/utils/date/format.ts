@@ -16,3 +16,10 @@ export function formatDueDate(dueDate: string | null) {
 
   return { formatted, isoDate };
 }
+
+export function formatFullDate(date: Date) {
+  const weekday = date.toLocaleDateString("en-US", { weekday: "long" });
+  const month = date.toLocaleDateString("en-US", { month: "long" });
+
+  return `${weekday}, ${month} ${date.getDate()} ${date.getFullYear()}`;
+}
