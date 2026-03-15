@@ -1,5 +1,5 @@
 import { Task } from "../types";
-import { isToday, isThisWeek, isThisMonth } from "@utils/dateFilters";
+import { isToday, isThisWeek, isThisMonth } from "@utils/date/dateFilters";
 
 export function getTasksStats(tasks: Task[]) {
   return tasks.reduce(
