@@ -68,6 +68,7 @@
 .calendar-week__day:hover {
   color: var(--brand-color);
   background-color: var(--light-brand-color-background);
+  transition: 0.3s ease background-color;
 }
 
 .calendar-week__day--active {
@@ -107,4 +108,9 @@
 .timeline__time {
   font-size: clamp(0.875rem, 2vw, 1rem);
   font-weight: 400;
+}
+
+.timeline__empty {
+  color: var(--text-color);
+  text-align: center;
 }
