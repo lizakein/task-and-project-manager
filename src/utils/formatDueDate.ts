@@ -11,8 +11,8 @@ export function formatDueDate(dueDate: string | null) {
       hour: "numeric",
       minute: "numeric",
     };
-    formatted = new Date(dueDate).toLocaleDateString("ru-RU", options);
-  } else formatted = new Date(dueDate).toLocaleDateString("ru-RU");
+    formatted = new Date(dueDate).toLocaleDateString("en-US", options).toLocaleLowerCase();
+  } else formatted = new Date(dueDate).toLocaleDateString("en-US");
 
   return { formatted, isoDate };
 }
