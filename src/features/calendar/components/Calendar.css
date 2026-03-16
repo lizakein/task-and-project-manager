@@ -9,6 +9,9 @@
   padding: 1.5rem 1.25rem;
   background-color: var(--card-background);
   border-radius: 1rem;
+
+  min-height: 0;
+  overflow: hidden;
 }
 
 .calendar__header {
