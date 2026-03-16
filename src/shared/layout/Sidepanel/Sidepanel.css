@@ -88,6 +88,10 @@
 
 .projects-list__name {
   color: var(--text-color);
+
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
 }
 
 .projects-list__item--active,
