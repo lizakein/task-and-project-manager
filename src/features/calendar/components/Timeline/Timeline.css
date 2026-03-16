@@ -20,6 +20,8 @@
   background-color: var(--light-brand-color-background);
   border-left: 6px solid var(--brand-color);
   border-radius: 0.5rem;
+
+  overflow: hidden;
 }
 
 .timeline__card-button {
@@ -31,6 +33,13 @@
   width: 100%;
 
   cursor: pointer;
+}
+
+.timeline__title,
+.timeline__description {
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
 }
 
 .timeline__title {
