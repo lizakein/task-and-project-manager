@@ -176,6 +176,13 @@
   justify-content: space-between;
 }
 
+.task-card__title,
+.task-card__description {
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+}
+
 .task-card__title {
   font-size: clamp(1rem, 2vw, 1.125rem);
   font-weight: 600;
