@@ -44,6 +44,13 @@
   top: 1.2rem;
 }
 
+.task-item__title,
+.task-item__project {
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+}
+
 .task-item__title {
   font-size: 1.125rem;
   font-weight: 500;
