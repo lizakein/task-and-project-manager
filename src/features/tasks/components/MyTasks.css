@@ -84,6 +84,11 @@
   color: var(--high-color);
 }
 
+.my-tasks__empty {
+  color: var(--text-color);
+  text-align: center;
+}
+
 @media (max-width: 27rem) {
   .task-item__info {
     flex-direction: column;

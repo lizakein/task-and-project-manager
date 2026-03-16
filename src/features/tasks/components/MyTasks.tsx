@@ -46,6 +46,10 @@ export default function MyTasks() {
       </h2>
 
       <ul ref={containerRef} className="my-tasks__list">
+        {!visibleTasks.length && (
+          <p className="my-tasks__empty">No unfinished tasks</p>
+        )}
+
         {visibleTasks.map((task) => (
           <TaskItem key={task.id} task={task} projectsMap={projectsMap} />
         ))}
