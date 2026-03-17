@@ -5,16 +5,19 @@ import SearchIcon from "@assets/icons/ui/search-icon.svg";
 import { useSearchStore } from "../model/useSearchStore";
 import { useDebounce } from "@hooks/useDebounce";
 import type { MenuPosition } from "@hooks/useContextMenu";
+import { useMobile } from "@hooks/useMobile";
 import { useProjectsStore, useTasksStore } from "@store/hooks";
 import { searchItems } from "../utils/searchUtils";
-import "./Search.css";
 import { getSearchPosition } from "../utils/getSearchPosition";
+import "./Search.css";
 
 export function Search() {
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState<MenuPosition | null>(null);
+
+  const isMobile = useMobile(720); // Размер в media query
 
   const { projects } = useProjectsStore();
   const { tasks } = useTasksStore();
@@ -56,12 +59,16 @@ export function Search() {
       aria-label="Site search"
       onSubmit={(e) => e.preventDefault()}
     >
-      <IconButton
-        className="search__toggle"
-        ariaLabel={isSearchOpen ? "Close search" : "Open search"}
-        onClick={() => setIsSearchOpen((prev) => !prev)}
-        icon={<Icon src={SearchIcon} className="search__icon" />}
-      />
+      {isMobile ? (
+        <IconButton
+          className="search__toggle"
+          ariaLabel={isSearchOpen ? "Close search" : "Open search"}
+          onClick={() => setIsSearchOpen((prev) => !prev)}
+          icon={<Icon src={SearchIcon} className="search__icon" />}
+        />
+      ) : (
+        <Icon src={SearchIcon} className="search__toggle" />
+      )}
 
       <input
         ref={inputRef}
