@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useMobile } from "@hooks/useMobile";
 
 export function useTasksPerPage(containerRef: React.RefObject<HTMLElement | null>) {
   const [tasksPerPage, setTasksPerPage] = useState(5);
@@ -7,7 +8,7 @@ export function useTasksPerPage(containerRef: React.RefObject<HTMLElement | null
     function calculate() {
       if (!containerRef.current) return;
 
-      const isMobile = window.innerWidth <= 848;
+      const isMobile = useMobile(848);
 
       if (isMobile) {
         setTasksPerPage(5);
