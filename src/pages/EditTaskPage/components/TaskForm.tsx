@@ -5,7 +5,8 @@ import { DueDateSection } from "./DueDateSection";
 import { UploadButton } from "./UploadButton";
 import { FormActions } from "./FormActions";
 import type { FieldState } from "../../../types/fieldState";
-import { Task } from "@features/tasks";
+import { Status, Task } from "@features/tasks";
+import { StatusSection } from "./StatusSection";
 
 interface TaskFormProps {
   title: FieldState<string>;
@@ -13,6 +14,7 @@ interface TaskFormProps {
   priority: FieldState<Task["priority"] | "">;
   tags: FieldState<string[]>;
   dueDate: FieldState<string>;
+  status: FieldState<Status>;
   handleSave: (event: React.FormEvent<HTMLFormElement>) => void;
   handleCancel: () => void;
 }
@@ -23,6 +25,7 @@ export function TaskForm({
   priority,
   tags,
   dueDate,
+  status,
   handleSave,
   handleCancel,
 }: TaskFormProps) {
@@ -41,6 +44,7 @@ export function TaskForm({
       <TagsSection tags={tags} />
       <DescriptionSection description={description} />
       <DueDateSection dueDate={dueDate} />
+      <StatusSection status={status} />
       <UploadButton />
       <FormActions handleCancel={handleCancel} />
     </form>

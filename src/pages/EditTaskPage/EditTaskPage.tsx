@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { TaskForm } from "./components/TaskForm";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
-import type { Task } from "@features/tasks";
+import type { Task, Status } from "@features/tasks";
 import "./EditTaskPage.css";
 import { Layout } from "@layout/Layout/Layout";
 import { useTagStore, useTasksStore } from "@store/hooks";
@@ -25,6 +25,7 @@ export function EditTaskPage() {
   const [priority, setPriority] = useState<PriorityValue>(task?.priority || "");
   const [tags, setTags] = useState(task?.tags || []);
   const [dueDate, setDueDate] = useState(task?.dueDate || "");
+  const [status, setStatus] = useState<Status>(task?.status || "todo");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -42,6 +43,7 @@ export function EditTaskPage() {
       tags: validTags,
       dueDate,
       ...(priority ? { priority } : {}),
+      status,
     };
     updateTask(taskId, patch);
     navigate(`/project/${projectId}`);
@@ -64,6 +66,7 @@ export function EditTaskPage() {
           priority={{ value: priority, setValue: setPriority }}
           tags={{ value: tags, setValue: setTags }}
           dueDate={{ value: dueDate, setValue: setDueDate }}
+          status={{ value: status, setValue: setStatus }}
           handleSave={handleSave}
           handleCancel={handleCancel}
         />
