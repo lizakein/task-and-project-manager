@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { ProjectHeader } from "./components/ProjectHeader";
 import { Layout } from "@layout/Layout/Layout";
 import { TaskColumn } from "@features/tasks";
-import { Status, TASK_STATUS } from "@features/tasks/types";
+import { Status, TASK_STATUS } from "@features/tasks";
 import "./ProjectPage.css";
 
 export function ProjectPage() {

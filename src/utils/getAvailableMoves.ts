@@ -1,4 +1,4 @@
-import { Status, TASK_STATUS } from "@features/tasks/types";
+import { Status, TASK_STATUS } from "@features/tasks";
 
 export function getAvailableMoves(status: Status) {
   return TASK_STATUS[status].moves.map((target) => ({
