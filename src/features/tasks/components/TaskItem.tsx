@@ -32,7 +32,9 @@ export function TaskItem({ task, projectsMap }: TaskItemProps) {
           variant="ghost"
           className="task-item__title-button"
           onClick={() => {
-            navigate(`/project/${task.projectId}/${task.id}`);
+            navigate(`/project/${task.projectId}/${task.id}`, {
+              state: { from: "/" },
+            });
           }}
           aria-label={`Go to edit ${task.title} page`}
         >

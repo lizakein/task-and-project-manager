@@ -33,7 +33,9 @@ export function TaskOptions({
   const { updateTask, deleteTask } = useTasksStore();
 
   const handleEditTask = () => {
-    navigate(`/project/${projectId}/${openId}`);
+    navigate(`/project/${projectId}/${openId}`, {
+      state: { from: `/project/${projectId}` },
+    });
   };
 
   const handleConfirmDelete = () => {

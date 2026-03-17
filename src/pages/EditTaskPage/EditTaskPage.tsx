@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { TaskForm } from "./components/TaskForm";
 import { ConfirmModal } from "@ui/ConfirmModal/ConfirmModal";
@@ -15,6 +15,8 @@ export function EditTaskPage() {
     taskId: string;
   }>();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from;
 
   const { tasks, updateTask } = useTasksStore();
   const task = tasks.find((t) => t.id === taskId);
@@ -46,11 +48,11 @@ export function EditTaskPage() {
       status,
     };
     updateTask(taskId, patch);
-    navigate(`/project/${projectId}`);
+    navigate(from || `/project/${projectId}`);
   };
 
   const handleConfirmLeave = () => {
-    navigate(`/project/${projectId}`);
+    navigate(from || `/project/${projectId}`);
   };
 
   const handleCancel = () => {

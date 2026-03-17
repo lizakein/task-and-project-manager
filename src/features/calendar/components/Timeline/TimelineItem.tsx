@@ -17,7 +17,11 @@ export function TimelineItem({ task }: TimelineItemProps) {
         <button
           type="button"
           className="timeline__card-button"
-          onClick={() => navigate(`/project/${task.projectId}/${task.id}`)}
+          onClick={() =>
+            navigate(`/project/${task.projectId}/${task.id}`, {
+              state: { from: "/" },
+            })
+          }
         >
           <h3 className="timeline__title">{task.title}</h3>
           {task.description && (
