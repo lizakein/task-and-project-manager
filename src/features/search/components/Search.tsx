@@ -72,6 +72,8 @@ export function Search() {
 
       <input
         ref={inputRef}
+        id="search"
+        name="search"
         type="search"
         className="search__input"
         placeholder="Search for anything..."
