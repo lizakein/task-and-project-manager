@@ -26,6 +26,26 @@
   color: var(--text-color);
 }
 
+.search__group {
+  width: max-content;
+  min-width: 100%;
+  max-width: min(720px, calc(100vw - 2rem));
+  overflow: hidden;
+}
+
+.search__group,
+.search__group-projects,
+.search__group-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.search__project-title,
+.search__task-title {
+  text-align: start;
+}
+
 .search__group-title {
   font-size: 0.875rem;
   font-weight: 600;
@@ -38,11 +58,22 @@
   font-size: 0.875rem;
   font-weight: 400;
   color: var(--black-color);
+
+  width: 100%;
+}
+
+.search__task-title,
+.search__task-project,
+.search__project-title {
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
 }
 
 .search__task-project {
   font-size: 0.75rem;
   color: var(--text-color);
+  text-align: end;
 }
 
 .search__empty {
