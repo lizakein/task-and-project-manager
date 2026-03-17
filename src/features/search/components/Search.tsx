@@ -90,46 +90,50 @@ export function Search() {
           disableAutoFocus
           shouldReturnFocus={false}
         >
-          {foundProjects.length > 0 && (
-            <>
-              <p className="search__group-title">Projects</p>
+          <div className="search__group">
+            {foundProjects.length > 0 && (
+              <div className="search__group-projects">
+                <p className="search__group-title">Projects</p>
 
-              {foundProjects.map((project) => (
-                <Button
-                  key={project.id}
-                  variant="ghost"
-                  className="search__item"
-                  onClick={() => handleProjectClick(project.id)}
-                >
-                  {project.title}
-                </Button>
-              ))}
-            </>
-          )}
+                {foundProjects.map((project) => (
+                  <Button
+                    key={project.id}
+                    variant="ghost"
+                    className="search__item"
+                    onClick={() => handleProjectClick(project.id)}
+                  >
+                    <span className="search__project-title">
+                      {project.title}
+                    </span>
+                  </Button>
+                ))}
+              </div>
+            )}
 
-          {foundTasks.length > 0 && (
-            <>
-              <p className="search__group-title">Tasks</p>
+            {foundTasks.length > 0 && (
+              <div className="search__group-tasks">
+                <p className="search__group-title">Tasks</p>
 
-              {foundTasks.map((task) => (
-                <Button
-                  key={task.id}
-                  variant="ghost"
-                  className="search__item"
-                  onClick={() => handleTaskClick(task.projectId, task.id)}
-                >
-                  <span className="search__task-title">{task.title}</span>
-                  <span className="search__task-project">
-                    /{projectsMap[task.projectId]?.title}
-                  </span>
-                </Button>
-              ))}
-            </>
-          )}
+                {foundTasks.map((task) => (
+                  <Button
+                    key={task.id}
+                    variant="ghost"
+                    className="search__item"
+                    onClick={() => handleTaskClick(task.projectId, task.id)}
+                  >
+                    <span className="search__task-title">{task.title}</span>
+                    <span className="search__task-project">
+                      /{projectsMap[task.projectId]?.title}
+                    </span>
+                  </Button>
+                ))}
+              </div>
+            )}
 
-          {foundProjects.length === 0 && foundTasks.length === 0 && (
-            <p className="search__empty">Nothing was found for your query.</p>
-          )}
+            {foundProjects.length === 0 && foundTasks.length === 0 && (
+              <p className="search__empty">Nothing was found for your query.</p>
+            )}
+          </div>
         </OptionsWindow>
       )}
     </form>
