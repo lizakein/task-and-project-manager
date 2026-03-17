@@ -5,7 +5,6 @@ import SearchIcon from "@assets/icons/ui/search-icon.svg";
 import { useSearchStore } from "../model/useSearchStore";
 import { useDebounce } from "@hooks/useDebounce";
 import type { MenuPosition } from "@hooks/useContextMenu";
-import { useMobile } from "@hooks/useMobile";
 import { useProjectsStore, useTasksStore } from "@store/hooks";
 import { searchItems } from "../utils/searchUtils";
 import { getSearchPosition } from "../utils/getSearchPosition";
@@ -17,7 +16,7 @@ export function Search() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState<MenuPosition | null>(null);
 
-  const isMobile = useMobile(720); // Размер в media query
+  const isMobile = window.innerWidth <= 720; // Размер в media query
 
   const { projects } = useProjectsStore();
   const { tasks } = useTasksStore();
