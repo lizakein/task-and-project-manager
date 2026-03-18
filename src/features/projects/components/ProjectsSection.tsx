@@ -4,6 +4,7 @@ import AddSquareIcon from "@assets/icons/actions/add-square-icon.svg";
 import { useProjectsStore } from "@store/hooks";
 import { Icon, IconButton } from "@ui/index";
 import { createProject } from "@utils/projectUtils";
+import "./ProjectsSection.css";
 
 interface ProjectsSection {
   projectId: string | null;
