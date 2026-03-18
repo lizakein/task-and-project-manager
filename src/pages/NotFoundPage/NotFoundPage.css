@@ -18,6 +18,7 @@
   font-weight: 400;
   color: var(--text-color);
   text-transform: uppercase;
+  text-align: center;
 }
 
 .not-found-page__link {
