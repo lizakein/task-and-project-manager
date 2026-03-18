@@ -27,10 +27,7 @@
 }
 
 .search__group {
-  width: max-content;
-  min-width: 100%;
-  max-width: min(720px, calc(100vw - 2rem));
-  overflow: hidden;
+  width: clamp(500px, 50vw, 800px);
 }
 
 .search__group,
@@ -106,6 +103,10 @@
     gap: 0.8rem;
 
     animation: fadeIn 0.2s ease;
+  }
+
+  .search__group {
+    width: calc(100vw - 2rem);
   }
 
   @keyframes fadeIn {
