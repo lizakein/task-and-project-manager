@@ -8,7 +8,9 @@
   border-inline-end: var(--border);
   background-color: var(--main-background);
 
-  transition: transform 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    visibility 0.3s ease;
 }
 
 /* ========== SIDEPANEL MENU ========== */
@@ -48,9 +50,13 @@
     left: 0;
     z-index: 999;
     transform: translateX(-100%);
+    visibility: hidden;
+    pointer-events: none;
   }
 
   .sidepanel.sidepanel--open {
     transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
   }
 }
