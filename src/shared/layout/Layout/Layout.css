@@ -1,7 +1,7 @@
 .page {
   display: flex;
-  margin-block-start: clamp(57px, 8.5vw, 86px);
-  min-height: calc(100vh - clamp(57px, 8.5vw, 86px));
+  margin-block-start: var(--header-height);
+  min-height: calc(100vh - var(--header-height));
 }
 
 .content {

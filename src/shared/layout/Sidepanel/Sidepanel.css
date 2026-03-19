@@ -1,9 +1,9 @@
 .sidepanel {
   position: sticky;
-  top: clamp(57px, 8.5vw, 86px);
+  top: var(--header-height);
   flex-shrink: 0;
   width: 16.875rem;
-  height: calc(100vh - clamp(57px, 8.5vw, 86px));
+  height: calc(100vh - var(--header-height));
   overflow-y: auto;
 
   border-inline-end: var(--border);

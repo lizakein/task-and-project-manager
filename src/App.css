@@ -20,6 +20,7 @@
   --low-color-background: #83c29d20;
 
   --border: 1px solid #e0e0e0;
+  --header-height: clamp(57px, 8.5vw, 86px);
 }
 
 .inter-font {
