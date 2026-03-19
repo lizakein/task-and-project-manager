@@ -251,6 +251,10 @@
 }
 
 @media (max-width: 45rem) {
+  .project-header__left {
+    width: 100%;
+  }
+
   .task-controls__button-name {
     display: none;
   }
