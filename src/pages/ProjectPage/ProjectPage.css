@@ -64,11 +64,15 @@
 .task-tabs__button {
   flex: 1;
   padding: 0.5rem;
+
   border: var(--border);
   border-radius: 0.5rem;
   background: transparent;
-  cursor: pointer;
+
   font-size: 1rem;
+  font-family: "Inter", sans-serif;
+
+  cursor: pointer;
 }
 
 .task-tabs__button--active {
