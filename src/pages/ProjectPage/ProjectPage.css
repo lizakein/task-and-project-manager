@@ -192,6 +192,7 @@
   padding: 1.5rem;
   background-color: var(--main-background);
   border-radius: 1rem;
+  box-shadow: 1px 1px 8px var(--count-background);
   cursor: pointer;
 }
 
