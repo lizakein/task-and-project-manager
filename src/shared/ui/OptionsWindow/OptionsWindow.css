@@ -11,6 +11,7 @@
 
 .options-window__item-label {
   color: var(--text-color);
+  text-align: start;
 }
 
 .red {
