@@ -69,13 +69,15 @@
   cursor: pointer;
 }
 
-.calendar-week__day:hover {
-  color: var(--brand-color);
-  background-color: var(--light-brand-color-background);
-  transition: 0.3s ease background-color;
-}
-
 .calendar-week__day--active {
   background-color: var(--brand-color);
   color: var(--main-background);
+}
+
+@media (hover: hover) {
+  .calendar-week__day:hover {
+    color: var(--brand-color);
+    background-color: var(--light-brand-color-background);
+    transition: 0.3s ease background-color;
+  }
 }

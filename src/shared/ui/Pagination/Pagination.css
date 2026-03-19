@@ -30,7 +30,9 @@
   border-radius: 50%;
 }
 
-.pagination__button:hover {
-  font-weight: 600;
-  color: var(--brand-color);
+@media (hover: hover) {
+  .pagination__button:hover {
+    font-weight: 600;
+    color: var(--brand-color);
+  }
 }

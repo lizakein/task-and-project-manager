@@ -17,6 +17,8 @@
   color: var(--high-color);
 }
 
-.options-window__item:hover {
-  font-weight: 600;
+@media (hover: hover) {
+  .options-window__item:hover {
+    font-weight: 600;
+  }
 }

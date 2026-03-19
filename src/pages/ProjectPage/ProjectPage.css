@@ -45,10 +45,6 @@
   background: inherit;
 }
 
-.task-controls__button:hover {
-  font-weight: unset;
-}
-
 .task-controls__button img {
   width: 1rem;
   aspect-ratio: 1 / 1;
@@ -78,12 +74,6 @@
 .task-tabs__button--active {
   background-color: var(--brand-color);
   color: var(--main-background);
-}
-
-.task-tabs__button:hover {
-  color: var(--brand-color);
-  background-color: var(--light-brand-color-background);
-  transition: 0.3s ease background-color;
 }
 
 .task-column__wrapper {
@@ -300,5 +290,17 @@
   .task-card {
     padding: 1rem;
     border-radius: 0.75rem;
+  }
+}
+
+@media (hover: hover) {
+  .task-tabs__button:hover {
+    color: var(--brand-color);
+    background-color: var(--light-brand-color-background);
+    transition: 0.3s ease background-color;
+  }
+
+  .task-controls__button:hover {
+    font-weight: unset;
   }
 }

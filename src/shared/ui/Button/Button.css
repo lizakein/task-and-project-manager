@@ -35,6 +35,8 @@
   background-color: transparent;
 }
 
-.button:hover {
-  font-weight: 600;
+@media (hover: hover) {
+  .button:hover {
+    font-weight: 600;
+  }
 }
