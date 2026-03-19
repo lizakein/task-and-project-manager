@@ -26,3 +26,8 @@
   color: var(--text-color);
   background-color: var(--card-background);
 }
+
+.sort-clear {
+  padding: clamp(0.4rem, 1.5vw, 0.7rem);
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
