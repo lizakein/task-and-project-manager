@@ -313,9 +313,3 @@
     font-weight: unset;
   }
 }
-
-@media (hover: none) {
-  .task-card {
-    cursor: none;
-  }
-}

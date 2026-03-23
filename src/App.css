@@ -107,3 +107,9 @@ body {
   clip: rect(0, 0, 0, 0);
   overflow: hidden;
 }
+
+@media (hover: none) {
+  * {
+    cursor: none !important;
+  }
+}
