@@ -8,6 +8,8 @@ interface OptionsWindowProps {
   position: MenuPosition;
   onClose: () => void;
   triggerRef: React.RefObject<HTMLElement | null>;
+  role?: string;
+  ariaLabel?: string;
   shouldReturnFocus?: boolean;
   disableAutoFocus?: boolean;
 }
@@ -17,6 +19,8 @@ export function OptionsWindow({
   position,
   onClose,
   triggerRef,
+  role = "menu",
+  ariaLabel = "Options menu",
   shouldReturnFocus = true,
   disableAutoFocus = false,
 }: OptionsWindowProps) {
@@ -77,8 +81,8 @@ export function OptionsWindow({
     <div
       ref={menuRef}
       className="options-window"
-      role="menu"
-      aria-label="Options menu"
+      role={role}
+      aria-label={ariaLabel}
       style={{
         top: position.top,
         left: computedLeft,

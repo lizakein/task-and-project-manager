@@ -86,6 +86,8 @@ export function Search() {
           triggerRef={inputRef}
           position={menuPosition}
           onClose={() => clearQuery()}
+          role="listbox"
+          ariaLabel="Search results"
           disableAutoFocus
           shouldReturnFocus={false}
         >
