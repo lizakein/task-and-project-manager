@@ -14,30 +14,34 @@ export function useSearchKeyboard(
   return (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!results.length) return;
 
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setActiveIndex((prev) => (prev + 1) % results.length);
-    }
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        setActiveIndex((prev) => (prev + 1) % results.length);
+        break;
 
-    if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setActiveIndex((prev) => (prev <= 0 ? results.length - 1 : prev - 1));
-    }
+      case "ArrowUp":
+        e.preventDefault();
+        setActiveIndex((prev) => (prev <= 0 ? results.length - 1 : prev - 1));
+        break;
 
-    if (e.key === "Enter" && activeIndex >= 0) {
-      e.preventDefault();
+      case "Enter":
+        if (activeIndex < 0) return;
 
-      if (activeIndex < foundProjects.length) {
-        const project = foundProjects[activeIndex];
-        onProjectClick(project.id);
-      } else {
-        const task = foundTasks[activeIndex - foundProjects.length];
-        onTaskClick(task.projectId, task.id);
-      }
-    }
+        e.preventDefault();
 
-    if (e.key === "Escape") {
-      clearQuery();
+        if (activeIndex < foundProjects.length) {
+          const project = foundProjects[activeIndex];
+          onProjectClick(project.id);
+        } else {
+          const task = foundTasks[activeIndex - foundProjects.length];
+          onTaskClick(task.projectId, task.id);
+        }
+        break;
+
+      case "Escape":
+        clearQuery();
+        break;
     }
   };
 }
