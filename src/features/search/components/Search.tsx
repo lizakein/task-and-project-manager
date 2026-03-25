@@ -7,6 +7,7 @@ import { useSearchKeyboard } from "../model/useSearchKeyboard";
 import { SearchResults } from "./SearchResults";
 import "./Search.css";
 import { useSearchPosition } from "../model/useSearchPosition";
+import { SearchInput } from "./SearchInput";
 
 export function Search() {
   const navigate = useNavigate();
@@ -64,24 +65,13 @@ export function Search() {
         <Icon src={SearchIcon} className="search__toggle" />
       )}
 
-      <input
-        ref={inputRef}
-        id="search"
-        name="search"
-        type="search"
-        value={query}
-        className="search__input"
-        placeholder="Search for anything..."
-        aria-label="Search"
-        role="combobox"
-        aria-autocomplete="list"
-        aria-expanded={isOpen}
-        aria-controls="search-results"
-        aria-activedescendant={
-          activeIndex >= 0 ? `search-option-${activeIndex}` : undefined
-        }
-        onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={handleKeyDown}
+      <SearchInput
+        inputRef={inputRef}
+        isOpen={isOpen}
+        activeIndex={activeIndex}
+        query={query}
+        setQuery={setQuery}
+        onKeyDown={onKeyDown}
       />
 
       {query && menuPosition && (
