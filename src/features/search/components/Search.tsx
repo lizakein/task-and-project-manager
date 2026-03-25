@@ -12,7 +12,6 @@ export function Search() {
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [menuPosition, setMenuPosition] = useState<MenuPosition | null>(null);
 
   const { query, setQuery, clearQuery, foundProjects, foundTasks, results } =
     useSearch();
