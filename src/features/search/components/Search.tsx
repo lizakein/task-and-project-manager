@@ -1,13 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Icon, IconButton, OptionsWindow } from "@ui/index";
+import { Icon, IconButton, OptionsWindow } from "@ui/index";
 import SearchIcon from "@assets/icons/ui/search-icon.svg";
-import { useSearchStore } from "../model/useSearchStore";
-import { useDebounce } from "@hooks/useDebounce";
 import type { MenuPosition } from "@hooks/useContextMenu";
-import { useProjectsStore, useTasksStore } from "@store/hooks";
-import { searchItems } from "../utils/searchUtils";
+import { useSearch } from "../hooks/useSearch";
+import { useSearchKeyboard } from "../hooks/useSearchKeyboard";
 import { getSearchPosition } from "../utils/getSearchPosition";
+import { SearchResults } from "./SearchResults";
 import "./Search.css";
 
 export function Search() {
@@ -16,23 +15,26 @@ export function Search() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState<MenuPosition | null>(null);
 
+  const {
+    query,
+    setQuery,
+    clearQuery,
+    foundProjects,
+    foundTasks,
+    results,
+    activeIndex,
+    setActiveIndex,
+  } = useSearch();
+
   const isMobile = window.innerWidth <= 720; // Размер в media query
 
-  const { projects } = useProjectsStore();
-  const { tasks } = useTasksStore();
-  const { query, setQuery, clearQuery } = useSearchStore();
-
   const projectsMap = useMemo(
-    () => Object.fromEntries(projects.map((project) => [project.id, project])),
-    [projects]
+    () =>
+      Object.fromEntries(foundProjects.map((project) => [project.id, project])),
+    [foundProjects]
   );
 
-  const debouncedQuery = useDebounce(query, 300);
-  const { projects: foundProjects, tasks: foundTasks } = searchItems(
-    debouncedQuery,
-    projects,
-    tasks
-  );
+  const isOpen = !!query && results.length > 0;
 
   useEffect(() => {
     if (!inputRef.current) return;
@@ -50,6 +52,17 @@ export function Search() {
     navigate(`/project/${projectId}/${taskId}`);
     clearQuery();
   };
+
+  const handleKeyDown = useSearchKeyboard(
+    results,
+    foundProjects,
+    foundTasks,
+    activeIndex,
+    setActiveIndex,
+    handleProjectClick,
+    handleTaskClick,
+    clearQuery
+  );
 
   return (
     <form
@@ -74,11 +87,19 @@ export function Search() {
         id="search"
         name="search"
         type="search"
+        value={query}
         className="search__input"
         placeholder="Search for anything..."
         aria-label="Search"
-        value={query}
+        role="combobox"
+        aria-autocomplete="list"
+        aria-expanded={isOpen}
+        aria-controls="search-results"
+        aria-activedescendant={
+          activeIndex >= 0 ? `search-option-${activeIndex}` : undefined
+        }
         onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
 
       {query && menuPosition && (
@@ -91,50 +112,15 @@ export function Search() {
           disableAutoFocus
           shouldReturnFocus={false}
         >
-          <div className="search__group">
-            {foundProjects.length > 0 && (
-              <div className="search__group-projects">
-                <p className="search__group-title">Projects</p>
-
-                {foundProjects.map((project) => (
-                  <Button
-                    key={project.id}
-                    variant="ghost"
-                    className="search__item"
-                    onClick={() => handleProjectClick(project.id)}
-                  >
-                    <span className="search__project-title">
-                      {project.title}
-                    </span>
-                  </Button>
-                ))}
-              </div>
-            )}
-
-            {foundTasks.length > 0 && (
-              <div className="search__group-tasks">
-                <p className="search__group-title">Tasks</p>
-
-                {foundTasks.map((task) => (
-                  <Button
-                    key={task.id}
-                    variant="ghost"
-                    className="search__item"
-                    onClick={() => handleTaskClick(task.projectId, task.id)}
-                  >
-                    <span className="search__task-title">{task.title}</span>
-                    <span className="search__task-project">
-                      /{projectsMap[task.projectId]?.title}
-                    </span>
-                  </Button>
-                ))}
-              </div>
-            )}
-
-            {foundProjects.length === 0 && foundTasks.length === 0 && (
-              <p className="search__empty">Nothing was found for your query.</p>
-            )}
-          </div>
+          <SearchResults
+            foundProjects={foundProjects}
+            foundTasks={foundTasks}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+            onProjectClick={handleProjectClick}
+            onTaskClick={handleTaskClick}
+            projectsMap={projectsMap}
+          />
         </OptionsWindow>
       )}
     </form>
