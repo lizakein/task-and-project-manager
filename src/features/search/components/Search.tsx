@@ -1,13 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Icon, IconButton, OptionsWindow } from "@ui/index";
 import SearchIcon from "@assets/icons/ui/search-icon.svg";
-import type { MenuPosition } from "@hooks/useContextMenu";
 import { useSearch } from "../model/useSearch";
 import { useSearchKeyboard } from "../model/useSearchKeyboard";
-import { getSearchPosition } from "../utils/getSearchPosition";
 import { SearchResults } from "./SearchResults";
 import "./Search.css";
+import { useSearchPosition } from "../model/useSearchPosition";
 
 export function Search() {
   const navigate = useNavigate();
@@ -35,13 +34,7 @@ export function Search() {
   );
 
   const isOpen = !!query && results.length > 0;
-
-  useEffect(() => {
-    if (!inputRef.current) return;
-
-    const rect = inputRef.current.getBoundingClientRect();
-    setMenuPosition(getSearchPosition(rect));
-  }, [query]);
+  const menuPosition = useSearchPosition(inputRef, query);
 
   const handleProjectClick = (projectId: string) => {
     navigate(`/project/${projectId}`);
