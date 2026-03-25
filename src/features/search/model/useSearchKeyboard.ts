@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Project } from "@features/projects";
 import { Task } from "@features/tasks";
 
@@ -5,13 +6,17 @@ export function useSearchKeyboard(
   results: (Project | Task)[],
   foundProjects: Project[],
   foundTasks: Task[],
-  activeIndex: number,
-  setActiveIndex: React.Dispatch<React.SetStateAction<number>>,
   onProjectClick: (projectId: string) => void,
   onTaskClick: (projectId: string, taskId: string) => void,
   clearQuery: () => void
 ) {
-  return (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const [activeIndex, setActiveIndex] = useState(-1);
+
+  useEffect(() => {
+    setActiveIndex(-1);
+  }, [results]);
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!results.length) return;
 
     switch (e.key) {
@@ -44,4 +49,6 @@ export function useSearchKeyboard(
         break;
     }
   };
+
+  return { activeIndex, onKeyDown };
 }

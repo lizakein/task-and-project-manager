@@ -14,16 +14,8 @@ export function Search() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState<MenuPosition | null>(null);
 
-  const {
-    query,
-    setQuery,
-    clearQuery,
-    foundProjects,
-    foundTasks,
-    results,
-    activeIndex,
-    setActiveIndex,
-  } = useSearch();
+  const { query, setQuery, clearQuery, foundProjects, foundTasks, results } =
+    useSearch();
 
   const isMobile = window.innerWidth <= 720; // Размер в media query
 
@@ -46,12 +38,10 @@ export function Search() {
     clearQuery();
   };
 
-  const handleKeyDown = useSearchKeyboard(
+  const { activeIndex, onKeyDown } = useSearchKeyboard(
     results,
     foundProjects,
     foundTasks,
-    activeIndex,
-    setActiveIndex,
     handleProjectClick,
     handleTaskClick,
     clearQuery
