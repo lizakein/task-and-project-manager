@@ -59,6 +59,10 @@
   width: 100%;
 }
 
+.search__item--active {
+  outline: 3px solid var(--black-color);
+}
+
 .search__task-title,
 .search__task-project,
 .search__project-title {
