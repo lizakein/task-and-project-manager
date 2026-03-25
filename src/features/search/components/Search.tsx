@@ -98,7 +98,6 @@ export function Search() {
             foundProjects={foundProjects}
             foundTasks={foundTasks}
             activeIndex={activeIndex}
-            setActiveIndex={setActiveIndex}
             onProjectClick={handleProjectClick}
             onTaskClick={handleTaskClick}
             projectsMap={projectsMap}

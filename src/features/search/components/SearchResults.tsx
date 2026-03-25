@@ -6,7 +6,6 @@ interface SearchResultsProps {
   foundProjects: Project[];
   foundTasks: Task[];
   activeIndex: number;
-  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
   onProjectClick: (projectId: string) => void;
   onTaskClick: (projectId: string, taskId: string) => void;
   projectsMap: {
