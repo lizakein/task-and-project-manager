@@ -31,8 +31,15 @@ export function EditTaskPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
+    if (!task) return;
+
+    setTitle(task?.title || "");
+    setDescription(task?.description || "");
+    setPriority(task?.priority || "");
     setTags(task?.tags || []);
-  }, [task?.tags]);
+    setDueDate(task?.dueDate || "");
+    setStatus(task?.status || "todo");
+  }, [taskId]);
 
   const handleSave = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
