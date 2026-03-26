@@ -1,18 +1,21 @@
 import { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useProjectsStore } from "@store/hooks";
 import { Icon, IconButton, OptionsWindow } from "@ui/index";
 import SearchIcon from "@assets/icons/ui/search-icon.svg";
 import { useSearch } from "../model/useSearch";
 import { useSearchKeyboard } from "../model/useSearchKeyboard";
-import { SearchResults } from "./SearchResults";
-import "./Search.css";
 import { useSearchPosition } from "../model/useSearchPosition";
+import { SearchResults } from "./SearchResults";
 import { SearchInput } from "./SearchInput";
+import "./Search.css";
 
 export function Search() {
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const { projects } = useProjectsStore();
 
   const { query, setQuery, clearQuery, foundProjects, foundTasks, results } =
     useSearch();
@@ -20,8 +23,7 @@ export function Search() {
   const isMobile = window.innerWidth <= 720; // Размер в media query
 
   const projectsMap = useMemo(
-    () =>
-      Object.fromEntries(foundProjects.map((project) => [project.id, project])),
+    () => Object.fromEntries(projects.map((project) => [project.id, project])),
     [foundProjects]
   );
 
