@@ -14,7 +14,7 @@ export function useSearchKeyboard(
 
   useEffect(() => {
     setActiveIndex(-1);
-  }, [results]);
+  }, [results.length]);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!results.length) return;
