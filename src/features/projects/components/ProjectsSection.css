@@ -53,7 +53,7 @@
 .projects-list__item--active,
 .menu-item--active {
   background-color: var(--bg-brand-subtle);
-  border-radius: 6px;
+  border-radius: var(--radius-m);
 }
 
 .projects-list__item:hover .projects-list__name,

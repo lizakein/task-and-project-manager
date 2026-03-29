@@ -19,7 +19,7 @@
 
   background-color: var(--bg-brand-subtle);
   border-left: 6px solid var(--brand);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-m);
 
   overflow: hidden;
 }

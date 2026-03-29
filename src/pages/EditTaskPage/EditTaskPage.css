@@ -18,7 +18,7 @@
   font-size: clamp(1.25rem, 3vw, 2.625rem);
   font-weight: 600;
   border: 1px solid var(--border-default);
-  border-radius: 1rem;
+  border-radius: var(--radius-l);
 }
 
 .edit-task-page__priority-section {
@@ -57,7 +57,7 @@
   flex-direction: column;
   gap: 0.7rem;
   padding: 1rem;
-  border-radius: 6px;
+  border-radius: var(--radius-m);
   background-color: var(--bg-card);
 }
 
@@ -65,7 +65,7 @@
   height: 100%;
   font-size: 0.875rem;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-m);
   resize: none;
 }
 

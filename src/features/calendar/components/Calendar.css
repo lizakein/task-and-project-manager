@@ -8,7 +8,7 @@
 
   padding: 1.5rem 1.25rem;
   background-color: var(--bg-card);
-  border-radius: 1rem;
+  border-radius: var(--radius-l);
 
   min-height: 0;
   overflow: hidden;
@@ -63,6 +63,7 @@
   text-align: center;
 
   background-color: var(--bg-default);
+  border-radius: var(--radius-m);
 
   cursor: pointer;
 }

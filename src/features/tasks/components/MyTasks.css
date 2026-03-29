@@ -4,7 +4,7 @@
 
   padding: 1.5rem 1.25rem;
   background-color: var(--bg-card);
-  border-radius: 1rem;
+  border-radius: var(--radius-l);
 
   min-height: 0;
   overflow: hidden;
@@ -36,7 +36,7 @@
   content: "";
   width: 0.9rem;
   aspect-ratio: 1 / 1;
-  border-radius: 0.3rem;
+  border-radius: var(--radius-s);
   border: 3px solid var(--brand);
   background-color: var(--bg-card);
   position: absolute;

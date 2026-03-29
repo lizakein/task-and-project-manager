@@ -59,7 +59,7 @@
 	padding: 8px;
 
   background-color: var(--bg-default);
-	border-radius: 6px;
+  border-radius: var(--radius-m);
   border: 1px solid var(--border-default);
 
   z-index: var(--z-modal);

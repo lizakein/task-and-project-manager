@@ -7,7 +7,7 @@
   width: clamp(12.5rem, 30vw, 26.25rem);
 
   background-color: var(--bg-card);
-  border-radius: 6px;
+  border-radius: var(--radius-m);
   cursor: pointer;
 
   transition: all 0.3s ease;

@@ -10,7 +10,7 @@
   flex-grow: 1;
   padding: 0.5rem 0.7rem;
   background-color: var(--bg-card);
-  border-radius: 0.275rem;
+  border-radius: var(--radius-m);
 }
 
 .statistics-card__title {
