@@ -62,12 +62,7 @@
 	border-radius: 6px;
   border: 1px solid var(--border-default);
 
-	opacity: 0;
-	pointer-events: none;
-	transform-origin: top;
-	transform: translateX(-50%);
-	transition: opacity 0.25s ease, transform 0.25s ease;
-	z-index: 100;
+  z-index: var(--z-modal);
 }
 
 .color-picker__menu.open {
