@@ -1,31 +1,31 @@
 .tags-manager-modal__window {
-  width: 25rem; 
+  width: 25rem;
 }
 
 .tags-manager-modal__item {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .tags-manager-modal__left,
 .tags-manager-modal__actions {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
 .tags-manager-modal__item .tag {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 .tags-manager-modal__window .input-field {
-	padding: 1rem;
+  padding: 1rem;
   border: 1px solid var(--border-default);
 }
 
 .close-icon {
-	display: flex;
-	justify-self: end;
+  display: flex;
+  justify-self: end;
 }
 
 .tags-manager-modal__warning {
@@ -36,46 +36,62 @@
 /* ========== COLOR PICKER ========== */
 
 .color-picker {
-	position: relative;
-	display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .color-picker__current {
-	width: 1.3rem;
-	aspect-ratio: 1 / 1;
-	border-radius: 50%;
+  width: 1.3rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
   border: 1px solid var(--border-default);
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .color-picker__menu {
-	position: absolute;
-	top: 90%;
-	left: 50%;
+  position: absolute;
+  top: 110%;
+  left: 50%;
 
-	display: flex;
-	flex-direction: column;
-	gap: 6px;
-	padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
 
   background-color: var(--bg-default);
   border-radius: var(--radius-m);
   border: 1px solid var(--border-default);
 
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: top;
+  transform: translateX(-50%);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
   z-index: var(--z-modal);
 }
 
 .color-picker__menu.open {
-	opacity: 1;
-	pointer-events: auto;
-	transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
 }
 
 .color-option {
+  width: 1.3rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
   border: 1px solid var(--border-default);
+  cursor: pointer;
+  transform: scale(0.5);
+  opacity: 0;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
 }
 
 .color-picker__menu.open .color-option {
-	transform: scale(1);
-	opacity: 1;
+  transform: scale(1);
+  opacity: 1;
 }
