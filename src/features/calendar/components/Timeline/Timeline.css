@@ -44,7 +44,7 @@
 
 .timeline__title {
   font-size: clamp(1rem, 2.5vw, 1.125rem);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-primary);
 }
 
