@@ -116,27 +116,24 @@ body {
 }
 
 .priority--high {
-  color: var(--high-color);
-  background-color: var(--high-color-background);
+  color: var(--priority-high);
+  background-color: var(--priority-high-bg);
 }
 
 .priority--medium {
-  color: var(--medium-color);
-  background-color: var(--medium-color-background);
+  color: var(--priority-medium);
+  background-color: var(--priority-medium-bg);
 }
 
 .priority--low {
-  color: var(--low-color);
-  background-color: var(--low-color-background);
+  color: var(--priority-low);
+  background-color: var(--priority-low-bg);
 }
 
 .tag {
   color: var(--tag-text);
   background-color: var(--tag-bg);
-}
-
-.red {
-  color: var(--high-color);
+  border: 1px solid var(--tag-border);
 }
 
 .overlay {

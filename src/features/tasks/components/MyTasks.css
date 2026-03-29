@@ -29,7 +29,7 @@
 
   position: relative;
   list-style: none;
-  border-bottom: 1px solid var(--count-background);
+  border-bottom: 1px solid var(--border-default);
 }
 
 .task-item::before {
@@ -80,15 +80,15 @@
 .task-item__date {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--text-color);
+  color: var(--text-secondary);
 }
 
 .task-item__date--overdue {
-  color: var(--high-color);
+  color: var(--text-error);
 }
 
 .my-tasks__empty {
-  color: var(--text-color);
+  color: var(--text-secondary);
   text-align: center;
 }
 
@@ -101,6 +101,6 @@
 
 @media (hover: hover) {
   .task-item__project:hover {
-    text-decoration: underline var(--text-color);
+    text-decoration: underline var(--text-secondary);
   }
 }

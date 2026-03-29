@@ -12,7 +12,7 @@
 }
 
 .sort-section__label {
-  color: var(--text-color);
+  color: var(--text-primary);
   font-weight: 500;
   font-size: 1rem;
 }
@@ -23,7 +23,7 @@
 }
 
 .sort-option {
-  color: var(--text-color);
+  color: var(--text-secondary);
   background-color: var(--bg-card);
 }
 

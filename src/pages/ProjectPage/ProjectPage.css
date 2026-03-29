@@ -52,7 +52,7 @@
 
 .task-controls__button-name {
   font-size: 1rem;
-  color: var(--text-color);
+  color: var(--text-secondary);
 }
 
 /* ========== TASK TABS ========== */
@@ -65,7 +65,7 @@
   flex: 1;
   padding: 0.5rem;
 
-  border: var(--border);
+  border: 1px solid var(--border-button);
   border-radius: 0.5rem;
   background: transparent;
 
@@ -141,27 +141,27 @@
 }
 
 .task-column__header[data-status="todo"] .task-column__title::before {
-  color: var(--brand-color, var(--black-color));
+  color: var(--brand-color, var(--brand));
 }
 
 .task-column__header[data-status="in-progress"] .task-column__title::before {
-  color: var(--medium-color, var(--black-color));
+  color: var(--priority-medium, var(--brand));
 }
 
 .task-column__header[data-status="done"] .task-column__title::before {
-  color: var(--low-color, var(--black-color));
+  color: var(--priority-low, var(--brand));
 }
 
 .task-column__header[data-status="todo"] {
-  border-block-end: 3px solid var(--brand-color);
+  border-block-end: 3px solid var(--brand);
 }
 
 .task-column__header[data-status="in-progress"] {
-  border-block-end: 3px solid var(--medium-color);
+  border-block-end: 3px solid var(--priority-medium);
 }
 
 .task-column__header[data-status="done"] {
-  border-block-end: 3px solid var(--low-color);
+  border-block-end: 3px solid var(--priority-low);
 }
 
 .task-column__count {
@@ -173,8 +173,8 @@
   justify-content: center;
   align-items: center;
   font-size: 0.75rem;
-  color: var(--count-color);
-  background-color: var(--count-background);
+  color: var(--text-secondary);
+  background-color: var(--bg-brand-subtle);
   border-radius: 50%;
 }
 
@@ -193,7 +193,7 @@
   padding: 1.5rem;
   background-color: var(--bg-default);
   border-radius: 1rem;
-  box-shadow: 1px 1px 8px var(--count-background);
+  box-shadow: var(--shadow-card);
   cursor: pointer;
 }
 
@@ -218,7 +218,7 @@
   margin-block-end: 1.5rem;
   font-size: 0.75rem;
   font-weight: 400;
-  color: var(--text-color);
+  color: var(--text-secondary);
 }
 
 .task-card__footer {
@@ -243,7 +243,7 @@
 .task-card__due span {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--text-color);
+  color: var(--text-secondary);
 }
 
 /* ========== MEDIA QUERIES ========== */
@@ -305,9 +305,7 @@
 
 @media (hover: hover) {
   .task-tabs__button:hover {
-    color: var(--brand-color);
-    background-color: var(--light-brand-color-background);
-    transition: 0.3s ease background-color;
+    background-color: var(--bg-hover);
   }
 
   .task-controls__button:hover {

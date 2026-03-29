@@ -74,8 +74,8 @@
 
 @media (hover: hover) {
   .calendar-week__day:hover {
-    color: var(--brand-color);
-    background-color: var(--light-brand-color-background);
+    color: var(--text-secondary);
+    background-color: var(--bg-hover);
     transition: 0.3s ease background-color;
   }
 }

@@ -60,7 +60,7 @@
 }
 
 .search__item--active {
-  outline: 3px solid var(--black-color);
+  outline: 3px solid var(--border-selected);
 }
 
 .search__task-title,
@@ -73,14 +73,14 @@
 
 .search__task-project {
   font-size: 0.75rem;
-  color: var(--text-color);
+  color: var(--text-secondary);
   text-align: end;
 }
 
 .search__empty {
   font-size: 0.875rem;
   font-weight: 400;
-  color: var(--text-color);
+  color: var(--text-secondary);
 }
 
 @media (max-width: 45rem) {

@@ -54,6 +54,6 @@
 }
 
 .timeline__empty {
-  color: var(--text-color);
+  color: var(--text-secondary);
   text-align: center;
 }

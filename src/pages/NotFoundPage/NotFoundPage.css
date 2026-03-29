@@ -9,14 +9,14 @@
 .not-found-page__title {
   font-size: 6rem;
   font-weight: 700;
-  color: var(--text-color);
+  color: var(--text-secondary);
   letter-spacing: 5px;
 }
 
 .not-found-page__message {
   font-size: 3.5rem;
   font-weight: 400;
-  color: var(--text-color);
+  color: var(--text-secondary);
   text-transform: uppercase;
   text-align: center;
 }

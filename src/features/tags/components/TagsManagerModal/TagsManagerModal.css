@@ -30,7 +30,7 @@
 
 .tags-manager-modal__warning {
   font-size: 12px;
-  color: var(--high-color);
+  color: var(--text-error);
 }
 
 /* ========== COLOR PICKER ========== */

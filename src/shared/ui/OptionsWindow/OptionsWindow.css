@@ -4,18 +4,18 @@
   gap: 0.8rem;
   padding: 1rem;
 
-  border: var(--border);
+  border: 1px solid var(--border-default);
   border-radius: 1rem;
   background-color: var(--bg-default);
 }
 
 .options-window__item-label {
-  color: var(--text-color);
+  color: var(--text-primary);
   text-align: start;
 }
 
 .red {
-  color: var(--high-color);
+  color: var(--priority-high);
 }
 
 @media (hover: hover) {

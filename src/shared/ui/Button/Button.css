@@ -9,17 +9,17 @@
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--text-color);
+  color: var(--text-secondary);
   background-color: var(--bg-default);
 
-  border: 1px solid var(--text-color);
+  border: 1px solid var(--border-button);
   border-radius: 6px;
   cursor: pointer;
 }
 
 .button--warning {
-  border-color: var(--high-color);
-  color: var(--high-color);
+  border-color: var(--priority-high-border);
+  color: var(--priority-high);
 }
 
 .button--primary {
