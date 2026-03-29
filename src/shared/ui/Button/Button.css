@@ -15,6 +15,7 @@
   border: 1px solid var(--border-button);
   border-radius: var(--radius-m);
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .button--warning {

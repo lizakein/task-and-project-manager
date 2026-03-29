@@ -73,6 +73,7 @@
   font-family: "Inter", sans-serif;
 
   cursor: pointer;
+  transition: 0.3s ease background-color;
 }
 
 .task-tabs__button--active {
