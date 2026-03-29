@@ -6,7 +6,7 @@
   max-width: 26.25rem;
   width: clamp(12.5rem, 30vw, 26.25rem);
 
-  background-color: var(--card-background);
+  background-color: var(--bg-card);
   border-radius: 6px;
   cursor: pointer;
 
@@ -23,7 +23,7 @@
   border: none;
   outline: none;
   font-family: "Inter", sans-serif;
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 .search__group {
@@ -54,7 +54,7 @@
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
-  color: var(--black-color);
+  color: var(--text-primary);
 
   width: 100%;
 }
@@ -100,8 +100,8 @@
     right: 0;
 
     padding: 1rem;
-    background-color: var(--card-background);
-    border-bottom: var(--border);
+    background-color: var(--bg-default);
+    border-block: 1px solid var(--border-default);
     display: flex;
     align-items: center;
     gap: 0.8rem;

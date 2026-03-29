@@ -23,7 +23,7 @@
 
 .not-found-page__link {
   text-decoration: none;
-  background-color: var(--brand-color);
-  color: var(--main-background);
+  background-color: var(--brand);
+  color: var(--text-inverse);
   border: none;
 }

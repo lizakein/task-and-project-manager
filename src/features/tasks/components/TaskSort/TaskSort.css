@@ -24,7 +24,7 @@
 
 .sort-option {
   color: var(--text-color);
-  background-color: var(--card-background);
+  background-color: var(--bg-card);
 }
 
 .sort-clear {

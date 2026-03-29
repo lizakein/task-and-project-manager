@@ -6,8 +6,8 @@
   height: calc(100vh - var(--header-height));
   overflow-y: auto;
 
-  border-inline-end: var(--border);
-  background-color: var(--main-background);
+  border-inline-end: 1px solid var(--border-default);
+  background-color: var(--bg-default);
 
   transition:
     transform 0.3s ease,
@@ -22,7 +22,7 @@
   gap: 0.7rem;
   padding: 1.5rem;
 
-  border-block-end: var(--border);
+  border-block-end: 1px solid var(--border-default);
 }
 
 .menu-item {
@@ -40,7 +40,7 @@
 .menu-item:hover .menu-item__label,
 .menu-item--active .menu-item__label {
   font-weight: 600;
-  color: var(--black-color);
+  color: var(--text-primary);
 }
 
 /* ========== MEDIA QUERES ========== */

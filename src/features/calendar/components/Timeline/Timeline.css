@@ -17,8 +17,8 @@
   padding: clamp(0.75rem, 2vw, 1rem) clamp(1.25rem, 3vw, 2rem)
     clamp(1rem, 3vw, 1.5rem);
 
-  background-color: var(--light-brand-color-background);
-  border-left: 6px solid var(--brand-color);
+  background-color: var(--bg-brand-subtle);
+  border-left: 6px solid var(--brand);
   border-radius: 0.5rem;
 
   overflow: hidden;

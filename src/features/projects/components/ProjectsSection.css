@@ -59,7 +59,7 @@
 .projects-list__item:hover .projects-list__name,
 .projects-list__item--active .projects-list__name {
   font-weight: 600;
-  color: var(--black-color);
+  color: var(--text-primary);
 }
 
 .projects-list__item .icon-button {

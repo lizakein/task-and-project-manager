@@ -25,14 +25,14 @@
 }
 
 .pagination__button--active {
-  color: var(--brand-color);
-  background-color: var(--brand-color-background);
+  color: var(--brand);
+  background-color: var(--bg-brand-subtle);
   border-radius: 50%;
 }
 
 @media (hover: hover) {
   .pagination__button:hover {
     font-weight: 600;
-    color: var(--brand-color);
+    color: var(--brand);
   }
 }

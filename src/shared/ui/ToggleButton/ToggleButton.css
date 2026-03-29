@@ -4,6 +4,6 @@
 
 .toggle-button.toggle-button--selected {
   font-weight: 600;
-  color: var(--brand-color);
-  background-color: var(--brand-color-background);
+  color: var(--brand);
+  background-color: var(--bg-brand-subtle);
 }

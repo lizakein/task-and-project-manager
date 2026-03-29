@@ -4,7 +4,7 @@
   justify-content: space-between;
   width: 100vw;
   height: var(--header-height);
-  border-block-end: var(--border);
+  border-block-end: 1px solid var(--border-default);
 
   position: fixed;
   top: 0;
@@ -12,7 +12,7 @@
   right: 0;
   z-index: 1000;
 
-  background-color: var(--main-background);
+  background-color: var(--bg-default);
 }
 
 /* ========== HEADER BRAND ========== */
@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   height: 100%;
-  border-inline-end: var(--border);
+  border-inline-end: 1px solid var(--border-default);
 }
 
 .header__logo {

@@ -6,7 +6,7 @@
 
   border: var(--border);
   border-radius: 1rem;
-  background-color: var(--main-background);
+  background-color: var(--bg-default);
 }
 
 .options-window__item-label {

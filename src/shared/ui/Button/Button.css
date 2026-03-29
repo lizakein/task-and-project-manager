@@ -10,7 +10,7 @@
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-color);
-  background-color: var(--main-background);
+  background-color: var(--bg-default);
 
   border: 1px solid var(--text-color);
   border-radius: 6px;
@@ -23,8 +23,8 @@
 }
 
 .button--primary {
-  color: var(--main-background);
-  background-color: var(--brand-color);
+  color: var(--text-inverse);
+  background-color: var(--brand);
   border: none;
 }
 
