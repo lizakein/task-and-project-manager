@@ -4,16 +4,17 @@
 
 .confirm-modal__title {
   font-size: 22px;
+  color: var(--text-primary);
 }
 
 .confirm-modal__message {
   margin-block-end: 0.5rem;
   font-size: 16px;
   line-height: 1.5;
+  color: var(--text-secondary);
 }
 
 .confirm-modal__actions {
   display: flex;
   gap: 1rem;
 }
-

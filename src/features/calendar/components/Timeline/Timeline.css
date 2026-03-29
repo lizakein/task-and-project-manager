@@ -45,12 +45,14 @@
 .timeline__title {
   font-size: clamp(1rem, 2.5vw, 1.125rem);
   font-weight: 500;
+  color: var(--text-primary);
 }
 
 .timeline__description,
 .timeline__time {
   font-size: clamp(0.875rem, 2vw, 1rem);
   font-weight: 400;
+  color: var(--text-secondary);
 }
 
 .timeline__empty {

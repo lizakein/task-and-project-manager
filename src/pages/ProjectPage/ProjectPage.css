@@ -18,6 +18,7 @@
   font-size: clamp(1.7rem, 5vw, 2.875rem);
   font-weight: 600;
   overflow-wrap: anywhere;
+  color: var(--text-primary);
 }
 
 .project-header__title-input {
@@ -68,6 +69,7 @@
   border: 1px solid var(--border-button);
   border-radius: var(--radius-m);
   background: transparent;
+  color: var(--text-secondary);
 
   font-size: 1rem;
   font-family: "Inter", sans-serif;
@@ -128,6 +130,7 @@
 .task-column__title {
   display: flex;
   align-items: center;
+  color: var(--text-primary);
   font-size: 1rem;
   font-weight: 500;
   position: relative;
@@ -211,6 +214,7 @@
 }
 
 .task-card__title {
+  color: var(--text-primary);
   font-size: clamp(1rem, 2vw, 1.125rem);
   font-weight: 600;
 }

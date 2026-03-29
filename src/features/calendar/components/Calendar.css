@@ -23,6 +23,7 @@
 .calendar__title {
   font-size: 1.125rem;
   font-weight: 600;
+  color: var(--text-primary);
 }
 
 .calendar__link {
@@ -35,6 +36,7 @@
   margin-block-end: clamp(0.5rem, 2vw, 1rem);
   font-size: clamp(1.25rem, 3vw, 1.5rem);
   font-weight: 600;
+  color: var(--text-primary);
 }
 
 .calendar-week {
@@ -62,6 +64,7 @@
   font-size: clamp(0.875rem, 2vw, 1rem);
   text-align: center;
 
+  color: var(--text-secondary);
   background-color: var(--bg-default);
   border-radius: var(--radius-m);
 
