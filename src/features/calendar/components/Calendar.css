@@ -66,6 +66,7 @@
 
   color: var(--text-secondary);
   background-color: var(--bg-default);
+  border: 1px solid var(--border-button);
   border-radius: var(--radius-m);
 
   cursor: pointer;
@@ -74,6 +75,7 @@
 .calendar-week__day--active {
   background-color: var(--brand);
   color: var(--text-inverse);
+  border: 1px solid var(--border-selected);
 }
 
 @media (hover: hover) {

@@ -118,16 +118,19 @@ body {
 .priority--high {
   color: var(--priority-high);
   background-color: var(--priority-high-bg);
+  border: 1px solid var(--priority-high-border);
 }
 
 .priority--medium {
   color: var(--priority-medium);
   background-color: var(--priority-medium-bg);
+  border: 1px solid var(--priority-medium-border);
 }
 
 .priority--low {
   color: var(--priority-low);
   background-color: var(--priority-low-bg);
+  border: 1px solid var(--priority-low-border);
 }
 
 .tag {

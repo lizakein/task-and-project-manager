@@ -6,4 +6,5 @@
   font-weight: 600;
   color: var(--brand);
   background-color: var(--bg-brand-subtle);
+  border: 1px solid var(--border-selected);
 }
