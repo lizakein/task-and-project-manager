@@ -84,4 +84,9 @@
     background-color: var(--bg-hover);
     transition: 0.3s ease background-color;
   }
+
+  .calendar-week__day--active:hover {
+    color: var(--text-inverse);
+    background-color: var(--bg-brand-hover);
+  }
 }

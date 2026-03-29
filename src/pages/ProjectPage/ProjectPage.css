@@ -313,6 +313,11 @@
     background-color: var(--bg-hover);
   }
 
+  .task-tabs__button--active:hover {
+    color: var(--text-inverse);
+    background-color: var(--bg-brand-hover);
+  }
+
   .task-controls__button:hover {
     font-weight: unset;
   }

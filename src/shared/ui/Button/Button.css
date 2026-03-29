@@ -36,8 +36,31 @@
   background-color: transparent;
 }
 
+.button:disabled {
+  border: none;
+  color: var(--text-inverse);
+  background-color: var(--bg-disabled);
+  cursor: not-allowed;
+}
+
 @media (hover: hover) {
   .button:hover {
-    font-weight: 600;
+    background-color: var(--bg-hover);
+  }
+
+  .button--primary:hover {
+    background-color: var(--bg-brand-hover);
+  }
+
+  .button--warning:hover {
+    background-color: var(--priority-high-bg);
+  }
+
+  .button--ghost:hover {
+    background: none;
+  }
+
+  .button:disabled:hover {
+    background-color: var(--bg-disabled);
   }
 }
