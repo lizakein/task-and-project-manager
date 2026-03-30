@@ -1,7 +1,8 @@
 export const TAG_COLORS = {
-  blue: { text: "#4970D5", background: "#4970D520"},
-  red: { text: "#D8727D", background: "#D8727D20"},
-  green: { text: "#68B266", background: "#68B26620"},
-  orange: { text: "#D58D49", background: "#D58D4920"},
-  pink: { text: "#c549d5ff", background: "#c549d523"}
+  blue: { text: "#123CA6", background: "#E2EAFF", border: "#123CA620" },
+  red: { text: "#A60717", background: "#FFF0F1", border: "#A6071720" },
+  green: { text: "#035C41", background: "#E9FFF8", border: "#035C4120" },
+  orange: { text: "#884301", background: "#FFF8F2", border: "#b8692020" },
+  pink: { text: "#960549", background: "#ffeaf4ff", border: "#b41c6320" },
+  purple: { text: "#6D0596", background: "#fdeefdff", border: "#9122bd20" },
 }
