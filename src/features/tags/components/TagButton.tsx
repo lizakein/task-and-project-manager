@@ -10,7 +10,7 @@ interface TagButtonProps {
 }
 
 export default function TagButton({ tag, selected, onClick }: TagButtonProps) {
-  const { color, backgroundColor } = getTagStyle(
+  const { color, backgroundColor, borderColor } = getTagStyle(
     tag.color as keyof typeof TAG_COLORS
   );
 
@@ -21,6 +21,7 @@ export default function TagButton({ tag, selected, onClick }: TagButtonProps) {
         {
           "--tag-text": color,
           "--tag-bg": backgroundColor,
+          "--tag-border": borderColor,
         } as React.CSSProperties
       }
       selected={selected}
