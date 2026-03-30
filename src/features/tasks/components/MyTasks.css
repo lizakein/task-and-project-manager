@@ -12,7 +12,7 @@
 
 .my-tasks__title {
   margin-block-end: clamp(1rem, 2vw, 1.5rem);
-  font-size: 1.125rem;
+  font-size: var(--font-size-m);
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -53,7 +53,7 @@
 }
 
 .task-item__title .button {
-  font-size: 1rem;
+  font-size: clamp(var(--font-size-s), 2.5vw, var(--font-size-m));
   font-weight: 600;
 }
 
@@ -64,7 +64,7 @@
 
 .task-item__project {
   color: var(--text-secondary);
-  font-size: 0.75rem;
+  font-size: clamp(var(--font-size-xs), 2vw, var(--font-size-s));
   text-align: start;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .task-item__date {
-  font-size: 0.75rem;
+  font-size: clamp(var(--font-size-xs), 2vw, var(--font-size-s));
   font-weight: 400;
   color: var(--text-secondary);
 }

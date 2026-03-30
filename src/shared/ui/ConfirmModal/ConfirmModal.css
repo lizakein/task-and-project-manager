@@ -3,7 +3,7 @@
 }
 
 .confirm-modal__title {
-  font-size: 22px;
+  font-size: var(--font-size-l);
   color: var(--text-primary);
 }
 

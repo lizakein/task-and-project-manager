@@ -29,7 +29,7 @@
 }
 
 .tags-manager-modal__warning {
-  font-size: 12px;
+  font-size: var(--font-size-xs);
   color: var(--text-error);
 }
 

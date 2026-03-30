@@ -10,8 +10,7 @@
 }
 
 .projects-section__title {
-  text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: var(--font-size-s);
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: 0.4px;
@@ -38,7 +37,7 @@
   content: "•";
   position: absolute;
   left: 0.8rem;
-  font-size: 1.2rem;
+  font-size: var(--font-size-m);
   color: var(--marker-color, var(--brand));
 }
 

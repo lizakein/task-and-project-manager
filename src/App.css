@@ -111,7 +111,7 @@ body {
 .chip {
   padding: 0.2rem 0.3rem;
   font-family: "Inter", sans-serif;
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   font-weight: 400;
   border-radius: var(--radius-s);
 }

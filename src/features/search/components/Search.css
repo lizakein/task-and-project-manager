@@ -44,7 +44,7 @@
 }
 
 .search__group-title {
-  font-size: 0.875rem;
+  font-size: var(--font-size-s);
   font-weight: 600;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .search__task-project {
-  font-size: 0.75rem;
+  font-size: var(--font-size-sx);
   color: var(--text-secondary);
   text-align: end;
 }
