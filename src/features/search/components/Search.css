@@ -98,7 +98,7 @@
   }
 
   .search--open .search__input {
-    z-index: var(--z-drowdown);
+    z-index: var(--z-dropdown);
     position: absolute;
     top: 100%;
     left: 0;

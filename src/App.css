@@ -83,7 +83,7 @@
   --shadow-card: 1px 1px 8px var(--color-gray-50);
 
   --z-modal: 1000;
-  --z-drowdown: 500;
+  --z-dropdown: 500;
 
   --header-height: clamp(57px, 8.5vw, 86px);
 }
