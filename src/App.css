@@ -112,6 +112,9 @@ body {
   font-size: 0.75rem;
   font-weight: 400;
   border-radius: var(--radius-s);
+}
+
+.priority:not(.toggle-button) {
   border: none;
 }
 
