@@ -1,5 +1,6 @@
 .toggle-button {
   cursor: pointer;
+  border: 1px solid var(--border-default);
 }
 
 .toggle-button.toggle-button--selected {
