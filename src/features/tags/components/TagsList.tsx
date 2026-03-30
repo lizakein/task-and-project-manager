@@ -73,12 +73,12 @@ export function TagsList() {
                     </div>
                   </div>
 
-                  <Button
+                  <span
                     className={`chip tag tag--${tag.color}`}
                     style={getTagStyle(tag.color as keyof typeof TAG_COLORS)}
                   >
                     {tag.label}
-                  </Button>
+                  </span>
                 </div>
 
                 <div className="tags-manager-modal__actions">
