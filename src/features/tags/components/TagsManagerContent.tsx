@@ -42,7 +42,7 @@ export function TagsManagerContent({
         />
       ) : (
         <Button
-          ariaL-label="Add tag"
+          aria-label="Add tag"
           onClick={() => setIsAdding(true)}
           leftIcon={<Icon src={AddIcon} />}
         >
