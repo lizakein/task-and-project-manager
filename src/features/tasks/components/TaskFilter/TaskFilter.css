@@ -14,7 +14,7 @@
 .filter-section__label {
   color: var(--text-primary);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: var(--font-size-s);
 }
 
 .filter-section__options {

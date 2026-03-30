@@ -9,7 +9,7 @@
 
 .confirm-modal__message {
   margin-block-end: 0.5rem;
-  font-size: 16px;
+  font-size: var(--font-size-s);
   line-height: 1.5;
   color: var(--text-secondary);
 }

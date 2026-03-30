@@ -65,7 +65,7 @@
 
 .input-field {
   height: 100%;
-  font-size: 0.875rem;
+  font-size: var(--font-size-xs);
   border: none;
   border-radius: var(--radius-m);
   resize: none;
@@ -77,7 +77,7 @@
 }
 
 .edit-task-page__section-title {
-  font-size: 1rem;
+  font-size: var(--font-size-s);
   font-weight: 600;
   color: var(--text-secondary);
 }
@@ -104,7 +104,7 @@
   }
 
   .edit-task-page__title-input {
-    font-size: 1.25rem;
+    font-size: var(--font-size-m);
     line-height: 2;
   }
 

@@ -50,7 +50,7 @@
 
 .timeline__description,
 .timeline__time {
-  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-size: clamp(var(--font-size-xs), 2vw, var(--font-size-s));
   font-weight: 400;
   color: var(--text-secondary);
 }

@@ -52,7 +52,7 @@
 }
 
 .task-controls__button-name {
-  font-size: 1rem;
+  font-size: var(--font-size-s);
   color: var(--text-secondary);
 }
 
@@ -71,7 +71,7 @@
   background: transparent;
   color: var(--text-secondary);
 
-  font-size: 1rem;
+  font-size: var(--font-size-s);
   font-family: "Inter", sans-serif;
 
   cursor: pointer;
@@ -131,7 +131,7 @@
   display: flex;
   align-items: center;
   color: var(--text-primary);
-  font-size: 1rem;
+  font-size: var(--font-size-s);
   font-weight: 600;
   position: relative;
   padding-inline-start: 1rem;

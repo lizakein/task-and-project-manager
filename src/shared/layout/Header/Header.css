@@ -31,7 +31,7 @@
 }
 
 .header__title {
-  font-size: 1.25rem;
+  font-size: var(--font-size-m);
 }
 
 /* ========== HEADER ACTIONS ========== */
@@ -65,7 +65,7 @@
 
 .user-menu__name {
   margin-inline: 1rem 0.5rem;
-  font-size: 1rem;
+  font-size: var(--font-size-s);
   font-weight: 400;
 }
 

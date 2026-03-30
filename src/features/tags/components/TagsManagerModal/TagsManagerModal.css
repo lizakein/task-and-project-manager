@@ -15,7 +15,7 @@
 }
 
 .tags-manager-modal__item .tag {
-  font-size: 14px;
+  font-size: var(--font-size-xs);
 }
 
 .tags-manager-modal__window .input-field {

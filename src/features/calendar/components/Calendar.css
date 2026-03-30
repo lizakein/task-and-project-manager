@@ -34,7 +34,7 @@
 
 .calendar__date {
   margin-block-end: clamp(0.5rem, 2vw, 1rem);
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-size: clamp(var(--font-size-m), 3vw, var(--font-size-l));
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -61,7 +61,7 @@
   min-width: 3.25rem;
   width: 100%;
 
-  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-size: clamp(var(--font-size-xs), 2vw, var(--font-size-s));
   text-align: center;
 
   color: var(--text-secondary);

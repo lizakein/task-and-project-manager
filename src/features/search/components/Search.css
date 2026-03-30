@@ -52,7 +52,7 @@
   display: flex;
   justify-content: space-between;
   font-family: "Inter", sans-serif;
-  font-size: 0.875rem;
+  font-size: var(--font-size-xs);
   font-weight: 400;
   color: var(--text-primary);
 
@@ -78,7 +78,7 @@
 }
 
 .search__empty {
-  font-size: 0.875rem;
+  font-size: var(--font-size-xs);
   font-weight: 400;
   color: var(--text-secondary);
 }
