@@ -12,6 +12,7 @@
 .projects-section__title {
   font-size: var(--font-size-s);
   font-weight: 600;
+  line-height: 1.5;
   color: var(--text-primary);
   letter-spacing: 0.4px;
 }
@@ -38,6 +39,7 @@
   position: absolute;
   left: 0.8rem;
   font-size: var(--font-size-m);
+  line-height: 1.4;
   color: var(--marker-color, var(--brand));
 }
 

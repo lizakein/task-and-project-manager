@@ -16,6 +16,7 @@
 
 .tags-manager-modal__item .tag {
   font-size: var(--font-size-xs);
+  line-height: 1.4;
 }
 
 .tags-manager-modal__window .input-field {
@@ -30,6 +31,7 @@
 
 .tags-manager-modal__warning {
   font-size: var(--font-size-xs);
+  line-height: 1.4;
   color: var(--text-error);
 }
 

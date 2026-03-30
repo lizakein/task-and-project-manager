@@ -19,6 +19,7 @@
   color: var(--text-primary);
   font-size: clamp(var(--font-size-m), 3vw, var(--font-size-2xl));
   font-weight: 600;
+  line-height: 1.3;
   border: 1px solid var(--border-default);
   border-radius: var(--radius-l);
 }
@@ -66,6 +67,7 @@
 .input-field {
   height: 100%;
   font-size: var(--font-size-xs);
+  line-height: 1.4;
   border: none;
   border-radius: var(--radius-m);
   resize: none;
@@ -79,6 +81,7 @@
 .edit-task-page__section-title {
   font-size: var(--font-size-s);
   font-weight: 600;
+  line-height: 1.5;
   color: var(--text-secondary);
 }
 

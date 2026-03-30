@@ -32,6 +32,7 @@
 
 .header__title {
   font-size: var(--font-size-m);
+  line-height: 1.4;
 }
 
 /* ========== HEADER ACTIONS ========== */
@@ -67,6 +68,7 @@
   margin-inline: 1rem 0.5rem;
   font-size: var(--font-size-s);
   font-weight: 400;
+  line-height: 1.4;
 }
 
 .user-menu__avatar {

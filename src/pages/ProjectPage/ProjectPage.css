@@ -17,6 +17,7 @@
 .project-header__title {
   font-size: clamp(var(--font-size-l), 5vw, var(--font-size-2xl));
   font-weight: 600;
+  line-height: 1.25;
   overflow-wrap: anywhere;
   color: var(--text-primary);
 }
@@ -26,6 +27,7 @@
   font-family: "Inter", sans-serif;
   font-size: clamp(var(--font-size-m), 4vw, var(--font-size-2xl));
   font-weight: 600;
+  line-height: 1.3;
   border: 1px solid var(--border-default);
   border-radius: var(--radius-l);
 }
@@ -53,6 +55,7 @@
 
 .task-controls__button-name {
   font-size: var(--font-size-s);
+  line-height: 1.5;
   color: var(--text-secondary);
 }
 
@@ -72,6 +75,7 @@
   color: var(--text-secondary);
 
   font-size: var(--font-size-s);
+  line-height: 1.5;
   font-family: "Inter", sans-serif;
 
   cursor: pointer;
@@ -128,13 +132,15 @@
 }
 
 .task-column__title {
+  position: relative;
   display: flex;
+  padding-inline-start: 1rem;
+
   align-items: center;
   color: var(--text-primary);
   font-size: var(--font-size-s);
   font-weight: 600;
-  position: relative;
-  padding-inline-start: 1rem;
+  line-height: 1.5;
 }
 
 .task-column__title::before {
@@ -170,7 +176,7 @@
 
 .task-column__count {
   width: 1.25rem;
-  aspect-ratio: 1 / 1;
+  height: 1.25rem;
   padding: 0.1rem;
 
   display: flex;
@@ -178,6 +184,7 @@
   align-items: center;
   font-size: var(--font-size-xs);
   color: var(--text-secondary);
+  line-height: 1.4;
   background-color: var(--bg-brand-subtle);
   border-radius: 50%;
 }
@@ -217,12 +224,14 @@
   color: var(--text-primary);
   font-size: clamp(var(--font-size-s), 2vw, var(--font-size-m));
   font-weight: 600;
+  line-height: 1.4;
 }
 
 .task-card__description {
   margin-block-end: 1.5rem;
   font-size: var(--font-size-xs);
   font-weight: 400;
+  line-height: 1.4;
   color: var(--text-secondary);
 }
 
@@ -248,6 +257,7 @@
 .task-card__due span {
   font-size: var(--font-size-xs);
   font-weight: 400;
+  line-height: 1.4;
   color: var(--text-secondary);
 }
 

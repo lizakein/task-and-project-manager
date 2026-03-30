@@ -15,6 +15,7 @@
   color: var(--text-primary);
   font-weight: 600;
   font-size: var(--font-size-s);
+  line-height: 1.5;
 }
 
 .sort-section__options {
@@ -30,4 +31,5 @@
 .sort-clear {
   padding: clamp(0.4rem, 1.5vw, 0.7rem);
   font-size: clamp(var(--font-size-xs), 2vw, var(--font-size-s));
+  line-height: 1.4;
 }

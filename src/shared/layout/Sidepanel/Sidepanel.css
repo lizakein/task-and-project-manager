@@ -33,6 +33,7 @@
 .menu-item__label {
   font-size: var(--font-size-s);
   font-weight: 400;
+  line-height: 1.4;
   color: var(--text-primary);
   letter-spacing: 0.6px;
 }
