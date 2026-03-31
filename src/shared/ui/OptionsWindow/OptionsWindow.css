@@ -1,8 +1,8 @@
 .options-window {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  padding: 1rem;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
 
   border: 1px solid var(--border-default);
   border-radius: var(--radius-l);

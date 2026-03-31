@@ -7,9 +7,9 @@ export function DevelopmentPageLayout() {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        fontSize: "3rem",
-        fontWeight: "700",
-        color: "var(--text-color)",
+        fontSize: "var(--font-size-2xl)",
+        fontWeight: "600",
+        color: "var(--text-primary)",
       }}
     >
       Page in development

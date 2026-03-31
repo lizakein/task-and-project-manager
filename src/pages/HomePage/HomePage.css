@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto minmax(0, 1fr);
-  gap: clamp(1rem, 3vw, 2rem);
+  gap: clamp(var(--spacing-3), 3vw, var(--spacing-5));
 
   flex: 1;
   min-height: 0;

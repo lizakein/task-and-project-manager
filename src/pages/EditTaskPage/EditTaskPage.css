@@ -2,7 +2,7 @@
 .edit-task-page__form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: var(--spacing-4);
 }
 
 .edit-task-page__title-input,
@@ -14,7 +14,7 @@
 
 .edit-task-page__title-input {
   grid-column: span 2 / span 2;
-  padding-inline: 1rem;
+  padding-inline: var(--spacing-3);
 
   color: var(--text-primary);
   font-size: clamp(var(--font-size-m), 3vw, var(--font-size-2xl));
@@ -51,15 +51,15 @@
   grid-row-start: 7;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.7rem;
+  gap: var(--spacing-2);
   max-height: 2.5rem;
 }
 
 .edit-task-page__section {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
-  padding: 1rem;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
   border-radius: var(--radius-m);
   background-color: var(--bg-card);
 }
@@ -88,7 +88,7 @@
 .edit-task-page__buttons-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--spacing-2);
 }
 
 /* ========== MEDIA QUERIES ========== */
@@ -98,7 +98,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    gap: 1rem;
+    gap: var(--spacing-3);
   }
 
   .edit-task-page__form > * {

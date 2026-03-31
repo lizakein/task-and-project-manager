@@ -19,15 +19,16 @@
 .sidepanel__menu {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
-  padding: 1.5rem;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
 
   border-block-end: 1px solid var(--border-default);
 }
 
 .menu-item {
-  gap: 0.7rem;
-  padding-block: 0.5rem;
+  display: flex;
+  gap: var(--spacing-2);
+  padding-block: var(--spacing-2);
 }
 
 .menu-item__label {

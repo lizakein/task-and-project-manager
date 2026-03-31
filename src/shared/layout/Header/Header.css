@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 16.875rem 1fr;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
   height: var(--header-height);
   border-block-end: 1px solid var(--border-default);
 
@@ -27,7 +27,7 @@
 .header__logo {
   width: 1.5rem;
   aspect-ratio: 1 / 1;
-  margin-inline-end: 0.2rem;
+  margin-inline-end: var(--spacing-1);
 }
 
 .header__title {
@@ -46,7 +46,8 @@
 
 .header__actions,
 .header__brand {
-  padding: clamp(0.5rem, 2vw, 1.5rem) clamp(0.5rem, 3vw, 1.5rem);
+  padding: clamp(var(--spacing-2), 2vw, var(--spacing-4))
+    clamp(var(--spacing-2), 3vw, var(--spacing-4));
 }
 
 /* ========== USER PANEL ========== */
@@ -54,18 +55,18 @@
 .user-panel {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 3vw, 2rem);
+  gap: clamp(var(--spacing-3), 3vw, var(--spacing-4));
   cursor: pointer;
 }
 
 .user-menu {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--spacing-2);
 }
 
 .user-menu__name {
-  margin-inline: 1rem 0.5rem;
+  margin-inline: var(--spacing-2);
   font-size: var(--font-size-s);
   font-weight: 400;
   line-height: 1.4;
@@ -80,7 +81,7 @@
 
 .header__menu-button {
   display: none;
-  margin-inline-end: 1rem;
+  margin-inline-end: var(--spacing-3);
 }
 
 /* ========== MEDIA QUERIES ========== */

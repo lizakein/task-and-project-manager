@@ -1,14 +1,14 @@
 .sort-menu {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--spacing-3);
   min-width: 12.5rem;
 }
 
 .sort-section {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--spacing-2);
 }
 
 .sort-section__label {
@@ -20,16 +20,10 @@
 
 .sort-section__options {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--spacing-2);
 }
 
 .sort-option {
   color: var(--text-secondary);
   background-color: var(--bg-card);
-}
-
-.sort-clear {
-  padding: clamp(0.4rem, 1.5vw, 0.7rem);
-  font-size: clamp(var(--font-size-xs), 2vw, var(--font-size-s));
-  line-height: 1.4;
 }
