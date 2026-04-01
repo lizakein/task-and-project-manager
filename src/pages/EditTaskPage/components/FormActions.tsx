@@ -11,7 +11,7 @@ export function FormActions({ handleCancel }: FormActionsProps) {
       <Button
         variant="warning"
         onClick={handleCancel}
-        leftIcon={<Icon src={TrashIcon} />}
+        leftIcon={<Icon src={TrashIcon} className="icon--color" />}
       >
         <span className="button__text">Cancel</span>
       </Button>

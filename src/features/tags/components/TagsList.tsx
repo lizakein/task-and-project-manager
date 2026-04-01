@@ -91,7 +91,7 @@ export function TagsList() {
                   <IconButton
                     ariaLabel="Delete tag"
                     onClick={() => setDeletingTagId(tag.id)}
-                    icon={<Icon src={DeleteIcon} />}
+                    icon={<Icon src={DeleteIcon} className="icon--color" />}
                   />
                 </div>
               </>
