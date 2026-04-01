@@ -76,7 +76,10 @@
 
 .user-menu__avatar {
   width: 2.375rem;
-  aspect-ratio: 1 / 1;
+  height: 2.375rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ========== HAMBURGER ========== */
@@ -109,6 +112,7 @@
 
   .user-menu__avatar {
     width: 2rem;
+    height: 2rem;
   }
 }
 
