@@ -11,6 +11,8 @@
   max-width: 100%;
   padding: clamp(var(--spacing-2), 2vw, var(--spacing-4))
     clamp(var(--spacing-2), 3vw, var(--spacing-4));
+
+  background-color: var(--bg-default);
 }
 
 @media (max-width: 77rem) {

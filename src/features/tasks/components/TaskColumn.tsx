@@ -51,7 +51,7 @@ export default function TaskColumn({
     <section
       ref={divRef}
       className="task-column"
-      style={{ background: isOver ? "#5020E520" : "#f9f9f9" }}
+      style={{ background: isOver ? "#5020E520" : "" }}
       role="list"
       aria-labelledby={`column-title-${status}`}
     >
