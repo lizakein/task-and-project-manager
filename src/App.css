@@ -88,6 +88,35 @@
   --header-height: clamp(57px, 8.5vw, 86px);
 }
 
+:root[data-theme="dark"] {
+  --color-purple-1000: rgba(163, 178, 255, 1);
+  --color-purple-800: rgba(163, 178, 255, 0.8);
+  --color-purple-200: rgba(163, 178, 255, 0.2);
+  --color-purple-50: rgba(163, 178, 255, 0.06);
+
+  --color-gray-1000: rgba(255, 255, 255, 1);
+  --color-gray-700: rgba(255, 255, 255, 0.78);
+  --color-gray-500: rgba(255, 255, 255, 0.6);
+  --color-gray-100: rgba(255, 255, 255, 0.12);
+  --color-gray-50: rgba(255, 255, 255, 0.06);
+
+  --color-red-1000: rgba(255, 156, 156, 1);
+  --color-red-800: rgba(255, 156, 156, 0.8);
+  --color-red-200: rgba(255, 156, 156, 0.2);
+  --color-red-50: rgba(255, 156, 156, 0.08);
+
+  --color-orange-1000: rgba(213, 141, 73, 1);
+  --color-orange-200: rgba(223, 168, 116, 0.14);
+  --color-orange-50: rgba(255, 192, 46, 0.05);
+
+  --color-green-1000: rgba(119, 199, 175, 1);
+  --color-green-200: rgba(119, 199, 175, 0.2);
+  --color-green-50: rgba(119, 199, 175, 0.08);
+
+  --bg-default: rgba(18, 19, 26, 1);
+  --overlay: rgba(41, 43, 51, 0.1);
+}
+
 .inter-font {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
