@@ -30,6 +30,10 @@
   margin-inline-end: var(--spacing-1);
 }
 
+:root[data-theme="dark"] .header__logo {
+  filter: brightness(1.5) contrast(0.7);
+}
+
 .header__title {
   font-size: var(--font-size-m);
   line-height: 1.4;

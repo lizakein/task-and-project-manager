@@ -5,3 +5,7 @@
   background-color: initial;
   cursor: pointer;
 }
+
+:root[data-theme="dark"] .icon-button {
+  filter: brightness(0) invert(1);
+}
