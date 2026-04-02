@@ -1,11 +1,15 @@
 .toggle-button {
   cursor: pointer;
   border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  background-color: var(--bg-card);
 }
 
-.toggle-button.toggle-button--selected {
+.toggle-button.toggle-button--selected,
+:root[data-theme="dark"] .toggle-button.toggle-button--selected {
   font-weight: 600;
   color: var(--brand);
   background-color: var(--bg-brand-subtle);
   border: 1px solid var(--border-selected);
+  filter: none;
 }

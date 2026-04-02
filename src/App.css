@@ -157,7 +157,9 @@ textarea {
   border-radius: var(--radius-s);
 }
 
-.priority:not(.toggle-button) {
+.priority:not(.toggle-button),
+.tag:not(.toggle-button),
+:root[data-theme="dark"] .tag:not(.toggle-button) {
   border: none;
 }
 
@@ -181,8 +183,15 @@ textarea {
 
 .tag {
   color: var(--tag-text);
-  background-color: var(--tag-bg);
-  border: 1px solid var(--tag-border);
+  background-color: color-mix(in srgb, var(--tag-text) 5%, var(--bg-default));
+  border: 1px solid color-mix(in srgb, var(--tag-text) 15%, transparent);
+}
+
+:root[data-theme="dark"] .tag {
+  color: color-mix(in srgb, var(--tag-text) 50%, white);
+  background-color: color-mix(in srgb, var(--tag-text) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tag-text) 25%, transparent);
+  filter: brightness(1.2);
 }
 
 .overlay {
