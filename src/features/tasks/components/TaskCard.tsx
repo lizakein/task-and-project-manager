@@ -111,7 +111,13 @@ export function TaskCard({
                 <span
                   key={tag.id}
                   className={`chip tag tag--${tag.color}`}
-                  style={getTagStyle(tag.color as keyof typeof TAG_COLORS)}
+                  style={
+                    {
+                      "--tag-text": getTagStyle(
+                        tag.color as keyof typeof TAG_COLORS
+                      ).color,
+                    } as React.CSSProperties
+                  }
                 >
                   {tag.label}
                 </span>
