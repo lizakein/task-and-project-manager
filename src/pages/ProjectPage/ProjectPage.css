@@ -204,7 +204,7 @@
   flex-direction: column;
   gap: var(--spacing-2);
   padding: var(--spacing-4);
-  background-color: var(--bg-default);
+  background-color: var(--overlay);
   border-radius: var(--radius-l);
   box-shadow: var(--shadow-card);
   cursor: grab;
