@@ -1,23 +1,24 @@
 .pagination {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
-  margin-block-start: 1rem;
+  gap: var(--spacing-2);
+  margin-block-start: var(--spacing-3);
 
   list-style: none;
 }
 
 .pagination__ellipsis {
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 .pagination__button {
-  width: 20px;
-  aspect-ratio: 1 / 1;
+  width: 1.5rem;
+  height: 1.5rem;
 
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-color);
+  font-size: var(--font-size-s);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-primary);
   background-color: inherit;
 
   border: none;
@@ -25,14 +26,14 @@
 }
 
 .pagination__button--active {
-  color: var(--brand-color);
-  background-color: var(--brand-color-background);
+  color: var(--brand);
+  background-color: var(--bg-brand-subtle);
   border-radius: 50%;
 }
 
 @media (hover: hover) {
   .pagination__button:hover {
     font-weight: 600;
-    color: var(--brand-color);
+    color: var(--brand);
   }
 }

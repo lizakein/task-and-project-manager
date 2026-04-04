@@ -1,9 +1,10 @@
 import TaskManagerLogo from "/task-manager.svg";
-import FaqIcon from "@assets/icons/actions/message-question.svg";
-import NotificationIcon from "@assets/icons/actions/notification.svg";
+import SunIcon from "@assets/icons/actions/sun-icon.svg";
+import MoonIcon from "@assets/icons/actions/moon-icon.svg";
 import UserIcon from "@assets/icons/users/user-icon.svg";
 import ArrowDownIcon from "@assets/icons/actions/arrow-down-icon.svg";
 import MenuIcon from "@assets/icons/actions/menu-icon.svg";
+import { useTheme } from "@hooks/useTheme";
 import { Search } from "@features/search/components/Search";
 import { IconButton, Icon } from "@ui/index";
 import "./Header.css";
@@ -15,6 +16,8 @@ interface HeaderProps {
 
 export function Header({ onMenuToggle, isMenuOpen }: HeaderProps) {
   const userName = "Amina Agraval";
+
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <header className="header" role="banner">
@@ -39,11 +42,10 @@ export function Header({ onMenuToggle, isMenuOpen }: HeaderProps) {
         <Search />
 
         <div className="user-panel">
-          <IconButton ariaLabel="Help" icon={<Icon src={FaqIcon} />} />
-
           <IconButton
-            ariaLabel="Notifications"
-            icon={<Icon src={NotificationIcon} />}
+            ariaLabel="Change theme"
+            icon={<Icon src={theme === "light" ? MoonIcon : SunIcon} />}
+            onClick={() => toggleTheme()}
           />
 
           <div className="user-menu">

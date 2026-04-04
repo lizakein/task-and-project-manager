@@ -1,6 +1,6 @@
 .statistics__list {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-2);
   justify-content: space-between;
 
   list-style: none;
@@ -8,22 +8,25 @@
 
 .statistics__item {
   flex-grow: 1;
-  padding: 0.5rem 0.7rem;
-  background-color: var(--card-background);
-  border-radius: 0.275rem;
+  padding: var(--spacing-2) var(--spacing-3);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-m);
 }
 
 .statistics-card__title {
-  margin-block-end: 0.5rem;
-  font-size: clamp(0.75rem, 2vw, 1rem);
+  margin-block-end: var(--spacing-2);
+  font-size: clamp(var(--font-size-xs), 2vw, var(--font-size-s));
   font-weight: 400;
-  color: var(--text-color);
+  line-height: 1.4;
+  color: var(--text-primary);
 }
 
 .statistics-card__value {
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(var(--font-size-s), 2vw, var(--font-size-m));
   font-weight: 600;
+  line-height: 1.4;
   text-align: end;
+  color: var(--text-secondary);
 }
 
 @media (max-width: 53rem) {

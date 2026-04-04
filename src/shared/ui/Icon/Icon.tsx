@@ -1,4 +1,5 @@
 import type { ImgHTMLAttributes } from "react";
+import "./Icon.css";
 
 interface IconProps extends Omit<
   ImgHTMLAttributes<HTMLImageElement>,
@@ -17,6 +18,7 @@ export function Icon({
 }: IconProps) {
   return (
     <img
+      className="icon"
       src={src}
       alt={decorative ? "" : alt}
       role={decorative ? "presentation" : undefined}

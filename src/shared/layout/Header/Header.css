@@ -2,17 +2,17 @@
   display: grid;
   grid-template-columns: 16.875rem 1fr;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
   height: var(--header-height);
-  border-block-end: var(--border);
+  border-block-end: 1px solid var(--border-default);
 
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: var(--z-modal);
 
-  background-color: var(--main-background);
+  background-color: var(--bg-default);
 }
 
 /* ========== HEADER BRAND ========== */
@@ -21,17 +21,23 @@
   display: flex;
   align-items: center;
   height: 100%;
-  border-inline-end: var(--border);
+  border-inline-end: 1px solid var(--border-default);
 }
 
 .header__logo {
   width: 1.5rem;
   aspect-ratio: 1 / 1;
-  margin-inline-end: 0.2rem;
+  margin-inline-end: var(--spacing-1);
+}
+
+:root[data-theme="dark"] .header__logo {
+  filter: brightness(1.5) contrast(0.7);
 }
 
 .header__title {
-  font-size: 1.25rem;
+  font-size: var(--font-size-m);
+  line-height: 1.4;
+  color: var(--text-primary);
 }
 
 /* ========== HEADER ACTIONS ========== */
@@ -45,7 +51,8 @@
 
 .header__actions,
 .header__brand {
-  padding: clamp(0.5rem, 2vw, 1.5rem) clamp(0.5rem, 3vw, 1.5rem);
+  padding: clamp(var(--spacing-2), 2vw, var(--spacing-4))
+    clamp(var(--spacing-2), 3vw, var(--spacing-4));
 }
 
 /* ========== USER PANEL ========== */
@@ -53,32 +60,37 @@
 .user-panel {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 3vw, 2rem);
+  gap: clamp(var(--spacing-3), 3vw, var(--spacing-4));
   cursor: pointer;
 }
 
 .user-menu {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--spacing-2);
 }
 
 .user-menu__name {
-  margin-inline: 1rem 0.5rem;
-  font-size: 1rem;
+  margin-inline: var(--spacing-2);
+  font-size: var(--font-size-s);
   font-weight: 400;
+  line-height: 1.4;
+  color: var(--text-secondary);
 }
 
 .user-menu__avatar {
   width: 2.375rem;
-  aspect-ratio: 1 / 1;
+  height: 2.375rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ========== HAMBURGER ========== */
 
 .header__menu-button {
   display: none;
-  margin-inline-end: 1rem;
+  margin-inline-end: var(--spacing-3);
 }
 
 /* ========== MEDIA QUERIES ========== */
@@ -104,6 +116,7 @@
 
   .user-menu__avatar {
     width: 2rem;
+    height: 2rem;
   }
 }
 

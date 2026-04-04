@@ -11,7 +11,7 @@ export function NotFoundPage() {
         <p className="not-found-page__message">Page not found</p>
         <a
           href="/"
-          className="button not-found-page__link"
+          className="button button--primary not-found-page__link"
           aria-label="Go back to homepage"
         >
           Go to homepage

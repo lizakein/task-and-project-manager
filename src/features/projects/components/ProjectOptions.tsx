@@ -72,9 +72,9 @@ export function ProjectOptions({
         role="menuitem"
         variant="ghost"
         onClick={handleDeleteProject}
-        leftIcon={<Icon src={TrashIcon} />}
+        leftIcon={<Icon src={TrashIcon} className="icon--color" />}
       >
-        <span className="options-window__item-label red">Trash</span>
+        <span className="options-window__item-label--warning">Trash</span>
       </Button>
 
       <ConfirmModal

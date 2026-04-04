@@ -3,27 +3,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: var(--spacing-5);
 }
 
 .not-found-page__title {
   font-size: 6rem;
-  font-weight: 700;
-  color: var(--text-color);
+  font-weight: 600;
+  color: var(--text-secondary);
   letter-spacing: 5px;
 }
 
 .not-found-page__message {
-  font-size: 3.5rem;
+  font-size: var(--font-size-2xl);
   font-weight: 400;
-  color: var(--text-color);
+  line-height: 1.2;
+  color: var(--text-secondary);
   text-transform: uppercase;
   text-align: center;
 }
 
 .not-found-page__link {
   text-decoration: none;
-  background-color: var(--brand-color);
-  color: var(--main-background);
+  background-color: var(--brand);
+  color: var(--text-inverse);
   border: none;
 }

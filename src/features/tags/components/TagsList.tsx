@@ -44,7 +44,7 @@ export function TagsList() {
                       className="color-picker__current"
                       style={{
                         backgroundColor:
-                          TAG_COLORS[tag.color as keyof typeof TAG_COLORS].text,
+                          TAG_COLORS[tag.color as keyof typeof TAG_COLORS],
                       }}
                       onClick={() => setOpenPaletteFor(isOpen ? null : tag.id)}
                     />
@@ -58,7 +58,7 @@ export function TagsList() {
                             key={colorKey}
                             className="color-option"
                             style={{
-                              backgroundColor: colorVal.text,
+                              backgroundColor: colorVal,
                               transitionDelay: `${i * 60}ms`,
                             }}
                             onClick={() => {
@@ -73,12 +73,18 @@ export function TagsList() {
                     </div>
                   </div>
 
-                  <Button
+                  <span
                     className={`chip tag tag--${tag.color}`}
-                    style={getTagStyle(tag.color as keyof typeof TAG_COLORS)}
+                    style={
+                      {
+                        "--tag-text": getTagStyle(
+                          tag.color as keyof typeof TAG_COLORS
+                        ).color,
+                      } as React.CSSProperties
+                    }
                   >
                     {tag.label}
-                  </Button>
+                  </span>
                 </div>
 
                 <div className="tags-manager-modal__actions">
@@ -91,7 +97,7 @@ export function TagsList() {
                   <IconButton
                     ariaLabel="Delete tag"
                     onClick={() => setDeletingTagId(tag.id)}
-                    icon={<Icon src={DeleteIcon} />}
+                    icon={<Icon src={DeleteIcon} className="icon--color" />}
                   />
                 </div>
               </>

@@ -87,9 +87,9 @@ export function TaskOptions({
         className="options-window__item"
         role="menuitem"
         onClick={handleDeleteClick}
-        leftIcon={<Icon src={TrashIcon} />}
+        leftIcon={<Icon src={TrashIcon} className="icon--color" />}
       >
-        <span className="options-window__item-label red">Trash</span>
+        <span className="options-window__item-label--warning">Trash</span>
       </Button>
 
       <ConfirmModal
