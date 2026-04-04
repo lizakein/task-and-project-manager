@@ -121,6 +121,10 @@
     width: calc(100vw - var(--spacing-5));
   }
 
+  :root[data-theme="dark"] .search__icon {
+    filter: brightness(0) invert(1);
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
