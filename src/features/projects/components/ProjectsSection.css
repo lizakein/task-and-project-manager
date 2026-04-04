@@ -51,15 +51,12 @@
   text-overflow: ellipsis;
 }
 
-.projects-list__item--active,
-.menu-item--active {
+.projects-list__item--active {
   background-color: var(--bg-brand-subtle);
   border-radius: var(--radius-m);
 }
 
-.projects-list__item:hover .projects-list__name,
 .projects-list__item--active .projects-list__name {
-  font-weight: 600;
   color: var(--text-primary);
 }
 
@@ -75,5 +72,12 @@
 @media (hover: none) {
   .projects-list__item .icon-button {
     opacity: 1;
+  }
+}
+
+@media (hover: hover) {
+  .projects-list__item:hover {
+    background-color: var(--bg-hover);
+    border-radius: var(--radius-m);
   }
 }
