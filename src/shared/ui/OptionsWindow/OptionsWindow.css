@@ -17,7 +17,7 @@
   text-align: start;
 }
 
-.red {
+.options-window__item-label--warning {
   color: var(--priority-high);
 }
 
