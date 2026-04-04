@@ -1,16 +1,19 @@
 .options-window {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
-  padding: var(--spacing-3);
+  padding: var(--spacing-2);
 
   border: 1px solid var(--border-default);
   border-radius: var(--radius-l);
   background-color: var(--bg-default);
 }
 
+.options-window__item {
+  padding: var(--spacing-1);
+}
+
 .options-window__item-label {
-  color: var(--text-primary);
+  color: var(--text-secondary);
   text-align: start;
 }
 
@@ -20,6 +23,6 @@
 
 @media (hover: hover) {
   .options-window__item:hover {
-    font-weight: 600;
+    background-color: var(--bg-hover);
   }
 }
