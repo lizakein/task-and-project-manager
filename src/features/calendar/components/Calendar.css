@@ -93,4 +93,8 @@
     color: var(--text-inverse);
     background-color: var(--bg-brand-hover);
   }
+
+  .calendar__link:hover {
+    text-decoration: underline var(--text-secondary);
+  }
 }

@@ -106,6 +106,7 @@
 }
 
 @media (hover: hover) {
+  .task-item__title:hover,
   .task-item__project:hover {
     text-decoration: underline var(--text-secondary);
   }
