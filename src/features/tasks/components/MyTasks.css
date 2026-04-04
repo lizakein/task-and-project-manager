@@ -90,7 +90,7 @@
 }
 
 .task-item__date--overdue {
-  color: var(--text-error);
+  color: var(--priority-high);
 }
 
 .my-tasks__empty {

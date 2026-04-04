@@ -264,6 +264,10 @@
   color: var(--text-secondary);
 }
 
+.task-card__due--overdue span {
+  color: var(--priority-high);
+}
+
 /* ========== MEDIA QUERIES ========== */
 
 @media (max-width: 64rem) {

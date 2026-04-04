@@ -52,6 +52,8 @@ export function TaskCard({
 
   const formatedDate = useMemo(() => formatDueDate(dueDate), [dueDate]);
 
+  const isOverdue = dueDate ? new Date(dueDate) < new Date() : false;
+
   return (
     <article
       ref={divRef}
@@ -127,7 +129,7 @@ export function TaskCard({
 
         {dueDate && (
           <time
-            className="task-card__due"
+            className={`task-card__due ${isOverdue ? "task-card__due--overdue" : ""}`}
             aria-label="Deadline"
             dateTime={formatedDate.isoDate}
           >
