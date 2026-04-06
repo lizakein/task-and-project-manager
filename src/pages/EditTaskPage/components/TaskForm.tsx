@@ -31,8 +31,13 @@ export function TaskForm({
 }: TaskFormProps) {
   return (
     <form className="edit-task-page__form" onSubmit={handleSave}>
+      <label htmlFor="task-title" className="sr-only">
+        Task title
+      </label>
+
       <input
         type="text"
+        id="task-title"
         value={title.value}
         placeholder="Task title"
         className="edit-task-page__title-input"
