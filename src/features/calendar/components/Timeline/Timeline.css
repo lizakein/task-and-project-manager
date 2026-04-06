@@ -24,6 +24,11 @@
   overflow: hidden;
 }
 
+.timeline__card:focus-within {
+  outline: 2px solid var(--border-selected);
+  outline-offset: -2px;
+}
+
 .timeline__card-button {
   all: unset;
 
