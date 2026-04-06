@@ -54,7 +54,7 @@ export function OptionsWindow({
         onClose?.();
     };
 
-    const handleScrollOrResize = () => {
+    const handleResize = () => {
       onClose?.();
     };
 
@@ -64,14 +64,12 @@ export function OptionsWindow({
 
     document.addEventListener("click", handleClickOutside);
     document.addEventListener("keydown", handleEsc);
-    window.addEventListener("scroll", handleScrollOrResize, true);
-    window.addEventListener("resize", handleScrollOrResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
       document.removeEventListener("keydown", handleEsc);
-      window.removeEventListener("scroll", handleScrollOrResize, true);
-      window.removeEventListener("resize", handleScrollOrResize);
+      window.removeEventListener("resize", handleResize);
 
       if (shouldReturnFocus) triggerRef.current?.focus();
     };
