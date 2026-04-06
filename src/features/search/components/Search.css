@@ -31,6 +31,7 @@
   flex-direction: column;
   width: clamp(31.25rem, 50vw, 50rem);
   gap: var(--spacing-3);
+  padding: var(--spacing-2);
 }
 
 .search__group-projects,
@@ -134,5 +135,13 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+}
+
+@media (hover: hover) {
+  .search__task-title:hover,
+  .search__task-project:hover,
+  .search__project-title:hover {
+    text-decoration: underline;
   }
 }
