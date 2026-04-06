@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import MoreIcon from "@assets/icons/actions/more-icon.svg";
 import { ProjectOptions } from "./ProjectOptions";
 import { useContextMenu } from "@hooks/useContextMenu";
-import { Icon, IconButton } from "@ui/index";
+import { Button, Icon, IconButton } from "@ui/index";
 import { Project } from "../types";
 
 interface ProjectItemProps {
@@ -22,11 +22,17 @@ export function ProjectItem({ project, isActive }: ProjectItemProps) {
         isActive && `projects-list__item--active`
       }`}
       style={{ "--marker-color": project.color } as React.CSSProperties}
-      onClick={() => {
-        navigate(`/project/${project.id}`);
-      }}
     >
-      <span className="projects-list__name">{project.title}</span>
+      <Button
+        variant="ghost"
+        className="projects-list__item-button"
+        onClick={() => {
+          navigate(`/project/${project.id}`);
+        }}
+      >
+        <span className="projects-list__name">{project.title}</span>
+      </Button>
+
       <IconButton
         ref={buttonRef}
         ariaLabel={`More options for Project ${project.title}`}
