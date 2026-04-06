@@ -59,7 +59,6 @@ export function TaskCard({
       ref={divRef}
       className="task-card"
       style={{ opacity: isDragging ? 0.5 : 1 }}
-      tabIndex={0}
       role="listitem"
       aria-label={`Task: ${title}, status: ${status}`}
       onKeyDown={(e) => MoveTaskWithKeyboard(e, status, id, updateTask)}
