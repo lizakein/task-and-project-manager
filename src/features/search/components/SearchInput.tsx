@@ -16,24 +16,30 @@ export function SearchInput({
   onKeyDown,
 }: SearchInputProps) {
   return (
-    <input
-      ref={inputRef}
-      id="search"
-      name="search"
-      type="search"
-      value={query}
-      className="search__input"
-      placeholder="Search for anything..."
-      aria-label="Search"
-      role="combobox"
-      aria-autocomplete="list"
-      aria-expanded={isOpen}
-      aria-controls="search-results"
-      aria-activedescendant={
-        activeIndex >= 0 ? `search-option-${activeIndex}` : undefined
-      }
-      onChange={(e) => setQuery(e.target.value)}
-      onKeyDown={onKeyDown}
-    />
+    <>
+      <label htmlFor="search" className="sr-only">
+        Search
+      </label>
+
+      <input
+        ref={inputRef}
+        id="search"
+        name="search"
+        type="search"
+        value={query}
+        className="search__input"
+        placeholder="Search for anything..."
+        aria-label="Search"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-expanded={isOpen}
+        aria-controls={isOpen ? "search-results" : undefined}
+        aria-activedescendant={
+          activeIndex >= 0 ? `search-option-${activeIndex}` : undefined
+        }
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={onKeyDown}
+      />
+    </>
   );
 }

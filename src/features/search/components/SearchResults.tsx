@@ -48,7 +48,7 @@ export function SearchResults({
       )}
 
       {foundTasks.length > 0 && (
-        <div className="search__group-tasks" role="group" aria-label="Projects">
+        <div className="search__group-tasks" role="group" aria-label="Tasks">
           <p className="search__group-title">Tasks</p>
 
           {foundTasks.map((task, index) => {
