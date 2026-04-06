@@ -69,6 +69,10 @@
   opacity: 1;
 }
 
+.projects-list__item:focus-within .icon-button {
+  opacity: 1;
+}
+
 @media (hover: none) {
   .projects-list__item .icon-button {
     opacity: 1;
