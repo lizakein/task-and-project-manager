@@ -11,7 +11,7 @@
 .project-header__left {
   display: flex;
   gap: var(--spacing-3);
-  align-items: center;
+  align-items: baseline;
 }
 
 .project-header__title {
