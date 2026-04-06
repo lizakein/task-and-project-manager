@@ -8,7 +8,11 @@ import { TAG_COLORS } from "@constants/tagColors";
 import { getTagStyle } from "@utils/tagUtils";
 import { useTagStore } from "@store/hooks";
 
-export function TagsList() {
+interface TagsListProps {
+  setIsWarning: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function TagsList({ setIsWarning }: TagsListProps) {
   const { tags, updateTag, deleteTag } = useTagStore();
 
   const [editingIndex, setEditingIndex] = useState<string | null>(null);
@@ -32,8 +36,11 @@ export function TagsList() {
               <TagsInput
                 initialValue={tag.label}
                 onSave={(newValue) => {
-                  if (newValue) updateTag(tag.id, { label: newValue });
-                  setEditingIndex(null);
+                  if (newValue && !tags.some((t) => t.label === newValue)) {
+                    updateTag(tag.id, { label: newValue });
+                    setIsWarning(false);
+                    setEditingIndex(null);
+                  } else setIsWarning(true);
                 }}
               />
             ) : (

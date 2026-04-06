@@ -28,7 +28,7 @@ export function TagsManagerContent({
         />
       </div>
 
-      <TagsList />
+      <TagsList setIsWarning={setIsWarning} />
 
       {isAdding ? (
         <TagsInput
