@@ -70,7 +70,6 @@
 }
 
 .search__task-title,
-.search__task-project,
 .search__project-title {
   overflow: hidden;
   white-space: pre-wrap;
