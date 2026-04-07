@@ -26,18 +26,26 @@ export function EditTaskPage() {
   const [description, setDescription] = useState(task?.description || "");
   const [priority, setPriority] = useState<PriorityValue>(task?.priority || "");
   const [tags, setTags] = useState(task?.tags || []);
-  const [dueDate, setDueDate] = useState(task?.dueDate || "");
+
+  const [dueDate, setDueDate] = useState(task?.dueDate?.split("T")[0] || "");
+  const [dueTime, setDueTime] = useState(task?.dueDate?.split("T")[1] || "");
+  const [hasTime, setHasTime] = useState(!!task?.dueDate?.includes("T"));
+
   const [status, setStatus] = useState<Status>(task?.status || "todo");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (!task) return;
 
+    const [date = "", time = ""] = task.dueDate ? task.dueDate.split("T") : [];
+    setDueDate(date);
+    setDueTime(time);
+    setHasTime(!!time);
+
     setTitle(task?.title || "");
     setDescription(task?.description || "");
     setPriority(task?.priority || "");
     setTags(task?.tags || []);
-    setDueDate(task?.dueDate || "");
     setStatus(task?.status || "todo");
   }, [taskId]);
 
@@ -46,11 +54,17 @@ export function EditTaskPage() {
     if (!taskId || !projectId) return;
 
     const validTags = tags.filter((id) => allTags.some((tag) => tag.id === id));
+    const normalizedDueDate = dueDate
+      ? hasTime && dueTime
+        ? `${dueDate}T${dueTime}`
+        : dueDate
+      : "";
+
     const patch: Partial<Task> = {
       title: title.trim() || "Untitled Task",
       description,
       tags: validTags,
-      dueDate,
+      dueDate: normalizedDueDate,
       ...(priority ? { priority } : {}),
       status,
     };
@@ -75,6 +89,8 @@ export function EditTaskPage() {
           priority={{ value: priority, setValue: setPriority }}
           tags={{ value: tags, setValue: setTags }}
           dueDate={{ value: dueDate, setValue: setDueDate }}
+          dueTime={{ value: dueTime, setValue: setDueTime }}
+          hasTime={{ value: hasTime, setValue: setHasTime }}
           status={{ value: status, setValue: setStatus }}
           handleSave={handleSave}
           handleCancel={handleCancel}

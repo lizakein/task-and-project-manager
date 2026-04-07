@@ -14,6 +14,8 @@ interface TaskFormProps {
   priority: FieldState<Task["priority"] | "">;
   tags: FieldState<string[]>;
   dueDate: FieldState<string>;
+  dueTime: FieldState<string>;
+  hasTime: FieldState<boolean>;
   status: FieldState<Status>;
   handleSave: (event: React.FormEvent<HTMLFormElement>) => void;
   handleCancel: () => void;
@@ -25,6 +27,8 @@ export function TaskForm({
   priority,
   tags,
   dueDate,
+  dueTime,
+  hasTime,
   status,
   handleSave,
   handleCancel,
@@ -48,7 +52,7 @@ export function TaskForm({
       <PrioritySection priority={priority} />
       <TagsSection tags={tags} />
       <DescriptionSection description={description} />
-      <DueDateSection dueDate={dueDate} />
+      <DueDateSection dueDate={dueDate} dueTime={dueTime} hasTime={hasTime} />
       <StatusSection status={status} />
       <UploadButton />
       <FormActions handleCancel={handleCancel} />
