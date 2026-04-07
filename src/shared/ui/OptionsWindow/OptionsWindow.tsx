@@ -32,11 +32,16 @@ export function OptionsWindow({
 
     const menuWidth = menuRef.current.offsetWidth;
     const viewportWidth = window.innerWidth;
+    const padding = 8;
 
     let newLeft = position.left;
 
-    if (newLeft + menuWidth > viewportWidth - 8) {
-      newLeft = position.right - menuWidth + 4;
+    if (newLeft + menuWidth > viewportWidth - padding) {
+      newLeft = position.right - menuWidth;
+    }
+
+    if (newLeft < padding) {
+      newLeft = padding;
     }
 
     setComputedLeft(newLeft);
