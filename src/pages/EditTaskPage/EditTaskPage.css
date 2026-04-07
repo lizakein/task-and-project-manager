@@ -91,6 +91,21 @@
   gap: var(--spacing-2);
 }
 
+.input-field__date,
+.input-field__time {
+  height: 2rem;
+}
+
+.edit-task-page__due-date-inputs {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.edit-task-page__due-date-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
 /* ========== MEDIA QUERIES ========== */
 
 @media (max-width: 45rem) {
