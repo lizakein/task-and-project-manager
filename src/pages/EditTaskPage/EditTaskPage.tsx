@@ -47,7 +47,7 @@ export function EditTaskPage() {
 
     const validTags = tags.filter((id) => allTags.some((tag) => tag.id === id));
     const patch: Partial<Task> = {
-      title,
+      title: title.trim() || "Untitled Task",
       description,
       tags: validTags,
       dueDate,
