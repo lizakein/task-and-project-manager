@@ -43,7 +43,14 @@
   color: var(--marker-color, var(--brand));
 }
 
+.projects-list__item-button {
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+}
+
 .projects-list__name {
+  text-align: start;
   color: var(--text-secondary);
 
   overflow: hidden;
