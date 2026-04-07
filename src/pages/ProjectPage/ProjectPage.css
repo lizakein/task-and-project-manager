@@ -12,6 +12,7 @@
   display: flex;
   gap: var(--spacing-3);
   align-items: baseline;
+  margin-block-end: var(--spacing-3);
 }
 
 .project-header__title {
@@ -275,6 +276,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-4);
+  }
+
+  .project-header__left {
+    margin-block-end: 0;
   }
 }
 
