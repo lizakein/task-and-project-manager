@@ -15,6 +15,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <Header onMenuToggle={handleMenuToggle} isMenuOpen={isMenuOpen} />
       <Sidepanel projectId={projectId || ""} isOpen={isMenuOpen} />
 
+      {isMenuOpen && (
+        <div className="overlay" onClick={() => setIsMenuOpen(false)} />
+      )}
+
       <main className="content">{children}</main>
     </div>
   );

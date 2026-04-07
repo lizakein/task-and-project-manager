@@ -208,6 +208,8 @@ textarea {
 
   background-color: var(--overlay-bg);
   backdrop-filter: blur(3px);
+
+  transition: backdrop-filter 0.4s ease;
 }
 
 .window {
