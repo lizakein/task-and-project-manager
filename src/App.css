@@ -86,7 +86,7 @@
   --z-modal: 1000;
   --z-dropdown: 500;
 
-  --header-height: clamp(57px, 8.5vw, 86px);
+  --header-height: clamp(62px, 8.5vw, 96px);
 }
 
 :root[data-theme="dark"] {
