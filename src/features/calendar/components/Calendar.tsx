@@ -24,9 +24,19 @@ export default function Calendar() {
         const date = new Date(task.dueDate);
         return date.toDateString() === selectedDate.toDateString();
       })
-      .sort(
-        (a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
-      );
+      .sort((a, b) => {
+        const aHasTime = a.dueDate!.length > 10;
+        const bHasTime = b.dueDate!.length > 10;
+
+        if (!aHasTime && bHasTime) return -1;
+        if (aHasTime && !bHasTime) return 1;
+
+        if (aHasTime && bHasTime) {
+          return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime();
+        }
+
+        return 0;
+      });
   }, [tasks, selectedDate]);
 
   return (
