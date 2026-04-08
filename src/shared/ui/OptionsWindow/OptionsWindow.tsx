@@ -90,7 +90,7 @@ export function OptionsWindow({
         top: position.top,
         left: computedLeft,
         position: "absolute",
-        zIndex: 500,
+        zIndex: 1000,
       }}
     >
       {children}
