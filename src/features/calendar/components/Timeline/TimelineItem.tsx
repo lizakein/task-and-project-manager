@@ -1,5 +1,5 @@
 import { Task } from "@features/tasks";
-import { formatTime } from "@utils/date/format";
+import { formatTimelineTime } from "@utils/date/format";
 import { useNavigate } from "react-router-dom";
 
 interface TimelineItemProps {
@@ -12,7 +12,7 @@ export function TimelineItem({ task }: TimelineItemProps) {
   return (
     <li className="timeline__item">
       <time className="timeline__time">
-        {formatTime(task.dueDate).formatted}
+        {formatTimelineTime(task.dueDate).formatted}
       </time>
 
       <article className="timeline__card">
