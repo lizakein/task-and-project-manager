@@ -1,31 +1,45 @@
-export function formatDueDate(dueDate: string | null) {
-  if (!dueDate) return { formatted: "", isoDate: "" };
+function toDate(input: Date | string | null): Date | null {
+  if (!input) return null;
+  return input instanceof Date ? input : new Date(input);
+}
 
-  const date = new Date(dueDate);
-  const isoDate = date.toISOString();
+export function formatDueDate(input: string | null) {
+  const date = toDate(input);
+  if (!date) return { formatted: "", isoDate: "" };
 
-  let formatted;
+  let formatted: string;
 
-  if (dueDate.length > 10) {
+  if (input && input.length > 10) {
     const options: Intl.DateTimeFormatOptions = {
       hour: "numeric",
       minute: "numeric",
     };
-    formatted = new Date(dueDate).toLocaleDateString("en-US", options).toLocaleLowerCase();
-  } else formatted = new Date(dueDate).toLocaleDateString("en-US");
+    formatted = date.toLocaleDateString("en-US", options).toLocaleLowerCase();
+  } else formatted = date.toLocaleDateString("en-US");
 
-  return { formatted, isoDate };
+  return { formatted, isoDate: date.toISOString() };
 }
 
-export function formatFullDate(date: Date) {
+export function formatFullDate(input: Date | string | null) {
+  const date = toDate(input);
+  if (!date) return { formatted: "", isoDate: "" };
+
   const weekday = date.toLocaleDateString("en-US", { weekday: "long" });
   const month = date.toLocaleDateString("en-US", { month: "long" });
 
-  return `${weekday}, ${month} ${date.getDate()} ${date.getFullYear()}`;
+  return {
+    formatted: `${weekday}, ${month} ${date.getDate()} ${date.getFullYear()}`,
+    isoDate: date.toISOString()
+  };
 }
 
-export function formatTime(date: string) {
-  return new Date(date)
-    .toLocaleTimeString("en-US", { timeStyle: "short" })
-    .toLowerCase()
+export function formatTime(input: Date | string | null) {
+  const date = toDate(input);
+  if (!date) return { formatted: "", isoDate: "" };
+
+  return {
+    formatted: date.toLocaleTimeString("en-US", { timeStyle: "short" })
+      .toLowerCase(),
+    isoDate: date.toISOString()
+  };
 }

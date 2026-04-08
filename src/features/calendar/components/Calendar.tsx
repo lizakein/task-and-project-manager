@@ -45,7 +45,7 @@ export default function Calendar() {
         </Button>
       </div>
 
-      <p className="calendar__date">{currentDate}</p>
+      <p className="calendar__date">{currentDate.formatted}</p>
 
       <WeekDays selectedDate={selectedDate} onSelect={setSelectedDate} />
       <Timeline tasks={timelineTasks} />

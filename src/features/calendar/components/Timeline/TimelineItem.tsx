@@ -11,7 +11,9 @@ export function TimelineItem({ task }: TimelineItemProps) {
 
   return (
     <li className="timeline__item">
-      <time className="timeline__time">{formatTime(task.dueDate)}</time>
+      <time className="timeline__time">
+        {formatTime(task.dueDate).formatted}
+      </time>
 
       <article className="timeline__card">
         <button
