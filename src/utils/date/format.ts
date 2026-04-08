@@ -43,3 +43,19 @@ export function formatTime(input: Date | string | null) {
     isoDate: date.toISOString()
   };
 }
+
+export function formatTimelineTime(input: string | null) {
+  if (!input) return { formatted: "", isoDate: "" };
+
+  const date = toDate(input);
+  if (!date) return { formatted: "", isoDate: "" };
+
+  const hasTime = input.length > 10;
+
+  const formatted = hasTime ? date.toLocaleTimeString("en-US", { timeStyle: "short" }).toLowerCase() : "All day";
+
+  return {
+    formatted,
+    isoDate: date.toISOString()
+  };
+}
