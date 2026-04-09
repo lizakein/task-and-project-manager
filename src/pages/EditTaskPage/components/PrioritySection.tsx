@@ -1,4 +1,4 @@
-import { FieldState } from "../../../types/fieldState";
+import { FieldState } from "@app-types/fieldState";
 import { PriorityButton } from "@features/tasks";
 import { Priority } from "@features/tasks/types";
 

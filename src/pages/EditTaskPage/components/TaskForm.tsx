@@ -4,7 +4,7 @@ import { DescriptionSection } from "./DescriptionSection";
 import { DueDateSection } from "./DueDateSection";
 import { UploadButton } from "./UploadButton";
 import { FormActions } from "./FormActions";
-import type { FieldState } from "../../../types/fieldState";
+import { FieldState } from "@app-types/fieldState";
 import { Status, Task } from "@features/tasks";
 import { StatusSection } from "./StatusSection";
 

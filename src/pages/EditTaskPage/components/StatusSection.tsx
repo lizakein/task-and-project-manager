@@ -1,6 +1,6 @@
 import { Status, TASK_STATUS } from "@features/tasks";
 import { ToggleButton } from "@ui/index";
-import { FieldState } from "types/fieldState";
+import { FieldState } from "@app-types/fieldState";
 
 interface StatusSectionProps {
   status: FieldState<Status>;

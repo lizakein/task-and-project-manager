@@ -1,5 +1,5 @@
 import { Button, Icon } from "@ui/index";
-import { FieldState } from "../../../types/fieldState";
+import { FieldState } from "@app-types/fieldState";
 import AddSquareIcon from "@assets/icons/actions/add-square-icon.svg";
 import TrashIcon from "@assets/icons/actions/trash-icon.svg";
 

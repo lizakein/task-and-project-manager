@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 import { TagsManagerContent } from "../TagsManagerContent";
-import { FieldState } from "types/fieldState";
+import { FieldState } from "@app-types/fieldState";
 import "./TagsManagerModal.css";
 
 interface TagsManagerModalProps {
