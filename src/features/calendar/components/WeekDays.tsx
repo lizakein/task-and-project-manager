@@ -1,12 +1,12 @@
+import type { FieldState } from "@app-types/fieldState";
 import { getWeekDays } from "../utils/getWeekDays";
 
 interface WeekDaysProps {
-  selectedDate: Date;
-  onSelect: (date: Date) => void;
+  selectedDate: FieldState<Date>;
 }
 
-export function WeekDays({ selectedDate, onSelect }: WeekDaysProps) {
-  const days = getWeekDays(selectedDate);
+export function WeekDays({ selectedDate }: WeekDaysProps) {
+  const days = getWeekDays(selectedDate.value);
 
   return (
     <ul className="calendar-week">
@@ -15,9 +15,9 @@ export function WeekDays({ selectedDate, onSelect }: WeekDaysProps) {
           <button
             className={`
               calendar-week__day 
-              ${selectedDate.toISOString() === item.date.toISOString() ? "calendar-week__day--active" : ""}
+              ${selectedDate.value.toISOString() === item.date.toISOString() ? "calendar-week__day--active" : ""}
             `}
-            onClick={() => onSelect(item.date)}
+            onClick={() => selectedDate.setValue(item.date)}
           >
             <span className="calendar-week__weekday">{item.day}</span>
             <span className="calendar-week__date">{item.number}</span>

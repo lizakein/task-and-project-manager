@@ -56,9 +56,8 @@ export default function MyTasks() {
       </ul>
 
       <Pagination
-        page={page}
+        page={{ value: page, setValue: setPage }}
         totalPages={totalPages}
-        onPageChange={setPage}
         className="my-tasks__pagination"
       />
     </section>

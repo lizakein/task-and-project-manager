@@ -57,7 +57,9 @@ export default function Calendar() {
 
       <p className="calendar__date">{currentDate.formatted}</p>
 
-      <WeekDays selectedDate={selectedDate} onSelect={setSelectedDate} />
+      <WeekDays
+        selectedDate={{ value: selectedDate, setValue: setSelectedDate }}
+      />
       <Timeline tasks={timelineTasks} />
     </section>
   );

@@ -1,22 +1,21 @@
 import { useMemo } from "react";
 import { getPaginationPages } from "@utils/getPaginationPages";
+import { FieldState } from "@app-types/fieldState";
 import "./Pagination.css";
 
 interface PaginationProps {
-  page: number;
+  page: FieldState<number>;
   totalPages: number;
-  onPageChange: (page: number) => void;
   className?: string;
 }
 
 export default function Pagination({
   page,
   totalPages,
-  onPageChange,
   className,
 }: PaginationProps) {
   const pages = useMemo(
-    () => getPaginationPages(page, totalPages),
+    () => getPaginationPages(page.value, totalPages),
     [page, totalPages]
   );
 
@@ -39,8 +38,8 @@ export default function Pagination({
           return (
             <li key={key}>
               <button
-                className={`pagination__button ${p === page ? "pagination__button--active" : ""}`}
-                onClick={() => onPageChange(p)}
+                className={`pagination__button ${p === page.value ? "pagination__button--active" : ""}`}
+                onClick={() => page.setValue(p)}
               >
                 {p}
               </button>
