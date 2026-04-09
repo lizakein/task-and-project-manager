@@ -1,4 +1,4 @@
-import { useState, Dispatch, SetStateAction } from "react";
+import { useState } from "react";
 import AddIcon from "@assets/icons/actions/add-square-icon.svg";
 import CloseIcon from "@assets/icons/actions/close-icon.svg";
 import { useTagStore } from "@store/hooks";
@@ -7,7 +7,7 @@ import { TagsList } from "./TagsList";
 import { TagsInput } from "./TagsInput";
 
 interface TagsManagerContentProps {
-  setIsTagsModalOpen: Dispatch<SetStateAction<boolean>>;
+  setIsTagsModalOpen: (value: boolean) => void;
 }
 
 export function TagsManagerContent({

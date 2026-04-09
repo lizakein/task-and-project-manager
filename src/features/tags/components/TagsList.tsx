@@ -9,7 +9,7 @@ import { getTagStyle } from "@utils/tagUtils";
 import { useTagStore } from "@store/hooks";
 
 interface TagsListProps {
-  setIsWarning: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsWarning: (value: boolean) => void;
 }
 
 export function TagsList({ setIsWarning }: TagsListProps) {

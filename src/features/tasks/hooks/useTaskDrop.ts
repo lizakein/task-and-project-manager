@@ -6,7 +6,7 @@ export function useTaskDrop(
   status: Status,
   title: string,
   updateTask: (taskId: string, patch: Partial<Task>) => void,
-  setLiveMessage: React.Dispatch<React.SetStateAction<string>>
+  setLiveMessage: (value: string) => void
 ) {
   return useDrop<DragItem, void, { isOver: boolean }>(
     () => ({
